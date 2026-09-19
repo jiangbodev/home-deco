@@ -97,3 +97,7 @@ node scripts/check-navigation.mjs qa/unified-trial/home-unified-candidate.glb
 后续针对“柜子、墙面仍显白且缺少材质感”的反馈，加入分开的哑光墙面和缎光漆面参数，以及共用微表面纹理；总资源现约 9.94 MB。
 
 照明进一步改为外窗方向光的离线烘焙、轨道灯局部暖光和两盏实际餐桌柔光灯；[同机位网页对比](review/lighting-comparison.png)记录实际修改前后。当前效果是实时漫游的视觉近似，不代表实测室内照度。
+
+### 桌面与台面材质
+
+木质桌面和柜面保留原木纹，增加缎面反光变化；浅色台面采用细颗粒表面，水槽采用方向性金属微纹理。部分尖锐板件增加着色层的边缘过渡，不修改几何。复用现有纹理，无新增模型或贴图下载量。见 [实际同机位对比](review/surfaces-comparison.png) 与 [检查记录](review/appearance-2026-09-19.md)。
