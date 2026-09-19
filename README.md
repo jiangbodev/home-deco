@@ -1,4 +1,4 @@
-# 雨澜轩 · 统一轻量模型试验
+# 住宅空间漫游 · 统一轻量模型
 
 本分支 `trial/unified-geometry` 使用同一份模型服务桌面与手机，不存在设备专用模型版本。
 
@@ -46,8 +46,8 @@ npm run build
 必须使用上一版 19.58 MB 模型作为输入，避免对已减面的候选重复减面：
 
 ```sh
-node scripts/trial-unified.mjs /path/to/yulanxuan-home-19.58MB.glb qa/unified-trial
-node scripts/verify-unified.mjs /path/to/yulanxuan-home-19.58MB.glb qa/unified-trial/home-unified-candidate.glb qa/unified-trial
+node scripts/trial-unified.mjs /path/to/home-baseline-19.58MB.glb qa/unified-trial
+node scripts/verify-unified.mjs /path/to/home-baseline-19.58MB.glb qa/unified-trial/home-unified-candidate.glb qa/unified-trial
 node scripts/check-navigation.mjs qa/unified-trial/home-unified-candidate.glb
 ```
 
