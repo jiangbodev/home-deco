@@ -16,3 +16,6 @@ if(fs.existsSync(lighting)){
  if(bytes>=20_000_000)throw Error('Model and lighting budget exceeded');
  console.log(`Including baked contact lighting: ${bytes} bytes / 20000000`);
 }
+
+const grain=path.resolve(root,'../surfaces/paint-grain-v1.png');
+if(fs.existsSync(grain)){bytes+=fs.statSync(grain).size;if(bytes>=20_000_000)throw Error('Surface textures exceed total budget');console.log(`Including surface finishes: ${bytes} bytes / 20000000`)}

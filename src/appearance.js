@@ -1,7 +1,9 @@
 import * as THREE from 'three';
+import {createSurfaceFinishes} from './surface-finishes.js';
 
 // Offline-baked contact maps; no shadow render passes while walking.
 export function createAppearance(renderer){
+ const finishes=createSurfaceFinishes(renderer);
  const white=new THREE.DataTexture(new Uint8Array([0,0,0,255]),1,1);white.needsUpdate=true;
  const contact={value:white},bounds={value:new THREE.Vector4(-.5,-.5,15,10)};
  const fixed={value:0},furniture={value:0};
@@ -11,6 +13,7 @@ export function createAppearance(renderer){
   try{const r=await fetch(import.meta.env.BASE_URL+'assets/lighting/walls.json',{signal:AbortSignal.timeout(4000)});if(!r.ok)throw Error('Wall manifest unavailable');wallManifest=await r.json();for(const receiver of wallManifest.receivers)wallReceivers.set(receiver.name,receiver)}catch(error){console.warn('Optional wall shading unavailable',error)}
  }
  async function load(){
+  void finishes.load();
   try{
    const base=import.meta.env.BASE_URL+'assets/lighting/';
    const response=await fetch(base+'contact.json');if(!response.ok)throw Error('Contact manifest unavailable');
@@ -76,6 +79,7 @@ export function createAppearance(renderer){
     m.customProgramCacheKey=()=> 'floor-contact-v1';return m;
    });if(!multiple)o.material=o.material[0];
   });
+  finishes.prepare(group);
  }
  function update(model,initialTransforms,loaded,assetFiles){
   const matches=manifest=>JSON.stringify(manifest?.sourceModules)===JSON.stringify(assetFiles);
