@@ -1,0 +1,25 @@
+{
+  "name": "yulanxuan-home",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "optimize": "node scripts/optimize.mjs"
+  },
+  "dependencies": {
+    "three": "0.183.2"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "4.5.0",
+    "@gltf-transform/extensions": "4.5.0",
+    "@gltf-transform/functions": "4.5.0",
+    "draco3dgltf": "1.5.7",
+    "gltf-validator": "2.0.0-dev.3.10",
+    "meshoptimizer": "1.0.1",
+    "sharp": "0.34.5",
+    "vite": "7.3.1"
+  }
+}

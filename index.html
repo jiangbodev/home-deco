@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f3f0e9"><meta name="description" content="雨澜轩，家居空间三维漫游。"><title>雨澜轩 · 空间漫游</title></head>
+<body>
+  <main id="app" aria-label="雨澜轩空间漫游">
+    <canvas id="scene" aria-label="三维空间，拖动转向，方向键或 WASD 移动" tabindex="0"></canvas>
+    <div id="loading" role="status" aria-live="polite"><div class="loading-mark">澜</div><p class="eyebrow">YULANXUAN / HOME</p><h1>慢慢走进家。</h1><p id="load-label">正在准备空间</p><progress id="progress" max="100" value="0"></progress><button id="retry" hidden>重新加载</button><small>首次打开需要下载模型，之后会更快。</small></div>
+    <div id="ui" hidden>
+      <header class="topbar"><span class="wordmark">雨澜轩<span>空间漫游</span></span><button id="help-button" class="icon-button" aria-label="操作帮助">?</button></header>
+      <div class="location"><span class="location-dot"></span><span id="room-label" aria-live="polite">玄关</span></div>
+      <div id="hint" role="status">拖动环顾 · WASD / 方向键移动</div>
+      <div id="joystick" role="group" aria-label="移动摇杆" tabindex="0"><span id="stick"></span><small>移动</small></div>
+      <nav class="dock" aria-label="空间导航"><div id="room-nav" class="room-nav"></div><span class="divider"></span><button id="map-button" class="tool-button" aria-label="打开户型导航" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Zm6-2v16m6-14v16"/></svg><span>户型</span></button><button id="settings-button" class="tool-button" aria-label="打开空间设置" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16M8 4v6m8 4v6"/></svg><span>设置</span></button></nav>
+    </div>
+    <dialog id="map-panel"><div class="panel-heading"><div><p class="eyebrow">EXPLORE</p><h2>每个角落，都可以去。</h2></div><button class="icon-button close" aria-label="关闭户型导航">×</button></div><div id="map"></div><p class="panel-note">点击房间切换位置 · 圆点是你所在的位置</p><div id="all-rooms" class="room-grid"></div></dialog>
+    <dialog id="settings-panel"><div class="panel-heading"><div><p class="eyebrow">YOUR SPACE</p><h2>空间设置</h2></div><button class="icon-button close" aria-label="关闭空间设置">×</button></div><label class="setting-row">画面质量<select id="quality"><option value="auto">自动</option><option value="high">清晰</option><option value="low">流畅</option></select></label><div id="state-controls"></div><button id="reset" class="reset-button">恢复初始状态与视角</button><p class="panel-note">眼高 1.50 m · 设置仅在当前浏览会话生效</p></dialog>
+    <dialog id="help-panel"><div class="panel-heading"><div><p class="eyebrow">TAKE A LOOK AROUND</p><h2>按自己的步调，逛一逛。</h2></div><button class="icon-button close" aria-label="关闭操作帮助">×</button></div><div class="help-grid"><p><strong>环顾四周</strong>拖动画面转向。</p><p><strong>向前走走</strong>电脑用 WASD 或方向键；手机用左下摇杆。</p><p><strong>去另一个房间</strong>点击底部房间名称，或打开户型导航。</p><p><strong>看看不同状态</strong>在设置里开关门窗、收纳餐椅。</p></div></dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </main><script type="module" src="/src/main.js"></script>
+</body></html>
