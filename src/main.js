@@ -7,6 +7,8 @@ import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 const $=s=>document.querySelector(s), canvas=$('#scene');
 const coarse=matchMedia('(pointer:coarse)').matches;
 import {rooms} from './rooms.js';
+import {createModules} from './modules.js';
+let modules,visitSequence=0,lastRoom=-1;
 let renderer, model, ready=false, quality='auto', yaw=0,pitch=0, mapOpen=false;
 let stateEntries=[], wallMeshes=[], floorMeshes=[], frameAverage=16, adaptiveScale=coarse?1.35:1.7;
 const scene=new THREE.Scene();scene.background=new THREE.Color('#e9ede5');
@@ -22,7 +24,7 @@ function effectiveVisible(o){for(let p=o;p;p=p.parent)if(!p.visible)return false
 function resize(){if(!renderer)return;const w=canvas.clientWidth,h=canvas.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();const max=quality==='high'?2:quality==='low'?1:adaptiveScale;renderer.setPixelRatio(Math.min(devicePixelRatio,max));renderer.setSize(w,h,false)}
 window.addEventListener('resize',resize);window.visualViewport?.addEventListener('resize',resize);
 function markRoom(i){$('#room-label').textContent=rooms[i].name;document.querySelectorAll('[data-room]').forEach(b=>b.setAttribute('aria-current',String(Number(b.dataset.room)===i)))}
-function visit(i){const r=rooms[i];camera.position.set(r.x,1.5,r.z);yaw=Math.atan2(r.x-r.look[0],r.z-r.look[1]);pitch=-.04;camera.rotation.set(pitch,yaw,0,'YXZ');markRoom(i);updateMap();keys.clear();joystick.x=joystick.y=0;if(ready)canvas.focus({preventScroll:true})}
+async function visit(i){const request=++visitSequence;if(ready&&modules){try{await modules.room(i)}catch{toast('房间暂未加载，请再次选择重试');return}if(request!==visitSequence)return}const r=rooms[i];camera.position.set(r.x,1.5,r.z);yaw=Math.atan2(r.x-r.look[0],r.z-r.look[1]);pitch=-.04;camera.rotation.set(pitch,yaw,0,'YXZ');markRoom(i);updateMap();keys.clear();joystick.x=joystick.y=0;if(ready)canvas.focus({preventScroll:true})}
 function roomButton(i){const b=document.createElement('button');b.textContent=rooms[i].name;b.dataset.room=i;b.onclick=()=>{closeDialogs();visit(i)};return b}
 rooms.forEach((_,i)=>{$('#all-rooms').append(roomButton(i));if(i<6)$('#room-nav').append(roomButton(i))});
 function openDialog(id,button){keys.clear();joystick.x=joystick.y=0;const d=$(id);d.showModal();button?.setAttribute('aria-expanded','true');mapOpen=id==='#map-panel';updateMap()}
@@ -80,7 +82,7 @@ function allowedStep(x,z){
  ray.set(new THREE.Vector3(x,.35,z),down);ray.far=.55;
  return ray.intersectObjects(floorMeshes,false).some(h=>effectiveVisible(h.object));
 }
-function move(dt){let x=joystick.x+(keys.has('KeyD')||keys.has('ArrowRight')?1:0)-(keys.has('KeyA')||keys.has('ArrowLeft')?1:0),z=joystick.y+(keys.has('KeyS')||keys.has('ArrowDown')?1:0)-(keys.has('KeyW')||keys.has('ArrowUp')?1:0);const len=Math.hypot(x,z);if(len<.04)return;if(len>1){x/=len;z/=len}const speed=1.35*dt;const dx=(Math.cos(yaw)*x+Math.sin(yaw)*z)*speed,dz=(-Math.sin(yaw)*x+Math.cos(yaw)*z)*speed;const p=camera.position;if(allowedStep(p.x+dx,p.z))p.x+=dx;if(allowedStep(p.x,p.z+dz))p.z+=dz;p.y=1.5;let nearest=0,dist=Infinity;rooms.forEach((r,i)=>{const d=Math.hypot(r.x-p.x,r.z-p.z);if(d<dist){nearest=i;dist=d}});markRoom(nearest);if(mapOpen)updateMap()}
+function move(dt){let x=joystick.x+(keys.has('KeyD')||keys.has('ArrowRight')?1:0)-(keys.has('KeyA')||keys.has('ArrowLeft')?1:0),z=joystick.y+(keys.has('KeyS')||keys.has('ArrowDown')?1:0)-(keys.has('KeyW')||keys.has('ArrowUp')?1:0);const len=Math.hypot(x,z);if(len<.04)return;if(len>1){x/=len;z/=len}const speed=1.35*dt;const dx=(Math.cos(yaw)*x+Math.sin(yaw)*z)*speed,dz=(-Math.sin(yaw)*x+Math.cos(yaw)*z)*speed;const p=camera.position;if(allowedStep(p.x+dx,p.z))p.x+=dx;if(allowedStep(p.x,p.z+dz))p.z+=dz;p.y=1.5;let nearest=0,dist=Infinity;rooms.forEach((r,i)=>{const d=Math.hypot(r.x-p.x,r.z-p.z);if(d<dist){nearest=i;dist=d}});markRoom(nearest);if(nearest!==lastRoom){lastRoom=nearest;modules?.prioritize(nearest)}if(mapOpen)updateMap()}
 function endInput(){keys.clear();joystick.x=joystick.y=0;$('#stick').style.transform='';lookPointer=null;stickPointer=null}
 window.addEventListener('blur',endInput);document.addEventListener('visibilitychange',()=>{if(document.hidden)endInput()});
 window.addEventListener('keydown',e=>{if(document.querySelector('dialog[open]')||/INPUT|SELECT|BUTTON/.test(e.target.tagName))return;if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)){keys.add(e.code);e.preventDefault();$('#hint').style.opacity=0}});window.addEventListener('keyup',e=>keys.delete(e.code));
@@ -99,12 +101,17 @@ async function start(){
    resize();const pmrem=new THREE.PMREMGenerator(renderer), env=new RoomEnvironment();scene.environment=pmrem.fromScene(env,.04).texture;env.dispose();pmrem.dispose();scene.environmentIntensity=.8;
    scene.add(new THREE.HemisphereLight(0xfffcf1,0x9aa08e,1.6));const sun=new THREE.DirectionalLight(0xfff4df,2.2);sun.position.set(2,8,-4);scene.add(sun);
    const loader=new GLTFLoader(), draco=new DRACOLoader();draco.setDecoderPath(import.meta.env.BASE_URL+'draco/');draco.setWorkerLimit(coarse?2:4);loader.setDRACOLoader(draco);
-   $('#load-label').textContent='正在下载空间模型';
-   const gltf=await loader.loadAsync(import.meta.env.BASE_URL+'assets/home.glb?v=bedding-fidelity-2',e=>{if(e.total){const pct=Math.round(e.loaded/e.total*100);$('#progress').value=pct;$('#load-label').textContent=pct<100?`正在下载空间模型 · ${pct}%`:'正在展开模型与材质…'}});
-   model=gltf.scene;scene.add(model);readStates();
+   $('#load-label').textContent='正在加载入口空间…';
+   THREE.Cache.enabled=true;
+   model=new THREE.Group();scene.add(model);
    const anisotropy=Math.min(renderer.capabilities.getMaxAnisotropy(),coarse?4:8);
-   model.traverse(o=>{if(o.isMesh){o.frustumCulled=true;for(const m of Array.isArray(o.material)?o.material:[o.material]){for(const k of ['map','normalMap','roughnessMap','metalnessMap','aoMap'])if(m[k])m[k].anisotropy=anisotropy;if(m.transparent)m.depthWrite=false}}});
-   buildNavigation();visit(0);await renderer.compileAsync(scene,camera);renderer.render(scene,camera);draco.dispose();ready=true;$('#loading').hidden=true;$('#ui').hidden=false;
+   const prepare=group=>group.traverse(o=>{if(o.isMesh){o.frustumCulled=true;for(const m of Array.isArray(o.material)?o.material:[o.material]){for(const k of ['map','normalMap','roughnessMap','metalnessMap','aoMap'])if(m[k])m[k].anisotropy=anisotropy;if(m.transparent)m.depthWrite=false}}});
+   const status=document.createElement('button');status.className='module-status';status.hidden=true;status.onclick=()=>modules.background();$('#ui').append(status);
+   modules=createModules({loader,root:model,prepare,onStatus:s=>{status.hidden=s.loaded===s.total;status.textContent=s.failed?'部分房间加载失败 · 点击重试':'正在补齐其他房间…';status.disabled=!s.failed}});
+   await modules.init();readStates();buildNavigation();await visit(0);
+   await renderer.compileAsync(scene,camera);renderer.render(scene,camera);ready=true;$('#loading').hidden=true;$('#ui').hidden=false;
+   // Yield the first visible frame before fetching the rest of the home.
+   requestAnimationFrame(()=>requestAnimationFrame(()=>modules.background()));
    if(coarse)$('#hint').textContent='左手移动 · 拖动画面环顾';
    let last=performance.now(),count=0;
    renderer.setAnimationLoop(now=>{const ms=now-last;last=now;if(document.hidden)return;const dt=Math.min(ms/1000,.05);if(!document.querySelector('dialog[open]'))move(dt);renderer.render(scene,camera);frameAverage=.98*frameAverage+.02*ms;if(++count%180===0&&quality==='auto'&&frameAverage>30&&adaptiveScale>1){adaptiveScale=Math.max(1,adaptiveScale-.15);resize()}});

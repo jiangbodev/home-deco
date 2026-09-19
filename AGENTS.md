@@ -2,7 +2,7 @@
 
 ## User workflow
 
-Continue this project in the cloud. The user expects fixes to the existing home-deco walkthrough, not a new site or local setup instructions. Keep the public site anonymous. Preserve a single model for desktop and mobile and the 20 MB model budget.
+Continue this project in the cloud. The user expects fixes to the existing home-deco walkthrough, not a new site or local setup instructions. Keep the public site anonymous. Use the same modular assets for desktop and mobile and preserve the 20 MB total model budget.
 
 Report concrete progress and blockers promptly, at least once per minute during ongoing work. Explain what failed and what the next attempt will resolve. Do not repeatedly say only that work is being checked. Do not blame model size without evidence.
 
@@ -21,3 +21,7 @@ Report concrete progress and blockers promptly, at least once per minute during 
 The visible bedding is under Blender软床品_main and Blender软床品_second. Child names include fabric 1, White Fabric, Fur_black and their .001 counterparts. Protect the whole group from simplification; name matching for pillow or 枕 missed these objects and protected hidden legacy pillows instead.
 
 Repair commit fd26d8c4c8150213cc3191568da9b347052ca004 restored all six visible bedding meshes from the pre-simplification baseline via scripts/restore-bedding.py. The resulting model is 9,123,564 bytes. Matching before/after Three.js views showed the conspicuous black holes disappeared in both bedrooms. Decoded validation: 0 errors, 235 existing warnings. All other binary payloads, scene nodes, materials, and textures were preserved. The live model hash matched the repair. This is a verified checkpoint, not a substitute for reading current repository state.
+
+## Modular loading update
+
+The user authorized modular loading with adjacent-room prefetch and independent updates. Read README.md and src/modules.js. Production loads assets/modules/manifest.json, not the historical home.glb. Keep base skeleton nodes and collision geometry resident; attach deferred meshes to their original moduleNode via attachTo. Never re-run readStates after attaching a module: that would reset user choices. Keep shared textures content-addressed, retain loaded rooms, deduplicate pending loads, and preserve retry and last-request-wins navigation. Geometry verification accepts the original source path as an argument.

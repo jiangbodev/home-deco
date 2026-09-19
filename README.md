@@ -1,4 +1,29 @@
-# 住宅空间漫游 · 统一轻量模型
+# 住宅空间漫游 · 分模块加载
+
+## 当前加载方式（2026-09-19）
+
+全屋分为 12 个 GLB 模块，共用 62 张按内容哈希命名的贴图。初始下载基础结构、玄关/餐客厅家具及所需贴图，模型资源约 3.49 MB；其余房间按邻接优先级后台补齐，点击房间立即优先加载，加载后保留。全部模块、贴图及清单约 9.10 MB。此数字不含网页 JS、解码器和 HTTP 开销，不是实测加载时间。
+
+基础结构保留所有原节点、局部变换、可见性、交互元数据和碰撞几何；延迟模块把原始网格附着回对应节点。主卧、次卧床品独立，整套分拆没有减面或重新编码。资源文件名按内容变化，修改一个模块不会使其它模块缓存失效。模型下载失败时可点击页面状态重试。
+
+- `public/assets/modules/manifest.json`：资源入口与模块依赖。
+- `src/modules.js`：房间优先加载、相邻房间预取、下载去重和重试。
+- `scripts/classify-modules.mjs`：结构保护规则与按世界坐标分区；输出分组映射，拆分前可人工修正。
+- `scripts/split-modules.py`：无损拆分已审阅的 GLB；输出共享贴图和模块。
+- `scripts/verify-modules.mjs`：逐一比较全部 1,493 个网格的解码属性、索引、节点变换和元数据，并验证 GLB。
+
+复现（源文件可从修复提交 fd26d8c 提取）：
+
+```sh
+node scripts/classify-modules.mjs /path/to/source.glb /tmp/module-map.json
+python scripts/split-modules.py /path/to/source.glb /tmp/module-map.json public/assets/modules
+node scripts/verify-modules.mjs /path/to/source.glb
+npm run build
+```
+
+后续局部造型修改仍应在 Blender 中完成。单独更新模块时保持挂载节点的 `attachTo`、局部坐标和交互父级关系，更新对应哈希文件及清单；若改动父级结构，应重新拆分核验。不要把已减面的模块再次减面。
+
+以下保留历史修复记录，历史单文件体积不代表当前加载方式。
 
 ## 床品修复（2026-09-19）
 

@@ -1,0 +1,260 @@
+{
+  "modules": {
+    "base": {
+      "file": "base-f7c396ff3842.glb",
+      "bytes": 730524,
+      "textures": [
+        "texture-04b2410dcc30c8b4.webp",
+        "texture-0a16784d5ba755a6.webp",
+        "texture-34059e84d7e12635.webp",
+        "texture-741d16084f43b256.webp",
+        "texture-857a62d61d26606e.webp",
+        "texture-96221146bf46becb.webp",
+        "texture-9e267bc34400e83d.webp",
+        "texture-b37b36d02a5dea1b.webp",
+        "texture-cdda9bdcfa40a7fc.webp",
+        "texture-e2c4b3c2146482d9.webp",
+        "texture-e9be09198920076e.webp",
+        "texture-ef88bcd16023c4b9.webp"
+      ],
+      "nodes": 247
+    },
+    "bedding-main": {
+      "file": "bedding-main-53b1d6ac6fb6.glb",
+      "bytes": 874724,
+      "textures": [
+        "texture-464ba4864491de03.webp",
+        "texture-9540e9ed13bba931.webp",
+        "texture-a7c25559ba8f6ac0.webp",
+        "texture-b3c95f54ed7dcdb3.webp",
+        "texture-c2347e851c2f9f1f.webp"
+      ],
+      "nodes": 3
+    },
+    "bedding-second": {
+      "file": "bedding-second-13b76ce4d99c.glb",
+      "bytes": 874748,
+      "textures": [
+        "texture-464ba4864491de03.webp",
+        "texture-4fd9234fa4e2a33d.webp",
+        "texture-9540e9ed13bba931.webp",
+        "texture-b3c95f54ed7dcdb3.webp",
+        "texture-c2347e851c2f9f1f.webp"
+      ],
+      "nodes": 3
+    },
+    "exterior": {
+      "file": "exterior-f4e75bc7b0d3.glb",
+      "bytes": 1271552,
+      "textures": [
+        "texture-3921ebdd7a0c910b.webp",
+        "texture-3a0a361b0a8eebb2.webp",
+        "texture-7ec6dd746fb882de.webp",
+        "texture-88f8522f4691d8e3.webp",
+        "texture-91f56207a6477556.webp",
+        "texture-ba7bff5b4955384e.webp",
+        "texture-be3bf9446e7c9c99.webp",
+        "texture-e0a4693a47d8a77b.webp",
+        "texture-e3ce3c32ba2da903.webp"
+      ],
+      "nodes": 12
+    },
+    "room-0": {
+      "file": "room-0-75f463a89c40.glb",
+      "bytes": 383784,
+      "textures": [
+        "texture-0696d484fc0a42c3.webp",
+        "texture-0dc1d5251e1837a6.webp",
+        "texture-34059e84d7e12635.webp",
+        "texture-3f756ae963a30b2f.webp",
+        "texture-40184ff5212414a6.webp",
+        "texture-5110e340709d06e4.webp",
+        "texture-595c0f6d94784485.webp",
+        "texture-5bbd7e9bc949233c.webp",
+        "texture-62e9e71135a05014.webp",
+        "texture-741d16084f43b256.webp",
+        "texture-788462f488fcc53d.webp",
+        "texture-7b321e83037fe325.webp",
+        "texture-84438768e3ce5e2b.webp",
+        "texture-96221146bf46becb.webp",
+        "texture-a09cbd936134a18c.webp",
+        "texture-b33afe8096cce63d.webp",
+        "texture-bda86bf196bdcff6.webp",
+        "texture-e2c4b3c2146482d9.webp"
+      ],
+      "nodes": 309
+    },
+    "room-1": {
+      "file": "room-1-44fee7d78f46.glb",
+      "bytes": 564068,
+      "textures": [
+        "texture-00e5fa3af709dd5c.webp",
+        "texture-26a98ffbe5096722.webp",
+        "texture-34059e84d7e12635.webp",
+        "texture-3aa32bcb6535be61.webp",
+        "texture-3f756ae963a30b2f.webp",
+        "texture-40184ff5212414a6.webp",
+        "texture-483ee1cefbdc3243.webp",
+        "texture-48e12ba1eb7b5a37.webp",
+        "texture-5110e340709d06e4.webp",
+        "texture-741d16084f43b256.webp",
+        "texture-96221146bf46becb.webp",
+        "texture-a23b3b15dd36d80b.webp",
+        "texture-aad330c8c4835403.webp",
+        "texture-ab4a76eda77a2ee1.webp",
+        "texture-b33afe8096cce63d.webp",
+        "texture-bda86bf196bdcff6.webp",
+        "texture-d2682d97dd5a0371.webp",
+        "texture-da65466a3b68d348.webp",
+        "texture-e2c4b3c2146482d9.webp",
+        "texture-f5e2254d8f33d291.webp",
+        "texture-f63c5003213d44a8.webp",
+        "texture-fc04b6aa6707a522.webp"
+      ],
+      "nodes": 307
+    },
+    "room-3": {
+      "file": "room-3-e2bd7743b29d.glb",
+      "bytes": 82104,
+      "textures": [
+        "texture-62e9e71135a05014.webp",
+        "texture-e2c4b3c2146482d9.webp"
+      ],
+      "nodes": 103
+    },
+    "room-4": {
+      "file": "room-4-961774758697.glb",
+      "bytes": 340836,
+      "textures": [
+        "texture-00e5fa3af709dd5c.webp",
+        "texture-34059e84d7e12635.webp",
+        "texture-3dfb0beba125778a.webp",
+        "texture-3f756ae963a30b2f.webp",
+        "texture-40184ff5212414a6.webp",
+        "texture-4bbaa874a569e341.webp",
+        "texture-4d891228e413c81b.webp",
+        "texture-5110e340709d06e4.webp",
+        "texture-70aba61c5add6774.webp",
+        "texture-b33afe8096cce63d.webp",
+        "texture-bda86bf196bdcff6.webp",
+        "texture-c0e65281503c81c1.webp",
+        "texture-d1832935f9ceae23.webp",
+        "texture-d3077b1a8f0e9cb8.webp",
+        "texture-d5ca11c7c8921051.webp",
+        "texture-e2c4b3c2146482d9.webp",
+        "texture-f5e2254d8f33d291.webp",
+        "texture-fc04b6aa6707a522.webp"
+      ],
+      "nodes": 233
+    },
+    "room-5": {
+      "file": "room-5-3fc7efa60bf4.glb",
+      "bytes": 62656,
+      "textures": [
+        "texture-34059e84d7e12635.webp",
+        "texture-40184ff5212414a6.webp",
+        "texture-4bbaa874a569e341.webp",
+        "texture-5110e340709d06e4.webp",
+        "texture-b33afe8096cce63d.webp",
+        "texture-d1832935f9ceae23.webp",
+        "texture-e2c4b3c2146482d9.webp"
+      ],
+      "nodes": 63
+    },
+    "room-6": {
+      "file": "room-6-1a6f556a1509.glb",
+      "bytes": 32388,
+      "textures": [
+        "texture-34059e84d7e12635.webp",
+        "texture-e2c4b3c2146482d9.webp"
+      ],
+      "nodes": 79
+    },
+    "room-7": {
+      "file": "room-7-09d36794985d.glb",
+      "bytes": 76988,
+      "textures": [
+        "texture-34059e84d7e12635.webp",
+        "texture-62e9e71135a05014.webp",
+        "texture-e2c4b3c2146482d9.webp"
+      ],
+      "nodes": 71
+    },
+    "room-8": {
+      "file": "room-8-ac6b1c2e3d72.glb",
+      "bytes": 71724,
+      "textures": [
+        "texture-40184ff5212414a6.webp",
+        "texture-5110e340709d06e4.webp",
+        "texture-62e9e71135a05014.webp",
+        "texture-b33afe8096cce63d.webp",
+        "texture-e2c4b3c2146482d9.webp"
+      ],
+      "nodes": 63
+    }
+  },
+  "textures": {
+    "texture-fc04b6aa6707a522.webp": 277898,
+    "texture-f5e2254d8f33d291.webp": 91264,
+    "texture-0a16784d5ba755a6.webp": 82,
+    "texture-e9be09198920076e.webp": 526,
+    "texture-857a62d61d26606e.webp": 1478,
+    "texture-e2c4b3c2146482d9.webp": 50,
+    "texture-34059e84d7e12635.webp": 592,
+    "texture-04b2410dcc30c8b4.webp": 21986,
+    "texture-0dc1d5251e1837a6.webp": 2206,
+    "texture-5110e340709d06e4.webp": 122228,
+    "texture-a09cbd936134a18c.webp": 72108,
+    "texture-bda86bf196bdcff6.webp": 29962,
+    "texture-b33afe8096cce63d.webp": 25232,
+    "texture-40184ff5212414a6.webp": 70536,
+    "texture-b37b36d02a5dea1b.webp": 842,
+    "texture-ef88bcd16023c4b9.webp": 100800,
+    "texture-cdda9bdcfa40a7fc.webp": 220518,
+    "texture-9e267bc34400e83d.webp": 11290,
+    "texture-b3c95f54ed7dcdb3.webp": 142888,
+    "texture-9540e9ed13bba931.webp": 84642,
+    "texture-c2347e851c2f9f1f.webp": 28092,
+    "texture-464ba4864491de03.webp": 63868,
+    "texture-a7c25559ba8f6ac0.webp": 38342,
+    "texture-4fd9234fa4e2a33d.webp": 35020,
+    "texture-3dfb0beba125778a.webp": 44142,
+    "texture-70aba61c5add6774.webp": 31962,
+    "texture-d5ca11c7c8921051.webp": 38002,
+    "texture-d3077b1a8f0e9cb8.webp": 8490,
+    "texture-00e5fa3af709dd5c.webp": 868,
+    "texture-3f756ae963a30b2f.webp": 264,
+    "texture-d1832935f9ceae23.webp": 44,
+    "texture-4bbaa874a569e341.webp": 692,
+    "texture-741d16084f43b256.webp": 44,
+    "texture-96221146bf46becb.webp": 4068,
+    "texture-62e9e71135a05014.webp": 1648,
+    "texture-d2682d97dd5a0371.webp": 43900,
+    "texture-483ee1cefbdc3243.webp": 46996,
+    "texture-48e12ba1eb7b5a37.webp": 122654,
+    "texture-a23b3b15dd36d80b.webp": 40284,
+    "texture-ab4a76eda77a2ee1.webp": 75160,
+    "texture-f63c5003213d44a8.webp": 101796,
+    "texture-26a98ffbe5096722.webp": 5566,
+    "texture-da65466a3b68d348.webp": 4782,
+    "texture-c0e65281503c81c1.webp": 4132,
+    "texture-4d891228e413c81b.webp": 39314,
+    "texture-3aa32bcb6535be61.webp": 5268,
+    "texture-aad330c8c4835403.webp": 17362,
+    "texture-84438768e3ce5e2b.webp": 4868,
+    "texture-788462f488fcc53d.webp": 22994,
+    "texture-0696d484fc0a42c3.webp": 73980,
+    "texture-5bbd7e9bc949233c.webp": 89880,
+    "texture-595c0f6d94784485.webp": 88402,
+    "texture-7b321e83037fe325.webp": 13222,
+    "texture-e0a4693a47d8a77b.webp": 225436,
+    "texture-ba7bff5b4955384e.webp": 95454,
+    "texture-7ec6dd746fb882de.webp": 14884,
+    "texture-be3bf9446e7c9c99.webp": 182748,
+    "texture-91f56207a6477556.webp": 185240,
+    "texture-3921ebdd7a0c910b.webp": 20360,
+    "texture-88f8522f4691d8e3.webp": 314688,
+    "texture-e3ce3c32ba2da903.webp": 293964,
+    "texture-3a0a361b0a8eebb2.webp": 22292
+  }
+}
