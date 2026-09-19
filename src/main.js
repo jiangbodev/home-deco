@@ -9,6 +9,7 @@ const coarse=matchMedia('(pointer:coarse)').matches;
 import {rooms} from './rooms.js';
 import {createModules} from './modules.js';
 let modules,visitSequence=0,lastRoom=-1;
+let frameLoop,contextLost=false;
 let renderer, model, ready=false, quality='auto', yaw=0,pitch=0, mapOpen=false;
 let stateEntries=[], wallMeshes=[], floorMeshes=[], frameAverage=16, adaptiveScale=coarse?1.35:1.7;
 const scene=new THREE.Scene();scene.background=new THREE.Color('#e9ede5');
@@ -21,8 +22,8 @@ let toastTimer;
 function toast(text){$('#toast').textContent=text;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2400)}
 function metadata(o){try{return JSON.parse(o.userData.metadata||'{}')}catch{return {}}}
 function effectiveVisible(o){for(let p=o;p;p=p.parent)if(!p.visible)return false;return true}
-function resize(){if(!renderer)return;const w=canvas.clientWidth,h=canvas.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();const max=quality==='high'?2:quality==='low'?1:adaptiveScale;renderer.setPixelRatio(Math.min(devicePixelRatio,max));renderer.setSize(w,h,false)}
-window.addEventListener('resize',resize);window.visualViewport?.addEventListener('resize',resize);
+function resize(redraw=true){if(!renderer||contextLost)return;const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();const max=quality==='high'?2:quality==='low'?1:adaptiveScale,ratio=Math.min(devicePixelRatio,max);const size=renderer.getSize(new THREE.Vector2());if(renderer.getPixelRatio()===ratio&&size.x===w&&size.y===h)return;renderer.setPixelRatio(ratio);renderer.setSize(w,h,false);if(ready&&redraw)renderer.render(scene,camera)}
+window.addEventListener('resize',()=>resize());window.visualViewport?.addEventListener('resize',()=>resize());
 function markRoom(i){$('#room-label').textContent=rooms[i].name;document.querySelectorAll('[data-room]').forEach(b=>b.setAttribute('aria-current',String(Number(b.dataset.room)===i)))}
 async function visit(i){const request=++visitSequence;if(ready&&modules){try{await modules.room(i)}catch{toast('房间暂未加载，请再次选择重试');return}if(request!==visitSequence)return}const r=rooms[i];camera.position.set(r.x,1.5,r.z);yaw=Math.atan2(r.x-r.look[0],r.z-r.look[1]);pitch=-.04;camera.rotation.set(pitch,yaw,0,'YXZ');markRoom(i);updateMap();keys.clear();joystick.x=joystick.y=0;if(ready)canvas.focus({preventScroll:true})}
 function roomButton(i){const b=document.createElement('button');b.textContent=rooms[i].name;b.dataset.room=i;b.onclick=()=>{closeDialogs();visit(i)};return b}
@@ -105,7 +106,24 @@ async function start(){
    THREE.Cache.enabled=true;
    model=new THREE.Group();scene.add(model);
    const anisotropy=Math.min(renderer.capabilities.getMaxAnisotropy(),coarse?4:8);
-   const prepare=group=>group.traverse(o=>{if(o.isMesh){o.frustumCulled=true;for(const m of Array.isArray(o.material)?o.material:[o.material]){for(const k of ['map','normalMap','roughnessMap','metalnessMap','aoMap'])if(m[k])m[k].anisotropy=anisotropy;if(m.transparent)m.depthWrite=false}}});
+   const uploadedTextures=new WeakSet(),texturePool=new WeakMap();let preparation=Promise.resolve();
+   const shareTexture=texture=>{
+     const image=texture.source?.data;if(!image||typeof image!=='object')return texture;
+     let variants=texturePool.get(image);if(!variants)texturePool.set(image,variants=new Map());
+     const key=JSON.stringify([...['mapping','channel','wrapS','wrapT','magFilter','minFilter','anisotropy','format','internalFormat','type','colorSpace','flipY','generateMipmaps','premultiplyAlpha','unpackAlignment','rotation','matrixAutoUpdate'].map(k=>texture[k]),texture.offset.toArray(),texture.repeat.toArray(),texture.center.toArray(),texture.matrix.toArray()]);
+     if(!variants.has(key))variants.set(key,texture);return variants.get(key);
+   };
+   const nextFrame=()=>new Promise(resolve=>requestAnimationFrame(resolve));
+   const prepare=group=>{
+     // Serialize GPU preparation even when room navigation requests several downloads.
+     const task=preparation.then(async()=>{
+       const textures=new Set();group.traverse(o=>{if(o.isMesh){o.frustumCulled=true;for(const m of Array.isArray(o.material)?o.material:[o.material]){for(const k of ['map','normalMap','roughnessMap','metalnessMap','aoMap'])if(m[k])m[k].anisotropy=anisotropy;for(const [key,value]of Object.entries(m))if(value?.isTexture){m[key]=shareTexture(value);textures.add(m[key])}if(m.transparent)m.depthWrite=false}}});
+       if(!ready)return; // The initial scene is prepared together before it is revealed.
+       for(const texture of textures)if(!uploadedTextures.has(texture)){await nextFrame();if(contextLost)throw Error('Graphics context interrupted');renderer.initTexture(texture);uploadedTextures.add(texture)}
+       await nextFrame();if(contextLost)throw Error('Graphics context interrupted');
+       await renderer.compileAsync(group,camera,scene);
+     });preparation=task.catch(()=>{});return task;
+   };
    const status=document.createElement('button');status.className='module-status';status.hidden=true;status.onclick=()=>modules.background();$('#ui').append(status);
    modules=createModules({loader,root:model,prepare,onStatus:s=>{status.hidden=s.loaded===s.total;status.textContent=s.failed?'部分房间加载失败 · 点击重试':'正在补齐其他房间…';status.disabled=!s.failed}});
    await modules.init();readStates();buildNavigation();await visit(0);
@@ -114,8 +132,11 @@ async function start(){
    requestAnimationFrame(()=>requestAnimationFrame(()=>modules.background()));
    if(coarse)$('#hint').textContent='左手移动 · 拖动画面环顾';
    let last=performance.now(),count=0;
-   renderer.setAnimationLoop(now=>{const ms=now-last;last=now;if(document.hidden)return;const dt=Math.min(ms/1000,.05);if(!document.querySelector('dialog[open]'))move(dt);renderer.render(scene,camera);frameAverage=.98*frameAverage+.02*ms;if(++count%180===0&&quality==='auto'&&frameAverage>30&&adaptiveScale>1){adaptiveScale=Math.max(1,adaptiveScale-.15);resize()}});
-   canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();endInput();renderer.setAnimationLoop(null);$('#loading').hidden=false;$('#load-label').textContent='图形资源已释放，请重新加载';$('#retry').hidden=false});
+   frameLoop=now=>{if(contextLost||document.hidden){last=now;return}const ms=now-last;last=now;const dt=Math.min(ms/1000,.05);if(!document.querySelector('dialog[open]'))move(dt);frameAverage=.98*frameAverage+.02*ms;if(++count%180===0&&quality==='auto'&&frameAverage>30&&adaptiveScale>1){adaptiveScale=Math.max(1,adaptiveScale-.15);resize(false)}renderer.render(scene,camera)};
+   renderer.setAnimationLoop(frameLoop);
+   canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();contextLost=true;endInput();renderer.setAnimationLoop(null);$('#loading').hidden=false;$('#load-label').textContent='正在恢复三维画面…';$('#retry').hidden=false});
+   canvas.addEventListener('webglcontextrestored',async()=>{try{contextLost=false;resize(false);await renderer.compileAsync(scene,camera);renderer.render(scene,camera);last=performance.now();renderer.setAnimationLoop(frameLoop);$('#loading').hidden=true;$('#retry').hidden=true;modules.background()}catch(error){console.error(error);$('#load-label').textContent='画面恢复失败，请重新加载';$('#retry').hidden=false}});
+
  }catch(error){console.error(error);$('#load-label').textContent=renderer?'空间加载失败，请检查网络后重试。':'浏览器暂时无法启用三维画面，请检查硬件加速或换浏览器打开。';$('#retry').hidden=false;$('#progress').hidden=true}
 }
 start();

@@ -7,7 +7,7 @@ export function createModules({loader,root,prepare,onStatus}){
  async function load(key){
   if(!manifest.modules[key]||loaded.has(key))return;
   if(pending.has(key))return pending.get(key);
-  const task=(async()=>{const g=await loader.loadAsync(base+manifest.modules[key].file);prepare(g.scene);
+  const task=(async()=>{const g=await loader.loadAsync(base+manifest.modules[key].file);await prepare(g.scene);
    if(key==='base'){root.add(g.scene);g.scene.traverse(o=>{if(Number.isInteger(o.userData.moduleNode))targets.set(o.userData.moduleNode,o)})}
    else for(const o of [...g.scene.children]){const parent=targets.get(o.userData.attachTo);if(!parent)throw Error('Missing model attachment');parent.add(o)}
    root.updateMatrixWorld(true);loaded.set(key,true);status();

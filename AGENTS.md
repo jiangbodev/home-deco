@@ -25,3 +25,7 @@ Repair commit fd26d8c4c8150213cc3191568da9b347052ca004 restored all six visible 
 ## Modular loading update
 
 The user authorized modular loading with adjacent-room prefetch and independent updates. Read README.md and src/modules.js. Production loads assets/modules/manifest.json, not the historical home.glb. Keep base skeleton nodes and collision geometry resident; attach deferred meshes to their original moduleNode via attachTo. Never re-run readStates after attaching a module: that would reset user choices. Keep shared textures content-addressed, retain loaded rooms, deduplicate pending loads, and preserve retry and last-request-wins navigation. Geometry verification accepts the original source path as an argument.
+
+## Loading-time black-frame prevention
+
+Adaptive resolution must resize BEFORE rendering the frame. Canvas size changes clear its contents; never end an animation frame by resizing after render. Skip unchanged sizes and redraw immediately for external resize/quality changes. Await serialized module GPU preparation before attaching it, preserve texture sampler/UV/color-space variants when sharing texture objects, and resume the render loop after WebGL context restoration. Do not claim a user's transient black screen has been fully reproduced from this code finding alone.
