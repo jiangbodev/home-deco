@@ -100,7 +100,7 @@ async function start(){
    scene.add(new THREE.HemisphereLight(0xfffcf1,0x9aa08e,1.6));const sun=new THREE.DirectionalLight(0xfff4df,2.2);sun.position.set(2,8,-4);scene.add(sun);
    const loader=new GLTFLoader(), draco=new DRACOLoader();draco.setDecoderPath(import.meta.env.BASE_URL+'draco/');draco.setWorkerLimit(coarse?2:4);loader.setDRACOLoader(draco);
    $('#load-label').textContent='正在下载空间模型';
-   const gltf=await loader.loadAsync(import.meta.env.BASE_URL+'assets/home.glb?v=pillow-fidelity-1',e=>{if(e.total){const pct=Math.round(e.loaded/e.total*100);$('#progress').value=pct;$('#load-label').textContent=pct<100?`正在下载空间模型 · ${pct}%`:'正在展开模型与材质…'}});
+   const gltf=await loader.loadAsync(import.meta.env.BASE_URL+'assets/home.glb?v=bedding-fidelity-2',e=>{if(e.total){const pct=Math.round(e.loaded/e.total*100);$('#progress').value=pct;$('#load-label').textContent=pct<100?`正在下载空间模型 · ${pct}%`:'正在展开模型与材质…'}});
    model=gltf.scene;scene.add(model);readStates();
    const anisotropy=Math.min(renderer.capabilities.getMaxAnisotropy(),coarse?4:8);
    model.traverse(o=>{if(o.isMesh){o.frustumCulled=true;for(const m of Array.isArray(o.material)?o.material:[o.material]){for(const k of ['map','normalMap','roughnessMap','metalnessMap','aoMap'])if(m[k])m[k].anisotropy=anisotropy;if(m.transparent)m.depthWrite=false}}});
