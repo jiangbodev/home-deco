@@ -14,6 +14,7 @@ let renderer, model, ready=false, quality='auto', yaw=0,pitch=0, mapOpen=false;
 let stateEntries=[], wallMeshes=[], floorMeshes=[], frameAverage=16, adaptiveScale=coarse?1.35:1.7;
 const scene=new THREE.Scene();scene.background=new THREE.Color('#e9ede5');
 const camera=new THREE.PerspectiveCamera(65,1,.035,90);camera.rotation.order='YXZ';
+const obstacleBounds=new Map(),pendingWalkRooms=new Set();
 const initialTransforms=new Map(), keys=new Set(), joystick={x:0,y:0};
 const ray=new THREE.Raycaster(), down=new THREE.Vector3(0,-1,0), direction=new THREE.Vector3();
 const C=new THREE.Matrix4().makeRotationX(-Math.PI/2), Ci=C.clone().invert();
@@ -36,7 +37,7 @@ $('#help-button').onclick=()=>openDialog('#help-panel');
 document.querySelectorAll('dialog').forEach(d=>{d.querySelector('.close').onclick=()=>d.close();d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}});d.addEventListener('close',()=>{mapOpen=false;document.querySelectorAll('[aria-expanded=true]').forEach(b=>b.setAttribute('aria-expanded','false'))})});
 $('#quality').onchange=e=>{quality=e.target.value;resize()};
 $('#retry').onclick=()=>location.reload();
-$('#reset').onclick=()=>{for(const[o,t]of initialTransforms){o.matrix.copy(t.matrix);o.matrix.decompose(o.position,o.quaternion,o.scale);o.visible=t.visible}model.updateMatrixWorld(true);syncStateControls();quality='auto';$('#quality').value='auto';resize();closeDialogs();visit(0);toast('已恢复初始空间')};
+$('#reset').onclick=()=>{for(const[o,t]of initialTransforms){o.matrix.copy(t.matrix);o.matrix.decompose(o.position,o.quaternion,o.scale);o.visible=t.visible}model.updateMatrixWorld(true);refreshObstacles();syncStateControls();quality='auto';$('#quality').value='auto';resize();closeDialogs();visit(0);toast('已恢复初始空间')};
 
 function readStates(){
  const grouped=new Map();
@@ -49,14 +50,19 @@ function readStates(){
  });
  for(const[key,entries]of grouped){
    const label=document.createElement('label');label.className='setting-row';label.append(document.createTextNode(stateNames[key]||key));const input=document.createElement('input');input.type='checkbox';input.setAttribute('role','switch');label.append(input);$('#state-controls').append(label);
-   input.onchange=()=>{entries.forEach(({o,pair})=>{const s=pair[input.checked?'on':'off'];if(!s)return;o.visible=s.visible;const m=C.clone().multiply(new THREE.Matrix4().fromArray(s.matrix)).multiply(Ci);m.decompose(o.position,o.quaternion,o.scale);o.updateMatrix()});model.updateMatrixWorld(true)};
+   input.onchange=()=>{entries.forEach(({o,pair})=>{const s=pair[input.checked?'on':'off'];if(!s)return;o.visible=s.visible;const m=C.clone().multiply(new THREE.Matrix4().fromArray(s.matrix)).multiply(Ci);m.decompose(o.position,o.quaternion,o.scale);o.updateMatrix()});model.updateMatrixWorld(true);refreshObstacles()};
    stateEntries.push({key,entries,input});
  }
  syncStateControls();
 }
 function syncStateControls(){for(const{entries,input}of stateEntries){let on=0,off=0;for(const{o,pair}of entries){for(const[k,s]of Object.entries(pair)){const m=C.clone().multiply(new THREE.Matrix4().fromArray(s.matrix)).multiply(Ci);const err=m.elements.reduce((t,v,i)=>t+Math.abs(v-o.matrix.elements[i]),0)+(o.visible===s.visible?0:100);if(k==='on')on+=err;else off+=err}}input.checked=on<off}}
 
+function refreshObstacles(){
+ if(!model)return;model.updateMatrixWorld(true);
+ model.traverse(o=>{if(!o.isMesh)return;const g=o.geometry;if(!g.boundingBox)g.computeBoundingBox();let box=obstacleBounds.get(o);if(!box){box=new THREE.Box3();obstacleBounds.set(o,box)}box.copy(g.boundingBox).applyMatrix4(o.matrixWorld)});
+}
 function buildNavigation(){
+ refreshObstacles();
  const svgNS='http://www.w3.org/2000/svg';const svg=document.createElementNS(svgNS,'svg');svg.setAttribute('viewBox','-.4 -.4 15 8');svg.setAttribute('aria-label','户型导航');
  const wallGroup=document.createElementNS(svgNS,'g');wallGroup.setAttribute('fill','#b6c0ae');svg.append(wallGroup);
  model.updateMatrixWorld(true);
@@ -79,11 +85,14 @@ function updateMap(){const m=$('#map-marker');if(m)m.setAttribute('transform',`t
 function allowedStep(x,z){
  if(x<.15||x>14.03||z<.15||z>6.94)return false;
  const pos=camera.position;direction.set(x-pos.x,0,z-pos.z);const dist=direction.length();if(!dist)return true;direction.normalize();
- for(const h of [.7,1.5]){ray.set(new THREE.Vector3(pos.x,h,pos.z),direction);ray.far=dist+.2;if(ray.intersectObjects(wallMeshes,false).some(h=>effectiveVisible(h.object)))return false}
+ // Sweep a small body width, not just a point ray through selected wall labels.
+ const radius=.18,minX=Math.min(pos.x,x)-radius,maxX=Math.max(pos.x,x)+radius,minZ=Math.min(pos.z,z)-radius,maxZ=Math.max(pos.z,z)+radius;
+ const candidates=[];for(const [o,b]of obstacleBounds)if(b.max.x>=minX&&b.min.x<=maxX&&b.max.z>=minZ&&b.min.z<=maxZ&&b.max.y>=.35&&b.min.y<=1.5&&effectiveVisible(o))candidates.push(o);
+ for(const h of [.35,.8,1.5])for(const offset of [-radius,0,radius]){ray.set(new THREE.Vector3(pos.x-direction.z*offset,h,pos.z+direction.x*offset),direction);ray.far=dist+radius;if(ray.intersectObjects(candidates,false).length)return false}
  ray.set(new THREE.Vector3(x,.35,z),down);ray.far=.55;
  return ray.intersectObjects(floorMeshes,false).some(h=>effectiveVisible(h.object));
 }
-function move(dt){let x=joystick.x+(keys.has('KeyD')||keys.has('ArrowRight')?1:0)-(keys.has('KeyA')||keys.has('ArrowLeft')?1:0),z=joystick.y+(keys.has('KeyS')||keys.has('ArrowDown')?1:0)-(keys.has('KeyW')||keys.has('ArrowUp')?1:0);const len=Math.hypot(x,z);if(len<.04)return;if(len>1){x/=len;z/=len}const speed=1.35*dt;const dx=(Math.cos(yaw)*x+Math.sin(yaw)*z)*speed,dz=(-Math.sin(yaw)*x+Math.cos(yaw)*z)*speed;const p=camera.position;if(allowedStep(p.x+dx,p.z))p.x+=dx;if(allowedStep(p.x,p.z+dz))p.z+=dz;p.y=1.5;let nearest=0,dist=Infinity;rooms.forEach((r,i)=>{const d=Math.hypot(r.x-p.x,r.z-p.z);if(d<dist){nearest=i;dist=d}});markRoom(nearest);if(nearest!==lastRoom){lastRoom=nearest;modules?.prioritize(nearest)}if(mapOpen)updateMap()}
+function move(dt){let x=joystick.x+(keys.has('KeyD')||keys.has('ArrowRight')?1:0)-(keys.has('KeyA')||keys.has('ArrowLeft')?1:0),z=joystick.y+(keys.has('KeyS')||keys.has('ArrowDown')?1:0)-(keys.has('KeyW')||keys.has('ArrowUp')?1:0);const len=Math.hypot(x,z);if(len<.04)return;if(len>1){x/=len;z/=len}const speed=1.35*dt;const dx=(Math.cos(yaw)*x+Math.sin(yaw)*z)*speed,dz=(-Math.sin(yaw)*x+Math.cos(yaw)*z)*speed;const p=camera.position;let targetRoom=0,targetDistance=Infinity;rooms.forEach((r,i)=>{const d=Math.hypot(r.x-p.x-dx,r.z-p.z-dz);if(d<targetDistance){targetDistance=d;targetRoom=i}});if(modules&&!modules.isRoomLoaded(targetRoom)){if(!pendingWalkRooms.has(targetRoom)){pendingWalkRooms.add(targetRoom);modules.room(targetRoom).catch(()=>toast('房间尚未就绪，请稍后重试')).finally(()=>pendingWalkRooms.delete(targetRoom))}return}if(allowedStep(p.x+dx,p.z))p.x+=dx;if(allowedStep(p.x,p.z+dz))p.z+=dz;p.y=1.5;let nearest=0,dist=Infinity;rooms.forEach((r,i)=>{const d=Math.hypot(r.x-p.x,r.z-p.z);if(d<dist){nearest=i;dist=d}});markRoom(nearest);if(nearest!==lastRoom){lastRoom=nearest;modules?.prioritize(nearest)}if(mapOpen)updateMap()}
 function endInput(){keys.clear();joystick.x=joystick.y=0;$('#stick').style.transform='';lookPointer=null;stickPointer=null}
 window.addEventListener('blur',endInput);document.addEventListener('visibilitychange',()=>{if(document.hidden)endInput()});
 window.addEventListener('keydown',e=>{if(document.querySelector('dialog[open]')||/INPUT|SELECT|BUTTON/.test(e.target.tagName))return;if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)){keys.add(e.code);e.preventDefault();$('#hint').style.opacity=0}});window.addEventListener('keyup',e=>keys.delete(e.code));
@@ -125,7 +134,7 @@ async function start(){
      });preparation=task.catch(()=>{});return task;
    };
    const status=document.createElement('button');status.className='module-status';status.hidden=true;status.onclick=()=>modules.background();$('#ui').append(status);
-   modules=createModules({loader,root:model,prepare,onStatus:s=>{status.hidden=s.loaded===s.total;status.textContent=s.failed?'部分房间加载失败 · 点击重试':'正在补齐其他房间…';status.disabled=!s.failed}});
+   modules=createModules({loader,root:model,prepare,onAttach:()=>{if(ready)refreshObstacles()},onStatus:s=>{status.hidden=s.loaded===s.total;status.textContent=s.failed?'部分房间加载失败 · 点击重试':'正在补齐其他房间…';status.disabled=!s.failed}});
    await modules.init();readStates();buildNavigation();await visit(0);
    await renderer.compileAsync(scene,camera);renderer.render(scene,camera);ready=true;$('#loading').hidden=true;$('#ui').hidden=false;
    // Yield the first visible frame before fetching the rest of the home.

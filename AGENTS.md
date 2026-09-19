@@ -29,3 +29,7 @@ The user authorized modular loading with adjacent-room prefetch and independent 
 ## Loading-time black-frame prevention
 
 Adaptive resolution must resize BEFORE rendering the frame. Canvas size changes clear its contents; never end an animation frame by resizing after render. Skip unchanged sizes and redraw immediately for external resize/quality changes. Await serialized module GPU preparation before attaching it, preserve texture sampler/UV/color-space variants when sharing texture objects, and resume the render loop after WebGL context restoration. Do not claim a user's transient black screen has been fully reproduced from this code finding alone.
+
+## Walking into cabinetry regression
+
+The old wall-label-only collision list omitted the entry solid back wall, finishes, and cabinet panels. Reproduced at y=1.5, z=6.4: movement from x=4.5 toward negative x reached x=3.8 inside the entry cabinet; the corrected sweep stops at x=4.25, outside its x=4.064 front. Use world-space mesh bounds for broad-phase filtering and visible mesh surfaces for narrow-phase sweeps with 0.18 m clearance. Refresh bounds after door/furniture state changes, reset, and late module attachment. Do not remove delayed furniture from collision registration. Wait for a destination room's modules before walking into it. Nine room spawn points retained a free exit in the regression check. This fixes an actual collision defect; do not classify every solid-color screenshot as a loading failure.
