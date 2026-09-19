@@ -21,6 +21,7 @@ export function createModules({loader,root,prepare,onStatus,onAttach=()=>{}}){
   prioritize,
   isRoomLoaded(i){return forRoom(i).every(key=>!manifest.modules[key]||loaded.has(key))},
   background(){failed=false;for(const key of Object.keys(manifest.modules))if(!loaded.has(key)&&!queue.includes(key))queue.push(key);prioritize(0)},
+  get assetFiles(){return manifest?Object.values(manifest.modules).map(m=>m.file).sort():[]},
   get loaded(){return [...loaded.keys()]},
  };
 }
