@@ -110,8 +110,8 @@ for(const event of ['pointerup','pointercancel','lostpointercapture'])stick.addE
 async function start(){
  try{
    renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:coarse?'default':'high-performance'});renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
-   resize();const pmrem=new THREE.PMREMGenerator(renderer), env=new RoomEnvironment();scene.environment=pmrem.fromScene(env,.04).texture;env.dispose();pmrem.dispose();scene.environmentIntensity=.75;
-   scene.add(new THREE.HemisphereLight(0xfffcf1,0x9aa08e,1.3));const sun=new THREE.DirectionalLight(0xfff4df,1.85);sun.position.set(2,8,-4);scene.add(sun);
+   resize();const pmrem=new THREE.PMREMGenerator(renderer), env=new RoomEnvironment();scene.environment=pmrem.fromScene(env,.04).texture;env.dispose();pmrem.dispose();scene.environmentIntensity=.45;
+   scene.add(new THREE.HemisphereLight(0xfffcf1,0x9aa08e,.55));const sun=new THREE.DirectionalLight(0xfff4df,.85);sun.position.set(2,8,-4);scene.add(sun);
    appearance=createAppearance(renderer);const appearanceReady=appearance.init();
    const loader=new GLTFLoader(), draco=new DRACOLoader();draco.setDecoderPath(import.meta.env.BASE_URL+'draco/');draco.setWorkerLimit(coarse?2:4);loader.setDRACOLoader(draco);
    $('#load-label').textContent='正在加载入口空间…';
@@ -139,14 +139,14 @@ async function start(){
    };
    const status=document.createElement('button');status.className='module-status';status.hidden=true;status.onclick=()=>modules.background();$('#ui').append(status);
    modules=createModules({loader,root:model,prepare,onAttach:()=>{if(ready)refreshObstacles()},onStatus:s=>{appearance.update(model,initialTransforms,modules?.loaded,modules?.assetFiles);status.hidden=s.loaded===s.total;status.textContent=s.failed?'部分房间加载失败 · 点击重试':'正在补齐其他房间…';status.disabled=!s.failed}});
-   await modules.init();readStates();buildNavigation();await visit(0);
+   await modules.init();appearance.addFixtures(scene);readStates();buildNavigation();await visit(0);
    await renderer.compileAsync(scene,camera);renderer.render(scene,camera);ready=true;$('#loading').hidden=true;$('#ui').hidden=false;
    // Yield the first visible frame before fetching the rest of the home.
    requestAnimationFrame(()=>requestAnimationFrame(()=>modules.background()));
    void appearance.load().then(()=>appearance.update(model,initialTransforms,modules.loaded,modules.assetFiles));
    if(coarse)$('#hint').textContent='拖动画面环顾';
    let last=performance.now(),count=0;
-   frameLoop=now=>{if(contextLost||document.hidden){last=now;return}const ms=now-last;last=now;const dt=Math.min(ms/1000,.05);if(!document.querySelector('dialog[open]'))move(dt);frameAverage=.98*frameAverage+.02*ms;if(++count%180===0&&quality==='auto'&&frameAverage>30&&adaptiveScale>1){adaptiveScale=Math.max(1,adaptiveScale-.15);resize(false)}renderer.render(scene,camera)};
+   frameLoop=now=>{if(contextLost||document.hidden){last=now;return}const ms=now-last;last=now;const dt=Math.min(ms/1000,.05);appearance.tick(dt);if(!document.querySelector('dialog[open]'))move(dt);frameAverage=.98*frameAverage+.02*ms;if(++count%180===0&&quality==='auto'&&frameAverage>30&&adaptiveScale>1){adaptiveScale=Math.max(1,adaptiveScale-.15);resize(false)}renderer.render(scene,camera)};
    renderer.setAnimationLoop(frameLoop);
    canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();contextLost=true;endInput();renderer.setAnimationLoop(null);$('#loading').hidden=false;$('#load-label').textContent='正在恢复三维画面…';$('#retry').hidden=false});
    canvas.addEventListener('webglcontextrestored',async()=>{try{contextLost=false;resize(false);await renderer.compileAsync(scene,camera);renderer.render(scene,camera);last=performance.now();renderer.setAnimationLoop(frameLoop);$('#loading').hidden=true;$('#retry').hidden=true;modules.background()}catch(error){console.error(error);$('#load-label').textContent='画面恢复失败，请重新加载';$('#retry').hidden=false}});

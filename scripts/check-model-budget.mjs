@@ -19,3 +19,5 @@ if(fs.existsSync(lighting)){
 
 const grain=path.resolve(root,'../surfaces/paint-grain-v1.png');
 if(fs.existsSync(grain)){bytes+=fs.statSync(grain).size;if(bytes>=20_000_000)throw Error('Surface textures exceed total budget');console.log(`Including surface finishes: ${bytes} bytes / 20000000`)}
+const fixtures=path.resolve(root,'../lighting/fixtures.json');
+if(fs.existsSync(fixtures)){bytes+=fs.statSync(fixtures).size;if(bytes>=20_000_000)throw Error('Fixture data exceeds total budget');console.log(`Including fixture manifest: ${bytes} bytes / 20000000`)}
