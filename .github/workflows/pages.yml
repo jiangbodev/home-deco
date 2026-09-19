@@ -22,7 +22,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Check model budget
-        run: node -e "if(require('fs').statSync('dist/assets/home.glb').size>=20000000)process.exit(1)"
+        run: node scripts/check-model-budget.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
