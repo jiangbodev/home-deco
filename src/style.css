@@ -44,19 +44,28 @@ dialog::backdrop{background:rgba(24,43,35,.3);backdrop-filter:blur(6px)}
 .loading-mark{width:68px;height:68px;display:grid;place-items:center;border:1px solid #bac4ba;border-radius:20px;margin-bottom:26px;background:rgba(255,255,255,.3)}.loading-mark span{width:31px;height:27px;border:2px solid #456354;border-radius:2px;position:relative}.loading-mark span:before{content:'';position:absolute;left:9px;top:-2px;width:2px;height:17px;background:#456354}.loading-mark span:after{content:'';position:absolute;left:9px;top:13px;width:20px;height:2px;background:#456354}
 h1{font-family:"Songti SC",serif;font-size:30px;font-weight:400;letter-spacing:.1em;margin:7px 0 28px}#load-label{font-size:12px;color:#68776e}progress{appearance:none;width:min(230px,70vw);height:3px;border:0;border-radius:3px;margin:10px 0 21px;background:#d9dfd6}progress::-webkit-progress-bar{background:#d9dfd6}progress::-webkit-progress-value{background:#456951;transition:width .4s}progress::-moz-progress-bar{background:#456951}#loading small{font-size:11px;color:#899289}#retry{border-radius:12px;background:#294c3e;color:white;padding:0 22px;margin:15px}
 
+/* Shared safe-area measurements keep the thumb zone independent of navigation. */
+:root{--control-edge:12px;--dock-bottom:calc(12px + env(safe-area-inset-bottom,0px));--dock-height:58px}
+#joystick small{top:-25px;bottom:auto;font-size:11px;line-height:18px;pointer-events:none}
+#stick{left:calc((100% - 34px)/2);top:calc((100% - 34px)/2)}
+.module-status{position:absolute;top:calc(72px + env(safe-area-inset-top,0px));left:calc(14px + env(safe-area-inset-left,0px));right:auto;max-width:calc(100% - 28px);pointer-events:auto;border:0;border-radius:12px;padding:8px 12px;background:rgba(250,250,246,.88);color:#3c5146;font:inherit;font-size:12px}.module-status:disabled{opacity:.8}
 @media(pointer:coarse){#joystick{display:block}}
-@media(max-width:760px){
-  .topbar{top:max(13px,env(safe-area-inset-top));left:14px;right:14px}.location{height:38px;padding:0 13px;font-size:12px}.icon-button{width:40px;height:40px}
-  .dock{bottom:max(10px,env(safe-area-inset-bottom));width:calc(100% - 20px);max-width:520px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px;padding:5px;border-radius:17px}
-  .room-nav{overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity}.room-nav::-webkit-scrollbar{display:none}.room-nav button{min-height:46px;padding:0 14px;font-size:12px;scroll-snap-align:start}
-  .dock-tools{padding-left:5px}.tool-button{width:46px;min-height:46px;padding:0;border-radius:12px}.tool-button span{display:none}
-  #joystick{bottom:calc(86px + env(safe-area-inset-bottom))}
-  #hint{bottom:calc(76px + env(safe-area-inset-bottom));left:auto;right:14px;transform:none;font-size:10px;padding:7px 10px}
-  #toast{bottom:calc(76px + env(safe-area-inset-bottom));width:max-content;max-width:90%;text-align:center}
-  dialog{padding:22px;border-radius:22px}h2{font-size:21px}.room-grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px),(pointer:coarse){
+  .topbar{top:calc(12px + env(safe-area-inset-top,0px));left:calc(14px + env(safe-area-inset-left,0px));right:calc(14px + env(safe-area-inset-right,0px))}.location{height:38px;padding:0 13px;font-size:12px}.icon-button{width:44px;height:44px;min-height:44px}
+  .dock{bottom:var(--dock-bottom);left:calc(var(--control-edge) + env(safe-area-inset-left,0px));right:calc(var(--control-edge) + env(safe-area-inset-right,0px));transform:none;width:auto;max-width:none;min-height:var(--dock-height);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;padding:5px;border-radius:18px}
+  .room-nav{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;scroll-snap-type:x proximity;touch-action:pan-x;align-items:stretch}.room-nav::-webkit-scrollbar{display:none}.room-nav button{flex:0 0 auto;min-height:46px;min-width:54px;padding:0 13px;font-size:12px;scroll-snap-align:start}
+  .dock-tools{flex-shrink:0;padding-left:6px;gap:4px}.tool-button{width:46px;min-width:46px;min-height:46px;padding:0;border-radius:12px}.tool-button span{display:none}.tool-button svg{width:20px;height:20px}
+  #joystick{left:calc(24px + env(safe-area-inset-left,0px));bottom:calc(var(--dock-bottom) + var(--dock-height) + 34px);width:92px;height:92px;background:rgba(249,249,245,.48);user-select:none;-webkit-user-select:none}
+  #hint{bottom:calc(var(--dock-bottom) + var(--dock-height) + 38px);left:calc(138px + env(safe-area-inset-left,0px));right:calc(14px + env(safe-area-inset-right,0px));transform:none;font-size:10px;line-height:1.6;padding:7px 10px;white-space:normal;text-align:center;width:fit-content;max-width:calc(100% - 152px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px))}
+  #toast{bottom:calc(var(--dock-bottom) + var(--dock-height) + 164px);width:max-content;max-width:calc(100% - 32px);text-align:center}
+  dialog{width:min(500px,calc(100% - 24px));max-height:calc(100dvh - 32px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));padding:20px;border-radius:22px}h2{font-size:21px}.room-grid{grid-template-columns:repeat(3,1fr)}
 }
-@media(max-width:390px){.room-nav button{padding:0 12px}.dock-tools{gap:0}.tool-button{width:43px}#joystick{width:76px;height:76px}#stick{left:20px;top:20px}}
-@media(max-height:500px) and (pointer:coarse){.topbar{top:8px}.dock{bottom:max(6px,env(safe-area-inset-bottom));max-width:72%}#joystick{bottom:72px;width:72px;height:72px}#stick{left:18px;top:18px}#hint{display:none}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
-
-.module-status{position:absolute;top:76px;left:20px;pointer-events:auto;border:0;border-radius:12px;padding:8px 12px;background:rgba(250,250,246,.88);color:#3c5146;font:12px inherit}.module-status:disabled{opacity:.8}
+@media(max-width:360px){.room-nav button{min-width:50px;padding:0 11px}.dock-tools{gap:2px;padding-left:4px}.tool-button{width:44px;min-width:44px}#joystick{left:20px;width:84px;height:84px}#hint{left:124px;max-width:calc(100% - 138px)}}
+@media(max-height:500px) and (pointer:coarse) and (orientation:landscape){
+  .topbar{top:calc(8px + env(safe-area-inset-top,0px))}
+  .dock{left:calc(148px + env(safe-area-inset-left,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));right:calc(12px + env(safe-area-inset-right,0px))}
+  #joystick{bottom:calc(22px + env(safe-area-inset-bottom,0px));left:calc(24px + env(safe-area-inset-left,0px));width:82px;height:82px}
+  #hint{display:none}#toast{bottom:calc(84px + env(safe-area-inset-bottom,0px));left:calc(50% + 52px);max-width:calc(100% - 172px)}
+  .module-status{top:calc(60px + env(safe-area-inset-top,0px));left:auto;right:calc(14px + env(safe-area-inset-right,0px));font-size:11px;padding:4px 10px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}

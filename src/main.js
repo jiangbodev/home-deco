@@ -25,11 +25,11 @@ function metadata(o){try{return JSON.parse(o.userData.metadata||'{}')}catch{retu
 function effectiveVisible(o){for(let p=o;p;p=p.parent)if(!p.visible)return false;return true}
 function resize(redraw=true){if(!renderer||contextLost)return;const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();const max=quality==='high'?2:quality==='low'?1:adaptiveScale,ratio=Math.min(devicePixelRatio,max);const size=renderer.getSize(new THREE.Vector2());if(renderer.getPixelRatio()===ratio&&size.x===w&&size.y===h)return;renderer.setPixelRatio(ratio);renderer.setSize(w,h,false);if(ready&&redraw)renderer.render(scene,camera)}
 window.addEventListener('resize',()=>resize());window.visualViewport?.addEventListener('resize',()=>resize());
-function markRoom(i){$('#room-label').textContent=rooms[i].name;document.querySelectorAll('[data-room]').forEach(b=>b.setAttribute('aria-current',String(Number(b.dataset.room)===i)))}
+function markRoom(i){$('#room-label').textContent=rooms[i].name;document.querySelectorAll('[data-room]').forEach(b=>b.setAttribute('aria-current',String(Number(b.dataset.room)===i)));const nav=$('#room-nav'),button=nav.querySelector(`[data-room="${i}"]`);if(nav.dataset.activeRoom!==String(i)){nav.dataset.activeRoom=String(i);if(button){const left=button.offsetLeft-nav.offsetLeft;if(left<nav.scrollLeft)nav.scrollLeft=left;else if(left+button.offsetWidth>nav.scrollLeft+nav.clientWidth)nav.scrollLeft=left+button.offsetWidth-nav.clientWidth}}}
 async function visit(i){const request=++visitSequence;if(ready&&modules){try{await modules.room(i)}catch{toast('房间暂未加载，请再次选择重试');return}if(request!==visitSequence)return}const r=rooms[i];camera.position.set(r.x,1.5,r.z);yaw=Math.atan2(r.x-r.look[0],r.z-r.look[1]);pitch=-.04;camera.rotation.set(pitch,yaw,0,'YXZ');markRoom(i);updateMap();keys.clear();joystick.x=joystick.y=0;if(ready)canvas.focus({preventScroll:true})}
 function roomButton(i){const b=document.createElement('button');b.textContent=rooms[i].name;b.dataset.room=i;b.onclick=()=>{closeDialogs();visit(i)};return b}
 rooms.forEach((_,i)=>{$('#all-rooms').append(roomButton(i));if(i<6)$('#room-nav').append(roomButton(i))});
-function openDialog(id,button){keys.clear();joystick.x=joystick.y=0;const d=$(id);d.showModal();button?.setAttribute('aria-expanded','true');mapOpen=id==='#map-panel';updateMap()}
+function openDialog(id,button){endInput();const d=$(id);d.showModal();button?.setAttribute('aria-expanded','true');mapOpen=id==='#map-panel';updateMap()}
 function closeDialogs(){document.querySelectorAll('dialog[open]').forEach(d=>d.close());mapOpen=false;document.querySelectorAll('[aria-expanded=true]').forEach(b=>b.setAttribute('aria-expanded','false'))}
 $('#map-button').onclick=()=>openDialog('#map-panel',$('#map-button'));
 $('#settings-button').onclick=()=>openDialog('#settings-panel',$('#settings-button'));
@@ -101,7 +101,7 @@ canvas.addEventListener('pointerdown',e=>{if(!ready||lookPointer!==null)return;l
 canvas.addEventListener('pointermove',e=>{if(e.pointerId!==lookPointer)return;yaw-=(e.clientX-lastX)*.003;pitch=THREE.MathUtils.clamp(pitch-(e.clientY-lastY)*.003,-1.05,1.05);lastX=e.clientX;lastY=e.clientY;camera.rotation.set(pitch,yaw,0,'YXZ')});
 for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(event,e=>{if(e.pointerId===lookPointer)lookPointer=null});
 const stick=$('#joystick');
-function setStick(e){const r=stick.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;const len=Math.hypot(x,y),scale=len>28?28/len:1;joystick.x=x*scale/28;joystick.y=y*scale/28;$('#stick').style.transform=`translate(${x*scale}px,${y*scale}px)`}
+function setStick(e){const r=stick.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;const len=Math.hypot(x,y),travel=Math.max(18,(r.width-34)/2-6),scale=len>travel?travel/len:1;joystick.x=x*scale/travel;joystick.y=y*scale/travel;$('#stick').style.transform=`translate(${x*scale}px,${y*scale}px)`}
 stick.onpointerdown=e=>{if(stickPointer!==null)return;stickPointer=e.pointerId;stick.setPointerCapture(e.pointerId);setStick(e);$('#hint').style.opacity=0};stick.onpointermove=e=>{if(e.pointerId===stickPointer)setStick(e)};
 for(const event of ['pointerup','pointercancel','lostpointercapture'])stick.addEventListener(event,e=>{if(e.pointerId===stickPointer){stickPointer=null;joystick.x=joystick.y=0;$('#stick').style.transform=''}});
 
@@ -139,7 +139,7 @@ async function start(){
    await renderer.compileAsync(scene,camera);renderer.render(scene,camera);ready=true;$('#loading').hidden=true;$('#ui').hidden=false;
    // Yield the first visible frame before fetching the rest of the home.
    requestAnimationFrame(()=>requestAnimationFrame(()=>modules.background()));
-   if(coarse)$('#hint').textContent='左手移动 · 拖动画面环顾';
+   if(coarse)$('#hint').textContent='拖动画面环顾';
    let last=performance.now(),count=0;
    frameLoop=now=>{if(contextLost||document.hidden){last=now;return}const ms=now-last;last=now;const dt=Math.min(ms/1000,.05);if(!document.querySelector('dialog[open]'))move(dt);frameAverage=.98*frameAverage+.02*ms;if(++count%180===0&&quality==='auto'&&frameAverage>30&&adaptiveScale>1){adaptiveScale=Math.max(1,adaptiveScale-.15);resize(false)}renderer.render(scene,camera)};
    renderer.setAnimationLoop(frameLoop);
