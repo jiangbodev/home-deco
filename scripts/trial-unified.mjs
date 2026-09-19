@@ -14,11 +14,19 @@ const protectedKinds=new Set(['wall','column','solid','opening-infill','glass','
 const meta=n=>{try{return JSON.parse(n.getExtras().metadata||'{}')}catch{return {}}};
 const usage=new Map();for(const n of doc.getRoot().listNodes())if(n.getMesh()){let refs=usage.get(n.getMesh());if(!refs)usage.set(n.getMesh(),refs=[]);refs.push(n)}
 const count=m=>m.listPrimitives().reduce((s,p)=>s+(p.getIndices()?.getCount()??p.getAttribute('POSITION').getCount())/3,0);
+// The exported sofa contact-shadow has no alpha texture and is an opaque black
+// plane. Neutralize only that broken decal until a valid shadow is rebaked.
+for(const n of doc.getRoot().listNodes())if(n.getName()==='沙发贴地柔影_Blender烘焙'){
+ for(const p of n.getMesh()?.listPrimitives()??[]){const m=p.getMaterial();
+  if(m&&!m.getBaseColorTexture()&&m.getBaseColorFactor().slice(0,3).every(v=>v===0))m.setAlphaMode('BLEND').setBaseColorFactor([0,0,0,0]);
+ }
+}
 const stats=[],before=doc.getRoot().listNodes().reduce((s,n)=>s+(n.getMesh()?count(n.getMesh()):0),0);
 await doc.transform(weld());
 for(const [mesh,nodes]of usage){
  const names=nodes.map(n=>n.getName()).join('|'),n0=nodes[0],t0=count(mesh);
- const protectedMesh=nodes.some(n=>protectedKinds.has(meta(n).kind)||/墙|顶面|地板|地砖|地面|六角砖|门扇|窗框|接触阴影/.test(n.getName()));
+ // Preserve source geometry for pillow shells, cushions and their piping.
+ const protectedMesh=nodes.some(n=>protectedKinds.has(meta(n).kind)||/墙|顶面|地板|地砖|地面|六角砖|门扇|窗框|接触阴影|枕|靠垫|pillow|cushion|sofa|couch|rug|carpet|沙发|地毯|座包滚边/i.test(n.getName()));
  let group='furniture',ratio=.35,errorMetres=.002;
  if(protectedMesh||t0<500){group='protected';ratio=1}
  else if(/树木_|窗外/.test(names)){group='exterior-tree';ratio=.10;errorMetres=.010}
