@@ -1,10 +1,11 @@
 import * as THREE from 'three';
 import {RectAreaLightUniformsLib} from 'three/addons/lights/RectAreaLightUniformsLib.js';
+import {createObjectContact} from './object-contact.js';
 import {createSurfaceFinishes} from './surface-finishes.js';
 
 // Offline-baked contact maps; no shadow render passes while walking.
 export function createAppearance(renderer){
- const finishes=createSurfaceFinishes(renderer);
+ const finishes=createSurfaceFinishes(renderer),objectContact=createObjectContact();
  const white=new THREE.DataTexture(new Uint8Array([0,0,0,255]),1,1);white.needsUpdate=true;
  const contact={value:white},bounds={value:new THREE.Vector4(-.5,-.5,15,10)};
  const fixed={value:0},furniture={value:0};
@@ -15,6 +16,7 @@ export function createAppearance(renderer){
  async function init(){
   const base=import.meta.env.BASE_URL+'assets/lighting/';
   await Promise.allSettled([
+   objectContact.init(),
    (async()=>{const r=await fetch(base+'fixtures.json',{cache:'no-cache',signal:AbortSignal.timeout(4000)});if(r.ok)fixtureConfig=await r.json()})(),
    (async()=>{const r=await fetch(base+'walls.json',{cache:'no-cache',signal:AbortSignal.timeout(4000)});if(!r.ok)throw Error('Wall manifest unavailable');wallManifest=await r.json();for(const receiver of wallManifest.receivers)wallReceivers.set(receiver.name,receiver)})()
   ]);
@@ -45,9 +47,9 @@ export function createAppearance(renderer){
     if(m.name==='室内水波玻璃'){m.roughness=.22;if(m.normalMap)m.normalScale.multiplyScalar(.6)}
     if(!m.map&&!m.transparent&&m.metalness<.05&&m.roughness>.45&&Math.min(m.color.r,m.color.g,m.color.b)>.55)m.color.multiplyScalar(.86);
     if(m.name.startsWith('Warm walnut - real oak scan tinted')){
-     m.roughness=.9;if(m.normalMap)m.normalScale.multiplyScalar(1.5);
+     m.roughness=.9;if(m.normalMap)m.normalScale.multiplyScalar(.65);
     }
-    if([190,191,192,193,194,195].includes(m.userData.source_material_id)&&m.normalMap)m.normalScale.multiplyScalar(1.35);
+    if([190,191,192,193,194,195].includes(m.userData.source_material_id)&&m.normalMap)m.normalScale.multiplyScalar(.8);
    }
    let meta={};try{meta=JSON.parse(o.userData.metadata||'{}')}catch{}
    // Deferred nodes retain source metadata on their original parent.
@@ -92,7 +94,7 @@ export function createAppearance(renderer){
     m.customProgramCacheKey=()=> 'floor-light-v2';return m;
    });if(!multiple)o.material=o.material[0];
   });
-  finishes.prepare(group);
+  finishes.prepare(group);objectContact.prepare(group);
  }
  function update(model,initialTransforms,loaded,assetFiles){
   const matches=manifest=>JSON.stringify(manifest?.sourceModules)===JSON.stringify(assetFiles);
@@ -107,7 +109,7 @@ export function createAppearance(renderer){
    if(!['interaction_furniture','interaction_piano','interaction_dining-stored'].some(k=>k in o.userData))return;
    const initial=initialTransforms.get(o);
    if(!initial||o.visible!==initial.visible||o.matrix.elements.some((v,i)=>Math.abs(v-initial.matrix.elements[i])>1e-5))unchanged=false;
-  });furniture.value=unchanged?fixed.value:0;
+  });furniture.value=unchanged?fixed.value:0;objectContact.update(loaded,assetFiles,unchanged);
  }
  function addFixtures(scene){
   if(!fixtureConfig)return;
@@ -115,6 +117,6 @@ export function createAppearance(renderer){
   RectAreaLightUniformsLib.init();
   for(const p of fixtureConfig.pendants){const light=new THREE.RectAreaLight(0xffd4a0,35,.25,.25);light.position.fromArray(p);light.lookAt(p[0],p[1]-1,p[2]);scene.add(light);pendants.push(light)}
  }
- function tick(dt){bakedLight.value+=(bakedTarget-bakedLight.value)*(1-Math.exp(-dt*6))}
+ function tick(dt){objectContact.tick(dt);bakedLight.value+=(bakedTarget-bakedLight.value)*(1-Math.exp(-dt*6))}
  return {init,load,prepare,update,addFixtures,tick};
 }

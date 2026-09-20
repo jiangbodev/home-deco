@@ -14,7 +14,7 @@ let modules,visitSequence=0,lastRoom=-1;
 let frameLoop,contextLost=false;
 let renderer, model, ready=false, quality='auto', yaw=0,pitch=0, mapOpen=false;
 let stateEntries=[], wallMeshes=[], floorMeshes=[], frameAverage=16, adaptiveScale=coarse?1.35:1.7;
-const scene=new THREE.Scene();scene.background=new THREE.Color('#e9ede5');
+const scene=new THREE.Scene();scene.background=new THREE.Color('#edf1f5');
 const camera=new THREE.PerspectiveCamera(65,1,.035,90);camera.rotation.order='YXZ';
 const obstacleBounds=new Map(),pendingWalkRooms=new Set();
 const initialTransforms=new Map(), keys=new Set(), joystick={x:0,y:0};
@@ -110,8 +110,8 @@ for(const event of ['pointerup','pointercancel','lostpointercapture'])stick.addE
 async function start(){
  try{
    renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:coarse?'default':'high-performance'});renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
-   resize();const pmrem=new THREE.PMREMGenerator(renderer), env=new RoomEnvironment();scene.environment=pmrem.fromScene(env,.04).texture;env.dispose();pmrem.dispose();scene.environmentIntensity=.45;
-   scene.add(new THREE.HemisphereLight(0xfffcf1,0x9aa08e,.55));const sun=new THREE.DirectionalLight(0xfff4df,.85);sun.position.set(2,8,-4);scene.add(sun);
+   resize();const pmrem=new THREE.PMREMGenerator(renderer), env=new RoomEnvironment();scene.environment=pmrem.fromScene(env,.04).texture;env.dispose();pmrem.dispose();scene.environmentIntensity=.38;
+   scene.add(new THREE.HemisphereLight(0xf3f6ff,0xb0a394,.45));const sun=new THREE.DirectionalLight(0xfff6ea,.6);sun.position.set(2,8,-4);scene.add(sun);
    appearance=createAppearance(renderer);const appearanceReady=appearance.init();
    const loader=new GLTFLoader(), draco=new DRACOLoader();draco.setDecoderPath(import.meta.env.BASE_URL+'draco/');draco.setWorkerLimit(coarse?2:4);loader.setDRACOLoader(draco);
    $('#load-label').textContent='正在加载入口空间…';

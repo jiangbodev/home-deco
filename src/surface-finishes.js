@@ -4,9 +4,9 @@ const plaster=new Set([2,3,4]);
 const lacquer=new Set([8,24,37,38,54,56,62,64,67,85,87]);
 const timber=new Set([9,15,17,25,32,35,41,45,50,52,65,69,72,75]);
 const profiles={
- plaster:{rough:.9,amplitude:'.00032',colorNoise:'.055',roughNoise:'.16',uv:'vec2(4.0)',edge:0},
+ plaster:{rough:.92,amplitude:'.00016',colorNoise:'.025',roughNoise:'.16',uv:'vec2(4.0)',edge:0},
  lacquer:{rough:.43,amplitude:'.00012',colorNoise:'.025',roughNoise:'.2',uv:'vec2(4.0)',edge:.0012},
- timber:{rough:.7,amplitude:'.00005',colorNoise:'.015',roughNoise:'.12',uv:'vec2(4.0)',edge:.0018},
+ timber:{rough:.78,amplitude:'.00005',colorNoise:'.015',roughNoise:'.12',uv:'vec2(4.0)',edge:.0018},
  counter:{rough:.32,amplitude:'.000035',colorNoise:'.085',roughNoise:'.16',uv:'vec2(12.0)',edge:.0015},
  steel:{rough:.29,amplitude:'.000004',colorNoise:'.012',roughNoise:'.17',uv:'vec2(2.0,80.0)',edge:0},
 };
@@ -37,11 +37,12 @@ export function createSurfaceFinishes(renderer){
    // Keep each receiver's existing baked-light callback; Material.clone does not copy it.
    const m=original.clone(),previous=original.onBeforeCompile,previousKey=original.customProgramCacheKey();
    m.userData.surfaceFinish=kind;m.userData.edgeEasing=edge;
-   if(kind==='plaster')m.color.setRGB(.62,.60,.56);
-   if(kind==='lacquer')m.color.setRGB(.64,.605,.535);
+   if(kind==='plaster')m.color.setRGB(.68,.66,.63);
+   if(kind==='lacquer')m.color.setRGB(.60,.59,.56);
    if(kind==='counter')m.color.setRGB(.72,.71,.66);
    if(kind==='steel')m.metalness=.96;
-   if(kind==='timber'&&m.normalMap&&m.normalScale.length()>1.2)m.normalScale.multiplyScalar(.6);
+   if(kind==='timber'&&m.normalMap)m.normalScale.multiplyScalar(.35);
+   if(kind==='lacquer'&&m.normalMap)m.normalScale.multiplyScalar(.12);
    m.roughness=profile.rough;
    m.onBeforeCompile=(shader,...args)=>{
     previous.call(m,shader,...args);shader.uniforms.finishGrain=grain;
@@ -57,11 +58,11 @@ export function createSurfaceFinishes(renderer){
       vec2 finishUV=fn.x>fn.y&&fn.x>fn.z?finishPosition.zy:(fn.y>fn.z?finishPosition.xz:finishPosition.xy);
       vec3 finishData=texture2D(finishGrain,finishUV*${profile.uv}).rgb;
       diffuseColor.rgb*=1.0+(finishData.${kind==='counter'?'g':'r'}-.5)*${profile.colorNoise};
-      ${kind==='timber'?'float woodTone=dot(diffuseColor.rgb,vec3(.2126,.7152,.0722));diffuseColor.rgb=mix(vec3(woodTone),diffuseColor.rgb,.9)*.92;':''}
+      ${kind==='timber'?'float woodTone=dot(diffuseColor.rgb,vec3(.2126,.7152,.0722));diffuseColor.rgb=mix(vec3(woodTone),diffuseColor.rgb,.82)*.9;':''}
      `)
      .replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
       roughnessFactor=clamp(roughnessFactor+(finishData.b-.5)*${profile.roughNoise},.2,1.0);
-      ${kind==='timber'&&m.map?'roughnessFactor=clamp(roughnessFactor+(dot(sampledDiffuseColor.rgb,vec3(.2126,.7152,.0722))-.3)*.16,.25,.86);':''}
+      ${kind==='timber'&&m.map?'roughnessFactor=clamp(roughnessFactor+(dot(sampledDiffuseColor.rgb,vec3(.2126,.7152,.0722))-.3)*.1,.52,.9);':''}
      `)
      .replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
       vec3 sx=dFdx(-vViewPosition),sy=dFdy(-vViewPosition);
@@ -75,7 +76,7 @@ export function createSurfaceFinishes(renderer){
       normal=normalize(max(abs(det),1e-10)*normal-grad);
      `);
    };
-   m.customProgramCacheKey=()=>previousKey+'|finish-v2-'+kind+(edge?'-edge':'');return m;
+   m.customProgramCacheKey=()=>previousKey+'|finish-v3-'+kind+(edge?'-edge':'');return m;
   });o.material=multiple?result:result[0];
  })}
  return {load,prepare};

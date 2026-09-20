@@ -6,7 +6,7 @@ if(!manifest.modules.base||bytes>=20_000_000)throw Error('Model budget exceeded 
 const lighting=path.resolve(root,'../lighting');
 if(fs.existsSync(lighting)){
  const files=new Set(),sources=Object.values(manifest.modules).map(m=>m.file).sort();
- for(const name of ['contact.json','walls.json']){
+ for(const name of ['contact.json','walls.json','objects.json']){
   const m=JSON.parse(fs.readFileSync(path.join(lighting,name)));
   if(JSON.stringify(m.sourceModules)!==JSON.stringify(sources))throw Error('Rebake lighting after model updates');
   if(path.basename(m.file)!==m.file||fs.statSync(path.join(lighting,m.file)).size!==m.bytes)throw Error('Lighting asset mismatch');
