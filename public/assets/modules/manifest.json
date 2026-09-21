@@ -20,8 +20,8 @@
       "nodes": 247
     },
     "bedding-main": {
-      "file": "bedding-main-53b1d6ac6fb6.glb",
-      "bytes": 874724,
+      "file": "bedding-main-5fb918a139db.glb",
+      "bytes": 249036,
       "textures": [
         "texture-464ba4864491de03.webp",
         "texture-9540e9ed13bba931.webp",
@@ -32,8 +32,8 @@
       "nodes": 3
     },
     "bedding-second": {
-      "file": "bedding-second-13b76ce4d99c.glb",
-      "bytes": 874748,
+      "file": "bedding-second-503dec30ba38.glb",
+      "bytes": 249076,
       "textures": [
         "texture-464ba4864491de03.webp",
         "texture-4fd9234fa4e2a33d.webp",

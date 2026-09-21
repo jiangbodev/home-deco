@@ -1,0 +1,712 @@
+{
+  "collisionComparison": [
+    {
+      "before": [
+        {
+          "x": 11.7,
+          "z": 3.45,
+          "directions": [
+            {
+              "dx": 0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 1.6545
+            },
+            {
+              "dx": -0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 1.5956
+            },
+            {
+              "dx": 0,
+              "dz": 0.0225,
+              "allowed": false,
+              "medianMs": 0.596
+            },
+            {
+              "dx": 0,
+              "dz": -0.0225,
+              "allowed": true,
+              "medianMs": 4.9862
+            }
+          ]
+        },
+        {
+          "x": 10.95,
+          "z": 3.9,
+          "directions": [
+            {
+              "dx": 0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.097
+            },
+            {
+              "dx": -0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.0963
+            },
+            {
+              "dx": 0,
+              "dz": 0.0225,
+              "allowed": false,
+              "medianMs": 4.1186
+            },
+            {
+              "dx": 0,
+              "dz": -0.0225,
+              "allowed": true,
+              "medianMs": 0.1416
+            }
+          ]
+        },
+        {
+          "x": 12.45,
+          "z": 2.7,
+          "directions": [
+            {
+              "dx": 0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.011
+            },
+            {
+              "dx": -0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.0108
+            },
+            {
+              "dx": 0,
+              "dz": 0.0225,
+              "allowed": true,
+              "medianMs": 0.0109
+            },
+            {
+              "dx": 0,
+              "dz": -0.0225,
+              "allowed": true,
+              "medianMs": 0.0109
+            }
+          ]
+        },
+        {
+          "x": 11.7,
+          "z": 5.1,
+          "directions": [
+            {
+              "dx": 0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.0112
+            },
+            {
+              "dx": -0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.0111
+            },
+            {
+              "dx": 0,
+              "dz": 0.0225,
+              "allowed": true,
+              "medianMs": 0.011
+            },
+            {
+              "dx": 0,
+              "dz": -0.0225,
+              "allowed": true,
+              "medianMs": 0.011
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "x": 11.7,
+          "z": 3.45,
+          "directions": [
+            {
+              "dx": 0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.0516
+            },
+            {
+              "dx": -0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.0372
+            },
+            {
+              "dx": 0,
+              "dz": 0.0225,
+              "allowed": false,
+              "medianMs": 0.0418
+            },
+            {
+              "dx": 0,
+              "dz": -0.0225,
+              "allowed": true,
+              "medianMs": 0.0475
+            }
+          ]
+        },
+        {
+          "x": 10.95,
+          "z": 3.9,
+          "directions": [
+            {
+              "dx": 0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.0488
+            },
+            {
+              "dx": -0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.0303
+            },
+            {
+              "dx": 0,
+              "dz": 0.0225,
+              "allowed": false,
+              "medianMs": 0.0247
+            },
+            {
+              "dx": 0,
+              "dz": -0.0225,
+              "allowed": true,
+              "medianMs": 0.0225
+            }
+          ]
+        },
+        {
+          "x": 12.45,
+          "z": 2.7,
+          "directions": [
+            {
+              "dx": 0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.0173
+            },
+            {
+              "dx": -0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.0168
+            },
+            {
+              "dx": 0,
+              "dz": 0.0225,
+              "allowed": true,
+              "medianMs": 0.0161
+            },
+            {
+              "dx": 0,
+              "dz": -0.0225,
+              "allowed": true,
+              "medianMs": 0.016
+            }
+          ]
+        },
+        {
+          "x": 11.7,
+          "z": 5.1,
+          "directions": [
+            {
+              "dx": 0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.0165
+            },
+            {
+              "dx": -0.0225,
+              "dz": 0,
+              "allowed": true,
+              "medianMs": 0.0171
+            },
+            {
+              "dx": 0,
+              "dz": 0.0225,
+              "allowed": true,
+              "medianMs": 0.017
+            },
+            {
+              "dx": 0,
+              "dz": -0.0225,
+              "allowed": true,
+              "medianMs": 0.0169
+            }
+          ]
+        }
+      ],
+      "acceleratedMeshes": 62,
+      "buildMs": 201.55,
+      "checks": 952,
+      "mismatches": 0
+    }
+  ],
+  "note": "Node CPU diagnostic; four independent directional collision checks per sample, median of five runs. Frustum counts are estimates, not measured draw calls. No GPU/FPS claim.",
+  "stats": [
+    {
+      "module": "base",
+      "meshes": 247,
+      "triangles": 63121
+    },
+    {
+      "module": "bedding-main",
+      "meshes": 3,
+      "triangles": 149995
+    },
+    {
+      "module": "bedding-second",
+      "meshes": 3,
+      "triangles": 149995
+    },
+    {
+      "module": "exterior",
+      "meshes": 12,
+      "triangles": 380180
+    },
+    {
+      "module": "room-0",
+      "meshes": 309,
+      "triangles": 82193
+    },
+    {
+      "module": "room-1",
+      "meshes": 307,
+      "triangles": 159524
+    },
+    {
+      "module": "room-3",
+      "meshes": 103,
+      "triangles": 10344
+    },
+    {
+      "module": "room-4",
+      "meshes": 233,
+      "triangles": 90340
+    },
+    {
+      "module": "room-5",
+      "meshes": 63,
+      "triangles": 12407
+    },
+    {
+      "module": "room-6",
+      "meshes": 79,
+      "triangles": 1192
+    },
+    {
+      "module": "room-7",
+      "meshes": 71,
+      "triangles": 8922
+    },
+    {
+      "module": "room-8",
+      "meshes": 63,
+      "triangles": 7946
+    }
+  ],
+  "views": [
+    {
+      "room": "客厅",
+      "meshes": 895,
+      "triangles": 608689,
+      "modules": {
+        "base": {
+          "meshes": 206,
+          "triangles": 61949
+        },
+        "room-7": {
+          "meshes": 57,
+          "triangles": 5472
+        },
+        "room-1": {
+          "meshes": 169,
+          "triangles": 84658
+        },
+        "room-6": {
+          "meshes": 76,
+          "triangles": 1168
+        },
+        "room-8": {
+          "meshes": 60,
+          "triangles": 7922
+        },
+        "room-3": {
+          "meshes": 101,
+          "triangles": 10328
+        },
+        "room-0": {
+          "meshes": 149,
+          "triangles": 40319
+        },
+        "room-5": {
+          "meshes": 54,
+          "triangles": 3484
+        },
+        "bedding-second": {
+          "meshes": 3,
+          "triangles": 149995
+        },
+        "room-4": {
+          "meshes": 14,
+          "triangles": 53304
+        },
+        "exterior": {
+          "meshes": 6,
+          "triangles": 190090
+        }
+      }
+    },
+    {
+      "room": "主卧",
+      "meshes": 579,
+      "triangles": 553495,
+      "modules": {
+        "base": {
+          "meshes": 148,
+          "triangles": 20929
+        },
+        "room-4": {
+          "meshes": 88,
+          "triangles": 6998
+        },
+        "room-7": {
+          "meshes": 68,
+          "triangles": 8822
+        },
+        "room-1": {
+          "meshes": 26,
+          "triangles": 3330
+        },
+        "room-8": {
+          "meshes": 59,
+          "triangles": 7910
+        },
+        "room-3": {
+          "meshes": 101,
+          "triangles": 10328
+        },
+        "room-0": {
+          "meshes": 21,
+          "triangles": 1334
+        },
+        "room-5": {
+          "meshes": 53,
+          "triangles": 3472
+        },
+        "room-6": {
+          "meshes": 3,
+          "triangles": 292
+        },
+        "bedding-main": {
+          "meshes": 3,
+          "triangles": 149995
+        },
+        "bedding-second": {
+          "meshes": 3,
+          "triangles": 149995
+        },
+        "exterior": {
+          "meshes": 6,
+          "triangles": 190090
+        }
+      }
+    }
+  ],
+  "collision": {
+    "samples": 238,
+    "worst": [
+      {
+        "x": 10.95,
+        "z": 3.45,
+        "fourDirectionsMs": 8.812,
+        "exits": 3,
+        "nearby": [
+          {
+            "name": "主卧柜背斜接墙",
+            "module": "base",
+            "triangles": 16820
+          },
+          {
+            "name": "Warm walnut - real oak scan tinted.005",
+            "module": "room-4",
+            "triangles": 1068
+          },
+          {
+            "name": "主卧衣柜2630实体背板",
+            "module": "room-4",
+            "triangles": 12
+          }
+        ]
+      },
+      {
+        "x": 11.1,
+        "z": 3.45,
+        "fourDirectionsMs": 8.796,
+        "exits": 3,
+        "nearby": [
+          {
+            "name": "主卧柜背斜接墙",
+            "module": "base",
+            "triangles": 16820
+          },
+          {
+            "name": "Warm walnut - real oak scan tinted.005",
+            "module": "room-4",
+            "triangles": 1068
+          },
+          {
+            "name": "主卧衣柜2630实体背板",
+            "module": "room-4",
+            "triangles": 12
+          }
+        ]
+      },
+      {
+        "x": 11.7,
+        "z": 3.45,
+        "fourDirectionsMs": 8.772,
+        "exits": 3,
+        "nearby": [
+          {
+            "name": "主卧柜背斜接墙",
+            "module": "base",
+            "triangles": 16820
+          },
+          {
+            "name": "Warm walnut - real oak scan tinted.005",
+            "module": "room-4",
+            "triangles": 1068
+          },
+          {
+            "name": "主卧衣柜2630实体背板",
+            "module": "room-4",
+            "triangles": 12
+          }
+        ]
+      },
+      {
+        "x": 11.55,
+        "z": 3.45,
+        "fourDirectionsMs": 8.766,
+        "exits": 3,
+        "nearby": [
+          {
+            "name": "主卧柜背斜接墙",
+            "module": "base",
+            "triangles": 16820
+          },
+          {
+            "name": "Warm walnut - real oak scan tinted.005",
+            "module": "room-4",
+            "triangles": 1068
+          },
+          {
+            "name": "主卧衣柜2630实体背板",
+            "module": "room-4",
+            "triangles": 12
+          }
+        ]
+      },
+      {
+        "x": 10.8,
+        "z": 3.45,
+        "fourDirectionsMs": 8.691,
+        "exits": 3,
+        "nearby": [
+          {
+            "name": "主卧柜背斜接墙",
+            "module": "base",
+            "triangles": 16820
+          },
+          {
+            "name": "Warm walnut - real oak scan tinted.005",
+            "module": "room-4",
+            "triangles": 1068
+          },
+          {
+            "name": "主卧衣柜2630实体背板",
+            "module": "room-4",
+            "triangles": 12
+          }
+        ]
+      },
+      {
+        "x": 11.25,
+        "z": 3.45,
+        "fourDirectionsMs": 7.741,
+        "exits": 2,
+        "nearby": [
+          {
+            "name": "主卧柜背斜接墙",
+            "module": "base",
+            "triangles": 16820
+          },
+          {
+            "name": "Warm walnut - real oak scan tinted.005",
+            "module": "room-4",
+            "triangles": 1068
+          },
+          {
+            "name": "主卧衣柜2630实体背板",
+            "module": "room-4",
+            "triangles": 12
+          }
+        ]
+      },
+      {
+        "x": 11.85,
+        "z": 3.45,
+        "fourDirectionsMs": 7.642,
+        "exits": 2,
+        "nearby": [
+          {
+            "name": "主卧柜背斜接墙",
+            "module": "base",
+            "triangles": 16820
+          },
+          {
+            "name": "Warm walnut - real oak scan tinted.005",
+            "module": "room-4",
+            "triangles": 1068
+          },
+          {
+            "name": "主卧衣柜2630实体背板",
+            "module": "room-4",
+            "triangles": 12
+          }
+        ]
+      },
+      {
+        "x": 11.4,
+        "z": 3.45,
+        "fourDirectionsMs": 7.213,
+        "exits": 2,
+        "nearby": [
+          {
+            "name": "主卧柜背斜接墙",
+            "module": "base",
+            "triangles": 16820
+          },
+          {
+            "name": "Warm walnut - real oak scan tinted.005",
+            "module": "room-4",
+            "triangles": 1068
+          },
+          {
+            "name": "主卧衣柜2630实体背板",
+            "module": "room-4",
+            "triangles": 12
+          }
+        ]
+      },
+      {
+        "x": 12,
+        "z": 3.45,
+        "fourDirectionsMs": 7.117,
+        "exits": 2,
+        "nearby": [
+          {
+            "name": "主卧柜背斜接墙",
+            "module": "base",
+            "triangles": 16820
+          },
+          {
+            "name": "Warm walnut - real oak scan tinted.005",
+            "module": "room-4",
+            "triangles": 1068
+          },
+          {
+            "name": "主卧衣柜2630实体背板",
+            "module": "room-4",
+            "triangles": 12
+          }
+        ]
+      },
+      {
+        "x": 12.15,
+        "z": 3.45,
+        "fourDirectionsMs": 4.842,
+        "exits": 2,
+        "nearby": [
+          {
+            "name": "主卧柜背斜接墙",
+            "module": "base",
+            "triangles": 16820
+          },
+          {
+            "name": "主卧阳台南柱",
+            "module": "base",
+            "triangles": 12
+          },
+          {
+            "name": "主卧衣柜2630实体侧板.001",
+            "module": "room-4",
+            "triangles": 12
+          },
+          {
+            "name": "主卧衣柜2630实体背板",
+            "module": "room-4",
+            "triangles": 12
+          }
+        ]
+      },
+      {
+        "x": 10.8,
+        "z": 3.9,
+        "fourDirectionsMs": 4.505,
+        "exits": 3,
+        "nearby": [
+          {
+            "name": "Natural cane insert",
+            "module": "room-4",
+            "triangles": 50264
+          },
+          {
+            "name": "Warm walnut - real oak scan tinted.005",
+            "module": "room-4",
+            "triangles": 1068
+          },
+          {
+            "name": "超短焦投影机_产品外形示意",
+            "module": "room-4",
+            "triangles": 12
+          }
+        ]
+      },
+      {
+        "x": 10.95,
+        "z": 3.9,
+        "fourDirectionsMs": 4.473,
+        "exits": 3,
+        "nearby": [
+          {
+            "name": "Natural cane insert",
+            "module": "room-4",
+            "triangles": 50264
+          },
+          {
+            "name": "Warm walnut - real oak scan tinted.005",
+            "module": "room-4",
+            "triangles": 1068
+          },
+          {
+            "name": "超短焦投影机_产品外形示意",
+            "module": "room-4",
+            "triangles": 12
+          }
+        ]
+      }
+    ],
+    "medianFourDirectionsMs": 0.045
+  }
+}

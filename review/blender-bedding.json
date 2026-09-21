@@ -1,0 +1,42 @@
+{
+  "blender": "4.5.14 LTS",
+  "source": "/Users/bob/Desktop/home-deco/qa/original-source.glb",
+  "objects": [
+    {
+      "name": "fabric 1",
+      "before": 59998,
+      "after": 11998,
+      "ratio": 0.20000000298023224
+    },
+    {
+      "name": "fabric 1.001",
+      "before": 59998,
+      "after": 11998,
+      "ratio": 0.20000000298023224
+    },
+    {
+      "name": "Fur_black",
+      "before": 30000,
+      "after": 6000,
+      "ratio": 0.20000000298023224
+    },
+    {
+      "name": "Fur_black.001",
+      "before": 30000,
+      "after": 6000,
+      "ratio": 0.20000000298023224
+    },
+    {
+      "name": "White Fabric",
+      "before": 59997,
+      "after": 11998,
+      "ratio": 0.20000000298023224
+    },
+    {
+      "name": "White Fabric.001",
+      "before": 59997,
+      "after": 11998,
+      "ratio": 0.20000000298023224
+    }
+  ]
+}
