@@ -1,0 +1,140 @@
+[
+  {
+    "module": "bedding-main",
+    "name": "fabric 1",
+    "before": 59998,
+    "after": 11998,
+    "oldBounds": [
+      -0.8901219964027405,
+      -0.9851160049438477,
+      -1.0082730054855347,
+      0.8899593949317932,
+      0.9702999591827393,
+      -0.3140961527824402
+    ],
+    "newBounds": [
+      -0.890189528465271,
+      -0.9854642748832703,
+      -1.007889986038208,
+      0.8898831605911255,
+      0.970585286617279,
+      -0.31416773796081543
+    ],
+    "method": "Blender Decimate COLLAPSE 0.2; original module material and UV texture references preserved"
+  },
+  {
+    "module": "bedding-main",
+    "name": "Fur_black",
+    "before": 30000,
+    "after": 6000,
+    "oldBounds": [
+      -0.8899999856948853,
+      -0.9122170209884644,
+      -0.6905549764633179,
+      0.8899999856948853,
+      -0.27900946140289307,
+      -0.05799931287765503
+    ],
+    "newBounds": [
+      -0.8907116651535034,
+      -0.9122310280799866,
+      -0.6908622980117798,
+      0.890494704246521,
+      -0.27901288866996765,
+      -0.05706100910902023
+    ],
+    "method": "Blender Decimate COLLAPSE 0.2; original module material and UV texture references preserved"
+  },
+  {
+    "module": "bedding-main",
+    "name": "White Fabric",
+    "before": 59997,
+    "after": 11998,
+    "oldBounds": [
+      -0.8899999856948853,
+      0.27232998609542847,
+      -0.9101160168647766,
+      0.8899999856948853,
+      0.98496013879776,
+      -0.3242794871330261
+    ],
+    "newBounds": [
+      -0.8903120756149292,
+      0.2722609341144562,
+      -0.9103153944015503,
+      0.8897700905799866,
+      0.9848387837409973,
+      -0.32426777482032776
+    ],
+    "method": "Blender Decimate COLLAPSE 0.2; original module material and UV texture references preserved"
+  },
+  {
+    "module": "bedding-second",
+    "name": "fabric 1.001",
+    "before": 59998,
+    "after": 11998,
+    "oldBounds": [
+      -0.8901219964027405,
+      -0.9851160049438477,
+      -1.0082730054855347,
+      0.8899593949317932,
+      0.9702999591827393,
+      -0.3140961527824402
+    ],
+    "newBounds": [
+      -0.890189528465271,
+      -0.985464334487915,
+      -1.007890224456787,
+      0.8898831605911255,
+      0.9705851674079895,
+      -0.3141680061817169
+    ],
+    "method": "Blender Decimate COLLAPSE 0.2; original module material and UV texture references preserved"
+  },
+  {
+    "module": "bedding-second",
+    "name": "Fur_black.001",
+    "before": 30000,
+    "after": 6000,
+    "oldBounds": [
+      -0.8899999856948853,
+      -0.9122170209884644,
+      -0.6905549764633179,
+      0.8899999856948853,
+      -0.27900946140289307,
+      -0.05799931287765503
+    ],
+    "newBounds": [
+      -0.8907116651535034,
+      -0.9122311472892761,
+      -0.6908625364303589,
+      0.890494704246521,
+      -0.2790129780769348,
+      -0.05706125125288963
+    ],
+    "method": "Blender Decimate COLLAPSE 0.2; original module material and UV texture references preserved"
+  },
+  {
+    "module": "bedding-second",
+    "name": "White Fabric.001",
+    "before": 59997,
+    "after": 11998,
+    "oldBounds": [
+      -0.8899999856948853,
+      0.27232998609542847,
+      -0.9101160168647766,
+      0.8899999856948853,
+      0.98496013879776,
+      -0.3242794871330261
+    ],
+    "newBounds": [
+      -0.8903120756149292,
+      0.2722608149051666,
+      -0.9103156328201294,
+      0.8897700905799866,
+      0.9848386645317078,
+      -0.32426801323890686
+    ],
+    "method": "Blender Decimate COLLAPSE 0.2; original module material and UV texture references preserved"
+  }
+]
