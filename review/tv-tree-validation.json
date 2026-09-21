@@ -1,0 +1,40 @@
+{
+  "meshes": 1386,
+  "triangles": 568029,
+  "unrelatedBoundsPreserved": 1373,
+  "trees": [
+    {
+      "name": "树木_branches",
+      "triangles": 8912
+    },
+    {
+      "name": "树木_trunk",
+      "triangles": 5491
+    },
+    {
+      "name": "树木_branches.001",
+      "triangles": 8912
+    },
+    {
+      "name": "树木_trunk.001",
+      "triangles": 5491
+    },
+    {
+      "name": "树木_branches.002",
+      "triangles": 8912
+    },
+    {
+      "name": "树木_trunk.002",
+      "triangles": 5491
+    },
+    {
+      "name": "树木_branches.003",
+      "triangles": 8912
+    },
+    {
+      "name": "树木_trunk.003",
+      "triangles": 5491
+    }
+  ],
+  "sharedPrototypes": true
+}

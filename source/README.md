@@ -93,3 +93,7 @@ Do not keep the former sofa AO after cushion layout changes. Do not omit archite
 
 
 Latest local correction: comfort authoring deletes both niche end boards and all dining flower/vase meshes. It also splits the main-bath privacy glass into fixed/sliding panes, initially open. The importer transfers that authored opening into base transforms and preserves closed/open interaction metadata. Run `node scripts/check-bath-partition.mjs` against the local Vite preview to check startup, close, reopen and reset. Earlier end-panel closure notes are superseded by the user's request to remove those panels.
+
+## TV wall head and tree structure repair
+
+`source/home-deco-tv-tree.blend` reconstructs the current source, extends the dining TV wall solid from 2.37 m to the 2.7 m ceiling, and restores the original woody branch/trunk topology while retaining reduced foliage and tree placement. Tree prototypes remain shared. Run `blender-repair-tv-tree.py CURRENT_SOURCE ORIGINAL_PRE_LOD_SOURCE BLEND OUTPUT_GLB REPORT`, then `import-blender-tv-tree.mjs ORIGINAL_MODULES OUTPUT_MODULES OUTPUT_GLB`. Reassemble final modules and run all fallback, Cycles and HDR bakes; `check-tv-tree.mjs BEFORE AFTER` checks the wall height, unaffected bounds, foliage triangle counts and sharing. `--setup-only` on the daylight scene builder skips beauty renders when creating a fresh scene for baking.

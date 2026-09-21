@@ -1,0 +1,56 @@
+[
+  {
+    "room": "玄关",
+    "hasFloor": true,
+    "within22cmOfWall": false,
+    "clearance": null
+  },
+  {
+    "room": "客厅",
+    "hasFloor": true,
+    "within22cmOfWall": false,
+    "clearance": null
+  },
+  {
+    "room": "餐厅",
+    "hasFloor": true,
+    "within22cmOfWall": false,
+    "clearance": null
+  },
+  {
+    "room": "厨房",
+    "hasFloor": true,
+    "within22cmOfWall": false,
+    "clearance": null
+  },
+  {
+    "room": "主卧",
+    "hasFloor": true,
+    "within22cmOfWall": false,
+    "clearance": null
+  },
+  {
+    "room": "次卧",
+    "hasFloor": true,
+    "within22cmOfWall": false,
+    "clearance": null
+  },
+  {
+    "room": "儿童房",
+    "hasFloor": true,
+    "within22cmOfWall": false,
+    "clearance": null
+  },
+  {
+    "room": "主卫",
+    "hasFloor": true,
+    "within22cmOfWall": false,
+    "clearance": null
+  },
+  {
+    "room": "次卫",
+    "hasFloor": true,
+    "within22cmOfWall": false,
+    "clearance": null
+  }
+]

@@ -27,9 +27,9 @@ function metadata(o){try{return JSON.parse(o.userData.metadata||'{}')}catch{retu
 function resize(redraw=true){if(!renderer||contextLost)return;const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();const max=quality==='high'?2:quality==='low'?1:Math.min(adaptiveScale,Math.sqrt(2400000/(w*h))),ratio=Math.min(devicePixelRatio,max);const size=renderer.getSize(new THREE.Vector2());if(renderer.getPixelRatio()===ratio&&size.x===w&&size.y===h)return;renderer.setPixelRatio(ratio);renderer.setSize(w,h,false);if(ready&&redraw)renderer.render(scene,camera)}
 window.addEventListener('resize',()=>resize());window.visualViewport?.addEventListener('resize',()=>resize());
 function markRoom(i){if($('#room-nav').dataset.activeRoom===String(i))return;$('#room-label').textContent=rooms[i].name;document.querySelectorAll('[data-room]').forEach(b=>b.setAttribute('aria-current',String(Number(b.dataset.room)===i)));const nav=$('#room-nav'),button=nav.querySelector(`[data-room="${i}"]`);if(nav.dataset.activeRoom!==String(i)){nav.dataset.activeRoom=String(i);if(button){const left=button.offsetLeft-nav.offsetLeft;if(left<nav.scrollLeft)nav.scrollLeft=left;else if(left+button.offsetWidth>nav.scrollLeft+nav.clientWidth)nav.scrollLeft=left+button.offsetWidth-nav.clientWidth}}}
-async function visit(i){const request=++visitSequence;if(ready&&modules){try{await modules.room(i)}catch{toast('房间暂未加载，请再次选择重试');return}if(request!==visitSequence)return}const r=rooms[i];camera.position.set(r.x,1.4,r.z);yaw=Math.atan2(r.x-r.look[0],r.z-r.look[1]);pitch=-.04;camera.rotation.set(pitch,yaw,0,'YXZ');markRoom(i);updateMap();keys.clear();joystick.x=joystick.y=0;if(ready)canvas.focus({preventScroll:true})}
+async function visit(i){const request=++visitSequence;if(ready&&modules){try{await modules.room(i)}catch{toast('房间暂未加载，请再次选择重试');return}if(request!==visitSequence)return}const r=rooms[i].entry??rooms[i];camera.position.set(r.x,1.4,r.z);yaw=Math.atan2(r.x-r.look[0],r.z-r.look[1]);pitch=-.04;camera.rotation.set(pitch,yaw,0,'YXZ');markRoom(i);updateMap();keys.clear();joystick.x=joystick.y=0;if(ready)canvas.focus({preventScroll:true})}
 function roomButton(i){const b=document.createElement('button');b.textContent=rooms[i].name;b.dataset.room=i;b.onclick=()=>{closeDialogs();visit(i)};return b}
-rooms.forEach((_,i)=>{$('#all-rooms').append(roomButton(i));$('#room-nav').append(roomButton(i))});
+rooms.forEach((_,i)=>{$('#all-rooms').append(roomButton(i));if(rooms[i].shortcut!==false)$('#room-nav').append(roomButton(i))});
 function openDialog(id,button){endInput();const d=$(id);d.showModal();button?.setAttribute('aria-expanded','true');mapOpen=id==='#map-panel';updateMap()}
 function closeDialogs(){document.querySelectorAll('dialog[open]').forEach(d=>d.close());mapOpen=false;document.querySelectorAll('[aria-expanded=true]').forEach(b=>b.setAttribute('aria-expanded','false'))}
 $('#map-button').onclick=()=>openDialog('#map-panel',$('#map-button'));
@@ -101,12 +101,14 @@ async function start(){
    resize();const pmrem=new THREE.PMREMGenerator(renderer), env=new RoomEnvironment();scene.environment=pmrem.fromScene(env,.04).texture;env.dispose();pmrem.dispose();scene.environmentIntensity=.45;
    scene.add(new THREE.HemisphereLight(0xf3f6ff,0xb0a394,.6));const sun=new THREE.DirectionalLight(0xfff6ea,.7);sun.position.set(12,8,6);scene.add(sun);
    appearance=createAppearance(renderer);const appearanceReady=appearance.init();
+   const lightingReady=appearanceReady.then(()=>appearance.load());
    const progress=$('#progress'),label=$('#load-label');
    const startup=createLoadingProgress(({phase,loaded,total,percent})=>{
+     $('#load-value').textContent=phase==='download'?`${percent}%`:phase==='ready'?'100%':'···';
      if(phase==='download'){
        progress.value=percent;
-       label.textContent=percent===100?'入口资源已下载，正在准备画面…':`正在下载入口资源 ${percent}% · ${(loaded/1e6).toFixed(2)} / ${(total/1e6).toFixed(2)} MB`;
-     }else if(phase==='prepare'){progress.removeAttribute('value');label.textContent='正在准备入口画面…'}
+       label.textContent=percent===100?'空间资源已下载，正在准备光照…':`正在下载空间资源 ${percent}% · ${(loaded/1e6).toFixed(2)} / ${(total/1e6).toFixed(2)} MB`;
+     }else if(phase==='prepare'){progress.removeAttribute('value');label.textContent='正在准备光照与室内画面…'}
      else if(phase==='ready')progress.value=100;
    });
    const manager=new THREE.LoadingManager();manager.onProgress=url=>startup.resourceDone(url);manager.onError=url=>startup.resourceFailed(url);
@@ -136,11 +138,8 @@ async function start(){
    };
    const status=document.createElement('button');status.className='module-status';status.hidden=true;status.onclick=()=>modules.background();$('#ui').append(status);
    modules=createModules({loader,root:model,prepare,onManifest:startup.plan,onProgress:startup.bytes,onAttach:()=>{if(ready)refreshAppearance()},onStatus:s=>{appearance.update(model,initialTransforms,modules?.loaded,modules?.assetFiles);status.hidden=s.loaded===s.total;status.textContent=s.failed?'部分房间加载失败 · 点击重试':'正在补齐其他房间…';status.disabled=!s.failed}});
-   await modules.init();startup.preparing();appearance.addFixtures(scene);readStates();buildNavigation();await visit(0);
+   await modules.init({wholeHome:true});startup.preparing();await lightingReady;appearance.addFixtures(scene);readStates();buildNavigation();await visit(0);appearance.settle();
    await renderer.compileAsync(scene,camera);renderer.render(scene,camera);startup.complete();ready=true;$('#loading').hidden=true;$('#ui').hidden=false;
-   // Yield the first visible frame before fetching the rest of the home.
-   requestAnimationFrame(()=>requestAnimationFrame(()=>modules.background()));
-   void appearance.load().then(()=>appearance.update(model,initialTransforms,modules.loaded,modules.assetFiles));
    if(coarse)$('#hint').textContent='拖动画面环顾';
    let last=performance.now(),count=0;
    frameLoop=now=>{if(contextLost||document.hidden){last=now;return}const ms=now-last;last=now;const dt=Math.min(ms/1000,.05);appearance.tick(dt);if(!document.querySelector('dialog[open]'))move(dt);frameAverage=.94*frameAverage+.06*Math.min(ms,80);count++;if(quality==='auto'&&count%60===0&&frameAverage>20&&adaptiveScale>.7){adaptiveScale=Math.max(.7,adaptiveScale-.1);resize(false)}else if(quality==='auto'&&count%240===0&&frameAverage<16.9&&adaptiveScale<1.35){adaptiveScale=Math.min(1.35,adaptiveScale+.05);resize(false)}renderer.render(scene,camera)};

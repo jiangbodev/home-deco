@@ -1,0 +1,29 @@
+[
+  {
+    "room": 5,
+    "pos": [
+      4.1,
+      1.4,
+      3.9
+    ],
+    "forwardOneMetreObstacles": []
+  },
+  {
+    "room": 7,
+    "pos": [
+      10.1,
+      1.4,
+      2.5
+    ],
+    "forwardOneMetreObstacles": []
+  },
+  {
+    "room": 8,
+    "pos": [
+      4.9,
+      1.4,
+      2.69
+    ],
+    "forwardOneMetreObstacles": []
+  }
+]

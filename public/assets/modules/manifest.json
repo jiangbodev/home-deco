@@ -1,8 +1,8 @@
 {
   "modules": {
     "base": {
-      "file": "base-1026c8837db1.glb",
-      "bytes": 732368,
+      "file": "base-d7b6a60b8bc6.glb",
+      "bytes": 730616,
       "textures": [
         "texture-e9be09198920076e.webp",
         "texture-0a16784d5ba755a6.webp",
@@ -44,8 +44,8 @@
       "nodes": 3
     },
     "exterior": {
-      "file": "exterior-44076071fb51.glb",
-      "bytes": 866436,
+      "file": "exterior-03b15e8fd74e.glb",
+      "bytes": 913876,
       "textures": [
         "texture-ba7bff5b4955384e.webp",
         "texture-7ec6dd746fb882de.webp",

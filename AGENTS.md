@@ -120,3 +120,18 @@ The user subsequently said “提交吧”, resuming the previously requested co
 
 
 Cabinet color follow-up: four `南侧通高柜2035门板1–4` already share ivory material 38 with the bookshelf, but their bevelled geometry failed the 95% axial-area bake cutoff. Explicitly include these four fronts in prepare-cycles-bake; genuine rebaking restores matching illumination. Do not compensate by changing global exposure or turning ivory material grey. See review/cabinet-ivory-comparison.jpg.
+
+
+Room shortcuts now use `rooms[i].entry` for position/look direction; keep `rooms[i].x/z` as stable room-detection/map anchors. Do not replace detection centers with doorway coordinates. Eye height stays 1.4 m. Nine actual shortcut clicks, a forward step without wrong-room relabelling, floor checks and 22 cm wall/door clearance were verified; see review/room-entries.json and room-entries.jpg.
+
+
+Startup lighting follow-up supersedes the old post-reveal loading rule: start appearance.load after metadata init in parallel with model downloads; modules.init({wholeHome:true}) accounts for all model/texture bytes and loads all modules before reveal (bakes require every module). Await appearance including finish textures, refresh against initial transforms, settle lighting fades behind loading, then compile/render before revealing. Preserve optional lighting failure fallback. Verified a deliberately held irradiance request keeps loading visible; first visible frame exactly matches lighting after 180 ticks, both success and resource-failure cases. Entrance startup/reset/shortcut share entry (4.6, 1.4, 6.78).
+
+TV backdrop continuity: `tv-wall-finish.js` is applied after irradiance and before reflection registration, preserving shader callbacks/cache keys. Limit its uniform ivory/PBR response to the +X planar front at x=5.53..5.55,z=4.27..5.21 of the four explicit nodes (include 玄关共用背墙, the narrow center strip). Keep all other faces baked. Geometry and baked assets are unchanged. See review/tv-wall.md and comparison. Never solve this by globally whitening plaster or disabling depth tests.
+
+TV head / tree follow-up: the dining-side wall originally stopped at 2.37 m, exposing a 33 cm recess above the TV. `blender-repair-tv-tree.py` extends that existing solid to 2.7 m with its front at X=5.5483 to avoid overlap with the arch/soffit. Restore original woody branch/trunk geometry from the pre-LOD source; retain simplified leaves, current tree transforms and shared prototypes. Start from immutable `qa/tv-tree-before.glb` and `qa/original-source.glb`, integrate via `import-blender-tv-tree.mjs`, reassemble and genuinely rebake fallback/Cycles/probes. Do not apply another blanket collapse modifier to woody structure; it created flat broken-looking branches. Current editable source: source/home-deco-tv-tree.blend.
+
+Entry regression: never offset doorway spawns backward solely along their look vector. This put the main-bath view inside wardrobe bounds and the secondary-bedroom view against the fridge. Wall/door-only clearance missed cabinetry. Final door-aligned entries are main bath (10.1,2.5), second bedroom (4.1,3.9), secondary bath (4.9,2.69), all y=1.4. Verify actual browser images and first-metre paths against ALL visible opaque meshes, as well as floor/clearance and room label after movement. Dining has shortcut:false (map selection retained); do not renumber room IDs when hiding a shortcut.
+
+
+The user explicitly requested “提交吧，发布” after this TV/tree/loading/navigation revision. Commit, merge main and publish this reviewed version, then verify Actions and live hashes.

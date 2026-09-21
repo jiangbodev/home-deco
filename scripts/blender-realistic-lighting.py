@@ -38,5 +38,6 @@ co.location=point([11.7,1.5,5.1]);co.rotation_euler=(point([8,1.3,4.8])-co.locat
 bpy.ops.file.pack_all();bpy.ops.wm.save_as_mainfile(filepath=str((out/'daylight-study.blend').resolve()),compress=True)
 views=[('living',[11.7,1.5,5.1],[8,1.3,4.8]),('desk',[12,1.5,2.5],[13.2,.9,1.35]),('shelves',[8,1.5,5.3],[7,1.5,6.8])]
 if '--sofa-only' in args:views=[('sofa',[11.03,1.25,4.6],[11.03,.43,6.4])]
+if '--setup-only' in args:views=[]
 for name,pos,target in views:
  co.location=point(pos);co.rotation_euler=(point(target)-co.location).to_track_quat('-Z','Y').to_euler();scene.render.filepath=str((out/(name+'.png')).resolve());bpy.ops.render.render(write_still=True)
