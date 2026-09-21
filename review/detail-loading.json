@@ -1,0 +1,26 @@
+{
+  "network": {
+    "latencyMs": 40,
+    "downloadMiBps": 4
+  },
+  "browser": "Chrome / Apple M4; local production preview, CDP network emulation",
+  "results": [
+    {
+      "cache": "cold",
+      "readyMs": 4359.368708,
+      "resources": {
+        "count": 84,
+        "transferBytes": 11764987
+      }
+    },
+    {
+      "cache": "warm",
+      "readyMs": 2051.611833,
+      "resources": {
+        "count": 84,
+        "transferBytes": 25200
+      }
+    }
+  ],
+  "errors": []
+}

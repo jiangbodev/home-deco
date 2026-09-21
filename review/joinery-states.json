@@ -1,0 +1,38 @@
+{
+  "report": {
+    "paneSealPairs": 20,
+    "states": [
+      {
+        "key": "doors",
+        "state": false,
+        "maxRelativeTransformError": 2.220446049250313e-15
+      },
+      {
+        "key": "doors",
+        "state": true,
+        "maxRelativeTransformError": 8.881784197001252e-16
+      },
+      {
+        "key": "bath-partition",
+        "state": false,
+        "maxRelativeTransformError": 1.7763568394002505e-15
+      },
+      {
+        "key": "bath-partition",
+        "state": true,
+        "maxRelativeTransformError": 8.881784197001252e-16
+      },
+      {
+        "key": "kitchen-window-open",
+        "state": false,
+        "maxRelativeTransformError": 1.7763568394002505e-15
+      },
+      {
+        "key": "kitchen-window-open",
+        "state": true,
+        "maxRelativeTransformError": 8.881784197001252e-16
+      }
+    ]
+  },
+  "errors": []
+}

@@ -31,9 +31,9 @@ export function createSurfaceFinishes(renderer){
   const multiple=Array.isArray(o.material),materials=multiple?o.material:[o.material];
   const result=materials.map(original=>{
    const id=original.userData.source_material_id;
-   const kind=plaster.has(id)?'plaster':lacquer.has(id)?'lacquer':timber.has(id)?'timber':id===19?'counter':id===80?'steel':null;
+   const kind=plaster.has(id)?'plaster':lacquer.has(id)?'lacquer':(timber.has(id)||id===320)?'timber':id===19?'counter':id===80?'steel':null;
    if(!kind)return original;
-   const profile=profiles[kind],edge=profile.edge&&boxEasing(o.geometry)?profile.edge:0;
+   const profile=[41,45,320].includes(id)?{...profiles.timber,rough:id===320?.48:.55}:profiles[kind],edge=profile.edge&&boxEasing(o.geometry)?profile.edge:0;
    // Keep each receiver's existing baked-light callback; Material.clone does not copy it.
    const m=original.clone(),previous=original.onBeforeCompile,previousKey=original.customProgramCacheKey();
    m.userData.surfaceFinish=kind;m.userData.edgeEasing=edge;
@@ -62,7 +62,7 @@ export function createSurfaceFinishes(renderer){
      `)
      .replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
       roughnessFactor=clamp(roughnessFactor+(finishData.b-.5)*${profile.roughNoise},.2,1.0);
-      ${kind==='timber'&&m.map?'roughnessFactor=clamp(roughnessFactor+(dot(sampledDiffuseColor.rgb,vec3(.2126,.7152,.0722))-.3)*.1,.52,.9);':''}
+      ${kind==='timber'&&m.map?'roughnessFactor=clamp(roughnessFactor+(dot(sampledDiffuseColor.rgb,vec3(.2126,.7152,.0722))-.3)*.1,'+(id===320?'.36':[41,45].includes(id)?'.42':'.52')+',.9);':''}
      `)
      .replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
       vec3 sx=dFdx(-vViewPosition),sy=dFdy(-vViewPosition);
@@ -76,7 +76,7 @@ export function createSurfaceFinishes(renderer){
       normal=normalize(max(abs(det),1e-10)*normal-grad);
      `);
    };
-   m.customProgramCacheKey=()=>previousKey+'|finish-v4-'+kind+(edge?'-edge':'');return m;
+   m.customProgramCacheKey=()=>previousKey+'|finish-v5-'+kind+([41,45,320].includes(id)?'-satin-'+id:'')+(edge?'-edge':'');return m;
   });o.material=multiple?result:result[0];
  })}
  return {load,prepare};

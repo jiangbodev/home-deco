@@ -97,3 +97,25 @@ Latest local correction: comfort authoring deletes both niche end boards and all
 ## TV wall head and tree structure repair
 
 `source/home-deco-tv-tree.blend` reconstructs the current source, extends the dining TV wall solid from 2.37 m to the 2.7 m ceiling, and restores the original woody branch/trunk topology while retaining reduced foliage and tree placement. Tree prototypes remain shared. Run `blender-repair-tv-tree.py CURRENT_SOURCE ORIGINAL_PRE_LOD_SOURCE BLEND OUTPUT_GLB REPORT`, then `import-blender-tv-tree.mjs ORIGINAL_MODULES OUTPUT_MODULES OUTPUT_GLB`. Reassemble final modules and run all fallback, Cycles and HDR bakes; `check-tv-tree.mjs BEFORE AFTER` checks the wall height, unaffected bounds, foliage triangle counts and sharing. `--setup-only` on the daylight scene builder skips beauty renders when creating a fresh scene for baking.
+
+## Furniture and bathroom detail refinement
+
+The current local editable source is `source/home-deco-details.blend`. `scripts/blender-refine-details.py` runs against immutable assembled main `9c851f3`, never its own output. It authors the television chassis/glass, solid-oak table and desk edges, projector body, cabinet plinth, upholstery taper, ceramic basins and satin metal bathroom fittings. Preserve the original scene hierarchy and interaction transforms through `scripts/import-blender-details.mjs`; the importer handles multiple material primitives and six furniture/accessory nodes plus twenty pane-seal nodes.
+
+```sh
+blender -b --python scripts/blender-refine-details.py -- BEFORE.glb source/home-deco-details.blend EDITED.glb review/detail-blender.json
+node scripts/import-blender-details.mjs ORIGINAL_MODULE_DIRECTORY public/assets/modules EDITED.glb
+node scripts/assemble-modules.mjs public/assets/modules AFTER.glb
+node scripts/check-details.mjs BEFORE.glb AFTER.glb
+node scripts/verify-modules.mjs AFTER.glb
+```
+
+Run all fallback bakes and fresh Cycles/probe bakes from AFTER.glb. Current captures are living, bedroom and smaller secondary-bath/kitchen HDRs, all generated offline. Do not substitute a republished source hash for a fresh bake. The irradiance baker now rejects existing raw outputs when the saved plan differs; identical inputs can resume. Use a new output directory for every changed source.
+
+The user's updated performance preference treats 20 MB as a reference, not a hard maximum. Keep integrity and stale-bake checks strict; evaluate increased asset size with production loading, actual in-room movement and camera comparisons. The current whole-home startup waits for lighting readiness before reveal; simply deferring required room geometry would invalidate baked lighting activation.
+
+Kitchen details are authored in the same deterministic script: 28 cm pan, 22 cm lidded pot on existing grates, a north-counter board, nested shelf bowls, and a rounded drawn-steel sink with falls to the existing drain. No flame or live cooking simulation is added. New shared cookware/stoneware materials are 309–311; both kitchen and secondary bath use small offline local reflection captures.
+
+Door/window follow-up in the same detail authoring script: preserve pressed-glass normal texture with a new transmissive material 314, add twenty thin glazing-seal objects (312), soften rectangular profiles and replace lever placeholders. When the template pane has its own interaction metadata, the new base placeholder copies those interaction fields so its seal follows the pane; payload nodes must not duplicate the transform. Verify open/closed relative transforms in the browser. Blender daylight now transmits shadow rays through interior glazing and uses a finite emitter at the actual kitchen north window.
+
+最新柜体与陈列跟进源：`home-deco-cabinet-display.blend`（本地 packed Blender 文件）。复现脚本 `scripts/blender-cabinet-display.py`，参考 `review/cabinet-display-review.md`；保留此前锅具、门窗、家具细化。

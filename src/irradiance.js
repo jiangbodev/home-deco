@@ -12,6 +12,7 @@ export function createIrradiance(renderer){
   // three shells use continuous PBR lighting; the flat niche lining stays baked.
   if(/^圆弧包覆实体层(?:0|900|1230)$/.test(o.userData.source_name||o.name))return;
   const multi=Array.isArray(o.material);const materials=(multi?o.material:[o.material]).map(original=>{
+   if(original.userData.source_material_id===20)return original;
    const m=original.clone(),previous=original.onBeforeCompile,key=original.customProgramCacheKey();m.userData.tracedLighting=r.kind;
    m.onBeforeCompile=(shader,...args)=>{
     previous.call(m,shader,...args);Object.assign(shader.uniforms,{tracedMap:maps[r.kind],tracedWeight:weight});

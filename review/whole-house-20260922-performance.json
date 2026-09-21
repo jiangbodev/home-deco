@@ -1,0 +1,34 @@
+{
+  "scope": "short local movement/yaw samples; before final diffuse/contact exclusion",
+  "viewport": {
+    "width": 1274,
+    "height": 1089,
+    "dpr": 2.4
+  },
+  "samples": [
+    {
+      "room": "客厅",
+      "frames": 180,
+      "medianMs": 16.7,
+      "p95Ms": 18.0,
+      "maxMs": 18.7,
+      "over25Ms": 0
+    },
+    {
+      "room": "主卧",
+      "frames": 180,
+      "medianMs": 16.7,
+      "p95Ms": 18.3,
+      "maxMs": 18.6,
+      "over25Ms": 0
+    },
+    {
+      "room": "厨房",
+      "frames": 180,
+      "medianMs": 16.7,
+      "p95Ms": 18.1,
+      "maxMs": 18.6,
+      "over25Ms": 0
+    }
+  ]
+}

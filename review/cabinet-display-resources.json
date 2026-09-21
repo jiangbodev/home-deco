@@ -1,0 +1,31 @@
+{
+  "modelBytes": 7141968,
+  "appearanceBytes": 12973035,
+  "sourceSha256": "ade10e0cc0b70eb005de5350887934ead872b811c7c693e5dba9970254964405",
+  "archivedUnused": [
+    "base-3dfbe84c6280.glb",
+    "base-43d61af7d5bb.glb",
+    "room-0-1a3cf69b64d6.glb",
+    "room-0-606a243b6f2e.glb",
+    "room-1-1e3a0df6a987.glb",
+    "room-1-4ba2522ebece.glb",
+    "room-1-4d9c0f4880d0.glb",
+    "floor-contact-e5857d41dea7.png",
+    "irradiance-floor-558e148301ef.png",
+    "irradiance-floor-afaab1be2395.png",
+    "irradiance-wall-b68a6ac990e4.png",
+    "irradiance-wall-ba338a2e6b99.png",
+    "object-contact-7e61b6e9762f.bin.gz",
+    "object-contact-91b27d364e81.bin.gz",
+    "object-contact-c40afc1ebf7e.bin.gz",
+    "reflection-bedroom-988a42661784.hdr",
+    "reflection-bedroom-9e94e89ff745.hdr",
+    "reflection-guest-bath-403abc7503dd.hdr",
+    "reflection-guest-bath-863840babf2d.hdr",
+    "reflection-kitchen-0fe35feec8df.hdr",
+    "reflection-kitchen-5056e52d47de.hdr",
+    "reflection-living-6b114f5f5ce8.hdr",
+    "reflection-living-8b7a339bc6fc.hdr",
+    "wall-contact-85a098f46d81.png"
+  ]
+}

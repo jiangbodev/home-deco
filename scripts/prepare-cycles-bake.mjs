@@ -2,7 +2,7 @@
 import {NodeIO} from '@gltf-transform/core';import {ALL_EXTENSIONS} from '@gltf-transform/extensions';import{getBounds}from'@gltf-transform/functions';import * as T from'three';import fs from'node:fs/promises';import crypto from'node:crypto';
 const input=process.argv[2],output=process.argv[3];const io=new NodeIO().registerExtensions(ALL_EXTENSIONS),doc=await io.read(input);const receivers=[],floors=[];
 for(const n of doc.getRoot().listNodes()){
- if(!n.getMesh())continue;let visible=true;for(let p=n;p;p=p.getParentNode())if(p.getExtras().source_visible===false)visible=false;if(!visible)continue;
+ if(!n.getMesh()||/^(餐桌侧显示屏|超短焦投影机_产品外形示意)$/.test(n.getName()))continue;let visible=true;for(let p=n;p;p=p.getParentNode())if(p.getExtras().source_visible===false)visible=false;if(!visible)continue;
  const ps=n.getMesh().listPrimitives();if(ps.some(p=>p.getMaterial()?.getAlphaMode()==='BLEND'||p.getMaterial()?.getExtension('KHR_materials_transmission')?.getTransmissionFactor()>0))continue;
  let meta={};try{meta=JSON.parse(n.getExtras().metadata??'{}')}catch{}
  const box=getBounds(n),size=box.max.map((v,i)=>v-box.min[i]);

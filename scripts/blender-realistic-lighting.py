@@ -25,8 +25,12 @@ sky=nodes.new('ShaderNodeTexSky');sky.sky_type='NISHITA';sky.sun_disc=False;sky.
 sun=bpy.data.lights.new('Daylight sun','SUN');sun.energy=2.0;sun.angle=math.radians(4);sun.color=(1,.92,.8);obj=bpy.data.objects.new(sun.name,sun);scene.collection.objects.link(obj);obj.rotation_euler=Vector((-1,.35,-.75)).to_track_quat('-Z','Y').to_euler()
 # Shadow rays transmit through thin exterior glass without refractive-caustic noise.
 for m in bpy.data.materials:
- if m.name!='外窗清玻璃':continue
+ if m.name not in ['外窗清玻璃','厨房清玻璃','室内水波玻璃','Neutral translucent privacy glass'] and m.get('source_material_id') not in [5,7,10,14,314]:continue
  nt=m.node_tree;p=nt.nodes.get('Principled BSDF');output=nt.nodes.get('Material Output');transparent=nt.nodes.new('ShaderNodeBsdfTransparent');ray=nt.nodes.new('ShaderNodeLightPath');mix=nt.nodes.new('ShaderNodeMixShader');nt.links.new(ray.outputs['Is Shadow Ray'],mix.inputs[0]);nt.links.new(p.outputs['BSDF'],mix.inputs[1]);nt.links.new(transparent.outputs[0],mix.inputs[2]);nt.links.new(mix.outputs[0],output.inputs['Surface'])
+# A finite daylight aperture at the actual north kitchen window supplies diffuse
+# skylight efficiently. It is aligned with the opening, not a room-centre fill.
+data=bpy.data.lights.new('Kitchen north window diffuse daylight','AREA');data.energy=25;data.color=(.95,.98,1);data.shape='RECTANGLE';data.size=.69;data.size_y=1.42
+o=bpy.data.objects.new(data.name,data);scene.collection.objects.link(o);o.location=point((6.334,1.61,.108));o.rotation_euler=(point((6.334,1.61,1.0))-o.location).to_track_quat('-Z','Y').to_euler()
 # Match actual pendant locations; restrained warm fill, not fictitious room-centre lights.
 for i,pos in enumerate([[6.0092,1.625,4.7304],[6.8492,1.625,4.7304]]):
  data=bpy.data.lights.new('Dining pendant %d'%i,'AREA');data.energy=10;data.color=(1,.88,.72);data.shape='DISK';data.size=.11;o=bpy.data.objects.new(data.name,data);scene.collection.objects.link(o);o.location=point(pos)

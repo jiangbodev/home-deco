@@ -1,0 +1,140 @@
+[
+  {
+    "module": "base",
+    "name": "洗衣隐藏门板1",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "base",
+    "name": "洗衣隐藏门板2",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "base",
+    "name": "洗衣隐藏门板3",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "base",
+    "name": "玄关前拱框",
+    "before": 664,
+    "after": 664
+  },
+  {
+    "module": "base",
+    "name": "玄关左侧圆弧包覆",
+    "before": 646,
+    "after": 646
+  },
+  {
+    "module": "room-0",
+    "name": "玄关层板_700",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "通高柜内退踢脚",
+    "before": 188,
+    "after": 188
+  },
+  {
+    "module": "room-1",
+    "name": "圆弧包覆实体层0",
+    "before": 272,
+    "after": 272
+  },
+  {
+    "module": "room-1",
+    "name": "圆弧包覆实体层1230",
+    "before": 272,
+    "after": 272
+  },
+  {
+    "module": "room-1",
+    "name": "圆弧包覆实体层900",
+    "before": 272,
+    "after": 272
+  },
+  {
+    "module": "room-1",
+    "name": "壁龛背部600",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-1",
+    "name": "壁龛背部930",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-1",
+    "name": "壁龛靠沙发端600",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-1",
+    "name": "壁龛靠沙发端930",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-1",
+    "name": "沙发上方浅色层板",
+    "before": 768,
+    "after": 188
+  },
+  {
+    "module": "room-1",
+    "name": "展示画框画芯",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-1",
+    "name": "展示画框背板",
+    "before": 12,
+    "after": 1128
+  },
+  {
+    "module": "room-1",
+    "name": "搁板薄书示意0",
+    "before": 12,
+    "after": 800
+  },
+  {
+    "module": "room-1",
+    "name": "搁板薄书示意1",
+    "before": 12,
+    "after": 800
+  },
+  {
+    "module": "room-1",
+    "name": "搁板薄书示意2",
+    "before": 12,
+    "after": 800
+  },
+  {
+    "module": "room-1",
+    "name": "画芯线条示意",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-1",
+    "name": "画芯线条示意.001",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-1",
+    "name": "画芯线条示意.002",
+    "before": 12,
+    "after": 188
+  }
+]

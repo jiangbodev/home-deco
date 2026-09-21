@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {prepareCabinetFinish} from './cabinet-finish.js';
 import {prepareTVWall} from './tv-wall-finish.js';
 import {RectAreaLightUniformsLib} from 'three/addons/lights/RectAreaLightUniformsLib.js';
 import {createObjectContact} from './object-contact.js';
@@ -47,6 +48,13 @@ export function createAppearance(renderer){
    }
    for(const m of Array.isArray(o.material)?o.material:[o.material]){
     if(tuned.has(m))continue;tuned.add(m);
+    // These glazing meshes are closed thin solids with both outward-facing
+    // surfaces authored. DoubleSide adds an unnecessary transmissive back-face
+    // pass; FrontSide still shows either face when viewed from the other room.
+    if([7,11,314].includes(m.userData.source_material_id))m.side=THREE.FrontSide;
+    // The authored mirror surfaces were matte green placeholders. Reuse the
+    // offline room probe for a low-cost silvered-glass approximation.
+    if(m.userData.source_material_id===20){m.color.setRGB(.92,.94,.95);m.metalness=1;m.roughness=.075;m.map=null;m.roughnessMap=null;m.metalnessMap=null;m.aoMap=null;}
     // Retain authored maps and UV scale; only calibrate their surface response.
     if(m.name==='室内水波玻璃'){m.roughness=.22;if(m.normalMap)m.normalScale.multiplyScalar(.6)}
     if(![8,24,37,38,54,56,62,64,67,85,87].includes(m.userData.source_material_id)&&!m.map&&!m.transparent&&m.metalness<.05&&m.roughness>.45&&Math.min(m.color.r,m.color.g,m.color.b)>.55)m.color.multiplyScalar(.86);
@@ -55,6 +63,7 @@ export function createAppearance(renderer){
     }
     if([190,191,192,193,194,195].includes(m.userData.source_material_id)&&m.normalMap)m.normalScale.multiplyScalar(.8);
    }
+   if((Array.isArray(o.material)?o.material:[o.material]).every(m=>m.userData.source_material_id===20))return;
    let meta={};try{meta=JSON.parse(o.userData.metadata||'{}')}catch{}
    // Deferred nodes retain source metadata on their original parent.
    if(!meta.id&&o.parent)try{meta=JSON.parse(o.parent.userData.metadata||'{}')}catch{}
@@ -104,7 +113,7 @@ vec3 an=abs(wn),wp=clamp((contactPosition-wallMin)/wallSize,0.0,1.0);
     m.customProgramCacheKey=()=> 'floor-light-v2';return m;
    });if(!multiple)o.material=o.material[0];
   });
-  finishes.prepare(group);objectContact.prepare(group);irradiance.prepare(group);prepareTVWall(group);reflections.prepare(group);
+  finishes.prepare(group);objectContact.prepare(group);irradiance.prepare(group);prepareTVWall(group);prepareCabinetFinish(group);reflections.prepare(group);
  }
  function update(model,initialTransforms,loaded,assetFiles){
   irradiance.update(model,initialTransforms,loaded,assetFiles);reflections.update(model,initialTransforms,loaded,assetFiles);

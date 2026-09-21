@@ -22,6 +22,7 @@ export function createObjectContact(){
   const source=o.geometry,g=new THREE.BufferGeometry();for(const [name,attribute] of Object.entries(source.attributes))g.setAttribute(name,attribute);g.setIndex(source.index);g.groups=source.groups.map(group=>({...group}));g.drawRange={...source.drawRange};g.boundingBox=source.boundingBox;g.boundingSphere=source.boundingSphere;
   g.setAttribute('objectOcclusion',new THREE.Uint8BufferAttribute(data.slice(e.offset,e.offset+e.count),1,true));o.geometry=g;
   const multiple=Array.isArray(o.material),mats=(multiple?o.material:[o.material]).map(original=>{
+   if(original.userData.source_material_id===20)return original;
    const m=original.clone(),previous=original.onBeforeCompile,key=original.customProgramCacheKey();m.userData.objectContact=true;
    m.onBeforeCompile=(shader,...args)=>{
     previous.call(m,shader,...args);shader.uniforms.objectContactStrength=strength;

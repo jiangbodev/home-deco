@@ -1,0 +1,1532 @@
+[
+  {
+    "module": "base",
+    "name": "主卧玻璃双门执手",
+    "before": 12,
+    "after": 436
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门玻璃",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门边框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门边框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门执手.001",
+    "before": 12,
+    "after": 436
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门横框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门横框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门玻璃.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门边框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门边框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卫内部压纹隔断",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "base",
+    "name": "主卫房门执手",
+    "before": 12,
+    "after": 436
+  },
+  {
+    "module": "base",
+    "name": "儿童房玻璃门执手",
+    "before": 12,
+    "after": 436
+  },
+  {
+    "module": "base",
+    "name": "儿童房玻璃门横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "儿童房玻璃门横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "儿童房玻璃门横框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "儿童房玻璃门横框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "儿童房玻璃门横框.004",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "儿童房玻璃门横框.005",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "儿童房玻璃门边框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "儿童房玻璃门边框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "入户门执手",
+    "before": 12,
+    "after": 436
+  },
+  {
+    "module": "base",
+    "name": "主卫客厅窗上部细竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卫客厅窗上部细竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卫客厅窗上部细竖框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卫客厅窗上部细竖框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卫客厅窗上部细竖框.004",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卫客厅窗横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卫客厅窗横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卫客厅窗横框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卫客厅窗横框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卫客厅窗边竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "主卫客厅窗边竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房餐厅内窗上部细竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房餐厅内窗上部细竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房餐厅内窗上部细竖框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房餐厅内窗上部细竖框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房餐厅内窗上部细竖框.004",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房餐厅内窗横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房餐厅内窗横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房餐厅内窗横框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房餐厅内窗横框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房餐厅内窗边竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房餐厅内窗边竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房玻璃移门上部细竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房玻璃移门执手",
+    "before": 12,
+    "after": 436
+  },
+  {
+    "module": "base",
+    "name": "厨房玻璃移门横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房玻璃移门横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房玻璃移门横框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房玻璃移门横框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房玻璃移门横框.004",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房玻璃移门边框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "厨房玻璃移门边框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "次卧房门执手",
+    "before": 12,
+    "after": 436
+  },
+  {
+    "module": "base",
+    "name": "次卫房门执手",
+    "before": 12,
+    "after": 436
+  },
+  {
+    "module": "base",
+    "name": "外置台盆台面",
+    "before": 32,
+    "after": 144
+  },
+  {
+    "module": "base",
+    "name": "外置台盆台面盆壁",
+    "before": 12,
+    "after": 54
+  },
+  {
+    "module": "base",
+    "name": "外置台盆台面盆壁.001",
+    "before": 12,
+    "after": 54
+  },
+  {
+    "module": "base",
+    "name": "外置台盆台面盆壁.002",
+    "before": 12,
+    "after": 54
+  },
+  {
+    "module": "base",
+    "name": "外置台盆台面盆壁.003",
+    "before": 12,
+    "after": 54
+  },
+  {
+    "module": "base",
+    "name": "外置台盆台面盆底",
+    "before": 12,
+    "after": 228
+  },
+  {
+    "module": "base",
+    "name": "主卫台盆台面",
+    "before": 208,
+    "after": 208
+  },
+  {
+    "module": "base",
+    "name": "厨房南水槽台_1240x600浅色台面",
+    "before": 32,
+    "after": 144
+  },
+  {
+    "module": "base",
+    "name": "厨房南水槽台_1240x600浅色台面盆壁",
+    "before": 12,
+    "after": 54
+  },
+  {
+    "module": "base",
+    "name": "厨房南水槽台_1240x600浅色台面盆壁.001",
+    "before": 12,
+    "after": 54
+  },
+  {
+    "module": "base",
+    "name": "厨房南水槽台_1240x600浅色台面盆壁.002",
+    "before": 12,
+    "after": 54
+  },
+  {
+    "module": "base",
+    "name": "厨房南水槽台_1240x600浅色台面盆壁.003",
+    "before": 12,
+    "after": 54
+  },
+  {
+    "module": "base",
+    "name": "厨房南水槽台_1240x600浅色台面盆底",
+    "before": 12,
+    "after": 72
+  },
+  {
+    "module": "base",
+    "name": "主卫内部压纹隔断固定扇",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "base",
+    "name": "次卫排水门把与纸架",
+    "before": 12,
+    "after": 4572
+  },
+  {
+    "module": "base",
+    "name": "主卧东窗嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "主卧北侧转角窗嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门玻璃嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "主卧玻璃双门玻璃.001嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "主卫内部压纹隔断嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "主卫内部压纹隔断固定扇嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "主卫北窗嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "主卫客厅窗嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "主卫淋浴透明玻璃嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "儿童房外窗嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "儿童房玻璃门玻璃嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "厨房北窗嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "厨房玻璃柜门嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "厨房玻璃移门玻璃嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "厨房转角固定玻璃嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "厨房餐厅内窗嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "客厅东窗嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "次卧外窗嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "次卫外窗嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "base",
+    "name": "次卫淋浴透明玻璃嵌玻密封条",
+    "before": 12,
+    "after": 96
+  },
+  {
+    "module": "room-0",
+    "name": "厨房转角固定玻璃上部细竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-0",
+    "name": "厨房转角固定玻璃横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-0",
+    "name": "厨房转角固定玻璃横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-0",
+    "name": "厨房转角固定玻璃横框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-0",
+    "name": "厨房转角固定玻璃横框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-0",
+    "name": "厨房转角固定玻璃边竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-0",
+    "name": "外置台盆下柜拉手",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "外置台盆下柜拉手.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "餐桌侧显示屏",
+    "before": 12,
+    "after": 752
+  },
+  {
+    "module": "room-0",
+    "name": "餐桌台面",
+    "before": 268,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "餐桌板式支撑",
+    "before": 268,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "餐桌板式支撑.001",
+    "before": 268,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "龙头",
+    "before": 112,
+    "after": 112
+  },
+  {
+    "module": "room-0",
+    "name": "龙头出水口",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-0",
+    "name": "龙头调节柄",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-0",
+    "name": "龙头起泡口",
+    "before": 80,
+    "after": 80
+  },
+  {
+    "module": "room-0",
+    "name": "南侧通高柜2035门板1",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-0",
+    "name": "南侧通高柜2035门板2",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-0",
+    "name": "南侧通高柜2035门板3",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-0",
+    "name": "南侧通高柜2035门板4",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-0",
+    "name": "厨房水槽排水盖",
+    "before": 160,
+    "after": 160
+  },
+  {
+    "module": "room-0",
+    "name": "厨房玻璃柜门竖框.005",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-0",
+    "name": "条凳支腿",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "条凳支腿.001",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "条凳支腿.002",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "条凳支腿.003",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "餐桌结构横撑",
+    "before": 268,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "通高柜内退踢脚",
+    "before": 268,
+    "after": 188
+  },
+  {
+    "module": "room-1",
+    "name": "主卫台盆柜拉手.002",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-1",
+    "name": "Warm walnut - real oak scan tinted.004",
+    "before": 986,
+    "after": 986
+  },
+  {
+    "module": "room-1",
+    "name": "龙头.002",
+    "before": 112,
+    "after": 112
+  },
+  {
+    "module": "room-1",
+    "name": "龙头调节柄.002",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-3",
+    "name": "厨房北窗横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-3",
+    "name": "厨房北窗横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-3",
+    "name": "厨房北窗竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-3",
+    "name": "厨房北窗竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-3",
+    "name": "厨房北操作台_深570浅色台面",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-3",
+    "name": "厨房右柜_深600浅色台面",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-3",
+    "name": "厨房玻璃柜门横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-3",
+    "name": "厨房玻璃柜门横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-3",
+    "name": "厨房玻璃柜门竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-3",
+    "name": "厨房玻璃柜门竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-3",
+    "name": "厨房玻璃柜门竖框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-3",
+    "name": "厨房玻璃柜门竖框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-3",
+    "name": "厨房玻璃柜门竖框.004",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-3",
+    "name": "灶具",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-3",
+    "name": "灶具控制旋钮",
+    "before": 96,
+    "after": 96
+  },
+  {
+    "module": "room-3",
+    "name": "灶具控制旋钮.001",
+    "before": 96,
+    "after": 96
+  },
+  {
+    "module": "room-3",
+    "name": "燃气炉头底座",
+    "before": 192,
+    "after": 192
+  },
+  {
+    "module": "room-3",
+    "name": "燃气炉头底座.001",
+    "before": 192,
+    "after": 192
+  },
+  {
+    "module": "room-3",
+    "name": "铸铁锅架环",
+    "before": 312,
+    "after": 312
+  },
+  {
+    "module": "room-3",
+    "name": "铸铁锅架环.001",
+    "before": 312,
+    "after": 312
+  },
+  {
+    "module": "room-3",
+    "name": "锅架承托",
+    "before": 334,
+    "after": 334
+  },
+  {
+    "module": "room-3",
+    "name": "锅架承托.001",
+    "before": 334,
+    "after": 334
+  },
+  {
+    "module": "room-3",
+    "name": "锅架承托.002",
+    "before": 334,
+    "after": 334
+  },
+  {
+    "module": "room-3",
+    "name": "锅架承托.003",
+    "before": 334,
+    "after": 334
+  },
+  {
+    "module": "room-3",
+    "name": "锅架承托.004",
+    "before": 334,
+    "after": 334
+  },
+  {
+    "module": "room-3",
+    "name": "锅架承托.005",
+    "before": 334,
+    "after": 334
+  },
+  {
+    "module": "room-3",
+    "name": "锅架承托.006",
+    "before": 334,
+    "after": 334
+  },
+  {
+    "module": "room-3",
+    "name": "锅架承托.007",
+    "before": 334,
+    "after": 334
+  },
+  {
+    "module": "room-3",
+    "name": "厨房灶台锅具",
+    "before": 268,
+    "after": 3228
+  },
+  {
+    "module": "room-3",
+    "name": "厨房备餐砧板",
+    "before": 268,
+    "after": 188
+  },
+  {
+    "module": "room-4",
+    "name": "主卧东窗横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧东窗横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧东窗横框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧东窗竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧东窗竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧东窗竖框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧东窗竖框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧北侧转角窗横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧北侧转角窗横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧北侧转角窗横框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧北侧转角窗竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧北侧转角窗竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧北侧转角窗竖框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "客厅东窗横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "客厅东窗横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "客厅东窗横框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "客厅东窗竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "客厅东窗竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "客厅东窗竖框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "客厅东窗竖框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "客厅东窗竖框.004",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧书桌_600x1750台面",
+    "before": 268,
+    "after": 188
+  },
+  {
+    "module": "room-4",
+    "name": "Warm grey upholstered study chair.001",
+    "before": 1734,
+    "after": 1734
+  },
+  {
+    "module": "room-4",
+    "name": "主卧转角连续台面",
+    "before": 268,
+    "after": 188
+  },
+  {
+    "module": "room-4",
+    "name": "Warm walnut - real oak scan tinted.005",
+    "before": 1068,
+    "after": 1068
+  },
+  {
+    "module": "room-4",
+    "name": "超短焦投影机_产品外形示意",
+    "before": 12,
+    "after": 3572
+  },
+  {
+    "module": "room-5",
+    "name": "次卧外窗横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-5",
+    "name": "次卧外窗横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-5",
+    "name": "次卧外窗竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-5",
+    "name": "次卧外窗竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-5",
+    "name": "次卧外窗竖框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房固定玻璃横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房固定玻璃横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房固定玻璃横框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房固定玻璃横框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房固定玻璃横框.004",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房固定玻璃横框.005",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房固定玻璃竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房固定玻璃竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房外窗横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房外窗横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房外窗竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房外窗竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房外窗竖框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "儿童房外窗竖框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-6",
+    "name": "次卧外窗竖框.003",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫北窗横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫北窗横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫北窗横框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫北窗竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫北窗竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫北窗竖框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫淋浴透明玻璃横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫淋浴透明玻璃横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫淋浴透明玻璃竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫淋浴透明玻璃竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫淋浴透明玻璃竖框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫台盆台面排水盖",
+    "before": 160,
+    "after": 160
+  },
+  {
+    "module": "room-7",
+    "name": "主卫台盆台面连续圆角盆腔",
+    "before": 432,
+    "after": 432
+  },
+  {
+    "module": "room-7",
+    "name": "主卫台盆柜拉手",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫台盆柜拉手.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "龙头.001",
+    "before": 112,
+    "after": 112
+  },
+  {
+    "module": "room-7",
+    "name": "龙头出水口.001",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-7",
+    "name": "龙头出水口.002",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-7",
+    "name": "龙头调节柄.001",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-7",
+    "name": "龙头起泡口.001",
+    "before": 80,
+    "after": 80
+  },
+  {
+    "module": "room-7",
+    "name": "龙头起泡口.002",
+    "before": 80,
+    "after": 80
+  },
+  {
+    "module": "room-8",
+    "name": "厨房转角固定玻璃边竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "次卫外窗横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "次卫外窗横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "次卫外窗横框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "次卫外窗竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "次卫外窗竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "次卫淋浴透明玻璃横框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "次卫淋浴透明玻璃横框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "次卫淋浴透明玻璃竖框",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "次卫淋浴透明玻璃竖框.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "次卫淋浴透明玻璃竖框.002",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "厨房左窄柜_深326浅色台面",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶冲水面板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶双档按钮",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶双档按钮.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶壁挂接头",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶座圈",
+    "before": 910,
+    "after": 910
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶缓降铰链",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶缓降铰链.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶闭合盖板",
+    "before": 910,
+    "after": 910
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶陶瓷壳",
+    "before": 596,
+    "after": 596
+  },
+  {
+    "module": "room-8",
+    "name": "淋浴墙面固定臂",
+    "before": 960,
+    "after": 960
+  },
+  {
+    "module": "room-8",
+    "name": "淋浴墙面固定臂.001",
+    "before": 960,
+    "after": 960
+  },
+  {
+    "module": "room-8",
+    "name": "手持花洒出水面",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "手持花洒头",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-8",
+    "name": "手持花洒柄",
+    "before": 334,
+    "after": 334
+  },
+  {
+    "module": "room-8",
+    "name": "手持花洒软管",
+    "before": 334,
+    "after": 334
+  },
+  {
+    "module": "room-8",
+    "name": "淋浴混水阀",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "淋浴立管",
+    "before": 334,
+    "after": 334
+  },
+  {
+    "module": "room-8",
+    "name": "淋浴调节旋钮",
+    "before": 96,
+    "after": 96
+  },
+  {
+    "module": "room-8",
+    "name": "淋浴调节旋钮.001",
+    "before": 96,
+    "after": 96
+  },
+  {
+    "module": "room-8",
+    "name": "顶喷",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "顶喷出水面",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "厨房层板叠碗",
+    "before": 268,
+    "after": 1344
+  }
+]

@@ -17,8 +17,13 @@ for m in bpy.data.materials:
  nt=m.node_tree;uvnode=nt.nodes.new('ShaderNodeUVMap');uvnode.uv_map='UVMap'
  for node in list(nt.nodes):
   if node.type=='TEX_IMAGE' and not node.inputs['Vector'].is_linked:nt.links.new(uvnode.outputs['UV'],node.inputs['Vector'])
+# Resume only identical bake inputs. Never silently reuse old lighting for new geometry.
+previous_plan=out/'plan.json'
+if any((out/(kind+'.rgba32f')).exists() for kind in ['floor','wall']):
+ if not previous_plan.exists() or json.loads(previous_plan.read_text())!=plan:
+  raise RuntimeError('Existing bake belongs to different inputs; use a fresh output directory')
 # Full-resolution atlas; four-pixel gutters preserve chart isolation.
-Path(out/'plan.json').write_text(json.dumps(plan,ensure_ascii=False,indent=2))
+previous_plan.write_text(json.dumps(plan,ensure_ascii=False,indent=2))
 for kind in ['floor','wall']:
  if (out/(kind+'.rgba32f')).exists():continue
  info=plan[kind];width,height=info['width'],info['height'];img=bpy.data.images.new('Cycles irradiance '+kind,width,height,alpha=True,float_buffer=True);img.colorspace_settings.name='Non-Color';selected=[]

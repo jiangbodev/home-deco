@@ -1,0 +1,8 @@
+{
+  "sourceSha256": "3dd73a3f3563008470dcfcecb4dff66ff0415308d198285cb7d544e6e4ceea9a",
+  "bake": "qa/realism-joinery-baked",
+  "lightingScene": "source/home-deco-details-daylight.blend",
+  "lightingSceneSha256": "4172d6377883bf5495a2b1d39d3db53b90bfbf69123d6d55aae17e631b10edce",
+  "modelBytes": 7155873,
+  "totalAppearanceBytes": 12978494
+}

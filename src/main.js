@@ -20,7 +20,7 @@ const camera=new THREE.PerspectiveCamera(65,1,.035,90);camera.rotation.order='YX
 const pendingWalkRooms=new Set();
 const initialTransforms=new Map(), keys=new Set(), joystick={x:0,y:0};
 const C=new THREE.Matrix4().makeRotationX(-Math.PI/2), Ci=C.clone().invert();
-const stateNames={'bath-partition':'打开主卫内部隔断','doors':'打开房门','privacy-curtain':'合上隐私帘','kitchen-window-open':'打开厨房窗','laundry-doors':'展开洗衣区隐藏门','ceiling':'显示吊顶','effect-floor':'效果图连续木地板','furniture':'显示家具','piano':'显示钢琴','dining-stored':'收纳餐椅与条凳'};
+const stateNames={'bath-partition':'打开主卫内部隔断','doors':'打开房门','privacy-curtain':'合上隐私帘','kitchen-window-open':'打开厨房窗','laundry-doors':'展开洗衣区隐藏门'};
 let toastTimer;
 function toast(text){$('#toast').textContent=text;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2400)}
 function metadata(o){try{return JSON.parse(o.userData.metadata||'{}')}catch{return {}}}
@@ -49,7 +49,9 @@ function readStates(){
      try{const pair=JSON.parse(v),key=k.slice(12);if(!grouped.has(key))grouped.set(key,[]);grouped.get(key).push({o,pair})}catch{console.warn('Invalid interaction metadata',o.name,k)}
    }
  });
+ // Expose everyday controls only; other authored states retain their defaults.
  for(const[key,entries]of grouped){
+   if(!Object.hasOwn(stateNames,key))continue;
    const label=document.createElement('label');label.className='setting-row';label.append(document.createTextNode(stateNames[key]||key));const input=document.createElement('input');input.type='checkbox';input.setAttribute('role','switch');label.append(input);$('#state-controls').append(label);
    input.onchange=()=>{entries.forEach(({o,pair})=>{const s=pair[input.checked?'on':'off'];if(!s)return;o.visible=s.visible;const m=C.clone().multiply(new THREE.Matrix4().fromArray(s.matrix)).multiply(Ci);m.decompose(o.position,o.quaternion,o.scale);o.updateMatrix()});model.updateMatrixWorld(true);refreshAppearance()};
    stateEntries.push({key,entries,input});
@@ -97,7 +99,7 @@ for(const event of ['pointerup','pointercancel','lostpointercapture'])stick.addE
 
 async function start(){
  try{
-   renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:coarse?'default':'high-performance'});renderer.transmissionResolutionScale=.5;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
+   renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:coarse?'default':'high-performance'});renderer.transmissionResolutionScale=.35;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
    resize();const pmrem=new THREE.PMREMGenerator(renderer), env=new RoomEnvironment();scene.environment=pmrem.fromScene(env,.04).texture;env.dispose();pmrem.dispose();scene.environmentIntensity=.45;
    scene.add(new THREE.HemisphereLight(0xf3f6ff,0xb0a394,.6));const sun=new THREE.DirectionalLight(0xfff6ea,.7);sun.position.set(12,8,6);scene.add(sun);
    appearance=createAppearance(renderer);const appearanceReady=appearance.init();

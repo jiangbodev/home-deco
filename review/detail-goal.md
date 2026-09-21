@@ -1,0 +1,15 @@
+# Completed local realism detail goal
+
+User delegates aesthetic judgment for dining table, television, dining area, living cabinetry and secondary bathroom. Improve existing design and construction instead of adding tabletop clutter. Preserve the approved room layout, ivory cabinet color, free walking/1.4 m viewpoint, door states and doorway shortcuts. No automatic publication for this follow-up. Resource size is a reference, not a hard cap (user follow-up); prioritize smooth startup, room changes and walking; validate real Chrome/Metal movement after offline work.
+
+Visual criteria: believable furniture edge radii and support, coherent warm wood grain, an actual neutral-black 16:9 TV with mount/bezel/glass, a plausible compact UST projector instead of a flat placeholder, legible cabinetry joints/plinth, white glazed ceramic distinctly different from matte stone and satin metal, attached and correctly scaled bathroom fittings. No new floating accessories, obvious intersections, lightmap seams or blank doorway views.
+
+Baseline: main 9c851f3; immutable qa/realism-detail-original/{modules,lighting}, qa/realism-detail-before.glb. Before images: detail-before.jpg (eight actual browser cameras). Authoring: scripts/blender-refine-details.py -> source/home-deco-details.blend and qa/realism-detail-edited.glb. Integration: scripts/import-blender-details.mjs preserves existing moduleNode/attachTo and adds six stable accessory nodes. Bake source: qa/realism-detail-source.glb. New Cycles/HDR/fallback bakes must use this exact assembled source; do not bypass version checks.
+
+Iteration 1: 16:9 coated screen and eased chassis, 40 mm solid-oak tabletop with 6 mm softened edge, rounded trestle supports/stretcher, compact projector/lens/vents, toned scanned cabinet albedo and reduced inherited AO, recessed ivory cabinet plinth, separate ceramic and steel materials, drain/door pull/paper holder. One extra stationary bathroom HDR probe is generated offline; no additional live reflection/shadow pass. Initial browser draft has no page/shader errors. First iteration passed final lit review, startup/entries and Apple M4 movement checks. Follow-up now includes chairs, bedroom desk, dressing/wash area and washbasins.
+
+User expanded scope to kitchen details and cookware: inspect existing hob, author physically supported pan/pot and restrained prep/shelf items, repair sink geometry, then rerun lighting and runtime review.
+
+User additionally requested bright natural kitchen daylight and realistic construction of all doors/windows, not merely lighting. Added glazing rebates/seals, small profile radii, proper lever hardware, translucent pressed glass retaining its normal texture, and offline window-aperture daylight. 20 pane/seal pairs passed open/close/reset-relative-transform checks.
+
+Completed after final lit image review, all-room entry checks, 20 glazing-state pairs, production cold/warm loading, and 1,500 measured movement/yaw frames. Final judgement and exact metrics: detail-review.md. All later user scope and relaxed size preference supersede the original objective wording. No commit or deployment performed.

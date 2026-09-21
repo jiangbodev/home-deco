@@ -1,0 +1,92 @@
+[
+  {
+    "label": "dining",
+    "errors": [],
+    "frames": 300,
+    "median": 16.69999999999891,
+    "p95": 16.799999999999272,
+    "max": 16.80000000000109,
+    "over25ms": 0,
+    "cpuP95": 6.600000023841858,
+    "pixelRatio": 1.075828707279838,
+    "buffer": [
+      2065,
+      1161
+    ],
+    "transmissionScale": 0.35,
+    "drawCalls": 862,
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+  },
+  {
+    "label": "living",
+    "errors": [],
+    "frames": 300,
+    "median": 16.69999999999891,
+    "p95": 16.799999999999272,
+    "max": 16.80000000000109,
+    "over25ms": 0,
+    "cpuP95": 6.899999976158142,
+    "pixelRatio": 1.075828707279838,
+    "buffer": [
+      2065,
+      1161
+    ],
+    "transmissionScale": 0.35,
+    "drawCalls": 1140,
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+  },
+  {
+    "label": "bath",
+    "errors": [],
+    "frames": 300,
+    "median": 16.69999999999891,
+    "p95": 16.799999999999272,
+    "max": 16.80000000000109,
+    "over25ms": 0,
+    "cpuP95": 4.300000011920929,
+    "pixelRatio": 1.075828707279838,
+    "buffer": [
+      2065,
+      1161
+    ],
+    "transmissionScale": 0.35,
+    "drawCalls": 112,
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+  },
+  {
+    "label": "bedroom",
+    "errors": [],
+    "frames": 300,
+    "median": 16.69999999999891,
+    "p95": 16.700000000000728,
+    "max": 16.80000000000109,
+    "over25ms": 0,
+    "cpuP95": 4.300000011920929,
+    "pixelRatio": 1.075828707279838,
+    "buffer": [
+      2065,
+      1161
+    ],
+    "transmissionScale": 0.35,
+    "drawCalls": 146,
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+  },
+  {
+    "label": "kitchen",
+    "errors": [],
+    "frames": 300,
+    "median": 16.69999999999891,
+    "p95": 16.799999999999272,
+    "max": 16.80000000000109,
+    "over25ms": 0,
+    "cpuP95": 6.5,
+    "pixelRatio": 1.075828707279838,
+    "buffer": [
+      2065,
+      1161
+    ],
+    "transmissionScale": 0.35,
+    "drawCalls": 948,
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+  }
+]
