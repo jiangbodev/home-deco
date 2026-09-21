@@ -5,7 +5,7 @@ const lacquer=new Set([8,24,37,38,54,56,62,64,67,85,87]);
 const timber=new Set([9,15,17,25,32,35,41,45,50,52,65,69,72,75]);
 const profiles={
  plaster:{rough:.92,amplitude:'.00016',colorNoise:'.025',roughNoise:'.16',uv:'vec2(4.0)',edge:0},
- lacquer:{rough:.43,amplitude:'.00012',colorNoise:'.025',roughNoise:'.2',uv:'vec2(4.0)',edge:.0012},
+ lacquer:{rough:.32,amplitude:'.000025',colorNoise:'.008',roughNoise:'.045',uv:'vec2(4.0)',edge:.0012},
  timber:{rough:.78,amplitude:'.00005',colorNoise:'.015',roughNoise:'.12',uv:'vec2(4.0)',edge:.0018},
  counter:{rough:.32,amplitude:'.000035',colorNoise:'.085',roughNoise:'.16',uv:'vec2(12.0)',edge:.0015},
  steel:{rough:.29,amplitude:'.000004',colorNoise:'.012',roughNoise:'.17',uv:'vec2(2.0,80.0)',edge:0},
@@ -38,7 +38,7 @@ export function createSurfaceFinishes(renderer){
    const m=original.clone(),previous=original.onBeforeCompile,previousKey=original.customProgramCacheKey();
    m.userData.surfaceFinish=kind;m.userData.edgeEasing=edge;
    if(kind==='plaster')m.color.setRGB(.68,.66,.63);
-   if(kind==='lacquer')m.color.setRGB(.60,.59,.56);
+   // Preserve authored warm ivory cabinet color; avoid flattening it to wall-like grey.
    if(kind==='counter')m.color.setRGB(.72,.71,.66);
    if(kind==='steel')m.metalness=.96;
    if(kind==='timber'&&m.normalMap)m.normalScale.multiplyScalar(.35);
@@ -76,7 +76,7 @@ export function createSurfaceFinishes(renderer){
       normal=normalize(max(abs(det),1e-10)*normal-grad);
      `);
    };
-   m.customProgramCacheKey=()=>previousKey+'|finish-v3-'+kind+(edge?'-edge':'');return m;
+   m.customProgramCacheKey=()=>previousKey+'|finish-v4-'+kind+(edge?'-edge':'');return m;
   });o.material=multiple?result:result[0];
  })}
  return {load,prepare};
