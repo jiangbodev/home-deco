@@ -1,0 +1,39 @@
+{
+  "source": "038122d",
+  "widthMetres": 2.32,
+  "colorMix": 0.4,
+  "seatCushions": 3,
+  "seatGapMetres": 0.012,
+  "objects": [
+    {
+      "name": "Muted dark timber accent",
+      "triangles": 5818,
+      "widthBefore": 2.00579833984375,
+      "widthAfter": 2.1152048110961914
+    },
+    {
+      "name": "Pillow",
+      "triangles": 18208,
+      "widthBefore": 1.8390140533447266,
+      "widthAfter": 1.9393243789672852
+    },
+    {
+      "name": "Sofa",
+      "triangles": 9354,
+      "widthBefore": 2.200000762939453,
+      "widthAfter": 2.3200016021728516
+    },
+    {
+      "name": "Sofa Cushion",
+      "triangles": 14100,
+      "widthBefore": 1.7598896026611328,
+      "widthAfter": 1.8558835983276367
+    },
+    {
+      "name": "\u6c99\u53d1\u8d34\u5730\u67d4\u5f71_Blender\u70d8\u7119",
+      "triangles": 12,
+      "widthBefore": 2.799999237060547,
+      "widthAfter": 2.952726364135742
+    }
+  ]
+}

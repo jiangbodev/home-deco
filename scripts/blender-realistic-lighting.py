@@ -1,10 +1,10 @@
 """Cycles reference and reusable authored lighting for the existing runtime house.
 Usage: blender -b --python scripts/blender-realistic-lighting.py -- SOURCE.glb OUTPUT_DIR
 """
-import bpy,sys,math,json
+import bpy,sys,math,json,hashlib
 from pathlib import Path
 from mathutils import Vector
-source,out=map(Path,sys.argv[sys.argv.index('--')+1:]);out.mkdir(parents=True,exist_ok=True)
+args=sys.argv[sys.argv.index('--')+1:];source,out=map(Path,args[:2]);out.mkdir(parents=True,exist_ok=True)
 bpy.ops.wm.read_factory_settings(use_empty=True);bpy.ops.import_scene.gltf(filepath=str(source.resolve()))
 def point(p):return Vector((p[0],-p[2],p[1]))
 # Blender parent render visibility does not cascade like Three.js visibility.
@@ -33,9 +33,10 @@ for i,pos in enumerate([[6.0092,1.625,4.7304],[6.8492,1.625,4.7304]]):
 scene.view_settings.view_transform='AgX';scene.view_settings.look='AgX - Medium High Contrast';scene.view_settings.exposure=.5
 scene.render.resolution_x=1024;scene.render.resolution_y=768;scene.render.resolution_percentage=100
 camera=bpy.data.cameras.new('Reference camera');co=bpy.data.objects.new('Reference camera',camera);scene.collection.objects.link(co);scene.camera=co;camera.sensor_fit='VERTICAL';camera.sensor_height=32;camera.lens=32/(2*math.tan(math.radians(65)/2));camera.clip_start=.035
-scene['source_provenance']='Reconstructed exact final runtime geometry from main fb0b3ea; physically traced light study.'
+scene['source_provenance']='Exact runtime GLB SHA256 '+hashlib.sha256(source.read_bytes()).hexdigest()
 co.location=point([11.7,1.5,5.1]);co.rotation_euler=(point([8,1.3,4.8])-co.location).to_track_quat('-Z','Y').to_euler()
 bpy.ops.file.pack_all();bpy.ops.wm.save_as_mainfile(filepath=str((out/'daylight-study.blend').resolve()),compress=True)
 views=[('living',[11.7,1.5,5.1],[8,1.3,4.8]),('desk',[12,1.5,2.5],[13.2,.9,1.35]),('shelves',[8,1.5,5.3],[7,1.5,6.8])]
+if '--sofa-only' in args:views=[('sofa',[11.03,1.25,4.6],[11.03,.43,6.4])]
 for name,pos,target in views:
  co.location=point(pos);co.rotation_euler=(point(target)-co.location).to_track_quat('-Z','Y').to_euler();scene.render.filepath=str((out/(name+'.png')).resolve());bpy.ops.render.render(write_still=True)
