@@ -10,7 +10,10 @@ for(const n of doc.getRoot().listNodes()){
  if(Math.max(...size)<.28||Math.min(...size.filter(v=>v>.005))<.012||/^(树木|Cloth cover|Warm page)/.test(n.getName()))continue;
  const matrix=new T.Matrix4().fromArray(n.getWorldMatrix()),v=new T.Vector3(),points=[];let axial=true,totalArea=0,axialArea=0;
  for(const p of ps){const pos=p.getAttribute('POSITION'),idx=p.getIndices()?.getArray();if(pos.getCount()>5000){axial=false;break}for(let i=0;i<pos.getCount();i++)points[i]=v.fromArray(pos.getArray(),i*3).applyMatrix4(matrix).clone();for(let i=0;i<(idx?.length??pos.getCount());i+=3){const a=points[idx?idx[i]:i],b=points[idx?idx[i+1]:i+1],c=points[idx?idx[i+2]:i+2];const norm=b.clone().sub(a).cross(c.clone().sub(a));const area=norm.length();totalArea+=area;norm.normalize();if(Math.max(...norm.toArray().map(Math.abs))>=.999)axialArea+=area;}if(!axial)break}
- if(axial&&totalArea>0&&axialArea/totalArea>.95)receivers.push({name:n.getName(),moduleNode:n.getExtras().moduleNode,...box});
+ // Bevelled cabinet fronts can fall below the 95% axis-aligned area cutoff.
+ const cabinetFront=/^南侧通高柜2035门板[1-4]$/.test(n.getName());
+ const curvedFinish=/^(圆弧包覆实体层|玄关前拱框|玄关左侧圆弧包覆|次卧.*柔弧|主卧柱端连续圆弧)/.test(n.getName());
+ if(axial&&totalArea>0&&(axialArea/totalArea>.95||curvedFinish||cabinetFront))receivers.push({name:n.getName(),moduleNode:n.getExtras().moduleNode,...box});
 }
 const width=2048;let x=4,y=4,row=0;
 for(const r of receivers){r.rects=[];const size=r.max.map((v,i)=>v-r.min[i]);for(let face=0;face<6;face++){const axes=face<2?[2,1]:face<4?[0,2]:[0,1];const w=Math.max(4,Math.min(256,Math.ceil(size[axes[0]]*32))),h=Math.max(4,Math.min(256,Math.ceil(size[axes[1]]*32)));if(x+w+4>width){x=4;y+=row+8;row=0}r.rects.push([x,y,w,h]);x+=w+8;row=Math.max(row,h)}}

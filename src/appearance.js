@@ -60,6 +60,8 @@ export function createAppearance(renderer){
    const floor=/^F0[1-9]$/.test(meta.id||'')||/玄关六角砖/.test(o.name);
    const receiver=wallReceivers.get(o.userData.source_name||o.name)||wallReceivers.get(o.parent?.userData.source_name);
    if(!floor&&!receiver)return;
+   // A bounding-box contact chart is not a surface chart for these round shells.
+   if(/^圆弧包覆实体层(?:0|900|1230)$/.test(o.userData.source_name||o.name))return;
    const multiple=Array.isArray(o.material);
    const materials=multiple?o.material:[o.material];
    o.material=materials.map(original=>{
@@ -70,7 +72,11 @@ export function createAppearance(renderer){
       Object.assign(shader.uniforms,{wallContact,wallStrength,bakedLight,dayColor,warmColor,wallMin:{value:new THREE.Vector3().fromArray(receiver.min)},wallSize:{value:new THREE.Vector3().fromArray(receiver.max).sub(new THREE.Vector3().fromArray(receiver.min))},wallRects:{value:receiver.rects.map(r=>new THREE.Vector4().fromArray(r))}});
       shader.vertexShader='varying vec3 contactPosition;\nvarying vec3 contactNormal;\n'+shader.vertexShader.replace('#include <worldpos_vertex>','#include <worldpos_vertex>\ncontactPosition=(modelMatrix*vec4(transformed,1.0)).xyz;contactNormal=inverseTransformDirection(transformedNormal,viewMatrix);');
       shader.fragmentShader='varying vec3 contactPosition;\nvarying vec3 contactNormal;\nuniform sampler2D wallContact;\nuniform float bakedLight;\nuniform vec3 dayColor;\nuniform vec3 warmColor;\nuniform float wallStrength;\nuniform vec3 wallMin;\nuniform vec3 wallSize;\nuniform vec4 wallRects[6];\n'+shader.fragmentShader.replace('#include <aomap_fragment>',`#include <aomap_fragment>
-       vec3 wn=normalize(contactNormal),an=abs(wn),wp=clamp((contactPosition-wallMin)/wallSize,0.0,1.0);
+       vec3 wn=normalize(contactNormal);
+#ifdef DOUBLE_SIDED
+wn*=faceDirection;
+#endif
+vec3 an=abs(wn),wp=clamp((contactPosition-wallMin)/wallSize,0.0,1.0);
        int face;vec2 faceUV;
        if(an.x>an.y&&an.x>an.z){face=wn.x>0.0?0:1;faceUV=wp.zy;}
        else if(an.y>an.z){face=wn.y>0.0?2:3;faceUV=wp.xz;}
@@ -79,7 +85,7 @@ export function createAppearance(renderer){
        reflectedLight.indirectDiffuse*=shade;reflectedLight.directDiffuse*=shade;
        reflectedLight.indirectDiffuse+=diffuseColor.rgb*(baked.g*dayColor+baked.b*warmColor)*bakedLight;
       `);
-     };m.customProgramCacheKey=()=> 'wall-light-v2';return m;
+     };m.customProgramCacheKey=()=> 'wall-light-v3';return m;
     }
     m.onBeforeCompile=shader=>{
      Object.assign(shader.uniforms,{floorContact:contact,contactBounds:bounds,contactFixed:fixed,contactFurniture:furniture,bakedLight,dayColor,warmColor});

@@ -47,7 +47,7 @@ The site's custom microfinish/AO shaders are not encoded in Blender. Cabinet cal
 
 ## Cycles daylight and local reflection captures
 
-`source/home-deco-daylight.blend` is the locally packed reconstruction of the exact `fb0b3ea` modular geometry. It contains Nishita sky, a finite-angle sun, thin-glass shadow transmission, two lights at the authored dining pendants, and a Cycles/Metal setup. No runtime topology is changed by this lighting revision.
+`source/home-deco-daylight.blend` is the locally packed reconstruction of the latest verified modular geometry (original lighting revision: `fb0b3ea`; regenerated after the sofa revision). It contains Nishita sky, a finite-angle sun, thin-glass shadow transmission, two lights at the authored dining pendants, and a Cycles/Metal setup. No runtime topology is changed by this lighting revision.
 
 Rebuild with Blender 4.5.14 LTS (the checked workstation uses Metal; adapt device selection on another platform):
 
@@ -63,3 +63,33 @@ node scripts/encode-reflections.mjs /tmp/probes /tmp/house.glb
 ```
 
 Denoising needs NumPy and Blender's bundled OpenImageDenoise library; `HOME_DECO_OIDN` can override the library path. The baker skips existing raw outputs: use a fresh output directory after changes. Color/roughness textures explicitly retain original UVs; `LightingBake` is a separate temporary UV layer. Receiver joins exist only inside the temporary bake scene. Keep each atlas face isolated during denoising; a whole-atlas neural filter spreads unrelated colors across chart boundaries. Output log encoding, neutral fill and runtime blend are intentionally calibrated approximations, not exact Cycles beauty renders.
+
+## Lighter, longer three-seat sofa
+
+The user approved a 2.32 m warm-white sofa with three seat cushions. `source/home-deco-sofa.blend` is the local packed editable version. Start from immutable `038122d` modules, assemble the lossless source, then run:
+
+```sh
+blender -b --python scripts/blender-refine-sofa.py -- /tmp/before-sofa.glb source/home-deco-sofa.blend /tmp/sofa.glb review/sofa-blender.json
+node scripts/import-blender-sofa.mjs /tmp/before-sofa-modules public/assets/modules /tmp/sofa.glb
+node scripts/assemble-modules.mjs public/assets/modules /tmp/after-sofa.glb
+node scripts/check-sofa.mjs /tmp/before-sofa.glb /tmp/after-sofa.glb
+```
+
+The original seat has two disconnected cushions with overlapping X extents; do not split it at a guessed center plane. Weld only the scratch BMesh, identify connected components, preserve per-loop UVs, and place three reduced-width copies in the same mesh. Author upholstery color in Blender, then encode the shared base texture as WebP during modular integration. Recompute all lighting after integration, including diffuse Cycles maps and HDR probes. See [sofa review](../review/sofa-2026-09-21.md).
+
+## Whole-house surface repairs
+
+Apply `blender-repair-walkthrough.py` to the immutable assembled **post-sofa** source, with an untouched copy of those modules for `import-blender-walkthrough.mjs`. Do not rerun against an already-repaired output: boundary insets are deliberately not cumulative. The local editable reconstruction is `source/home-deco-walkthrough.blend`.
+
+The script adds a closed 60 mm roof above the existing 2.7 m underside, recesses secondary arch/mirror surfaces and cabinet carcass edges by 2 mm, and separates tub apron/rim and wall/window joints. Materials, module hierarchy and interaction transforms remain original. `check-walkthrough.mjs BEFORE AFTER` verifies the roof is closed with both face orientations and that unrelated bounds are unchanged. Reassemble all modules and rerun **all** fallback/Cycles/probe bakes after integration.
+
+`audit-room-views.mjs OUTPUT` captures six views and three small offsets in each of nine rooms. `audit-walk-routes.mjs OUTPUT` traverses each room with 180 rendered frames. Both use local Vite by default; `AUDIT_URL`, `CHROME_PATH` and `PLAYWRIGHT_MODULE` override the diagnostic environment. Playwright is deliberately outside production dependencies. `check-surface-overlaps.mjs SOURCE OUTPUT [VIEW_REPORT]` ray-tests visible opaque surfaces for sub-0.3 mm separation; shared edges and frame intersections are candidates for inspection, not automatically defects.
+
+## Current local comfort revision
+
+The user has paused publication. Continue locally until they request commit/publication again. `blender-refine-comfort.py` takes the immutable post-walkthrough source, saves `source/home-deco-comfort.blend`, removes obsolete sofa AO, edits material 15's wood albedo, creates two plain navy quilts, removes bed pillows/throws, and translates the two living-window tree parents. `import-blender-comfort.mjs` uses immutable corresponding modules and preserves original materials/geometry except the explicit authoring changes; tree prototypes remain shared. Follow with `check-comfort.mjs BEFORE AFTER`, reassembly, all three fallback bakes and fresh Cycles/probe bakes.
+
+Do not keep the former sofa AO after cushion layout changes. Do not omit architectural arches/curved shelves from irradiance while lighting their adjoining straight surfaces: the mixed paths produce obvious ivory color discontinuities. Plain navy quilt material is linear RGB (0.012, 0.022, 0.045), with no color/normal/AO texture. See [local review](../review/comfort-local-2026-09-21.md).
+
+
+Latest local correction: comfort authoring deletes both niche end boards and all dining flower/vase meshes. It also splits the main-bath privacy glass into fixed/sliding panes, initially open. The importer transfers that authored opening into base transforms and preserves closed/open interaction metadata. Run `node scripts/check-bath-partition.mjs` against the local Vite preview to check startup, close, reopen and reset. Earlier end-panel closure notes are superseded by the user's request to remove those panels.

@@ -58,7 +58,7 @@ export function createSurfaceFinishes(renderer){
       vec2 finishUV=fn.x>fn.y&&fn.x>fn.z?finishPosition.zy:(fn.y>fn.z?finishPosition.xz:finishPosition.xy);
       vec3 finishData=texture2D(finishGrain,finishUV*${profile.uv}).rgb;
       diffuseColor.rgb*=1.0+(finishData.${kind==='counter'?'g':'r'}-.5)*${profile.colorNoise};
-      ${kind==='timber'?'float woodTone=dot(diffuseColor.rgb,vec3(.2126,.7152,.0722));diffuseColor.rgb=mix(vec3(woodTone),diffuseColor.rgb,.82)*.9;':''}
+      ${kind==='timber'?'float woodTone=dot(diffuseColor.rgb,vec3(.2126,.7152,.0722));diffuseColor.rgb=mix(vec3(woodTone),diffuseColor.rgb,.9);':''}
      `)
      .replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
       roughnessFactor=clamp(roughnessFactor+(finishData.b-.5)*${profile.roughNoise},.2,1.0);

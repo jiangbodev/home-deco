@@ -14,22 +14,22 @@ let appearance;
 let modules,visitSequence=0,lastRoom=-1;
 let frameLoop,contextLost=false;
 let renderer, model, ready=false, quality='auto', yaw=0,pitch=0, mapOpen=false;
-let stateEntries=[], frameAverage=16, adaptiveScale=coarse?1.35:1.7;
+let stateEntries=[], frameAverage=16, adaptiveScale=1.35;
 const scene=new THREE.Scene();scene.background=new THREE.Color('#edf1f5');
 const camera=new THREE.PerspectiveCamera(65,1,.035,90);camera.rotation.order='YXZ';
 const pendingWalkRooms=new Set();
 const initialTransforms=new Map(), keys=new Set(), joystick={x:0,y:0};
 const C=new THREE.Matrix4().makeRotationX(-Math.PI/2), Ci=C.clone().invert();
-const stateNames={'doors':'打开房门','privacy-curtain':'合上隐私帘','kitchen-window-open':'打开厨房窗','laundry-doors':'展开洗衣区隐藏门','ceiling':'显示吊顶','effect-floor':'效果图连续木地板','furniture':'显示家具','piano':'显示钢琴','dining-stored':'收纳餐椅与条凳'};
+const stateNames={'bath-partition':'打开主卫内部隔断','doors':'打开房门','privacy-curtain':'合上隐私帘','kitchen-window-open':'打开厨房窗','laundry-doors':'展开洗衣区隐藏门','ceiling':'显示吊顶','effect-floor':'效果图连续木地板','furniture':'显示家具','piano':'显示钢琴','dining-stored':'收纳餐椅与条凳'};
 let toastTimer;
 function toast(text){$('#toast').textContent=text;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2400)}
 function metadata(o){try{return JSON.parse(o.userData.metadata||'{}')}catch{return {}}}
-function resize(redraw=true){if(!renderer||contextLost)return;const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();const max=quality==='high'?2:quality==='low'?1:adaptiveScale,ratio=Math.min(devicePixelRatio,max);const size=renderer.getSize(new THREE.Vector2());if(renderer.getPixelRatio()===ratio&&size.x===w&&size.y===h)return;renderer.setPixelRatio(ratio);renderer.setSize(w,h,false);if(ready&&redraw)renderer.render(scene,camera)}
+function resize(redraw=true){if(!renderer||contextLost)return;const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();const max=quality==='high'?2:quality==='low'?1:Math.min(adaptiveScale,Math.sqrt(2400000/(w*h))),ratio=Math.min(devicePixelRatio,max);const size=renderer.getSize(new THREE.Vector2());if(renderer.getPixelRatio()===ratio&&size.x===w&&size.y===h)return;renderer.setPixelRatio(ratio);renderer.setSize(w,h,false);if(ready&&redraw)renderer.render(scene,camera)}
 window.addEventListener('resize',()=>resize());window.visualViewport?.addEventListener('resize',()=>resize());
 function markRoom(i){if($('#room-nav').dataset.activeRoom===String(i))return;$('#room-label').textContent=rooms[i].name;document.querySelectorAll('[data-room]').forEach(b=>b.setAttribute('aria-current',String(Number(b.dataset.room)===i)));const nav=$('#room-nav'),button=nav.querySelector(`[data-room="${i}"]`);if(nav.dataset.activeRoom!==String(i)){nav.dataset.activeRoom=String(i);if(button){const left=button.offsetLeft-nav.offsetLeft;if(left<nav.scrollLeft)nav.scrollLeft=left;else if(left+button.offsetWidth>nav.scrollLeft+nav.clientWidth)nav.scrollLeft=left+button.offsetWidth-nav.clientWidth}}}
-async function visit(i){const request=++visitSequence;if(ready&&modules){try{await modules.room(i)}catch{toast('房间暂未加载，请再次选择重试');return}if(request!==visitSequence)return}const r=rooms[i];camera.position.set(r.x,1.5,r.z);yaw=Math.atan2(r.x-r.look[0],r.z-r.look[1]);pitch=-.04;camera.rotation.set(pitch,yaw,0,'YXZ');markRoom(i);updateMap();keys.clear();joystick.x=joystick.y=0;if(ready)canvas.focus({preventScroll:true})}
+async function visit(i){const request=++visitSequence;if(ready&&modules){try{await modules.room(i)}catch{toast('房间暂未加载，请再次选择重试');return}if(request!==visitSequence)return}const r=rooms[i];camera.position.set(r.x,1.4,r.z);yaw=Math.atan2(r.x-r.look[0],r.z-r.look[1]);pitch=-.04;camera.rotation.set(pitch,yaw,0,'YXZ');markRoom(i);updateMap();keys.clear();joystick.x=joystick.y=0;if(ready)canvas.focus({preventScroll:true})}
 function roomButton(i){const b=document.createElement('button');b.textContent=rooms[i].name;b.dataset.room=i;b.onclick=()=>{closeDialogs();visit(i)};return b}
-rooms.forEach((_,i)=>{$('#all-rooms').append(roomButton(i));if(i<6)$('#room-nav').append(roomButton(i))});
+rooms.forEach((_,i)=>{$('#all-rooms').append(roomButton(i));$('#room-nav').append(roomButton(i))});
 function openDialog(id,button){endInput();const d=$(id);d.showModal();button?.setAttribute('aria-expanded','true');mapOpen=id==='#map-panel';updateMap()}
 function closeDialogs(){document.querySelectorAll('dialog[open]').forEach(d=>d.close());mapOpen=false;document.querySelectorAll('[aria-expanded=true]').forEach(b=>b.setAttribute('aria-expanded','false'))}
 $('#map-button').onclick=()=>openDialog('#map-panel',$('#map-button'));
@@ -82,7 +82,7 @@ function updateMap(){const m=$('#map-marker');if(m)m.setAttribute('transform',`t
 
 function move(dt){let x=joystick.x+(keys.has('KeyD')||keys.has('ArrowRight')?1:0)-(keys.has('KeyA')||keys.has('ArrowLeft')?1:0),z=joystick.y+(keys.has('KeyS')||keys.has('ArrowDown')?1:0)-(keys.has('KeyW')||keys.has('ArrowUp')?1:0);const len=Math.hypot(x,z);if(len<.04)return;if(len>1){x/=len;z/=len}const speed=1.35*dt;const dx=(Math.cos(yaw)*x+Math.sin(yaw)*z)*speed,dz=(-Math.sin(yaw)*x+Math.cos(yaw)*z)*speed;const p=camera.position;let targetRoom=0,targetDistance=Infinity;rooms.forEach((r,i)=>{const d=Math.hypot(r.x-p.x-dx,r.z-p.z-dz);if(d<targetDistance){targetDistance=d;targetRoom=i}});if(modules&&!modules.isRoomLoaded(targetRoom)){if(!pendingWalkRooms.has(targetRoom)){pendingWalkRooms.add(targetRoom);modules.room(targetRoom).catch(()=>toast('房间尚未就绪，请稍后重试')).finally(()=>pendingWalkRooms.delete(targetRoom))}return}
  // Free walkthrough: walls and furniture never block movement.
- p.x+=dx;p.z+=dz;p.y=1.5;let nearest=0,dist=Infinity;rooms.forEach((r,i)=>{const d=Math.hypot(r.x-p.x,r.z-p.z);if(d<dist){nearest=i;dist=d}});markRoom(nearest);if(nearest!==lastRoom){lastRoom=nearest;modules?.prioritize(nearest)}if(mapOpen)updateMap()}
+ p.x+=dx;p.z+=dz;p.y=1.4;let nearest=0,dist=Infinity;rooms.forEach((r,i)=>{const d=Math.hypot(r.x-p.x,r.z-p.z);if(d<dist){nearest=i;dist=d}});markRoom(nearest);if(nearest!==lastRoom){lastRoom=nearest;modules?.prioritize(nearest)}if(mapOpen)updateMap()}
 function endInput(){keys.clear();joystick.x=joystick.y=0;$('#stick').style.transform='';lookPointer=null;stickPointer=null}
 window.addEventListener('blur',endInput);document.addEventListener('visibilitychange',()=>{if(document.hidden)endInput()});
 window.addEventListener('keydown',e=>{if(document.querySelector('dialog[open]')||/INPUT|SELECT|BUTTON/.test(e.target.tagName))return;if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)){keys.add(e.code);e.preventDefault();$('#hint').style.opacity=0}});window.addEventListener('keyup',e=>keys.delete(e.code));
@@ -97,9 +97,9 @@ for(const event of ['pointerup','pointercancel','lostpointercapture'])stick.addE
 
 async function start(){
  try{
-   renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:coarse?'default':'high-performance'});renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
-   resize();const pmrem=new THREE.PMREMGenerator(renderer), env=new RoomEnvironment();scene.environment=pmrem.fromScene(env,.04).texture;env.dispose();pmrem.dispose();scene.environmentIntensity=.38;
-   scene.add(new THREE.HemisphereLight(0xf3f6ff,0xb0a394,.45));const sun=new THREE.DirectionalLight(0xfff6ea,.6);sun.position.set(2,8,-4);scene.add(sun);
+   renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:coarse?'default':'high-performance'});renderer.transmissionResolutionScale=.5;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
+   resize();const pmrem=new THREE.PMREMGenerator(renderer), env=new RoomEnvironment();scene.environment=pmrem.fromScene(env,.04).texture;env.dispose();pmrem.dispose();scene.environmentIntensity=.45;
+   scene.add(new THREE.HemisphereLight(0xf3f6ff,0xb0a394,.6));const sun=new THREE.DirectionalLight(0xfff6ea,.7);sun.position.set(12,8,6);scene.add(sun);
    appearance=createAppearance(renderer);const appearanceReady=appearance.init();
    const progress=$('#progress'),label=$('#load-label');
    const startup=createLoadingProgress(({phase,loaded,total,percent})=>{
@@ -143,7 +143,7 @@ async function start(){
    void appearance.load().then(()=>appearance.update(model,initialTransforms,modules.loaded,modules.assetFiles));
    if(coarse)$('#hint').textContent='拖动画面环顾';
    let last=performance.now(),count=0;
-   frameLoop=now=>{if(contextLost||document.hidden){last=now;return}const ms=now-last;last=now;const dt=Math.min(ms/1000,.05);appearance.tick(dt);if(!document.querySelector('dialog[open]'))move(dt);frameAverage=.98*frameAverage+.02*ms;if(++count%180===0&&quality==='auto'&&frameAverage>30&&adaptiveScale>1){adaptiveScale=Math.max(1,adaptiveScale-.15);resize(false)}renderer.render(scene,camera)};
+   frameLoop=now=>{if(contextLost||document.hidden){last=now;return}const ms=now-last;last=now;const dt=Math.min(ms/1000,.05);appearance.tick(dt);if(!document.querySelector('dialog[open]'))move(dt);frameAverage=.94*frameAverage+.06*Math.min(ms,80);count++;if(quality==='auto'&&count%60===0&&frameAverage>20&&adaptiveScale>.7){adaptiveScale=Math.max(.7,adaptiveScale-.1);resize(false)}else if(quality==='auto'&&count%240===0&&frameAverage<16.9&&adaptiveScale<1.35){adaptiveScale=Math.min(1.35,adaptiveScale+.05);resize(false)}renderer.render(scene,camera)};
    renderer.setAnimationLoop(frameLoop);
    canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();contextLost=true;endInput();renderer.setAnimationLoop(null);$('#loading').hidden=false;$('#load-label').textContent='正在恢复三维画面…';progress.hidden=false;progress.removeAttribute('value');$('#retry').hidden=false});
    canvas.addEventListener('webglcontextrestored',async()=>{try{contextLost=false;resize(false);await renderer.compileAsync(scene,camera);renderer.render(scene,camera);last=performance.now();renderer.setAnimationLoop(frameLoop);$('#loading').hidden=true;$('#retry').hidden=true;modules.background()}catch(error){console.error(error);$('#load-label').textContent='画面恢复失败，请重新加载';$('#retry').hidden=false}});

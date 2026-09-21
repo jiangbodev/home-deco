@@ -35,7 +35,10 @@ for kind in ['floor','wall']:
     clean=denoise(padded.tobytes(),rw+pad*2,rh+pad*2)[pad:pad+rh,pad:pad+rw]
     # Low-density irradiance charts store broad transport, not material texture.
     # A small spatial filter removes residual Monte Carlo grain at 32 texels/metre.
-    sigma=2.5;radius=6;kernel=np.exp(-np.arange(-radius,radius+1,dtype=np.float32)**2/(2*sigma*sigma));kernel/=kernel.sum()
+    # Broad plaster ceilings expose low-frequency sampling blotches; smooth only
+    # these diffuse-light charts more strongly, without touching material textures.
+    ceiling=('原顶' in r['name'] or '低顶' in r['name'] or '吊顶' in r['name'])
+    sigma=9.0 if ceiling else 5.0;radius=22 if ceiling else 12;kernel=np.exp(-np.arange(-radius,radius+1,dtype=np.float32)**2/(2*sigma*sigma));kernel/=kernel.sum()
     for axis in [0,1]:
      padding=[(0,0),(0,0),(0,0)];padding[axis]=(radius,radius);extended=np.pad(clean,padding,mode='edge');smooth=np.zeros_like(clean)
      for k,weight in enumerate(kernel):
