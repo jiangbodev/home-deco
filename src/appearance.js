@@ -1,11 +1,13 @@
 import * as THREE from 'three';
 import {RectAreaLightUniformsLib} from 'three/addons/lights/RectAreaLightUniformsLib.js';
 import {createObjectContact} from './object-contact.js';
+import {createReflections} from './reflections.js';
+import {createIrradiance} from './irradiance.js';
 import {createSurfaceFinishes} from './surface-finishes.js';
 
 // Offline-baked contact maps; no shadow render passes while walking.
 export function createAppearance(renderer){
- const finishes=createSurfaceFinishes(renderer),objectContact=createObjectContact();
+ const finishes=createSurfaceFinishes(renderer),objectContact=createObjectContact(),irradiance=createIrradiance(renderer),reflections=createReflections(renderer);
  const white=new THREE.DataTexture(new Uint8Array([0,0,0,255]),1,1);white.needsUpdate=true;
  const contact={value:white},bounds={value:new THREE.Vector4(-.5,-.5,15,10)};
  const fixed={value:0},furniture={value:0};
@@ -16,13 +18,13 @@ export function createAppearance(renderer){
  async function init(){
   const base=import.meta.env.BASE_URL+'assets/lighting/';
   await Promise.allSettled([
-   objectContact.init(),
+   objectContact.init(),irradiance.init(),reflections.init(),
    (async()=>{const r=await fetch(base+'fixtures.json',{cache:'no-cache',signal:AbortSignal.timeout(4000)});if(r.ok)fixtureConfig=await r.json()})(),
    (async()=>{const r=await fetch(base+'walls.json',{cache:'no-cache',signal:AbortSignal.timeout(4000)});if(!r.ok)throw Error('Wall manifest unavailable');wallManifest=await r.json();for(const receiver of wallManifest.receivers)wallReceivers.set(receiver.name,receiver)})()
   ]);
  }
  async function load(){
-  void finishes.load();
+  void finishes.load();const tracedLoading=Promise.all([irradiance.load(),reflections.load()]);
   try{
    const base=import.meta.env.BASE_URL+'assets/lighting/';
    const response=await fetch(base+'contact.json',{cache:'no-cache'});if(!response.ok)throw Error('Contact manifest unavailable');
@@ -34,6 +36,7 @@ export function createAppearance(renderer){
    const b=manifest.bounds;bounds.value.set(b[0],b[1],b[2]-b[0],b[3]-b[1]);available=true;
    if(wallManifest){const wall=await new THREE.TextureLoader().loadAsync(base+wallManifest.file);wall.flipY=false;wall.colorSpace=THREE.NoColorSpace;wall.minFilter=THREE.LinearFilter;wall.magFilter=THREE.LinearFilter;wall.generateMipmaps=false;renderer.initTexture(wall);wallContact.value=wall;wallAvailable=true}
   }catch(error){console.warn('Optional contact shading unavailable',error)}
+  await tracedLoading;
  }
  function prepare(group){
   group.traverse(o=>{
@@ -94,9 +97,10 @@ export function createAppearance(renderer){
     m.customProgramCacheKey=()=> 'floor-light-v2';return m;
    });if(!multiple)o.material=o.material[0];
   });
-  finishes.prepare(group);objectContact.prepare(group);
+  finishes.prepare(group);objectContact.prepare(group);irradiance.prepare(group);reflections.prepare(group);
  }
  function update(model,initialTransforms,loaded,assetFiles){
+  irradiance.update(model,initialTransforms,loaded,assetFiles);reflections.update(model,initialTransforms,loaded,assetFiles);
   const matches=manifest=>JSON.stringify(manifest?.sourceModules)===JSON.stringify(assetFiles);
   fixed.value=available&&matches(floorManifest)&&loaded?.length===assetFiles?.length ? .55 : 0;
   wallStrength.value=wallAvailable&&matches(wallManifest)&&loaded?.length===assetFiles?.length ? .48 : 0;
@@ -117,6 +121,6 @@ export function createAppearance(renderer){
   RectAreaLightUniformsLib.init();
   for(const p of fixtureConfig.pendants){const light=new THREE.RectAreaLight(0xffd4a0,35,.25,.25);light.position.fromArray(p);light.lookAt(p[0],p[1]-1,p[2]);scene.add(light);pendants.push(light)}
  }
- function tick(dt){objectContact.tick(dt);bakedLight.value+=(bakedTarget-bakedLight.value)*(1-Math.exp(-dt*6))}
+ function tick(dt){irradiance.tick(dt);objectContact.tick(dt);bakedLight.value+=(bakedTarget-bakedLight.value)*(1-Math.exp(-dt*6))}
  return {init,load,prepare,update,addFixtures,tick};
 }

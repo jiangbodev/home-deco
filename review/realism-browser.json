@@ -1,0 +1,158 @@
+[
+  {
+    "label": "before",
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+    "chairs": [],
+    "errors": [],
+    "views": [
+      {
+        "name": "niche",
+        "render": {
+          "frame": 236,
+          "calls": 88,
+          "triangles": 229738,
+          "points": 0,
+          "lines": 0
+        }
+      },
+      {
+        "name": "rug",
+        "render": {
+          "frame": 239,
+          "calls": 103,
+          "triangles": 279157,
+          "points": 0,
+          "lines": 0
+        }
+      },
+      {
+        "name": "shelves",
+        "render": {
+          "frame": 242,
+          "calls": 121,
+          "triangles": 105679,
+          "points": 0,
+          "lines": 0
+        }
+      },
+      {
+        "name": "table",
+        "render": {
+          "frame": 245,
+          "calls": 982,
+          "triangles": 366702,
+          "points": 0,
+          "lines": 0
+        }
+      },
+      {
+        "name": "mirror",
+        "render": {
+          "frame": 248,
+          "calls": 258,
+          "triangles": 135050,
+          "points": 0,
+          "lines": 0
+        }
+      },
+      {
+        "name": "desk",
+        "render": {
+          "frame": 251,
+          "calls": 130,
+          "triangles": 174173,
+          "points": 0,
+          "lines": 0
+        }
+      },
+      {
+        "name": "wardrobe",
+        "render": {
+          "frame": 254,
+          "calls": 203,
+          "triangles": 315346,
+          "points": 0,
+          "lines": 0
+        }
+      }
+    ]
+  },
+  {
+    "label": "after",
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+    "chairs": [],
+    "errors": [],
+    "views": [
+      {
+        "name": "niche",
+        "render": {
+          "frame": 306,
+          "calls": 88,
+          "triangles": 229738,
+          "points": 0,
+          "lines": 0
+        }
+      },
+      {
+        "name": "rug",
+        "render": {
+          "frame": 309,
+          "calls": 103,
+          "triangles": 279157,
+          "points": 0,
+          "lines": 0
+        }
+      },
+      {
+        "name": "shelves",
+        "render": {
+          "frame": 312,
+          "calls": 121,
+          "triangles": 105679,
+          "points": 0,
+          "lines": 0
+        }
+      },
+      {
+        "name": "table",
+        "render": {
+          "frame": 315,
+          "calls": 982,
+          "triangles": 366702,
+          "points": 0,
+          "lines": 0
+        }
+      },
+      {
+        "name": "mirror",
+        "render": {
+          "frame": 318,
+          "calls": 258,
+          "triangles": 135050,
+          "points": 0,
+          "lines": 0
+        }
+      },
+      {
+        "name": "desk",
+        "render": {
+          "frame": 321,
+          "calls": 130,
+          "triangles": 174173,
+          "points": 0,
+          "lines": 0
+        }
+      },
+      {
+        "name": "wardrobe",
+        "render": {
+          "frame": 324,
+          "calls": 203,
+          "triangles": 315346,
+          "points": 0,
+          "lines": 0
+        }
+      }
+    ]
+  }
+]

@@ -34,6 +34,7 @@ scene.view_settings.view_transform='AgX';scene.view_settings.look='AgX - Medium 
 scene.render.resolution_x=1024;scene.render.resolution_y=768;scene.render.resolution_percentage=100
 camera=bpy.data.cameras.new('Reference camera');co=bpy.data.objects.new('Reference camera',camera);scene.collection.objects.link(co);scene.camera=co;camera.sensor_fit='VERTICAL';camera.sensor_height=32;camera.lens=32/(2*math.tan(math.radians(65)/2));camera.clip_start=.035
 scene['source_provenance']='Reconstructed exact final runtime geometry from main fb0b3ea; physically traced light study.'
+co.location=point([11.7,1.5,5.1]);co.rotation_euler=(point([8,1.3,4.8])-co.location).to_track_quat('-Z','Y').to_euler()
 bpy.ops.file.pack_all();bpy.ops.wm.save_as_mainfile(filepath=str((out/'daylight-study.blend').resolve()),compress=True)
 views=[('living',[11.7,1.5,5.1],[8,1.3,4.8]),('desk',[12,1.5,2.5],[13.2,.9,1.35]),('shelves',[8,1.5,5.3],[7,1.5,6.8])]
 for name,pos,target in views:

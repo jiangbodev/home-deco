@@ -1,0 +1,134 @@
+[
+  {
+    "label": "before",
+    "run": 0,
+    "readyMs": 714,
+    "errors": [],
+    "frameMs": {
+      "median": 16.69999998807907,
+      "p95": 16.80000001192093,
+      "max": 18
+    },
+    "submitMs": {
+      "median": 1.2000000178813934,
+      "p95": 1.800000011920929,
+      "max": 2.0999999940395355
+    },
+    "calls": {
+      "median": 185,
+      "p95": 305,
+      "max": 309
+    },
+    "triangles": {
+      "median": 181721,
+      "p95": 293869,
+      "max": 293917
+    },
+    "memory": {
+      "geometries": 530,
+      "textures": 72
+    },
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+    "slowFrames": 0,
+    "resources": 11466963
+  },
+  {
+    "label": "before",
+    "run": 1,
+    "readyMs": 680.6999999880791,
+    "errors": [],
+    "frameMs": {
+      "median": 16.69999998807907,
+      "p95": 17.599999994039536,
+      "max": 18.69999998807907
+    },
+    "submitMs": {
+      "median": 1.0999999940395355,
+      "p95": 1.5999999940395355,
+      "max": 2.0999999940395355
+    },
+    "calls": {
+      "median": 185,
+      "p95": 305,
+      "max": 309
+    },
+    "triangles": {
+      "median": 181721,
+      "p95": 293869,
+      "max": 293917
+    },
+    "memory": {
+      "geometries": 530,
+      "textures": 72
+    },
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+    "slowFrames": 0,
+    "resources": 11466963
+  },
+  {
+    "label": "after",
+    "run": 0,
+    "readyMs": 820.6999999880791,
+    "errors": [],
+    "frameMs": {
+      "median": 16.69999998807907,
+      "p95": 16.799999982118607,
+      "max": 16.900000005960464
+    },
+    "submitMs": {
+      "median": 1.2999999821186066,
+      "p95": 1.899999976158142,
+      "max": 2.5999999940395355
+    },
+    "calls": {
+      "median": 185,
+      "p95": 305,
+      "max": 309
+    },
+    "triangles": {
+      "median": 181721,
+      "p95": 293869,
+      "max": 293917
+    },
+    "memory": {
+      "geometries": 530,
+      "textures": 77
+    },
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+    "slowFrames": 0,
+    "resources": 15655059
+  },
+  {
+    "label": "after",
+    "run": 1,
+    "readyMs": 806.7999999821186,
+    "errors": [],
+    "frameMs": {
+      "median": 16.69999998807907,
+      "p95": 17.19999998807907,
+      "max": 18.600000023841858
+    },
+    "submitMs": {
+      "median": 1.2000000178813934,
+      "p95": 1.800000011920929,
+      "max": 2.5999999940395355
+    },
+    "calls": {
+      "median": 185,
+      "p95": 305,
+      "max": 309
+    },
+    "triangles": {
+      "median": 181721,
+      "p95": 293869,
+      "max": 293917
+    },
+    "memory": {
+      "geometries": 530,
+      "textures": 77
+    },
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+    "slowFrames": 0,
+    "resources": 15655059
+  }
+]

@@ -22,7 +22,7 @@ export function createIrradiance(renderer){
      vec4 tr=tracedRects[tf];vec2 tracedUV=tr.xy+tu*tr.zw;`;
     shader.fragmentShader=shader.fragmentShader.replace('vec3 totalDiffuse = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse;',`${uv}
      vec4 tracedSample=texture2D(tracedMap,tracedUV);vec3 tracedIrradiance=exp2(tracedSample.rgb*4.0)-1.0;
-     vec3 totalDiffuse=mix(reflectedLight.directDiffuse+reflectedLight.indirectDiffuse,diffuseColor.rgb*tracedIrradiance*1.5,tracedWeight*tracedSample.a);`);
+     vec3 totalDiffuse=mix(reflectedLight.directDiffuse+reflectedLight.indirectDiffuse,diffuseColor.rgb*(tracedIrradiance*1.5+vec3(0.035)),tracedWeight*tracedSample.a*${r.kind==='wall'?'0.82':'1.0'});`);
    };m.customProgramCacheKey=()=>key+'|cycles-diffuse-v1-'+r.kind;return m;
   });o.material=multi?materials:materials[0];
  })}

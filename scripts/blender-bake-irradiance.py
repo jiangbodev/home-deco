@@ -5,12 +5,19 @@ import bpy,sys,json,math,numpy as np
 from pathlib import Path
 from mathutils import Vector
 blend,planfile,outdir=sys.argv[sys.argv.index('--')+1:];out=Path(outdir);out.mkdir(parents=True,exist_ok=True);plan=json.loads(Path(planfile).read_text())
-bpy.ops.wm.open_mainfile(filepath=str(Path(blend).resolve()));scene=bpy.context.scene;scene.cycles.samples=256;scene.cycles.use_denoising=True
+bpy.ops.wm.open_mainfile(filepath=str(Path(blend).resolve()));scene=bpy.context.scene;scene.cycles.samples=1024;scene.cycles.use_denoising=True
 prefs=bpy.context.preferences.addons['cycles'].preferences;prefs.compute_device_type='METAL';prefs.get_devices()
 for d in prefs.devices:d.use=d.type=='METAL'
 scene.cycles.device='GPU';scene.render.bake.use_pass_direct=True;scene.render.bake.use_pass_indirect=True;scene.render.bake.use_pass_color=False;scene.render.bake.margin=3;scene.render.bake.use_clear=True
-# One pilot at half planned wall resolution. UV chart layout remains identical.
-plan['wall']['width']//=2;plan['wall']['height']//=2
+# Pin original texture coordinates explicitly; the bake target uses a separate UV layer.
+for o in bpy.data.objects:
+ if o.type=='MESH' and o.data.uv_layers:o.data.uv_layers[0].name='UVMap'
+for m in bpy.data.materials:
+ if not m.use_nodes:continue
+ nt=m.node_tree;uvnode=nt.nodes.new('ShaderNodeUVMap');uvnode.uv_map='UVMap'
+ for node in list(nt.nodes):
+  if node.type=='TEX_IMAGE' and not node.inputs['Vector'].is_linked:nt.links.new(uvnode.outputs['UV'],node.inputs['Vector'])
+# Full-resolution atlas; four-pixel gutters preserve chart isolation.
 Path(out/'plan.json').write_text(json.dumps(plan,ensure_ascii=False,indent=2))
 for kind in ['floor','wall']:
  if (out/(kind+'.rgba32f')).exists():continue
