@@ -1,0 +1,698 @@
+{
+  "errors": [],
+  "routes": [
+    {
+      "room": "玄关",
+      "frames": 180,
+      "p50": 16.69999998807907,
+      "p95": 17.5,
+      "max": 18.5,
+      "captures": [
+        {
+          "file": "0-0.png",
+          "pos": [
+            4.65,
+            1.4,
+            6.55
+          ],
+          "target": [
+            4.8,
+            5
+          ],
+          "frame": 448,
+          "calls": 1170,
+          "triangles": 274930,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "0-1.png",
+          "pos": [
+            4.65,
+            1.4,
+            5.9
+          ],
+          "target": [
+            4.3,
+            4.85
+          ],
+          "frame": 493,
+          "calls": 726,
+          "triangles": 188978,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "0-2.png",
+          "pos": [
+            5.05,
+            1.4,
+            5.65
+          ],
+          "target": [
+            5.5,
+            4.75
+          ],
+          "frame": 538,
+          "calls": 1286,
+          "triangles": 389496,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "0-3.png",
+          "pos": [
+            5.9,
+            1.4,
+            5.3
+          ],
+          "target": [
+            5.5,
+            4.75
+          ],
+          "frame": 583,
+          "calls": 752,
+          "triangles": 272562,
+          "points": 0,
+          "lines": 0
+        }
+      ]
+    },
+    {
+      "room": "客厅",
+      "frames": 180,
+      "p50": 16.69999998807907,
+      "p95": 17.5,
+      "max": 18.30000001192093,
+      "captures": [
+        {
+          "file": "1-0.png",
+          "pos": [
+            9.7,
+            1.4,
+            5.1
+          ],
+          "target": [
+            7.9,
+            6.6
+          ],
+          "frame": 628,
+          "calls": 266,
+          "triangles": 133045,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "1-1.png",
+          "pos": [
+            10.6,
+            1.4,
+            5.25
+          ],
+          "target": [
+            11,
+            6.4
+          ],
+          "frame": 673,
+          "calls": 80,
+          "triangles": 228389,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "1-2.png",
+          "pos": [
+            11.7,
+            1.4,
+            5.1
+          ],
+          "target": [
+            13,
+            6.3
+          ],
+          "frame": 718,
+          "calls": 88,
+          "triangles": 234730,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "1-3.png",
+          "pos": [
+            12.5,
+            1.4,
+            5.8
+          ],
+          "target": [
+            11.1,
+            6.5
+          ],
+          "frame": 763,
+          "calls": 836,
+          "triangles": 388894,
+          "points": 0,
+          "lines": 0
+        }
+      ]
+    },
+    {
+      "room": "餐厅",
+      "frames": 180,
+      "p50": 16.69999998807907,
+      "p95": 17.400000005960464,
+      "max": 17.700000017881393,
+      "captures": [
+        {
+          "file": "2-0.png",
+          "pos": [
+            9.4,
+            1.4,
+            5
+          ],
+          "target": [
+            6.5,
+            4.8
+          ],
+          "frame": 808,
+          "calls": 1028,
+          "triangles": 298770,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "2-1.png",
+          "pos": [
+            8,
+            1.4,
+            5.4
+          ],
+          "target": [
+            5.55,
+            4.7
+          ],
+          "frame": 853,
+          "calls": 884,
+          "triangles": 291526,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "2-2.png",
+          "pos": [
+            6.1,
+            1.4,
+            5.5
+          ],
+          "target": [
+            5.55,
+            4.7
+          ],
+          "frame": 898,
+          "calls": 828,
+          "triangles": 279694,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "2-3.png",
+          "pos": [
+            6.1,
+            1.4,
+            4.6
+          ],
+          "target": [
+            5.4,
+            5.1
+          ],
+          "frame": 943,
+          "calls": 209,
+          "triangles": 105396,
+          "points": 0,
+          "lines": 0
+        }
+      ]
+    },
+    {
+      "room": "厨房",
+      "frames": 180,
+      "p50": 16.600000023841858,
+      "p95": 17.5,
+      "max": 17.69999998807907,
+      "captures": [
+        {
+          "file": "3-0.png",
+          "pos": [
+            6.2,
+            1.4,
+            2.65
+          ],
+          "target": [
+            6.1,
+            0.6
+          ],
+          "frame": 988,
+          "calls": 386,
+          "triangles": 98386,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "3-1.png",
+          "pos": [
+            6.2,
+            1.4,
+            2.2
+          ],
+          "target": [
+            6.65,
+            1.8
+          ],
+          "frame": 1033,
+          "calls": 348,
+          "triangles": 171549,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "3-2.png",
+          "pos": [
+            6.15,
+            1.4,
+            1.6
+          ],
+          "target": [
+            5.65,
+            1.3
+          ],
+          "frame": 1078,
+          "calls": 184,
+          "triangles": 141714,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "3-3.png",
+          "pos": [
+            6.1,
+            1.4,
+            1.2
+          ],
+          "target": [
+            6.1,
+            0.5
+          ],
+          "frame": 1123,
+          "calls": 75,
+          "triangles": 65727,
+          "points": 0,
+          "lines": 0
+        }
+      ]
+    },
+    {
+      "room": "主卧",
+      "frames": 180,
+      "p50": 16.600000023841858,
+      "p95": 17.5,
+      "max": 17.600000023841858,
+      "captures": [
+        {
+          "file": "4-0.png",
+          "pos": [
+            13.2,
+            1.4,
+            4.5
+          ],
+          "target": [
+            12.1,
+            2.8
+          ],
+          "frame": 1168,
+          "calls": 1144,
+          "triangles": 393842,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "4-1.png",
+          "pos": [
+            13.2,
+            1.4,
+            3.8
+          ],
+          "target": [
+            11.4,
+            2.5
+          ],
+          "frame": 1213,
+          "calls": 1392,
+          "triangles": 530874,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "4-2.png",
+          "pos": [
+            12.45,
+            1.4,
+            2.7
+          ],
+          "target": [
+            11.2,
+            1.5
+          ],
+          "frame": 1258,
+          "calls": 830,
+          "triangles": 259282,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "4-3.png",
+          "pos": [
+            12.7,
+            1.4,
+            1.25
+          ],
+          "target": [
+            13.7,
+            1.6
+          ],
+          "frame": 1303,
+          "calls": 70,
+          "triangles": 135607,
+          "points": 0,
+          "lines": 0
+        }
+      ]
+    },
+    {
+      "room": "次卧",
+      "frames": 180,
+      "p50": 16.69999998807907,
+      "p95": 17.5,
+      "max": 17.600000023841858,
+      "captures": [
+        {
+          "file": "5-0.png",
+          "pos": [
+            3.05,
+            1.4,
+            3.7
+          ],
+          "target": [
+            1.1,
+            2.4
+          ],
+          "frame": 1348,
+          "calls": 101,
+          "triangles": 70591,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "5-1.png",
+          "pos": [
+            2.65,
+            1.4,
+            3
+          ],
+          "target": [
+            1.1,
+            2.4
+          ],
+          "frame": 1393,
+          "calls": 75,
+          "triangles": 70261,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "5-2.png",
+          "pos": [
+            2.55,
+            1.4,
+            2.3
+          ],
+          "target": [
+            1,
+            1.7
+          ],
+          "frame": 1438,
+          "calls": 62,
+          "triangles": 69849,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "5-3.png",
+          "pos": [
+            2.4,
+            1.4,
+            2.8
+          ],
+          "target": [
+            2.1,
+            3.5
+          ],
+          "frame": 1483,
+          "calls": 118,
+          "triangles": 69515,
+          "points": 0,
+          "lines": 0
+        }
+      ]
+    },
+    {
+      "room": "儿童房",
+      "frames": 180,
+      "p50": 16.69999998807907,
+      "p95": 17.5,
+      "max": 17.700000017881393,
+      "captures": [
+        {
+          "file": "6-0.png",
+          "pos": [
+            3.1,
+            1.4,
+            5.4
+          ],
+          "target": [
+            1,
+            5.2
+          ],
+          "frame": 1528,
+          "calls": 79,
+          "triangles": 68281,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "6-1.png",
+          "pos": [
+            2.25,
+            1.4,
+            5.75
+          ],
+          "target": [
+            1,
+            5.2
+          ],
+          "frame": 1573,
+          "calls": 79,
+          "triangles": 68791,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "6-2.png",
+          "pos": [
+            1.2,
+            1.4,
+            5.8
+          ],
+          "target": [
+            3.4,
+            5.5
+          ],
+          "frame": 1618,
+          "calls": 1968,
+          "triangles": 745834,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "6-3.png",
+          "pos": [
+            1.1,
+            1.4,
+            6.3
+          ],
+          "target": [
+            1.2,
+            4.7
+          ],
+          "frame": 1663,
+          "calls": 554,
+          "triangles": 176772,
+          "points": 0,
+          "lines": 0
+        }
+      ]
+    },
+    {
+      "room": "主卫",
+      "frames": 180,
+      "p50": 16.69999998807907,
+      "p95": 17.5,
+      "max": 17.700000017881393,
+      "captures": [
+        {
+          "file": "7-0.png",
+          "pos": [
+            9.6,
+            1.4,
+            2.5
+          ],
+          "target": [
+            8.3,
+            1.1
+          ],
+          "frame": 1708,
+          "calls": 676,
+          "triangles": 233494,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "7-1.png",
+          "pos": [
+            8.95,
+            1.4,
+            2.3
+          ],
+          "target": [
+            8.2,
+            2.65
+          ],
+          "frame": 1753,
+          "calls": 1122,
+          "triangles": 253426,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "7-2.png",
+          "pos": [
+            8.9,
+            1.4,
+            1.65
+          ],
+          "target": [
+            8.8,
+            0.7
+          ],
+          "frame": 1798,
+          "calls": 77,
+          "triangles": 67485,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "7-3.png",
+          "pos": [
+            8.2,
+            1.4,
+            1.9
+          ],
+          "target": [
+            7.4,
+            1.6
+          ],
+          "frame": 1843,
+          "calls": 788,
+          "triangles": 194248,
+          "points": 0,
+          "lines": 0
+        }
+      ]
+    },
+    {
+      "room": "次卫",
+      "frames": 180,
+      "p50": 16.69999998807907,
+      "p95": 17.5,
+      "max": 17.700000017881393,
+      "captures": [
+        {
+          "file": "8-0.png",
+          "pos": [
+            4.75,
+            1.4,
+            2
+          ],
+          "target": [
+            4.9,
+            0.6
+          ],
+          "frame": 1888,
+          "calls": 218,
+          "triangles": 84330,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "8-1.png",
+          "pos": [
+            4.75,
+            1.4,
+            1.6
+          ],
+          "target": [
+            4.9,
+            0.6
+          ],
+          "frame": 1933,
+          "calls": 94,
+          "triangles": 69147,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "8-2.png",
+          "pos": [
+            4.8,
+            1.4,
+            1
+          ],
+          "target": [
+            3.9,
+            0.8
+          ],
+          "frame": 1978,
+          "calls": 110,
+          "triangles": 127407,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "file": "8-3.png",
+          "pos": [
+            4.7,
+            1.4,
+            0.8
+          ],
+          "target": [
+            4.8,
+            2.1
+          ],
+          "frame": 2023,
+          "calls": 992,
+          "triangles": 389262,
+          "points": 0,
+          "lines": 0
+        }
+      ]
+    }
+  ]
+}

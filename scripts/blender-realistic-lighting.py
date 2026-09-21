@@ -20,9 +20,9 @@ for d in prefs.devices:d.use=d.type=='METAL'
 scene.cycles.device='GPU';scene.cycles.max_bounces=8;scene.cycles.diffuse_bounces=5;scene.cycles.glossy_bounces=4;scene.cycles.transmission_bounces=8
 scene.cycles.use_light_tree=True
 scene.world=bpy.data.worlds.new('Open sky daylight');scene.world.use_nodes=True
-nodes=scene.world.node_tree.nodes;links=scene.world.node_tree.links;bg=nodes.get('Background');bg.inputs['Strength'].default_value=.85
+nodes=scene.world.node_tree.nodes;links=scene.world.node_tree.links;bg=nodes.get('Background');bg.inputs['Strength'].default_value=1.1
 sky=nodes.new('ShaderNodeTexSky');sky.sky_type='NISHITA';sky.sun_disc=False;sky.sun_elevation=math.radians(38);sky.sun_rotation=math.radians(110);sky.altitude=.08;links.new(sky.outputs['Color'],bg.inputs['Color'])
-sun=bpy.data.lights.new('Daylight sun','SUN');sun.energy=1.6;sun.angle=math.radians(4);sun.color=(1,.92,.8);obj=bpy.data.objects.new(sun.name,sun);scene.collection.objects.link(obj);obj.rotation_euler=Vector((-.75,.35,-.62)).to_track_quat('-Z','Y').to_euler()
+sun=bpy.data.lights.new('Daylight sun','SUN');sun.energy=2.0;sun.angle=math.radians(4);sun.color=(1,.92,.8);obj=bpy.data.objects.new(sun.name,sun);scene.collection.objects.link(obj);obj.rotation_euler=Vector((-1,.35,-.75)).to_track_quat('-Z','Y').to_euler()
 # Shadow rays transmit through thin exterior glass without refractive-caustic noise.
 for m in bpy.data.materials:
  if m.name!='外窗清玻璃':continue

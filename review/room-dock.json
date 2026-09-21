@@ -1,0 +1,50 @@
+[
+  {
+    "w": 1280,
+    "h": 900,
+    "name": "主卫",
+    "active": "true",
+    "visible": true,
+    "overflow": false
+  },
+  {
+    "w": 1280,
+    "h": 900,
+    "name": "次卫",
+    "active": "true",
+    "visible": true,
+    "overflow": false
+  },
+  {
+    "w": 800,
+    "h": 700,
+    "name": "主卫",
+    "active": "true",
+    "visible": true,
+    "overflow": false
+  },
+  {
+    "w": 800,
+    "h": 700,
+    "name": "次卫",
+    "active": "true",
+    "visible": true,
+    "overflow": false
+  },
+  {
+    "w": 390,
+    "h": 844,
+    "name": "主卫",
+    "active": "true",
+    "visible": true,
+    "overflow": false
+  },
+  {
+    "w": 390,
+    "h": 844,
+    "name": "次卫",
+    "active": "true",
+    "visible": true,
+    "overflow": false
+  }
+]

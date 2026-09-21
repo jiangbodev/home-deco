@@ -1,0 +1,22 @@
+{
+  "editedMeshes": 63,
+  "unrelatedMeshBoundsUnchanged": 1417,
+  "triangles": 611437,
+  "roof": {
+    "bounds": {
+      "min": [
+        0,
+        2.7000002861022936,
+        5.558121991423707e-15
+      ],
+      "max": [
+        14.188775062561035,
+        2.7599726941661613,
+        7.100126629829213
+      ]
+    },
+    "closed": true,
+    "upAndDownNormals": true
+  },
+  "gltfErrors": 0
+}

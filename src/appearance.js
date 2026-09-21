@@ -60,6 +60,8 @@ export function createAppearance(renderer){
    const floor=/^F0[1-9]$/.test(meta.id||'')||/玄关六角砖/.test(o.name);
    const receiver=wallReceivers.get(o.userData.source_name||o.name)||wallReceivers.get(o.parent?.userData.source_name);
    if(!floor&&!receiver)return;
+   // A bounding-box contact chart is not a surface chart for these round shells.
+   if(/^圆弧包覆实体层(?:0|900|1230)$/.test(o.userData.source_name||o.name))return;
    const multiple=Array.isArray(o.material);
    const materials=multiple?o.material:[o.material];
    o.material=materials.map(original=>{

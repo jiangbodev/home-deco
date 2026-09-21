@@ -1,0 +1,38 @@
+[
+  {
+    "label": "before",
+    "errors": [],
+    "frames": 300,
+    "median": 16.69999999999891,
+    "p95": 16.799999999999272,
+    "max": 33.399999999999636,
+    "over25ms": 4,
+    "cpuP95": 3.7000000178813934,
+    "pixelRatio": 1.55,
+    "buffer": [
+      2976,
+      1674
+    ],
+    "transmissionScale": 1,
+    "drawCalls": 115,
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+  },
+  {
+    "label": "after",
+    "errors": [],
+    "frames": 300,
+    "median": 16.69999999999891,
+    "p95": 16.700000000000728,
+    "max": 16.80000000000109,
+    "over25ms": 0,
+    "cpuP95": 4.5999999940395355,
+    "pixelRatio": 1.075828707279838,
+    "buffer": [
+      2065,
+      1161
+    ],
+    "transmissionScale": 0.5,
+    "drawCalls": 115,
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+  }
+]

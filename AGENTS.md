@@ -83,3 +83,40 @@ Cabinet grey was an explicit runtime override (.60,.59,.56), not just lighting. 
 Read `review/realism-goal.md` and `source/README.md`. New diffuse maps and local HDR probes come from the same exact assembled runtime geometry in Blender, not a substitute room. Preserve original texture UVs explicitly when adding bake UVs. In temporary bake scenes, batch-join receivers for one atlas bake; never export that join into runtime modules. Atlas denoising must isolate each chart; whole-atlas OIDN mixes unrelated surfaces. Keep raw outputs out of Git and use fresh scratch directories for revised bakes.
 
 `irradiance.js` and `reflections.js` require matching module manifests and unchanged interaction transforms/visibility. Revert to prior lighting immediately on state changes, restore on reset; optional resource failures must remain navigable. New lighting loads after initial readiness. PMREM probes are generated once, not every frame. Full resource accounting in check-model-budget includes both new manifests and every PNG/HDR file. Preserve shader callback/cache-key chaining and authored material colors. The measured M4 result is not a phone FPS guarantee.
+
+## Whole-house walkthrough repair (2026-09-21)
+
+The original roof was an upward-facing zero-thickness sheet. Keep the Blender-authored closed 60 mm slab with its underside at 2.7 m. Double-sided irradiance/contact chart selection must multiply the interpolated world normal by fragment `faceDirection`; otherwise the visible underside samples the sky-facing chart. Preserve shader chaining/cache keys.
+
+Use immutable post-sofa input for `blender-repair-walkthrough.py`; its small boundary insets must not be applied repeatedly. Cabinet fronts, arch caps, mirror back wall and tub skirts previously overlapped within 0.3 mm. Do not fix by disabling depth tests. Geometry and every bake must stay in sync. Nine-room diagnostics and repair evidence are in `review/walkthrough-2026-09-21.md`. Main-bath navigation now starts inside at (8.95, 2.3); retain free movement through all objects.
+
+## Current local review request
+
+The user explicitly paused publication: do not commit, push, create a PR, merge or deploy this follow-up until requested again. This supersedes the remote-checkpoint preference above. Work locally. The latest requests are 1.4 m eye height; plain navy full-bed quilts with no bed pillows/throws; cleaner sofa occlusion; lighter wood furniture; brighter east/south daylight; living-window trees 1.8 m farther out and 0.9 m higher; consistent illumination on curved entry/niche plaster.
+
+
+## Local comfort refinements and audit lessons
+
+Use `qa/walkthrough-source.glb` and `qa/local-refinement-original/modules` as immutable inputs for `blender-refine-comfort.py` / `import-blender-comfort.mjs`; never apply offsets cumulatively. Bedding now has exactly two simple quilts, linear RGB (0.012, 0.022, 0.045), with inherited KHR_materials_sheen removed. Old sofa AO encoded the former two-cushion layout; it must not be copied to three cushions. Source timber image pixels in this conversion pipeline are encoded values: verify browser appearance after changing Blender pixels, rather than assuming linear values.
+
+The niche's two end panels were too short and zero-thickness, exposing the bright back wall as white vertical slits. They are now closed 12 mm solids. Preserve curved architectural receivers in the irradiance plan; otherwise their light response differs from adjoining flat ivory panels. All geometry/material updates still require genuine fallback, Cycles and reflection rebakes.
+
+Automatic quality targets responsiveness earlier and caps its drawing buffer at 2.4 million pixels. Glass transmission uses half-resolution targets. Resize remains before rendering. Performance evidence is from Chrome/Metal on this M4, not a guarantee on other hardware. Current local evidence is `review/comfort-local-2026-09-21.md`; earlier sofa/walkthrough reports are intermediate snapshots.
+
+Niche follow-up: adding curved shells to six-direction projected lightmaps was insufficient. The hard dominant-normal chart switch creates a visible vertical brightness seam across rounded fascias. `圆弧包覆实体层0/900/1230` explicitly skip both box-projected contact and irradiance and use continuous PBR lighting/reflections; flat niche lining stays baked. Preserve this exception unless replacing it with proper continuous surface UVs and rebaking. See review/niche-lighting-seams.jpg for three-angle evidence.
+
+
+Latest user correction supersedes the earlier niche end-panel fix: remove `壁龛靠柜端600` and `壁龛靠柜端930` entirely. Those two bright vertical boards are not intended parts of the design. Also remove the dining flower sprigs, leaves, petioles, legacy stems and glass vase; retain other room plants.
+
+The main bathroom internal privacy partition is now two Blender-authored sliding panes. Its existing glass node and central upright default to an open offset (-0.708 m X, +0.045 m Z); a fixed pane retains the left half. `interaction_bath-partition` stores closed/open matrices, with a separate control labelled 打开主卫内部隔断. Reset restores open; the shower glass is unchanged. Integration adds a unique base moduleNode for the fixed pane and preserves all existing module identities. See scripts/check-bath-partition.mjs and review/bath-partition.json.
+
+
+Dining prop names: the visible vase/water are `Hollow glass vase` and `Water with visible surface`; `样板餐桌玻璃花器` is only a legacy copy. Remove both sets plus `样板花器小叶` when the user asks for an empty table. Do not rely on Chinese name matching alone; verify a browser screenshot.
+
+
+## Publication authorization resumed
+
+The user subsequently said “提交吧”, resuming the previously requested commit, main merge and GitHub Pages publication. This supersedes the temporary local-only hold above for this reviewed revision. Verify CI, deployment and live asset hashes before reporting publication complete.
+
+
+Cabinet color follow-up: four `南侧通高柜2035门板1–4` already share ivory material 38 with the bookshelf, but their bevelled geometry failed the 95% axial-area bake cutoff. Explicitly include these four fronts in prepare-cycles-bake; genuine rebaking restores matching illumination. Do not compensate by changing global exposure or turning ivory material grey. See review/cabinet-ivory-comparison.jpg.
