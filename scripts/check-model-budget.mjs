@@ -21,3 +21,16 @@ const grain=path.resolve(root,'../surfaces/paint-grain-v1.png');
 if(fs.existsSync(grain)){bytes+=fs.statSync(grain).size;if(bytes>=20_000_000)throw Error('Surface textures exceed total budget');console.log(`Including surface finishes: ${bytes} bytes / 20000000`)}
 const fixtures=path.resolve(root,'../lighting/fixtures.json');
 if(fs.existsSync(fixtures)){bytes+=fs.statSync(fixtures).size;if(bytes>=20_000_000)throw Error('Fixture data exceeds total budget');console.log(`Including fixture manifest: ${bytes} bytes / 20000000`)}
+
+for(const name of ['irradiance.json','reflections.json']){
+ const file=path.join(lighting,name);if(!fs.existsSync(file))throw Error('Missing realistic lighting manifest: '+name);
+ const m=JSON.parse(fs.readFileSync(file));const sources=Object.values(manifest.modules).map(m=>m.file).sort();
+ if(JSON.stringify(m.sourceModules)!==JSON.stringify(sources))throw Error('Rebake realistic lighting after model updates');
+ bytes+=fs.statSync(file).size;
+ for(const asset of name==='irradiance.json'?[m.floor,m.wall]:m.probes){
+  if(path.basename(asset.file)!==asset.file)throw Error('Invalid lighting path');
+  const size=fs.statSync(path.join(lighting,asset.file)).size;if(size!==asset.bytes)throw Error('Realistic lighting size mismatch');bytes+=size;
+ }
+}
+if(bytes>=20_000_000)throw Error('Realistic lighting exceeds total resource budget');
+console.log(`Including Cycles daylight and local reflections: ${bytes} bytes / 20000000`);

@@ -77,3 +77,9 @@ Use the immutable `844e976` modules with `blender-refine-living.py` for this rev
 Niche lining had coincident opposite-facing triangles and overlap with the structural column. Rug binding tops were coplanar with the rug. Entry mirror backing and round enclosure cap overlapped the shared wall. Fix geometry in Blender, not by globally disabling depth testing. Main-bedroom side chair is removed including hidden legacy geometry; retain the chair facing the long desk edge.
 
 Cabinet grey was an explicit runtime override (.60,.59,.56), not just lighting. Preserve authored ivory color and skip generic white darkening for the explicit lacquer IDs. Lacquer uses much finer grain and roughness .32; walls remain matte. Keep baked-light/AO callbacks and cache keys when changing finish shaders.
+
+## Cycles irradiance and local reflections (2026-09-21)
+
+Read `review/realism-goal.md` and `source/README.md`. New diffuse maps and local HDR probes come from the same exact assembled runtime geometry in Blender, not a substitute room. Preserve original texture UVs explicitly when adding bake UVs. In temporary bake scenes, batch-join receivers for one atlas bake; never export that join into runtime modules. Atlas denoising must isolate each chart; whole-atlas OIDN mixes unrelated surfaces. Keep raw outputs out of Git and use fresh scratch directories for revised bakes.
+
+`irradiance.js` and `reflections.js` require matching module manifests and unchanged interaction transforms/visibility. Revert to prior lighting immediately on state changes, restore on reset; optional resource failures must remain navigable. New lighting loads after initial readiness. PMREM probes are generated once, not every frame. Full resource accounting in check-model-budget includes both new manifests and every PNG/HDR file. Preserve shader callback/cache-key chaining and authored material colors. The measured M4 result is not a phone FPS guarantee.

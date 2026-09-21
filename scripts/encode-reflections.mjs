@@ -1,0 +1,5 @@
+import fs from'node:fs/promises';import crypto from'node:crypto';import {NodeIO}from'@gltf-transform/core';import{ALL_EXTENSIONS}from'@gltf-transform/extensions';import{getBounds}from'@gltf-transform/functions';
+const[input,source]=process.argv.slice(2),base='public/assets/lighting/',doc=await new NodeIO().registerExtensions(ALL_EXTENSIONS).read(source),receivers={};
+for(const n of doc.getRoot().listNodes()){if(!n.getMesh())continue;const b=getBounds(n),x=(b.min[0]+b.max[0])/2,z=(b.min[2]+b.max[2])/2;receivers[n.getExtras().moduleNode]=x>9.5&&z<3.6?'bedroom':'living'}
+const probes=[];for(const name of ['living','bedroom']){const data=await fs.readFile(input+'/'+name+'.hdr'),file='reflection-'+name+'-'+crypto.createHash('sha256').update(data).digest('hex').slice(0,12)+'.hdr';await fs.writeFile(base+file,data);probes.push({name,file,bytes:data.length})}
+const sourceModules=Object.values(JSON.parse(await fs.readFile('public/assets/modules/manifest.json')).modules).map(m=>m.file).sort();await fs.writeFile(base+'reflections.json',JSON.stringify({version:1,sourceModules,receivers,probes})+'\n');console.log(probes);

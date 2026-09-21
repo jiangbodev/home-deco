@@ -1,0 +1,74 @@
+[
+  {
+    "mode": "normal",
+    "initial": {
+      "weight": 0.9999993186570092,
+      "reflections": 638,
+      "ready": true
+    },
+    "changed": {
+      "weight": 0,
+      "reflections": 0,
+      "ready": true
+    },
+    "reset": {
+      "weight": 0.9997750427108996,
+      "reflections": 638,
+      "ready": true
+    },
+    "navigation": {
+      "y": 1.5,
+      "room": "主卧",
+      "loading": false
+    },
+    "errors": []
+  },
+  {
+    "mode": "missing",
+    "initial": {
+      "weight": 0,
+      "reflections": 0,
+      "ready": true
+    },
+    "changed": {
+      "weight": 0,
+      "reflections": 0,
+      "ready": true
+    },
+    "reset": {
+      "weight": 0,
+      "reflections": 0,
+      "ready": true
+    },
+    "navigation": {
+      "y": 1.5,
+      "room": "主卧",
+      "loading": false
+    },
+    "errors": []
+  },
+  {
+    "mode": "mobile",
+    "initial": {
+      "weight": 0.9999992212688714,
+      "reflections": 638,
+      "ready": true
+    },
+    "changed": {
+      "weight": 0,
+      "reflections": 0,
+      "ready": true
+    },
+    "reset": {
+      "weight": 0.9998589505472001,
+      "reflections": 638,
+      "ready": true
+    },
+    "navigation": {
+      "y": 1.5,
+      "room": "主卧",
+      "loading": false
+    },
+    "errors": []
+  }
+]
