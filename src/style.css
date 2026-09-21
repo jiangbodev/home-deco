@@ -69,3 +69,9 @@ h1{font-family:"Songti SC",serif;font-size:30px;font-weight:400;letter-spacing:.
   .module-status{top:calc(60px + env(safe-area-inset-top,0px));left:auto;right:calc(14px + env(safe-area-inset-right,0px));font-size:11px;padding:4px 10px}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* Unknown-duration setup/compilation is shown as activity, never a made-up percentage. */
+progress:not([value]){background:linear-gradient(90deg,#d9dfd6 25%,#76917a 50%,#d9dfd6 75%);background-size:200% 100%;animation:loading-activity 1.4s linear infinite}
+progress:not([value])::-webkit-progress-bar{background:transparent}
+@keyframes loading-activity{to{background-position:-200% 0}}
+@media(prefers-reduced-motion:reduce){progress:not([value]){animation:none}}
