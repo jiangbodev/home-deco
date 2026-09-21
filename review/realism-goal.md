@@ -1,4 +1,4 @@
-# Realism goal — active
+# Realism upgrade — implementation and evidence
 
 User goal (2026-09-21): substantially improve lighting, material quality and realism of the existing home while retaining fast loading and smooth movement. Prefer Blender for mesh changes. Existing authorization includes main merge and GitHub Actions Pages publication.
 
@@ -31,4 +31,6 @@ No user approval of a new visual style is inferred from an image. The user autho
 - [Behavior evidence](realism-behavior.json): normal desktop, deliberately failed new lightmap/HDR requests, and 390×844 mobile emulation. All remain navigable. Furniture toggle sets traced weight and local reflections to zero; reset restores them. Master-bedroom navigation keeps eye height 1.5 m. No page errors. Emulation validates behavior/layout only.
 - Production build, real-progress regression and expanded CI asset/version budget check pass. Current immutable before source and live baseline remain available through `fb0b3ea`.
 
-Publication is pending; update this record after PR checks and live verification.
+Delivery: [PR #3](https://github.com/jiangbodev/home-deco/pull/3). The implementation build passed [Actions run 35590552814](https://github.com/jiangbodev/home-deco/actions/runs/35590552814). Final deployment status is available in the [Pages workflow](https://github.com/jiangbodev/home-deco/actions/workflows/pages.yml); live verification is reported in the task delivery.
+
+Additional high-density desktop check: device DPR 2, effective renderer ratio 1.7, 1280×900 CSS pixels, one 240-frame route per version. Median interval 16.7 ms both; new P95 16.8 ms / maximum 24.3 ms, no >34 ms samples, unchanged draw counts. [Raw evidence](realism-retina-performance.json). This does not establish performance on other hardware.

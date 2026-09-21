@@ -1,0 +1,70 @@
+[
+  {
+    "label": "before",
+    "run": 0,
+    "readyMs": 733.3000000119209,
+    "errors": [],
+    "frameMs": {
+      "median": 16.69999998807907,
+      "p95": 18.400000005960464,
+      "max": 22
+    },
+    "submitMs": {
+      "median": 1.300000011920929,
+      "p95": 1.7999999821186066,
+      "max": 2
+    },
+    "calls": {
+      "median": 185,
+      "p95": 305,
+      "max": 309
+    },
+    "triangles": {
+      "median": 181721,
+      "p95": 293869,
+      "max": 293917
+    },
+    "pixelRatio": 1.7,
+    "memory": {
+      "geometries": 530,
+      "textures": 72
+    },
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+    "slowFrames": 0,
+    "resources": 11466963
+  },
+  {
+    "label": "after",
+    "run": 0,
+    "readyMs": 825.1999999880791,
+    "errors": [],
+    "frameMs": {
+      "median": 16.69999998807907,
+      "p95": 16.80000001192093,
+      "max": 24.30000001192093
+    },
+    "submitMs": {
+      "median": 1.300000011920929,
+      "p95": 1.9000000059604645,
+      "max": 2.199999988079071
+    },
+    "calls": {
+      "median": 185,
+      "p95": 305,
+      "max": 309
+    },
+    "triangles": {
+      "median": 181721,
+      "p95": 293869,
+      "max": 293917
+    },
+    "pixelRatio": 1.7,
+    "memory": {
+      "geometries": 530,
+      "textures": 77
+    },
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+    "slowFrames": 0,
+    "resources": 15655159
+  }
+]
