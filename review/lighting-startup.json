@@ -1,0 +1,24 @@
+[
+  {
+    "mode": "delayed",
+    "loaded": 12,
+    "position": [
+      4.6,
+      1.4,
+      6.78
+    ],
+    "initialFrameMatchesSettledFrame": true,
+    "errors": []
+  },
+  {
+    "mode": "failed",
+    "loaded": 12,
+    "position": [
+      4.6,
+      1.4,
+      6.78
+    ],
+    "initialFrameMatchesSettledFrame": true,
+    "errors": []
+  }
+]

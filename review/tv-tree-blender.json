@@ -1,0 +1,57 @@
+[
+  {
+    "name": "树木_branches",
+    "beforeFaces": 2901,
+    "afterFaces": 8912,
+    "method": "Restore original woody topology; keep reduced foliage and tree transforms"
+  },
+  {
+    "name": "树木_branches.001",
+    "beforeFaces": 2901,
+    "afterFaces": 8912,
+    "method": "Restore original woody topology; keep reduced foliage and tree transforms"
+  },
+  {
+    "name": "树木_branches.002",
+    "beforeFaces": 2901,
+    "afterFaces": 8912,
+    "method": "Restore original woody topology; keep reduced foliage and tree transforms"
+  },
+  {
+    "name": "树木_branches.003",
+    "beforeFaces": 2901,
+    "afterFaces": 8912,
+    "method": "Restore original woody topology; keep reduced foliage and tree transforms"
+  },
+  {
+    "name": "树木_trunk",
+    "beforeFaces": 2740,
+    "afterFaces": 5491,
+    "method": "Restore original woody topology; keep reduced foliage and tree transforms"
+  },
+  {
+    "name": "树木_trunk.001",
+    "beforeFaces": 2740,
+    "afterFaces": 5491,
+    "method": "Restore original woody topology; keep reduced foliage and tree transforms"
+  },
+  {
+    "name": "树木_trunk.002",
+    "beforeFaces": 2740,
+    "afterFaces": 5491,
+    "method": "Restore original woody topology; keep reduced foliage and tree transforms"
+  },
+  {
+    "name": "树木_trunk.003",
+    "beforeFaces": 2740,
+    "afterFaces": 5491,
+    "method": "Restore original woody topology; keep reduced foliage and tree transforms"
+  },
+  {
+    "name": "玄关餐桌连接侧体",
+    "oldTop": 2.369999647140503,
+    "newTop": 2.7,
+    "frontX": 5.5483,
+    "method": "Extend existing solid to ceiling; keep TV clear of wall"
+  }
+]

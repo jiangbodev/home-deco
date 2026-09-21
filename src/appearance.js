@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {prepareTVWall} from './tv-wall-finish.js';
 import {RectAreaLightUniformsLib} from 'three/addons/lights/RectAreaLightUniformsLib.js';
 import {createObjectContact} from './object-contact.js';
 import {createReflections} from './reflections.js';
@@ -24,7 +25,7 @@ export function createAppearance(renderer){
   ]);
  }
  async function load(){
-  void finishes.load();const tracedLoading=Promise.all([irradiance.load(),reflections.load()]);
+  const tracedLoading=Promise.all([finishes.load(),irradiance.load(),reflections.load()]);
   try{
    const base=import.meta.env.BASE_URL+'assets/lighting/';
    const response=await fetch(base+'contact.json',{cache:'no-cache'});if(!response.ok)throw Error('Contact manifest unavailable');
@@ -103,7 +104,7 @@ vec3 an=abs(wn),wp=clamp((contactPosition-wallMin)/wallSize,0.0,1.0);
     m.customProgramCacheKey=()=> 'floor-light-v2';return m;
    });if(!multiple)o.material=o.material[0];
   });
-  finishes.prepare(group);objectContact.prepare(group);irradiance.prepare(group);reflections.prepare(group);
+  finishes.prepare(group);objectContact.prepare(group);irradiance.prepare(group);prepareTVWall(group);reflections.prepare(group);
  }
  function update(model,initialTransforms,loaded,assetFiles){
   irradiance.update(model,initialTransforms,loaded,assetFiles);reflections.update(model,initialTransforms,loaded,assetFiles);
@@ -128,5 +129,7 @@ vec3 an=abs(wn),wp=clamp((contactPosition-wallMin)/wallSize,0.0,1.0);
   for(const p of fixtureConfig.pendants){const light=new THREE.RectAreaLight(0xffd4a0,35,.25,.25);light.position.fromArray(p);light.lookAt(p[0],p[1]-1,p[2]);scene.add(light);pendants.push(light)}
  }
  function tick(dt){irradiance.tick(dt);objectContact.tick(dt);bakedLight.value+=(bakedTarget-bakedLight.value)*(1-Math.exp(-dt*6))}
- return {init,load,prepare,update,addFixtures,tick};
+ // Finish the initial fades behind the loading screen, before the first visible frame.
+ function settle(){tick(Infinity)}
+ return {init,load,prepare,update,addFixtures,tick,settle};
 }

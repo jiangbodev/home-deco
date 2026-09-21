@@ -1,0 +1,86 @@
+{
+  "errors": [],
+  "rooms": [
+    {
+      "room": "玄关",
+      "pos": [
+        4.6,
+        1.4,
+        6.78
+      ],
+      "roomAfterStep": "玄关"
+    },
+    {
+      "room": "客厅",
+      "pos": [
+        9.85,
+        1.4,
+        5.15
+      ],
+      "roomAfterStep": "客厅"
+    },
+    {
+      "room": "餐厅",
+      "pos": [
+        6.3,
+        1.4,
+        5.55
+      ],
+      "roomAfterStep": "餐厅"
+    },
+    {
+      "room": "厨房",
+      "pos": [
+        5.65,
+        1.4,
+        2.65
+      ],
+      "roomAfterStep": "厨房"
+    },
+    {
+      "room": "主卧",
+      "pos": [
+        13.5,
+        1.4,
+        3.7
+      ],
+      "roomAfterStep": "主卧"
+    },
+    {
+      "room": "次卧",
+      "pos": [
+        4.1,
+        1.4,
+        3.9
+      ],
+      "roomAfterStep": "次卧"
+    },
+    {
+      "room": "儿童房",
+      "pos": [
+        3.05,
+        1.4,
+        5.05
+      ],
+      "roomAfterStep": "儿童房"
+    },
+    {
+      "room": "主卫",
+      "pos": [
+        10.1,
+        1.4,
+        2.5
+      ],
+      "roomAfterStep": "主卫"
+    },
+    {
+      "room": "次卫",
+      "pos": [
+        4.9,
+        1.4,
+        2.69
+      ],
+      "roomAfterStep": "次卫"
+    }
+  ]
+}

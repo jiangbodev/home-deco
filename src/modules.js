@@ -17,7 +17,7 @@ export function createModules({loader,root,prepare,onStatus,onAttach=()=>{},onMa
  async function drain(){if(started)return;started=true;while(queue.length){const key=queue.shift();try{await load(key)}catch(e){console.warn('Room module failed',key,e)}}started=false;status()}
  function prioritize(i){const first=[...forRoom(i),...(neighbors[i]||[]).flatMap(forRoom)];for(const key of first.reverse()){const p=queue.indexOf(key);if(p>=0)queue.splice(p,1);if(manifest.modules[key]&&!loaded.has(key))queue.unshift(key)}void drain()}
  return {
-  async init(){const r=await fetch(base+'manifest.json',{cache:'no-cache'});if(!r.ok)throw Error('Model manifest unavailable');manifest=await r.json();onManifest(manifest,initialModules);await load('base');await Promise.all(initialModules.filter(key=>key!=='base').map(load))},
+  async init({wholeHome=false}={}){const r=await fetch(base+'manifest.json',{cache:'no-cache'});if(!r.ok)throw Error('Model manifest unavailable');manifest=await r.json();const keys=wholeHome?Object.keys(manifest.modules):initialModules;onManifest(manifest,keys);await load('base');await Promise.all(initialModules.filter(key=>key!=='base').map(load));if(wholeHome)for(const key of keys)await load(key)},
   async room(i){await Promise.all(forRoom(i).map(load));prioritize(i)},
   prioritize,
   isRoomLoaded(i){return forRoom(i).every(key=>!manifest.modules[key]||loaded.has(key))},
