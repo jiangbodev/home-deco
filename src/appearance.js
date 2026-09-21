@@ -45,7 +45,7 @@ export function createAppearance(renderer){
     if(tuned.has(m))continue;tuned.add(m);
     // Retain authored maps and UV scale; only calibrate their surface response.
     if(m.name==='室内水波玻璃'){m.roughness=.22;if(m.normalMap)m.normalScale.multiplyScalar(.6)}
-    if(!m.map&&!m.transparent&&m.metalness<.05&&m.roughness>.45&&Math.min(m.color.r,m.color.g,m.color.b)>.55)m.color.multiplyScalar(.86);
+    if(![8,24,37,38,54,56,62,64,67,85,87].includes(m.userData.source_material_id)&&!m.map&&!m.transparent&&m.metalness<.05&&m.roughness>.45&&Math.min(m.color.r,m.color.g,m.color.b)>.55)m.color.multiplyScalar(.86);
     if(m.name.startsWith('Warm walnut - real oak scan tinted')){
      m.roughness=.9;if(m.normalMap)m.normalScale.multiplyScalar(.65);
     }

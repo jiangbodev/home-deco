@@ -13,16 +13,20 @@ if(!input||!output||!blenderFile||input===output)throw Error('Usage: node script
 await fs.mkdir(output,{recursive:true});
 const io=new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'draco3d.decoder':await D.createDecoderModule(),'draco3d.encoder':await D.createEncoderModule()});
 const edited=await io.read(blenderFile),editedNodes=new Map(edited.getRoot().listNodes().map(n=>[n.getName(),n]));
+const removed=new Set(JSON.parse(await fs.readFile('review/living-removed.json')));
 const manifest=JSON.parse(await fs.readFile(input+'/manifest.json')),report=[];
 const base=await io.read(input+'/'+manifest.modules.base.file),parents=new Map(base.getRoot().listNodes().map(n=>[n.getExtras().moduleNode,n]));
 for(const key of Object.keys(manifest.modules)){
  const entry=manifest.modules[key],doc=await io.read(input+'/'+entry.file);
- if(!doc.getRoot().listNodes().some(n=>n.getMesh()&&editedNodes.has(n.getName())))continue;
+ if(!doc.getRoot().listNodes().some(n=>n.getMesh()&&(editedNodes.has(n.getName())||removed.has(n.getName()))))continue;
  doc.getRoot().listExtensionsUsed().find(e=>e.extensionName==='KHR_draco_mesh_compression')?.dispose();
+ const treeInstances=new Map();
  for(const n of doc.getRoot().listNodes()){
   if(!n.getMesh())continue;
+  if(removed.has(n.getName())){n.setMesh(null);continue;}
+  const originalMesh=n.getMesh();if(n.getName().startsWith('树木_')&&treeInstances.has(originalMesh)){n.setMesh(treeInstances.get(originalMesh));continue;}
   const editedNode=editedNodes.get(n.getName());if(!editedNode?.getMesh())continue;
-  const unique=n.getMesh().clone();for(const p of unique.listPrimitives()){unique.removePrimitive(p);unique.addPrimitive(p.clone())}n.setMesh(unique);
+  const unique=n.getMesh().clone();for(const p of unique.listPrimitives()){unique.removePrimitive(p);unique.addPrimitive(p.clone())}n.setMesh(unique);if(n.getName().startsWith('树木_'))treeInstances.set(originalMesh,unique);
   const oldPrimitives=n.getMesh().listPrimitives(),newPrimitives=editedNode.getMesh().listPrimitives();assert.equal(oldPrimitives.length,newPrimitives.length);
   const targetWorld=new THREE.Matrix4().fromArray((key==='base'?n:parents.get(n.getExtras().attachTo)).getWorldMatrix());
   const sourceWorld=new THREE.Matrix4().fromArray(editedNode.getWorldMatrix());
@@ -34,6 +38,8 @@ for(const key of Object.keys(manifest.modules)){
    for(const semantic of p.listSemantics())p.setAttribute(semantic,null);
    for(const semantic of editedPrimitive.listSemantics())p.setAttribute(semantic,map.get(editedPrimitive.getAttribute(semantic)));
    p.setIndices(map.get(editedPrimitive.getIndices()));
+   if(n.getName().startsWith('Cloth cover'))p.getMaterial().setBaseColorFactor([1,1,1,1]);
+   if(n.getName().startsWith('Curved pointed leaf'))p.getMaterial().setDoubleSided(true);
    for(const semantic of ['POSITION','NORMAL','TANGENT']){
     const attr=p.getAttribute(semantic);if(!attr)continue;const data=attr.getArray(),stride=attr.getElementSize(),v=new THREE.Vector3();
     for(let j=0;j<attr.getCount();j++){v.fromArray(data,j*stride);if(semantic==='POSITION')v.applyMatrix4(transform);else v.applyMatrix3(normalMatrix).normalize();v.toArray(data,j*stride)}
@@ -43,7 +49,7 @@ for(const key of Object.keys(manifest.modules)){
    report.push({module:key,name:n.getName(),before,after,oldBounds,newBounds,method:'Blender living-area edit; original module hierarchy/materials preserved'});
   }
  }
- await doc.transform(prune({propertyTypes:[PropertyType.ACCESSOR]}),unpartition(),draco({quantizePosition:16,quantizeNormal:10,quantizeTexcoord:12,encodeSpeed:0,decodeSpeed:0}));
+ await doc.transform(prune({propertyTypes:[PropertyType.MESH,PropertyType.PRIMITIVE,PropertyType.ACCESSOR]}),unpartition(),draco({quantizePosition:16,quantizeNormal:10,quantizeTexcoord:12,encodeSpeed:0,decodeSpeed:0}));
  // GLTF JSON export leaves the existing content-addressed textures external.
  const {json,resources}=await io.writeJSON(doc,{format:'GLTF'});assert.equal(json.buffers.length,1);
  const binary=Buffer.from(resources[json.buffers[0].uri]);delete json.buffers[0].uri;

@@ -5,3 +5,4 @@ dist/
 *.pdf
 *.zip
 qa/
+*.blend[0-9]

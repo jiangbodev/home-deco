@@ -33,6 +33,14 @@ def tube(o,points,radii,sides=7):
 # Clear genuinely coplanar liner faces; move the remaining lining 1.5 mm into the recess.
 for o in list(bpy.data.objects):
  if o.type!='MESH':continue
+ if o.name=='外置台盆背防水饰面':
+  mark(o);o.data=o.data.copy()
+  for v in o.data.vertices:
+   p=gw(o,v.co)
+   if abs(p.z-4.775511)<.00003:p.z-=.002
+   v.co=local(o,p)
+ if o.name=='玄关左侧圆弧包覆':
+  mark(o);o.data.calc_loop_triangles();vs=[gw(o,v.co) for v in o.data.vertices];fs=[tuple(t.vertices) for t in o.data.loop_triangles if not all(abs(vs[i].z-4.775511)<.00003 for i in t.vertices)];replace(o,vs,fs)
  if o.name.startswith('壁龛靠'):
   mark(o);o.data=o.data.copy();o.data.calc_loop_triangles();vs=[gw(o,v.co) for v in o.data.vertices];fs=[]
   for t in o.data.loop_triangles:
@@ -61,9 +69,15 @@ for gi,g in enumerate(groups):
   box(cv,cf,(-w/2+.0012,h/2,d/2),(.0024,h,d));box(cv,cf,(w/2-.0012,h/2,d/2),(.0024,h,d));box(cv,cf,(0,h/2,.0015),(w,h,.003))
   vv=[];ff=[];box(vv,ff,(0,h/2,d/2+.0015),(w-.005,h-.006,d-.007))
   # Subtle raised publisher rule, differing positions and lengths, sharing the cover material.
-  col=[(rng.uniform(.65,.9),)*3 for _ in cv]
+  base_color=tuple(o.data.materials[0].node_tree.nodes.get('Principled BSDF').inputs['Base Color'].default_value[:3]);col=[tuple(c*.8 for c in base_color) for _ in cv]
   if j%3!=1:
-   k=len(cv);box(cv,cf,(0,h*(.72 if j%2 else .82),-.00025),(w*.58,.0012,.0006));col += [(.98,.98,.9)]*(len(cv)-k)
+   k=len(cv);box(cv,cf,(0,h*(.72 if j%2 else .82),-.00025),(w*.58,.0012,.0006));col += [(.72,.69,.59)]*(len(cv)-k)
+  # Real geometric spine lettering, combined into the existing mesh/material (no extra draw).
+  titles=['FORM & SPACE','FIELD NOTES','ARCHITECTURE','THE GARDEN','ART / 02','INTERIORS','MODERN LIVING','COLOUR']
+  font=bpy.data.curves.new('Spine lettering','FONT');font.body=titles[(gi*3+j)%len(titles)];font.size=.006;font.resolution_u=1
+  label=bpy.data.objects.new('temporary lettering',font);bpy.context.collection.objects.link(label);bpy.context.view_layer.update()
+  ev=label.evaluated_get(bpy.context.evaluated_depsgraph_get());tm=ev.to_mesh();k=len(cv)
+  cv.extend([(-v.co.y+.002,h*.18+v.co.x,-.002) for v in tm.vertices]);cf.extend([tuple(k+i for i in face.vertices) for face in tm.polygons]);col += [(.72,.69,.59)]*len(tm.vertices);ev.to_mesh_clear();bpy.data.objects.remove(label,do_unlink=True)
   tilt=rng.uniform(-.065,.065) if not stack else rng.uniform(-.025,.025)
   def place(p):
    x,y,z=p
@@ -90,6 +104,12 @@ for k in range(3):
    for b in range(2):fs.append((a*3+b,(a+1)*3+b,(a+1)*3+b+1,a*3+b+1))
   o=named('Curved pointed leaf',i);replace(o,vs,fs,colors)
   for p in o.data.polygons:p.use_smooth=True
+# Remove the side chair, retaining the chair facing the long desk edge.
+removed=[]
+chair=bpy.data.objects['主卧内侧书桌椅']
+for o in list(chair.children_recursive):
+ if o.type=='MESH':removed.append(o.name);bpy.data.objects.remove(o,do_unlink=True)
+Path(report).with_name('living-removed.json').write_text(json.dumps(removed,ensure_ascii=False,indent=2)+'\n')
 # Preserve the existing hollow glass vessel and water (no new transmissive draws).
 for o in bpy.data.objects:
  if o.get('source_visible') is False:o.hide_render=True;o.hide_set(True)
@@ -98,5 +118,5 @@ bpy.ops.file.pack_all();bpy.ops.wm.save_as_mainfile(filepath=str(Path(blend).res
 bpy.ops.object.select_all(action='DESELECT')
 for name,data in changed.items():
  o=bpy.data.objects[name];o.hide_set(False);o.select_set(True);ev=o.evaluated_get(bpy.context.evaluated_depsgraph_get());m=ev.to_mesh();m.calc_loop_triangles();data['after']=len(m.loop_triangles);ev.to_mesh_clear()
-bpy.ops.export_scene.gltf(filepath=str(Path(out).resolve()),export_format='GLB',use_selection=True,export_apply=True,export_extras=True,export_tangents=True)
+bpy.ops.export_scene.gltf(filepath=str(Path(out).resolve()),export_format='GLB',use_selection=True,export_apply=True,export_extras=True,export_tangents=True,export_vertex_color='NAME',export_vertex_color_name='Color')
 Path(report).write_text(json.dumps(changed,ensure_ascii=False,indent=2)+'\n');print('CHANGED',len(changed))
