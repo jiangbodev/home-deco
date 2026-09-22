@@ -3,7 +3,9 @@ import * as THREE from 'three';
 const plaster=new Set([2,3,4]);
 const lacquer=new Set([8,24,37,38,54,56,62,64,67,85,87]);
 const timber=new Set([9,15,17,25,32,35,41,45,50,52,65,69,72,75]);
+const livingWood=new Set(['Warm walnut - real oak scan tinted.005','Warm walnut - real oak scan tinted.004'].flatMap(n=>[n,THREE.PropertyBinding.sanitizeNodeName(n)]));
 const profiles={
+ rug:{rough:.98,amplitude:'.00025',colorNoise:'.06',roughNoise:'.04',uv:'vec2(3.0)',edge:0},
  plaster:{rough:.92,amplitude:'.00016',colorNoise:'.025',roughNoise:'.16',uv:'vec2(4.0)',edge:0},
  lacquer:{rough:.32,amplitude:'.000025',colorNoise:'.008',roughNoise:'.045',uv:'vec2(4.0)',edge:.0012},
  timber:{rough:.78,amplitude:'.00005',colorNoise:'.015',roughNoise:'.12',uv:'vec2(4.0)',edge:.0018},
@@ -31,9 +33,10 @@ export function createSurfaceFinishes(renderer){
   const multiple=Array.isArray(o.material),materials=multiple?o.material:[o.material];
   const result=materials.map(original=>{
    const id=original.userData.source_material_id;
-   const kind=plaster.has(id)?'plaster':lacquer.has(id)?'lacquer':(timber.has(id)||id===320||id===370)?'timber':id===19?'counter':id===80?'steel':null;
+   const kind=plaster.has(id)?'plaster':lacquer.has(id)?'lacquer':(timber.has(id)||id===320||id===370)?'timber':id===51?'rug':id===19?'counter':id===80?'steel':null;
    if(!kind)return original;
-   const profile=[25,32,35,41,45,320,370].includes(id)?{...profiles.timber,rough:[25,32,35,320,370].includes(id)?.48:.55}:profiles[kind],edge=profile.edge&&boxEasing(o.geometry)?profile.edge:0;
+   const softenLivingWood=id===370&&livingWood.has(o.name);
+   const profile=softenLivingWood?{...profiles.timber,rough:.72,roughNoise:'.05'}:[25,32,35,41,45,320,370].includes(id)?{...profiles.timber,rough:[25,32,35,320,370].includes(id)?.48:.55}:profiles[kind],edge=profile.edge&&boxEasing(o.geometry)?profile.edge:0;
    // Keep each receiver's existing baked-light callback; Material.clone does not copy it.
    const m=original.clone(),previous=original.onBeforeCompile,previousKey=original.customProgramCacheKey();
    m.userData.surfaceFinish=kind;m.userData.edgeEasing=edge;
@@ -41,6 +44,7 @@ export function createSurfaceFinishes(renderer){
    // Preserve authored warm ivory cabinet color; avoid flattening it to wall-like grey.
    if(kind==='counter')m.color.setRGB(.72,.71,.66);
    if(kind==='steel')m.metalness=.96;
+   if(kind==='rug'&&m.normalMap)m.normalScale.multiplyScalar(.45);
    if(kind==='timber'&&m.normalMap)m.normalScale.multiplyScalar(.35);
    if(kind==='lacquer'&&m.normalMap)m.normalScale.multiplyScalar(.12);
    m.roughness=profile.rough;
@@ -58,6 +62,13 @@ export function createSurfaceFinishes(renderer){
       vec2 finishUV=fn.x>fn.y&&fn.x>fn.z?finishPosition.zy:(fn.y>fn.z?finishPosition.xz:finishPosition.xy);
       vec3 finishData=texture2D(finishGrain,finishUV*${profile.uv}).rgb;
       diffuseColor.rgb*=1.0+(finishData.${kind==='counter'?'g':'r'}-.5)*${profile.colorNoise};
+      ${softenLivingWood?'float cabinetWoodLuma=dot(diffuseColor.rgb,vec3(.2126,.7152,.0722));diffuseColor.rgb=mix(vec3(cabinetWoodLuma),diffuseColor.rgb,.68)*1.12+vec3(.032,.029,.022);':''}
+      ${kind==='rug'?`vec2 yarnUV=finishPosition.xz*95.0;
+       vec2 yarnCell=fract(yarnUV);float alternate=mod(floor(yarnUV.x)+floor(yarnUV.y),2.0);
+       float yarnAA=1.0-smoothstep(.30,.85,max(fwidth(yarnUV.x),fwidth(yarnUV.y)));
+       float yarnShape=mix(sin(yarnCell.x*3.14159265),sin(yarnCell.y*3.14159265),alternate);
+       float yarnRelief=(yarnShape-.5)*yarnAA;
+       diffuseColor.rgb*=vec3(.95,.92,.82)*(1.0+yarnRelief*.38);`:''}
       ${kind==='timber'?'float woodTone=dot(diffuseColor.rgb,vec3(.2126,.7152,.0722));diffuseColor.rgb=mix(vec3(woodTone),diffuseColor.rgb,.9);':''}
      `)
      .replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
@@ -69,6 +80,7 @@ export function createSurfaceFinishes(renderer){
       vec3 rx=cross(sy,normal),ry=cross(normal,sx);
       float det=dot(sx,rx)*faceDirection;
       float height=finishData.g*${profile.amplitude};
+      ${kind==='rug'?'height+=yarnRelief*.00065;':''}
       ${edge?`vec3 edgeDistances=max(vec3(0.0),min(finishLocal-finishMin,finishMax-finishLocal)*finishScale);
        float clearance=max(min(edgeDistances.x,edgeDistances.y),min(max(edgeDistances.x,edgeDistances.y),edgeDistances.z));
        height+=${edge.toFixed(4)}*.35*smoothstep(0.0,${edge.toFixed(4)},clearance);`:''}
@@ -76,7 +88,7 @@ export function createSurfaceFinishes(renderer){
       normal=normalize(max(abs(det),1e-10)*normal-grad);
      `);
    };
-   m.customProgramCacheKey=()=>previousKey+'|finish-v6-'+kind+([25,32,35,41,45,320,370].includes(id)?'-satin-'+id:'')+(edge?'-edge':'');return m;
+   m.customProgramCacheKey=()=>previousKey+'|finish-v7-'+kind+(softenLivingWood?'-living-soft-oak':'')+([25,32,35,41,45,320,370].includes(id)?'-satin-'+id:'')+(edge?'-edge':'');return m;
   });o.material=multiple?result:result[0];
  })}
  return {load,prepare};

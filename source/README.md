@@ -179,3 +179,13 @@ node scripts/verify-modules.mjs qa/whole-house-upgrade/source.glb
 ```
 
 Regenerate contact, fallback daylight, object AO, Cycles irradiance and four reflection probes from the assembled source before judging appearance. Final bake directories: `qa/whole-house-upgrade/daylight-v2`, `baked-v2`, `probes-v2`. `?study=whole-house` provides development-only repeatable cameras and movement samples; it is stripped from production. See `review/whole-house-upgrade/` for validation and before/after evidence. The user has approved publication of this reviewed follow-up.
+
+### Main-bath mirror backing
+
+`scripts/blender-vanity-backing.py` restores the missing cabinet shell and sink backing from `qa/vanity-backing/before.glb`, using the private plan03/elevations22–23 and main-bath rendering17. Editable file: `source/home-deco-vanity-backing.blend`; import with `review/vanity-backing/blender.json` and immutable `qa/vanity-backing/original/modules`. Reassemble and regenerate all lighting before review. `scripts/check-vanity-backing.mjs` checks wall/sink contacts, storage depth and preservation of unrelated transforms and bounds. This is the bathroom mirror unit, not the bedroom window desk.
+
+### Kitchen and both bathrooms, drawing-first restoration
+
+`scripts/blender-wet-rooms-restore.py` takes immutable `qa/wet-rooms/before.glb` (including the mirror backing repair) and writes `source/home-deco-wet-rooms.blend` plus the authored subset. Integrate with `review/wet-rooms/blender.json` from `qa/wet-rooms/original/modules`. Rebuild lighting from assembled `qa/wet-rooms/source.glb`; final directories end `-final`, not the abandoned `-v2`. `scripts/check-wet-rooms.mjs` validates the dimensional cupboard, real Boolean niche, shelf support, clearances and preservation. See `review/wet-rooms/review.md` for the distinction between measured drawing dimensions, inferred construction details and subsequent effect-image finishing.
+
+客餐厅/阳台图纸核对：`home-deco-living-plan.blend` 来自 `qa/living-plan/before.glb`，由 `scripts/blender-living-plan.py` 生成。新增石材窗台、修正奶油色收口和餐椅贴地、补吊灯连接件、重建三台洗衣设备凹入舱口；详见 `review/living-plan/review.md`。最终组装 `qa/living-plan/source.glb`，全套真实烘焙在 `qa/living-plan/{daylight-final,baked-final,probes-final}`。不要从本轮输出重复应用腿端形变。

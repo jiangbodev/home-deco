@@ -1,0 +1,116 @@
+[
+  {
+    "module": "base",
+    "name": "管井转角墙",
+    "before": 12,
+    "after": 32
+  },
+  {
+    "module": "base",
+    "name": "次卫排水门把与纸架",
+    "before": 4508,
+    "after": 3944
+  },
+  {
+    "module": "base",
+    "name": "次卫淋浴内凹壁龛及层板",
+    "before": 12,
+    "after": 168
+  },
+  {
+    "module": "base",
+    "name": "主卫马桶侧暖气片",
+    "before": 12,
+    "after": 1296
+  },
+  {
+    "module": "base",
+    "name": "厨房北窗百叶帘",
+    "before": 12,
+    "after": 1008
+  },
+  {
+    "module": "base",
+    "name": "主卫浴缸壁装龙头",
+    "before": 12,
+    "after": 336
+  },
+  {
+    "module": "base",
+    "name": "主卫电热毛巾架",
+    "before": 12,
+    "after": 888
+  },
+  {
+    "module": "room-3",
+    "name": "厨房参考壁挂饮水设备",
+    "before": 12,
+    "after": 540
+  },
+  {
+    "module": "room-7",
+    "name": "主卫壁挂马桶壁挂接头",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫壁挂马桶座圈",
+    "before": 910,
+    "after": 910
+  },
+  {
+    "module": "room-7",
+    "name": "主卫壁挂马桶闭合盖板",
+    "before": 910,
+    "after": 910
+  },
+  {
+    "module": "room-7",
+    "name": "主卫壁挂马桶陶瓷壳",
+    "before": 596,
+    "after": 596
+  },
+  {
+    "module": "room-7",
+    "name": "主卫淋浴单扇门铰链及拉手",
+    "before": 108,
+    "after": 456
+  },
+  {
+    "module": "room-8",
+    "name": "厨房开放层板",
+    "before": 268,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "厨房开放层板.001",
+    "before": 268,
+    "after": 108
+  },
+  {
+    "module": "room-8",
+    "name": "厨房层板叠碗",
+    "before": 1344,
+    "after": 1344
+  },
+  {
+    "module": "room-8",
+    "name": "厨房西侧355封闭吊柜",
+    "before": 268,
+    "after": 648
+  },
+  {
+    "module": "room-8",
+    "name": "厨房北西台面转角补板",
+    "before": 268,
+    "after": 216
+  },
+  {
+    "module": "room-8",
+    "name": "次卫淋浴单扇门铰链及拉手",
+    "before": 108,
+    "after": 456
+  }
+]

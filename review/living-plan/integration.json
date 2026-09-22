@@ -1,0 +1,110 @@
+[
+  {
+    "module": "base",
+    "name": "书架沙发侧60圆角收口",
+    "before": 136,
+    "after": 136
+  },
+  {
+    "module": "base",
+    "name": "入门柜门套侧圆角收口",
+    "before": 136,
+    "after": 136
+  },
+  {
+    "module": "base",
+    "name": "阳台石材窗台",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-0",
+    "name": "Warm walnut - real oak scan tinted.001",
+    "before": 3136,
+    "after": 3136
+  },
+  {
+    "module": "room-0",
+    "name": "Warm walnut - real oak scan tinted.002",
+    "before": 3136,
+    "after": 3136
+  },
+  {
+    "module": "room-0",
+    "name": "餐厅吊灯灯口连接套",
+    "before": 80,
+    "after": 120
+  },
+  {
+    "module": "room-1",
+    "name": "壁挂洗衣机外形",
+    "before": 268,
+    "after": 464
+  },
+  {
+    "module": "room-1",
+    "name": "壁挂洗衣机背部固定座",
+    "before": 268,
+    "after": 216
+  },
+  {
+    "module": "room-4",
+    "name": "壁挂洗衣机门圈",
+    "before": 556,
+    "after": 672
+  },
+  {
+    "module": "room-4",
+    "name": "干衣机外形",
+    "before": 268,
+    "after": 464
+  },
+  {
+    "module": "room-4",
+    "name": "干衣机门圈",
+    "before": 674,
+    "after": 672
+  },
+  {
+    "module": "room-4",
+    "name": "洗衣机外形",
+    "before": 268,
+    "after": 464
+  },
+  {
+    "module": "room-4",
+    "name": "洗衣机门圈",
+    "before": 674,
+    "after": 672
+  },
+  {
+    "module": "room-4",
+    "name": "洗衣机内凹舱门玻璃",
+    "before": 674,
+    "after": 956
+  },
+  {
+    "module": "room-4",
+    "name": "洗衣机旋钮抽屉及支脚",
+    "before": 268,
+    "after": 524
+  },
+  {
+    "module": "room-4",
+    "name": "干衣机内凹舱门玻璃",
+    "before": 674,
+    "after": 956
+  },
+  {
+    "module": "room-4",
+    "name": "干衣机旋钮抽屉及支脚",
+    "before": 268,
+    "after": 524
+  },
+  {
+    "module": "room-4",
+    "name": "壁挂洗衣机内凹舱门玻璃",
+    "before": 556,
+    "after": 956
+  }
+]

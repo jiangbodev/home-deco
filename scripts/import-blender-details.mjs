@@ -11,7 +11,7 @@ for(const id of spec.materialImages){const m=authoredMaterials.get(id);assert(m?
 for(const[key,entry]of Object.entries(manifest.modules)){
  const doc=key==='base'?base:await io.read(input+'/'+entry.file);
  if(key!=='base')for(const a of spec.added){const template=doc.getRoot().listNodes().find(n=>n.getName()===a.template&&n.getMesh());if(!template)continue;const n=doc.createNode(a.name).setMatrix(template.getMatrix()).setMesh(template.getMesh()).setExtras({attachTo:a.id,source_visible:true,source_name:a.name});doc.getRoot().listScenes()[0].addChild(n)}
- if(!(key==='base'&&retired.size)&&!doc.getRoot().listNodes().some(n=>n.getMesh()&&changed.has(n.getName())))continue;
+ if(!(key==='base'&&(retired.size||spec.added.length))&&!doc.getRoot().listNodes().some(n=>n.getMesh()&&changed.has(n.getName())))continue;
  doc.getRoot().listExtensionsUsed().find(e=>e.extensionName==='KHR_draco_mesh_compression')?.dispose();
  const materialMap=new Map(doc.getRoot().listMaterials().map(m=>[m.getExtras().source_material_id,m]));
  for(const id of spec.clearOcclusionMaterials??[])materialMap.get(id)?.setOcclusionTexture(null);
@@ -23,7 +23,7 @@ for(const[key,entry]of Object.entries(manifest.modules)){
  }
  for(const[id,{file,data}]of fresh){const m=materialMap.get(id);if(!m)continue;const texture=m.getBaseColorTexture().clone().setImage(data).setMimeType('image/webp').setURI(file);m.setBaseColorTexture(texture).setOcclusionStrength(.35).setRoughnessFactor(.55)}
  function material(m){const id=m.getExtras().source_material_id;if(materialMap.has(id))return materialMap.get(id);let out;
-  if(m.getExtras().detail_base_material!==undefined){const baseId=m.getExtras().detail_base_material;let original=materialMap.get(baseId);if(!original){const source=fallbackMaterials.get(baseId);assert(source,'Missing reference material '+baseId);original=copyToDocument(doc,source.doc,[source.mat]).get(source.mat);materialMap.set(baseId,original)}out=original.clone().setName(m.getName()).setExtras(m.getExtras()).setRoughnessFactor(m.getRoughnessFactor()).setOcclusionTexture(null)}else out=copyToDocument(doc,edited,[m]).get(m);
+  if(m.getExtras().detail_base_material!==undefined){const baseId=m.getExtras().detail_base_material;let original=materialMap.get(baseId);if(!original){const source=fallbackMaterials.get(baseId);assert(source,'Missing reference material '+baseId);original=copyToDocument(doc,source.doc,[source.mat]).get(source.mat);materialMap.set(baseId,original)}out=original.clone().setName(m.getName()).setExtras(m.getExtras()).setRoughnessFactor(m.getRoughnessFactor()).setOcclusionTexture(null)}else if(fallbackMaterials.has(id)){const source=fallbackMaterials.get(id);out=copyToDocument(doc,source.doc,[source.mat]).get(source.mat)}else out=copyToDocument(doc,edited,[m]).get(m);
   if(id===314){let reference=materialMap.get(14);if(!reference){const source=fallbackMaterials.get(14);reference=copyToDocument(doc,source.doc,[source.mat]).get(source.mat)}out.setNormalTexture(reference.getNormalTexture()).setNormalScale(.3)}
   materialMap.set(id,out);return out;
  }

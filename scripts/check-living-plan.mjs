@@ -1,0 +1,16 @@
+import{NodeIO}from'@gltf-transform/core';import{ALL_EXTENSIONS}from'@gltf-transform/extensions';import{getBounds}from'@gltf-transform/functions';import*as T from'three';import fs from'node:fs/promises';import assert from'node:assert/strict';
+const io=new NodeIO().registerExtensions(ALL_EXTENSIONS),a=await io.read('qa/living-plan/before.glb'),b=await io.read('qa/living-plan/source.glb'),old=new Map(a.getRoot().listNodes().map(n=>[n.getName(),n])),nodes=new Map(b.getRoot().listNodes().map(n=>[n.getName(),n]));
+const spec=JSON.parse(await fs.readFile('review/living-plan/blender.json')),changed=new Set(spec.changed),hidden=new Set(spec.hidden);let preserved=0,triangles=0,oldTriangles=0;
+for(const n of a.getRoot().listNodes())for(const p of n.getMesh()?.listPrimitives()??[])oldTriangles+=p.getIndices().getCount()/3;
+for(const n of b.getRoot().listNodes()){const p=old.get(n.getName());if(p){assert.deepEqual(n.getMatrix(),p.getMatrix(),n.getName());if(!hidden.has(n.getName()))assert.deepEqual(n.getExtras(),p.getExtras());if(n.getMesh()&&!changed.has(n.getName())){const x=getBounds(n),y=getBounds(p);for(const k of ['min','max'])for(let i=0;i<3;i++)assert(Math.abs(x[k][i]-y[k][i])<.0003,n.getName());preserved++;}}else assert(spec.added.some(v=>v.name===n.getName()));for(const p of n.getMesh()?.listPrimitives()??[])triangles+=p.getIndices().getCount()/3;}
+const bounds=name=>getBounds(nodes.get(name));
+const sill=bounds('阳台石材窗台'),wall=bounds('客厅东窗窗下实体');assert(Math.abs(sill.min[1]-wall.max[1])<.0003);assert(sill.max[1]<bounds('客厅东窗').min[1]);
+const chairNames=['Warm walnut - real oak scan tinted.001','Warm walnut - real oak scan tinted.002'];for(const name of chairNames)assert(Math.abs(bounds(name).min[1])<.0003,'Chair feet contact floor');
+for(const name of ['书架沙发侧60圆角收口','入门柜门套侧圆角收口'])assert(nodes.get(name).getMesh().listPrimitives().every(p=>p.getMaterial().getExtras().source_material_id===38));
+const cavities=[];for(const [prefix,cx,cy,z] of [['洗衣机',12.992,.45,6.126],['干衣机',13.606,.45,6.126],['壁挂洗衣机',12.992,1.52,6.441]]){
+const meshes=[];for(const name of [prefix+'外形',prefix+'内凹舱门玻璃']){const n=nodes.get(name);for(const p of n.getMesh().listPrimitives()){const g=new T.BufferGeometry().setAttribute('position',new T.BufferAttribute(p.getAttribute('POSITION').getArray().slice(),3)).setIndex(new T.BufferAttribute(p.getIndices().getArray(),1));g.applyMatrix4(new T.Matrix4().fromArray(n.getWorldMatrix()));const m=new T.Mesh(g,new T.MeshBasicMaterial({side:T.DoubleSide}));m.updateMatrixWorld();meshes.push(m);}}
+const hit=new T.Raycaster(new T.Vector3(cx+.011,cy+.007,z-.08),new T.Vector3(0,0,1)).intersectObjects(meshes)[0]?.point.z;assert(hit>z+.10&&hit<z+.13,prefix+' has genuine recessed cavity');cavities.push({name:prefix,recess:hit-z});
+assert(bounds(prefix+'门圈').min[2]>6.09,'Closed cabinet door clearance');
+}
+const bracket=bounds('壁挂洗衣机背部固定座');assert(Math.abs(bracket.max[2]-bounds('洗衣区底部结构').min[2])<.001);assert(bracket.min[2]<=bounds('壁挂洗衣机外形').max[2]);
+const report={triangles,oldTriangles,increase:triangles-oldTriangles,preservedMeshBounds:preserved,originalTransformsPreserved:true,sill,cavities,chairFeet:chairNames.map(name=>({name,y:bounds(name).min[1]})),bracket};await fs.writeFile('review/living-plan/validation.json',JSON.stringify(report,null,2));console.log(report);

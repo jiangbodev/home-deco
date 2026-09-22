@@ -54,12 +54,12 @@ function readStates(){
  for(const[key,entries]of grouped){
    if(!Object.hasOwn(stateNames,key))continue;
    const label=document.createElement('label');label.className='setting-row';label.append(document.createTextNode(stateNames[key]||key));const input=document.createElement('input');input.type='checkbox';input.setAttribute('role','switch');label.append(input);$('#state-controls').append(label);
-   input.onchange=()=>{entries.forEach(({o,pair})=>{const s=pair[input.checked?'on':'off'];if(!s)return;o.visible=s.visible;const m=C.clone().multiply(new THREE.Matrix4().fromArray(s.matrix)).multiply(Ci);m.decompose(o.position,o.quaternion,o.scale);o.updateMatrix()});model.updateMatrixWorld(true);refreshAppearance()};
+   input.onchange=()=>{entries.forEach(({o,pair})=>{const s=pair[(key==='laundry-doors'?!input.checked:input.checked)?'on':'off'];if(!s)return;o.visible=s.visible;const m=C.clone().multiply(new THREE.Matrix4().fromArray(s.matrix)).multiply(Ci);m.decompose(o.position,o.quaternion,o.scale);o.updateMatrix()});model.updateMatrixWorld(true);refreshAppearance()};
    stateEntries.push({key,entries,input});
  }
  syncStateControls();
 }
-function syncStateControls(){for(const{entries,input}of stateEntries){let on=0,off=0;for(const{o,pair}of entries){for(const[k,s]of Object.entries(pair)){const m=C.clone().multiply(new THREE.Matrix4().fromArray(s.matrix)).multiply(Ci);const err=m.elements.reduce((t,v,i)=>t+Math.abs(v-o.matrix.elements[i]),0)+(o.visible===s.visible?0:100);if(k==='on')on+=err;else off+=err}}input.checked=on<off}}
+function syncStateControls(){for(const{key,entries,input}of stateEntries){let on=0,off=0;for(const{o,pair}of entries){for(const[k,s]of Object.entries(pair)){const m=C.clone().multiply(new THREE.Matrix4().fromArray(s.matrix)).multiply(Ci);const err=m.elements.reduce((t,v,i)=>t+Math.abs(v-o.matrix.elements[i]),0)+(o.visible===s.visible?0:100);if(k==='on')on+=err;else off+=err}}input.checked=key==='laundry-doors'?off<on:on<off}}
 
 function refreshAppearance(){
  if(!model)return;model.updateMatrixWorld(true);appearance?.update(model,initialTransforms,modules?.loaded,modules?.assetFiles);

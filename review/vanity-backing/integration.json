@@ -1,0 +1,26 @@
+[
+  {
+    "module": "room-7",
+    "name": "主卫镜柜",
+    "before": 12,
+    "after": 540
+  },
+  {
+    "module": "room-7",
+    "name": "主卫镜柜内部层板",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫镜柜内部层板.001",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-7",
+    "name": "主卫镜柜后方封闭柜身及台盆背衬",
+    "before": 12,
+    "after": 1080
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "device": "Apple M4, local browser, auto quality",
+  "durationSecondsPerRoom": 6,
+  "samples": [
+    {
+      "name": "厨房",
+      "frames": 331,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.80000000000291,
+      "drawCalls": 482,
+      "triangles": 157350,
+      "width": 1675,
+      "height": 1432
+    },
+    {
+      "name": "主卫木柜",
+      "frames": 330,
+      "medianMs": 16.699999999982538,
+      "p95Ms": 16.800000000017462,
+      "drawCalls": 1352,
+      "triangles": 466742,
+      "width": 1675,
+      "height": 1432
+    },
+    {
+      "name": "次卫百叶",
+      "frames": 330,
+      "medianMs": 16.699999999982538,
+      "p95Ms": 16.800000000017462,
+      "drawCalls": 282,
+      "triangles": 130670,
+      "width": 1675,
+      "height": 1432
+    }
+  ],
+  "limitation": "Short local samples, not a universal frame-rate guarantee."
+}

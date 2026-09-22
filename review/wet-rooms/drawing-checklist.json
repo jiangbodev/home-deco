@@ -1,0 +1,22 @@
+{
+  "priority": ["construction floor plan", "construction elevations", "effect images"],
+  "sourceFilesPrivate": true,
+  "areas": {
+    "kitchen": {
+      "checked": ["north/west/east counter runs", "820mm worktop height", "570/326/600mm depths", "355mm west elevation bay", "sink and hob placement", "existing side-by-side fridge", "sliding access and serving window"],
+      "repaired": ["missing closed upper cupboard", "shelves intersecting missing cupboard bay", "30mm counter corner gap", "shelf prop support after correction"],
+      "effectOnly": ["north blind", "generic wall drinking appliance"],
+      "notClaimed": ["boiler model and hidden service pipes", "exact integrated dishwasher internals"]
+    },
+    "mainBathroom": {
+      "checked": ["mirror and sink footprint", "1170mm elevation vs existing 1175mm basin unit", "1.3m plan bathtub vs existing 1275mm surround", "WC and shower positions", "privacy partition default-open state", "room-door clearance"],
+      "repaired": ["mirror rear storage shell and sink backing", "bathtub filler", "plan-indicated radiator", "plan-indicated electric towel rail", "extra shower center mullion and missing hardware"],
+      "notClaimed": ["equipment product-specific dimensions", "cat-litter internal cabinet arrangement"]
+    },
+    "guestBathroom": {
+      "checked": ["WC placement", "shower floor and exterior window", "plan-labelled niche location", "single-leaf shower elevation", "doorway clearance"],
+      "repaired": ["actual recessed niche and lining", "extra shower center mullion", "side hinges and double-sided pull", "retire original misplaced central pull while preserving drain/paper holder"],
+      "notClaimed": ["unannotated niche height as construction measurement", "new interactive shower door animation"]
+    }
+  }
+}
