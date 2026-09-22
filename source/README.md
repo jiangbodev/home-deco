@@ -193,3 +193,6 @@ Regenerate contact, fallback daylight, object AO, Cycles irradiance and four ref
 ## 入户柜与次卫外机
 
 `home-deco-entry-hvac.blend` 从 `qa/entry-hvac/before.glb`（bede6dd）生成。构建脚本 `scripts/blender-entry-hvac.py`，使用已存在的living-plan几何辅助函数；新增6组设备区物件并统一入户左柜6块板件为材质38。最终拼装 `qa/entry-hvac/source.glb`。参见 `review/entry-hvac/review.md`。
+
+### 次卫空间梳理（6aa6067 后本地）
+`home-deco-bath-space.blend` / `scripts/blender-bath-space.py`：移除外机机身、风扇、底座、保温管及导流罩的场景可见性，保留可追溯节点；角落留空。淋浴区、侧面防溅隔断与挡水坎、室内密封玻璃窗、室外钢百叶保持独立层次。输入 `qa/bath-space/before.glb`；审查记录 `review/bath-space/`。
