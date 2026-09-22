@@ -33,10 +33,10 @@ export function createSurfaceFinishes(renderer){
   const multiple=Array.isArray(o.material),materials=multiple?o.material:[o.material];
   const result=materials.map(original=>{
    const id=original.userData.source_material_id;
-   const kind=plaster.has(id)?'plaster':lacquer.has(id)?'lacquer':(timber.has(id)||id===320||id===370)?'timber':id===51?'rug':id===19?'counter':id===80?'steel':null;
+   const kind=plaster.has(id)?'plaster':lacquer.has(id)?'lacquer':(timber.has(id)||id===320||id===370)?'timber':id===51?'rug':id===19?'counter':[80,360,361].includes(id)?'steel':null;
    if(!kind)return original;
    const softenLivingWood=id===370&&livingWood.has(o.name);
-   const profile=softenLivingWood?{...profiles.timber,rough:.72,roughNoise:'.05'}:[25,32,35,41,45,320,370].includes(id)?{...profiles.timber,rough:[25,32,35,320,370].includes(id)?.48:.55}:profiles[kind],edge=profile.edge&&boxEasing(o.geometry)?profile.edge:0;
+   const profile=[360,361].includes(id)?{...profiles.steel,rough:id===360?.255:.20,roughNoise:'.08',amplitude:'.0000015',uv:'vec2(220.0,3.0)'}:softenLivingWood?{...profiles.timber,rough:.72,roughNoise:'.05'}:[25,32,35,41,45,320,370].includes(id)?{...profiles.timber,rough:[25,32,35,320,370].includes(id)?.48:.55}:profiles[kind],edge=profile.edge&&boxEasing(o.geometry)?profile.edge:0;
    // Keep each receiver's existing baked-light callback; Material.clone does not copy it.
    const m=original.clone(),previous=original.onBeforeCompile,previousKey=original.customProgramCacheKey();
    m.userData.surfaceFinish=kind;m.userData.edgeEasing=edge;
@@ -88,7 +88,7 @@ export function createSurfaceFinishes(renderer){
       normal=normalize(max(abs(det),1e-10)*normal-grad);
      `);
    };
-   m.customProgramCacheKey=()=>previousKey+'|finish-v7-'+kind+(softenLivingWood?'-living-soft-oak':'')+([25,32,35,41,45,320,370].includes(id)?'-satin-'+id:'')+(edge?'-edge':'');return m;
+   m.customProgramCacheKey=()=>previousKey+'|finish-v8-'+kind+(softenLivingWood?'-living-soft-oak':'')+([25,32,35,41,45,320,370].includes(id)?'-satin-'+id:'')+([360,361].includes(id)?'-appliance-'+id:'')+(edge?'-edge':'');return m;
   });o.material=multiple?result:result[0];
  })}
  return {load,prepare};

@@ -196,3 +196,11 @@ Regenerate contact, fallback daylight, object AO, Cycles irradiance and four ref
 
 ### 次卫空间梳理（6aa6067 后本地）
 `home-deco-bath-space.blend` / `scripts/blender-bath-space.py`：移除外机机身、风扇、底座、保温管及导流罩的场景可见性，保留可追溯节点；角落留空。淋浴区、侧面防溅隔断与挡水坎、室内密封玻璃窗、室外钢百叶保持独立层次。输入 `qa/bath-space/before.glb`；审查记录 `review/bath-space/`。
+
+### 全屋真实性复核 realism-v3（本地）
+
+`home-deco-realism-v3.blend` 由 `scripts/blender-realism-v3.py` 从不可变 `qa/realism-v3/before.glb` 生成；集成说明在 `review/realism-v3/blender.json`。最终组装 `qa/realism-v3/source.glb`，完整光照在 `qa/realism-v3/{daylight-final,baked-fridge-final,probes-final}`。`scripts/check-realism-v3.mjs` 验证尺寸、承托、床头贴墙及未修改对象。见 `review/realism-v3/review.md`。不要从本轮输出重复延伸桌腿；新增主卧软包/层板陈列，保持单椅、纯藏青床品及移除外机。
+
+同轮追加冰箱360/361材质调整；`surface-finishes.js`接入纵向钢材拉丝与厨房局部反射，保持原双门几何。
+
+Blender后台批处理必须带 `--python-exit-code 1`；光照输入改变须使用新的烘焙目录，不能复用旧目录后仅更新清单。
