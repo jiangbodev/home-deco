@@ -1,0 +1,145 @@
+{
+  "meshNodes": 1453,
+  "triangles": 651110,
+  "preservedMeshBounds": 1443,
+  "transformsAndMetadata": "exact",
+  "attributeValues": "finite",
+  "indices": "in range",
+  "bathEnvelope": "unchanged within 0.1 mm",
+  "rainfallJets": "inside and attached to heads",
+  "facade": "39 continuous rows verified by paired rays; inner glass remains behind facade",
+  "authoredClosedSolids": [
+    {
+      "name": "浴缸深内腔",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "浴缸外包1275x840",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "浴缸溢水口",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "浴缸排水盖",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "顶喷出水面",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "手持花洒出水面",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "顶喷出水面.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "手持花洒出水面.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "冰箱外包门板1",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫外窗",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    }
+  ],
+  "warnings": [
+    {
+      "name": "玄关左侧圆弧包覆",
+      "zeroAreaTriangles": 14,
+      "visible": true
+    },
+    {
+      "name": "次卧北侧柔弧",
+      "zeroAreaTriangles": 8,
+      "visible": true
+    },
+    {
+      "name": "次卧南侧柔弧",
+      "zeroAreaTriangles": 10,
+      "visible": true
+    },
+    {
+      "name": "主卧衣柜2630门板1",
+      "zeroAreaTriangles": 1,
+      "visible": true
+    },
+    {
+      "name": "主卧衣柜2630门板2",
+      "zeroAreaTriangles": 1,
+      "visible": true
+    },
+    {
+      "name": "主卧衣柜2630门板3",
+      "zeroAreaTriangles": 1,
+      "visible": true
+    },
+    {
+      "name": "主卧衣柜2630门板4",
+      "zeroAreaTriangles": 1,
+      "visible": true
+    },
+    {
+      "name": "主卧衣柜2630门板5",
+      "zeroAreaTriangles": 1,
+      "visible": true
+    },
+    {
+      "name": "主卧衣柜2630门板6",
+      "zeroAreaTriangles": 1,
+      "visible": true
+    },
+    {
+      "name": "冰箱旁高柜门板1",
+      "zeroAreaTriangles": 1,
+      "visible": true
+    },
+    {
+      "name": "南侧整柜书架齐平收口",
+      "zeroAreaTriangles": 2,
+      "visible": true
+    },
+    {
+      "name": "南侧通高柜2035顶封板",
+      "zeroAreaTriangles": 1,
+      "visible": true
+    },
+    {
+      "name": "Sofa",
+      "zeroAreaTriangles": 1,
+      "visible": true
+    },
+    {
+      "name": "Cloth cover 0.007",
+      "zeroAreaTriangles": 2,
+      "visible": true
+    },
+    {
+      "name": "连通口左侧柜门板1",
+      "zeroAreaTriangles": 1,
+      "visible": true
+    },
+    {
+      "name": "主卧床头软包靠板",
+      "zeroAreaTriangles": 48,
+      "visible": true
+    }
+  ]
+}

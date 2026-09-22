@@ -187,3 +187,17 @@ Main wardrobe follow-up: material8 and38 already have exactly the same ivory bas
 
 ## Secondary bath: simplify spatial review (local after 6aa6067)
 User explicitly asks to remove the condenser and clarify shower / glass inner window / exterior steel louvre relationships. `blender-bath-space.py` from immutable qa/bath-space/before.glb retires five condenser body/fan/base/pipe/shroud nodes via source_visible=false, preserving stable identities. Do not restore equipment from the prior HVAC request. Keep the corner empty, side splash screen and curb, shower door, separate sealed inner glass, and exterior metal louvres. New editable source source/home-deco-bath-space.blend; bakes qa/bath-space/daylight-final, baked-final, probes-final. This revision is local until publication is requested.
+
+### 次卫既有外立面约束（2026-09-22）
+
+用户明确：次卫外立面为一整体钢制百叶，淋浴玻璃、隔断等功能调整只能在室内。不得重新拆成设备区/淋浴区两套外百叶。realism-v4 保留完整外周框与 39 排连续叶片；玻璃位于内侧，空调外机仍移除。
+
+Blender 同编号材质变更须在导入 spec 显式列入 materialOverrides，并检查最终组装 GLB 的参数；仅修改 Blender 源材质不足以保证复用材质已更新。
+
+## Comfort-v5：椅子、织物和卫浴（本地）
+用户要求修复主卧椅子怪异硬壳及缺口、提升地毯/书籍/马桶/浴缸，同时撤掉主卧层板的书和碗。源脚本 blender-comfort-v5.py，从 qa/comfort-v5/before.glb 不可变输入生成。保留 hidden 四个主卧陈设，不得按效果图恢复。书架 Warm page edges 各纸页块 UV.x 表示局部厚度方向米数，运行时按此抗混叠分层；封面/布料材质不能丢失原 shader 链。壁龛靠沙发端原面有262mm悬伸且不闭合，修为保留原连续前面的闭合L形回折体；新增38号材质面必须有UV。最终光照为 daylight-v3/baked-v3/probes-v3，原始节点矩阵不变；用户随后明确要求发布本轮修改。
+
+
+## Desk-v6 and clickable room doors (publication authorized)
+User added two27-inch monitors/keyboard/mouse on main bedroom desk, asked to deepen the TV console, and explicitly excluded cabinet/fridge doors from click interactions. Immutable input qa/desk-v6/before.glb; builder scripts/blender-desk-v6.py; source/home-deco-desk-v6.blend. Keep empty bedroom shelves. Final bakes desk-v6/daylight-final, baked-final, probes-final. Only console .005 material370 gets RGB multiplier(.50,.43,.35); side cabinet .004 stays unchanged.
+Door controls build before readStates; authored door and partition endpoints stay authoritative. Two shower leaves rotate outward90° around existing right hinges; frames remain fixed. Handle hit tests have 3.1m range, occlusion check, 28px target radius and6px drag cancellation. User cabinet exclusion also excludes laundry cabinet doors from direct clicks; existing settings remain. Shader irradiance keeps static room lighting during door movement and disables only moved receivers/descendants; this remains static approximate GI, not dynamic door shadows. Preserve shader callback chains and initial-state reset. Check scripts/check-door-controls.mjs and review/desk-v6.

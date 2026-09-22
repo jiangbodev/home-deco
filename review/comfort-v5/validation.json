@@ -1,0 +1,177 @@
+{
+  "meshNodes": 1453,
+  "unchangedMeshBounds": 1410,
+  "triangles": 652882,
+  "chair": {
+    "min": [
+      12.908499303830766,
+      0.4309979805849039,
+      1.3883999342340285
+    ],
+    "max": [
+      13.343499412883727,
+      0.8110000122131252,
+      1.8403999494185987
+    ]
+  },
+  "legs": {
+    "min": [
+      12.917999482561367,
+      0.00000244193296255156,
+      1.3899995013810211
+    ],
+    "max": [
+      13.319999936437148,
+      0.4420000490737642,
+      1.8390003769099303
+    ]
+  },
+  "hidden": [
+    "主卧层板书册1",
+    "主卧层板书册2",
+    "主卧层板陶碗1",
+    "主卧层板陶碗2"
+  ],
+  "authoredChecks": [
+    {
+      "name": "Warm grey upholstered study chair.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "Warm walnut - real oak scan tinted.007",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "客厅地毯_效果06至08",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "地毯短边包带",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "地毯短边包带.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "地毯长边包带",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "地毯长边包带.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "壁龛靠沙发端600",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "壁龛靠沙发端930",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "壁龛背部600",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "壁龛背部930",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶闭合盖板",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶座圈",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶缓降铰链",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶缓降铰链.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶冲水面板",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶双档按钮",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶双档按钮.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶闭合盖板",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶座圈",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶缓降铰链",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶缓降铰链.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶冲水面板",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶双档按钮",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶双档按钮.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "浴缸侧裙",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "浴缸前裙",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "浴缸外包1275x840",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    }
+  ]
+}

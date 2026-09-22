@@ -4,6 +4,7 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {DRACOLoader} from 'three/addons/loaders/DRACOLoader.js';
 import {createAppearance} from './appearance.js';
 import {createMirrors} from './mirrors.js';
+import {buildDoorMechanisms,installDoorControls} from './door-controls.js';
 import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 
 const $=s=>document.querySelector(s), canvas=$('#scene');
@@ -11,7 +12,7 @@ const coarse=matchMedia('(pointer:coarse)').matches;
 import {rooms} from './rooms.js';
 import {createModules} from './modules.js';
 import {createLoadingProgress} from './loading-progress.js';
-let appearance,mirrors;
+let appearance,mirrors,doorControls;
 let modules,visitSequence=0,lastRoom=-1;
 let frameLoop,contextLost=false;
 let renderer, model, ready=false, quality='auto', yaw=0,pitch=0, mapOpen=false;
@@ -39,7 +40,7 @@ $('#help-button').onclick=()=>openDialog('#help-panel');
 document.querySelectorAll('dialog').forEach(d=>{d.querySelector('.close').onclick=()=>d.close();d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}});d.addEventListener('close',()=>{mapOpen=false;document.querySelectorAll('[aria-expanded=true]').forEach(b=>b.setAttribute('aria-expanded','false'))})});
 $('#quality').onchange=e=>{quality=e.target.value;resize()};
 $('#retry').onclick=()=>location.reload();
-$('#reset').onclick=()=>{for(const[o,t]of initialTransforms){o.matrix.copy(t.matrix);o.matrix.decompose(o.position,o.quaternion,o.scale);o.visible=t.visible}model.updateMatrixWorld(true);refreshAppearance();syncStateControls();quality='auto';$('#quality').value='auto';resize();closeDialogs();visit(0);toast('已恢复初始空间')};
+$('#reset').onclick=()=>{doorControls?.cancel();for(const[o,t]of initialTransforms){o.matrix.copy(t.matrix);o.matrix.decompose(o.position,o.quaternion,o.scale);o.visible=t.visible}model.updateMatrixWorld(true);refreshAppearance();syncStateControls();quality='auto';$('#quality').value='auto';resize();closeDialogs();visit(0);toast('已恢复初始空间')};
 
 function readStates(){
  const grouped=new Map();
@@ -54,7 +55,7 @@ function readStates(){
  for(const[key,entries]of grouped){
    if(!Object.hasOwn(stateNames,key))continue;
    const label=document.createElement('label');label.className='setting-row';label.append(document.createTextNode(stateNames[key]||key));const input=document.createElement('input');input.type='checkbox';input.setAttribute('role','switch');label.append(input);$('#state-controls').append(label);
-   input.onchange=()=>{entries.forEach(({o,pair})=>{const s=pair[(key==='laundry-doors'?!input.checked:input.checked)?'on':'off'];if(!s)return;o.visible=s.visible;const m=C.clone().multiply(new THREE.Matrix4().fromArray(s.matrix)).multiply(Ci);m.decompose(o.position,o.quaternion,o.scale);o.updateMatrix()});model.updateMatrixWorld(true);refreshAppearance()};
+   input.onchange=()=>{doorControls?.cancel(key);entries.forEach(({o,pair})=>{const s=pair[(key==='laundry-doors'?!input.checked:input.checked)?'on':'off'];if(!s)return;o.visible=s.visible;const m=C.clone().multiply(new THREE.Matrix4().fromArray(s.matrix)).multiply(Ci);m.decompose(o.position,o.quaternion,o.scale);o.updateMatrix()});model.updateMatrixWorld(true);refreshAppearance()};
    stateEntries.push({key,entries,input});
  }
  syncStateControls();
@@ -141,11 +142,11 @@ async function start(){
    };
    const status=document.createElement('button');status.className='module-status';status.hidden=true;status.onclick=()=>modules.background();$('#ui').append(status);
    modules=createModules({loader,root:model,prepare,onManifest:startup.plan,onProgress:startup.bytes,onAttach:()=>{if(ready)refreshAppearance()},onStatus:s=>{appearance.update(model,initialTransforms,modules?.loaded,modules?.assetFiles);status.hidden=s.loaded===s.total;status.textContent=s.failed?'部分房间加载失败 · 点击重试':'正在补齐其他房间…';status.disabled=!s.failed}});
-   await modules.init({wholeHome:true});startup.preparing();await lightingReady;appearance.addFixtures(scene);readStates();buildNavigation();await visit(0);appearance.settle();mirrors=createMirrors(scene,model,camera,{coarse});await mirrors.warm(renderer);mirrors.update(quality);
+   await modules.init({wholeHome:true});startup.preparing();await lightingReady;appearance.addFixtures(scene);const doors=buildDoorMechanisms(model);readStates();doorControls=installDoorControls({model,camera,canvas,doors,onChange:finished=>{refreshAppearance();if(finished)syncStateControls()}});buildNavigation();await visit(0);appearance.settle();mirrors=createMirrors(scene,model,camera,{coarse});await mirrors.warm(renderer);mirrors.update(quality);
    await renderer.compileAsync(scene,camera);renderer.render(scene,camera);startup.complete();ready=true;$('#loading').hidden=true;$('#ui').hidden=false;
    if(coarse)$('#hint').textContent='拖动画面环顾';
    let last=performance.now(),count=0;
-   frameLoop=now=>{if(contextLost||document.hidden){last=now;return}const ms=now-last;last=now;const dt=Math.min(ms/1000,.05);appearance.tick(dt);if(!document.querySelector('dialog[open]'))move(dt);frameAverage=.94*frameAverage+.06*Math.min(ms,80);count++;if(quality==='auto'&&count%60===0&&frameAverage>20&&adaptiveScale>.7){adaptiveScale=Math.max(.7,adaptiveScale-.1);resize(false)}else if(quality==='auto'&&count%240===0&&frameAverage<16.9&&adaptiveScale<1.35){adaptiveScale=Math.min(1.35,adaptiveScale+.05);resize(false)}mirrors?.update(quality);renderer.render(scene,camera)};
+   frameLoop=now=>{if(contextLost||document.hidden){last=now;return}const ms=now-last;last=now;const dt=Math.min(ms/1000,.05);doorControls?.tick(dt);appearance.tick(dt);if(!document.querySelector('dialog[open]'))move(dt);frameAverage=.94*frameAverage+.06*Math.min(ms,80);count++;if(quality==='auto'&&count%60===0&&frameAverage>20&&adaptiveScale>.7){adaptiveScale=Math.max(.7,adaptiveScale-.1);resize(false)}else if(quality==='auto'&&count%240===0&&frameAverage<16.9&&adaptiveScale<1.35){adaptiveScale=Math.min(1.35,adaptiveScale+.05);resize(false)}mirrors?.update(quality);renderer.render(scene,camera)};
    renderer.setAnimationLoop(frameLoop);
    if(import.meta.env.DEV) import('./dining-review.js').then(({installDiningReview})=>installDiningReview({camera,renderer,setAngles:(y,p)=>{yaw=y;pitch=p;camera.rotation.set(pitch,yaw,0,'YXZ')}}));
    if(import.meta.env.DEV) import('./whole-house-review.js').then(({installWholeHouseReview})=>installWholeHouseReview({camera,renderer,setAngles:(y,p)=>{yaw=y;pitch=p;camera.rotation.set(pitch,yaw,0,'YXZ')}}));

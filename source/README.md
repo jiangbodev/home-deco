@@ -204,3 +204,16 @@ Regenerate contact, fallback daylight, object AO, Cycles irradiance and four ref
 同轮追加冰箱360/361材质调整；`surface-finishes.js`接入纵向钢材拉丝与厨房局部反射，保持原双门几何。
 
 Blender后台批处理必须带 `--python-exit-code 1`；光照输入改变须使用新的烘焙目录，不能复用旧目录后仅更新清单。
+
+### 真实性/模型检测 realism-v4（本地）
+
+输入 `qa/realism-v4/before.glb`（085b161），构建 `scripts/blender-realism-v4.py`，可编辑源 `source/home-deco-realism-v4.blend`，集成规格 `review/realism-v4/blender.json`；完整烘焙目录 `qa/realism-v4/{daylight-final,baked-facade-final,probes-final}`。新增圆角浴缸内腔和四个花洒出水面；冰箱360/361使用显式materialOverrides，防止导入时基础参数被旧材质覆盖。运行 `scripts/check-realism-v4.mjs` 检查实际组装资产、闭合性记录、定位及数值有效性。
+
+次卫外立面必须是一组贯穿全宽的钢制百叶；旧设备区百叶及外窗分框退役。所有新增防水玻璃、窗框和隔断均在外百叶内侧，不得恢复两套节距/样式不同的外立面。
+
+## 椅子、织物与卫浴细节（comfort-v5，本地）
+
+`home-deco-comfort-v5.blend` 由 `scripts/blender-comfort-v5.py` 从不可变 `qa/comfort-v5/before.glb` 建立。替换主卧单椅软包轮廓、地毯圆润包边，纸页按各册厚度轴提供细纹坐标；移除用户不需要的卧室层板书与碗。两卫盖板独立使用缎面热固性座盖材质401，浴缸外缘倒圆。壁龛侧端修补为闭合L形回折体，保留原本连续的内侧面。现有交互矩阵和房间位置不变。最终光照使用 comfort-v5/daylight-v3、baked-v3、probes-v3。
+
+
+主卧双屏版本：`home-deco-desk-v6.blend`，由 `scripts/blender-desk-v6.py` 从不可变 `qa/desk-v6/before.glb` 生成；主卧模块包含两台27寸显示器与键鼠。脚本、尺寸检查和截图见 `review/desk-v6/`，Blender源文件留在本地。

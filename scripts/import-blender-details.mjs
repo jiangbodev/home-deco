@@ -14,6 +14,8 @@ for(const[key,entry]of Object.entries(manifest.modules)){
  if(!(key==='base'&&(retired.size||spec.added.length))&&!doc.getRoot().listNodes().some(n=>n.getMesh()&&changed.has(n.getName())))continue;
  doc.getRoot().listExtensionsUsed().find(e=>e.extensionName==='KHR_draco_mesh_compression')?.dispose();
  const materialMap=new Map(doc.getRoot().listMaterials().map(m=>[m.getExtras().source_material_id,m]));
+ // Opt-in authored factor updates; preserve texture slots and unrelated shared materials.
+ for(const id of spec.materialOverrides??[]){const target=materialMap.get(id),source=authoredMaterials.get(id);if(target){assert(source,'Missing authored material '+id);target.setBaseColorFactor(source.getBaseColorFactor()).setMetallicFactor(source.getMetallicFactor()).setRoughnessFactor(source.getRoughnessFactor());}}
  for(const id of spec.clearOcclusionMaterials??[])materialMap.get(id)?.setOcclusionTexture(null);
  for(const[id,channel]of Object.entries(spec.materialTexcoords??{})){
   const m=materialMap.get(Number(id));if(!m)continue;

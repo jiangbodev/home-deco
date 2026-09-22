@@ -1,0 +1,24 @@
+{
+  "unchangedMeshBounds": 1453,
+  "addedMeshNodes": 5,
+  "triangles": 674246,
+  "addedTriangles": 21364,
+  "measurements": [
+    {
+      "name": "主卧27寸显示器1",
+      "activeWidthM": 0.5977265033600159,
+      "activeHeightM": 0.3362211581400089,
+      "diagonalInches": 27,
+      "front": "-X",
+      "supportY": 0.75
+    },
+    {
+      "name": "主卧27寸显示器2",
+      "activeWidthM": 0.5977265033600159,
+      "activeHeightM": 0.3362211581400089,
+      "diagonalInches": 27,
+      "front": "-X",
+      "supportY": 0.75
+    }
+  ]
+}

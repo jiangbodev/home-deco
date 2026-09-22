@@ -1,0 +1,194 @@
+{
+  "doorCount": 12,
+  "doors": [
+    {
+      "name": "主卧玻璃双门 1",
+      "handles": 1,
+      "handlePositions": [
+        [
+          12.825694581028076,
+          1.0289994752275444,
+          3.916528040054265
+        ]
+      ],
+      "parts": 1,
+      "initiallyOpen": true
+    },
+    {
+      "name": "主卧玻璃双门 2",
+      "handles": 1,
+      "handlePositions": [
+        [
+          13.987230401831445,
+          1.028999475227573,
+          3.916527823987398
+        ]
+      ],
+      "parts": 1,
+      "initiallyOpen": true
+    },
+    {
+      "name": "主卫内部隔断",
+      "handles": 1,
+      "handlePositions": [
+        [
+          8.008253743872046,
+          1.120000010962356,
+          2.0738871844808493
+        ]
+      ],
+      "parts": 3,
+      "initiallyOpen": true
+    },
+    {
+      "name": "主卫房门",
+      "handles": 1,
+      "handlePositions": [
+        [
+          10.171628255082041,
+          1.0289994831792493,
+          2.8869204249024394
+        ]
+      ],
+      "parts": 1,
+      "initiallyOpen": true
+    },
+    {
+      "name": "主卫淋浴门",
+      "handles": 2,
+      "handlePositions": [
+        [
+          8.6794,
+          1.15,
+          1.0957500000000002
+        ],
+        [
+          8.6794,
+          1.15,
+          1.1697499999999998
+        ]
+      ],
+      "parts": 3,
+      "initiallyOpen": false
+    },
+    {
+      "name": "儿童房玻璃门",
+      "handles": 1,
+      "handlePositions": [
+        [
+          2.6847173773122672,
+          1.0289993367727206,
+          4.642022738925269
+        ]
+      ],
+      "parts": 1,
+      "initiallyOpen": true
+    },
+    {
+      "name": "入户门",
+      "handles": 1,
+      "handlePositions": [
+        [
+          4.070593014359474,
+          1.028998928873656,
+          7.858137579744704
+        ]
+      ],
+      "parts": 1,
+      "initiallyOpen": true
+    },
+    {
+      "name": "厨房玻璃移门",
+      "handles": 1,
+      "handlePositions": [
+        [
+          5.096851224806103,
+          1.0289993893237006,
+          3.2804736180797813
+        ]
+      ],
+      "parts": 1,
+      "initiallyOpen": true
+    },
+    {
+      "name": "次卧儿童房连通移门 1",
+      "handles": 4,
+      "handlePositions": [
+        [
+          3.309236708185857,
+          1.0749996131964272,
+          4.308783039255395
+        ],
+        [
+          3.309236708185857,
+          1.0749996072846817,
+          4.352782717103177
+        ],
+        [
+          2.631236848421395,
+          1.0749996199371905,
+          4.258613188308946
+        ],
+        [
+          2.631236848421395,
+          1.074999614025445,
+          4.302612866156727
+        ]
+      ],
+      "parts": 1,
+      "initiallyOpen": true
+    },
+    {
+      "name": "次卧房门",
+      "handles": 1,
+      "handlePositions": [
+        [
+          4.1036016501633386,
+          1.028999415461951,
+          3.432513373410931
+        ]
+      ],
+      "parts": 1,
+      "initiallyOpen": true
+    },
+    {
+      "name": "次卫房门",
+      "handles": 1,
+      "handlePositions": [
+        [
+          5.17093305320156,
+          1.0289998833700016,
+          1.4610784828992631
+        ]
+      ],
+      "parts": 1,
+      "initiallyOpen": true
+    },
+    {
+      "name": "次卫淋浴门",
+      "handles": 2,
+      "handlePositions": [
+        [
+          4.3398,
+          1.1499999999999997,
+          1.0124300000000002
+        ],
+        [
+          4.3398,
+          1.15,
+          1.08643
+        ]
+      ],
+      "parts": 3,
+      "initiallyOpen": false
+    }
+  ],
+  "checks": [
+    "independent targets",
+    "exact endpoints",
+    "mid-animation reversal continuity",
+    "finite transforms",
+    "all doors have handle targets",
+    "cabinet doors excluded"
+  ]
+}

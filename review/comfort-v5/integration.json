@@ -1,0 +1,260 @@
+[
+  {
+    "module": "base",
+    "name": "浴缸侧裙",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "base",
+    "name": "浴缸前裙",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "base",
+    "name": "浴缸外包1275x840",
+    "before": 288,
+    "after": 1152
+  },
+  {
+    "module": "room-1",
+    "name": "壁龛背部600",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-1",
+    "name": "壁龛背部930",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "room-1",
+    "name": "壁龛靠沙发端600",
+    "before": 12,
+    "after": 20
+  },
+  {
+    "module": "room-1",
+    "name": "壁龛靠沙发端930",
+    "before": 12,
+    "after": 20
+  },
+  {
+    "module": "room-1",
+    "name": "地毯短边包带",
+    "before": 700,
+    "after": 588
+  },
+  {
+    "module": "room-1",
+    "name": "地毯长边包带.001",
+    "before": 700,
+    "after": 588
+  },
+  {
+    "module": "room-1",
+    "name": "客厅地毯_效果06至08",
+    "before": 12,
+    "after": 588
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.001",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.002",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.003",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.004",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.005",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.006",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.007",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.008",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.009",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.010",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.011",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.012",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.013",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-1",
+    "name": "Warm page edges.014",
+    "before": 48,
+    "after": 48
+  },
+  {
+    "module": "room-4",
+    "name": "Warm grey upholstered study chair.001",
+    "before": 304,
+    "after": 1176
+  },
+  {
+    "module": "room-4",
+    "name": "Warm walnut - real oak scan tinted.007",
+    "before": 440,
+    "after": 440
+  },
+  {
+    "module": "room-4",
+    "name": "地毯短边包带.001",
+    "before": 700,
+    "after": 588
+  },
+  {
+    "module": "room-4",
+    "name": "地毯长边包带",
+    "before": 700,
+    "after": 588
+  },
+  {
+    "module": "room-7",
+    "name": "主卫壁挂马桶冲水面板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫壁挂马桶双档按钮",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫壁挂马桶双档按钮.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫壁挂马桶座圈",
+    "before": 910,
+    "after": 910
+  },
+  {
+    "module": "room-7",
+    "name": "主卫壁挂马桶缓降铰链",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫壁挂马桶缓降铰链.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫壁挂马桶闭合盖板",
+    "before": 910,
+    "after": 608
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶冲水面板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶双档按钮",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶双档按钮.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶座圈",
+    "before": 910,
+    "after": 910
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶缓降铰链",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶缓降铰链.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "次卫壁挂马桶闭合盖板",
+    "before": 910,
+    "after": 608
+  }
+]

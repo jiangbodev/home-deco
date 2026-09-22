@@ -1,0 +1,214 @@
+{
+  "changed": [
+    "Warm grey upholstered study chair.001",
+    "Warm walnut - real oak scan tinted.007",
+    "客厅地毯_效果06至08",
+    "地毯短边包带",
+    "地毯短边包带.001",
+    "地毯长边包带",
+    "地毯长边包带.001",
+    "Warm page edges",
+    "Warm page edges.001",
+    "Warm page edges.002",
+    "Warm page edges.003",
+    "Warm page edges.004",
+    "Warm page edges.005",
+    "Warm page edges.006",
+    "Warm page edges.007",
+    "Warm page edges.008",
+    "Warm page edges.009",
+    "Warm page edges.010",
+    "Warm page edges.011",
+    "Warm page edges.012",
+    "Warm page edges.013",
+    "Warm page edges.014",
+    "壁龛靠沙发端600",
+    "壁龛靠沙发端930",
+    "壁龛背部600",
+    "壁龛背部930",
+    "主卫壁挂马桶闭合盖板",
+    "主卫壁挂马桶座圈",
+    "主卫壁挂马桶缓降铰链",
+    "主卫壁挂马桶缓降铰链.001",
+    "主卫壁挂马桶冲水面板",
+    "主卫壁挂马桶双档按钮",
+    "主卫壁挂马桶双档按钮.001",
+    "次卫壁挂马桶闭合盖板",
+    "次卫壁挂马桶座圈",
+    "次卫壁挂马桶缓降铰链",
+    "次卫壁挂马桶缓降铰链.001",
+    "次卫壁挂马桶冲水面板",
+    "次卫壁挂马桶双档按钮",
+    "次卫壁挂马桶双档按钮.001",
+    "浴缸侧裙",
+    "浴缸前裙",
+    "浴缸外包1275x840"
+  ],
+  "added": [],
+  "materialImages": [],
+  "hidden": [
+    "主卧层板书册1",
+    "主卧层板书册2",
+    "主卧层板陶碗1",
+    "主卧层板陶碗2"
+  ],
+  "pageNodes": [
+    "Warm page edges",
+    "Warm page edges.001",
+    "Warm page edges.002",
+    "Warm page edges.003",
+    "Warm page edges.004",
+    "Warm page edges.005",
+    "Warm page edges.006",
+    "Warm page edges.007",
+    "Warm page edges.008",
+    "Warm page edges.009",
+    "Warm page edges.010",
+    "Warm page edges.011",
+    "Warm page edges.012",
+    "Warm page edges.013",
+    "Warm page edges.014"
+  ],
+  "meshChecks": [
+    {
+      "name": "Warm grey upholstered study chair.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "Warm walnut - real oak scan tinted.007",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "客厅地毯_效果06至08",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "地毯短边包带",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "地毯短边包带.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "地毯长边包带",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "地毯长边包带.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "壁龛靠沙发端600",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "壁龛靠沙发端930",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "壁龛背部600",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "壁龛背部930",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶闭合盖板",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶座圈",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶缓降铰链",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶缓降铰链.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶冲水面板",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶双档按钮",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "主卫壁挂马桶双档按钮.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶闭合盖板",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶座圈",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶缓降铰链",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶缓降铰链.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶冲水面板",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶双档按钮",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "次卫壁挂马桶双档按钮.001",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "浴缸侧裙",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "浴缸前裙",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    },
+    {
+      "name": "浴缸外包1275x840",
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0
+    }
+  ]
+}

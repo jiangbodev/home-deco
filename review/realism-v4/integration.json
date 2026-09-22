@@ -1,0 +1,62 @@
+[
+  {
+    "module": "base",
+    "name": "次卫外窗",
+    "before": 3024,
+    "after": 4352
+  },
+  {
+    "module": "base",
+    "name": "浴缸外包1275x840",
+    "before": 32,
+    "after": 288
+  },
+  {
+    "module": "room-7",
+    "name": "浴缸排水盖",
+    "before": 128,
+    "after": 128
+  },
+  {
+    "module": "room-7",
+    "name": "浴缸深内腔",
+    "before": 114,
+    "after": 428
+  },
+  {
+    "module": "room-7",
+    "name": "浴缸溢水口",
+    "before": 128,
+    "after": 128
+  },
+  {
+    "module": "room-7",
+    "name": "手持花洒出水面.001",
+    "before": 12,
+    "after": 612
+  },
+  {
+    "module": "room-7",
+    "name": "顶喷出水面.001",
+    "before": 12,
+    "after": 1480
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱外包门板1",
+    "before": 3008,
+    "after": 3008
+  },
+  {
+    "module": "room-8",
+    "name": "手持花洒出水面",
+    "before": 12,
+    "after": 612
+  },
+  {
+    "module": "room-8",
+    "name": "顶喷出水面",
+    "before": 12,
+    "after": 1480
+  }
+]

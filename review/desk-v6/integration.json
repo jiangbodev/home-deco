@@ -1,0 +1,32 @@
+[
+  {
+    "module": "room-4",
+    "name": "主卧27寸显示器1",
+    "before": 188,
+    "after": 1892
+  },
+  {
+    "module": "room-4",
+    "name": "主卧27寸显示器2",
+    "before": 188,
+    "after": 1892
+  },
+  {
+    "module": "room-4",
+    "name": "主卧紧凑键盘",
+    "before": 188,
+    "after": 16848
+  },
+  {
+    "module": "room-4",
+    "name": "主卧鼠标垫",
+    "before": 188,
+    "after": 108
+  },
+  {
+    "module": "room-4",
+    "name": "主卧无线鼠标",
+    "before": 188,
+    "after": 696
+  }
+]
