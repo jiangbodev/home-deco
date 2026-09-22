@@ -189,3 +189,7 @@ Regenerate contact, fallback daylight, object AO, Cycles irradiance and four ref
 `scripts/blender-wet-rooms-restore.py` takes immutable `qa/wet-rooms/before.glb` (including the mirror backing repair) and writes `source/home-deco-wet-rooms.blend` plus the authored subset. Integrate with `review/wet-rooms/blender.json` from `qa/wet-rooms/original/modules`. Rebuild lighting from assembled `qa/wet-rooms/source.glb`; final directories end `-final`, not the abandoned `-v2`. `scripts/check-wet-rooms.mjs` validates the dimensional cupboard, real Boolean niche, shelf support, clearances and preservation. See `review/wet-rooms/review.md` for the distinction between measured drawing dimensions, inferred construction details and subsequent effect-image finishing.
 
 客餐厅/阳台图纸核对：`home-deco-living-plan.blend` 来自 `qa/living-plan/before.glb`，由 `scripts/blender-living-plan.py` 生成。新增石材窗台、修正奶油色收口和餐椅贴地、补吊灯连接件、重建三台洗衣设备凹入舱口；详见 `review/living-plan/review.md`。最终组装 `qa/living-plan/source.glb`，全套真实烘焙在 `qa/living-plan/{daylight-final,baked-final,probes-final}`。不要从本轮输出重复应用腿端形变。
+
+## 入户柜与次卫外机
+
+`home-deco-entry-hvac.blend` 从 `qa/entry-hvac/before.glb`（bede6dd）生成。构建脚本 `scripts/blender-entry-hvac.py`，使用已存在的living-plan几何辅助函数；新增6组设备区物件并统一入户左柜6块板件为材质38。最终拼装 `qa/entry-hvac/source.glb`。参见 `review/entry-hvac/review.md`。

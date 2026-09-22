@@ -1,0 +1,1 @@
+{"name":"主卧奶油柜","frames":331,"medianMs":16.699999999982538,"p95Ms":16.89999999999418,"drawCalls":538,"triangles":595762,"width":1675,"height":1432}

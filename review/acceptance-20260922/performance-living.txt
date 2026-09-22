@@ -1,0 +1,1 @@
+{"name":"客厅全景","frames":330,"medianMs":16.699999999982538,"p95Ms":17.199999999982538,"drawCalls":555,"triangles":588124,"width":1675,"height":1432}

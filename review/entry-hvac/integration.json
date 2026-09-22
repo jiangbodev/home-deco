@@ -1,0 +1,152 @@
+[
+  {
+    "module": "base",
+    "name": "次卫北管井侧墙",
+    "before": 12,
+    "after": 40
+  },
+  {
+    "module": "base",
+    "name": "次卫外窗",
+    "before": 12,
+    "after": 3024
+  },
+  {
+    "module": "base",
+    "name": "木地板基面_湿区真实留空",
+    "before": 112,
+    "after": 148
+  },
+  {
+    "module": "base",
+    "name": "次卫外机设备区地台",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "次卫外机设备区顶封",
+    "before": 22,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "次卫中央空调外机安装底座",
+    "before": 12,
+    "after": 648
+  },
+  {
+    "module": "base",
+    "name": "次卫中央空调外机机壳",
+    "before": 12,
+    "after": 436
+  },
+  {
+    "module": "base",
+    "name": "次卫中央空调外机风扇及格栅",
+    "before": 12,
+    "after": 6988
+  },
+  {
+    "module": "base",
+    "name": "次卫中央空调外机保温管",
+    "before": 12,
+    "after": 264
+  },
+  {
+    "module": "base",
+    "name": "次卫设备区挡水坎",
+    "before": 12,
+    "after": 108
+  },
+  {
+    "module": "base",
+    "name": "次卫设备区防溅隔断框",
+    "before": 12,
+    "after": 432
+  },
+  {
+    "module": "base",
+    "name": "次卫设备区密封检修玻璃",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "base",
+    "name": "次卫设备区密封及检修固定件",
+    "before": 12,
+    "after": 216
+  },
+  {
+    "module": "base",
+    "name": "次卫设备区对外通风百叶",
+    "before": 12,
+    "after": 4212
+  },
+  {
+    "module": "base",
+    "name": "次卫外机朝外排风导流罩",
+    "before": 12,
+    "after": 48
+  },
+  {
+    "module": "base",
+    "name": "次卫淋浴内窗密封窗框",
+    "before": 12,
+    "after": 540
+  },
+  {
+    "module": "base",
+    "name": "次卫淋浴内窗玻璃",
+    "before": 12,
+    "after": 24
+  },
+  {
+    "module": "base",
+    "name": "次卫淋浴内窗密封条及执手",
+    "before": 12,
+    "after": 420
+  },
+  {
+    "module": "room-0",
+    "name": "入户侧高柜门板1",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-4",
+    "name": "超短焦投影机_产品外形示意",
+    "before": 4696,
+    "after": 4780
+  },
+  {
+    "module": "room-6",
+    "name": "入户侧高柜实体侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-6",
+    "name": "入户侧高柜实体侧板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-6",
+    "name": "入户侧高柜实体底板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-6",
+    "name": "入户侧高柜实体背板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-6",
+    "name": "入户侧高柜顶封板",
+    "before": 12,
+    "after": 12
+  }
+]

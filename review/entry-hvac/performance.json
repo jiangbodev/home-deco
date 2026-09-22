@@ -1,0 +1,22 @@
+[
+  {
+    "name": "主卧奶油柜",
+    "frames": 330,
+    "medianMs": 16.69999999999709,
+    "p95Ms": 16.80000000000291,
+    "drawCalls": 542,
+    "triangles": 596198,
+    "width": 1675,
+    "height": 1432
+  },
+  {
+    "name": "次卫外机",
+    "frames": 330,
+    "medianMs": 16.699999999982538,
+    "p95Ms": 17.20000000001164,
+    "drawCalls": 117,
+    "triangles": 169284,
+    "width": 1675,
+    "height": 1432
+  }
+]
