@@ -1,0 +1,18 @@
+{
+  "changed": [
+    "冰箱外包门板1"
+  ],
+  "added": [],
+  "materialImages": [],
+  "hidden": [
+    "冰箱外包拉手",
+    "冰箱外包门后暗缝底"
+  ],
+  "dimensions": {
+    "nicheWidth": 0.72,
+    "nicheHeight": 1.8,
+    "nicheDepth": 0.62,
+    "applianceWidth": 0.66,
+    "frontX": 4.11
+  }
+}

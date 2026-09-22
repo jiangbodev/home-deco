@@ -1,0 +1,10 @@
+{
+  "sourceSha256": "d49e7a19b09eecc4545d1a94f9424499390fd81d7a64b19d2beb9b1740a6a7ef",
+  "modelBytes": 7167442,
+  "appearanceBytes": 13030508,
+  "modules": 12,
+  "geometryErrors": 0,
+  "devUIInProduction": false,
+  "productionBuild": true,
+  "lightingVersionsMatch": true
+}

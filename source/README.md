@@ -127,3 +127,37 @@ Door/window follow-up in the same detail authoring script: preserve pressed-glas
 ## Entry, sofa display and ceiling projector follow-up
 
 `home-deco-entry-shelf.blend` / `scripts/blender-entry-shelf-projector.py` start from immutable realism-v2 source and modules in `qa/entry-shelf-before.glb` and `qa/entry-shelf-original/modules`. They unify entry lacquer, refine three shelf books and the botanical print, replace the cabinet-top UST placeholder with a ceiling-mounted forward-throw projector clear of the AC soffit, and restore the closed north-window return cabinet shown in original bedroom images 14/15. Import with the explicit `review/entry-shelf-blender.json` specification. Run `check-entry-shelf.mjs`, `check-details.mjs`, module verification and all fresh lighting bakes. The final lighting directories use `entry-shelf-*-approved`; see review/entry-shelf-followup.md. Original user drawings belong under ignored `reference/装修材料`, never public assets.
+
+
+## Dining reference study · local goal 2026-09-22
+
+Packed source: `home-deco-dining-study-v3.blend`. Unlike the hidden legacy 餐桌台面, the visible table is `Warm walnut - real oak scan tinted`. Always audit effective ancestor visibility before choosing an object to refine. Immutable inputs are assembled published commit `5ef8069` in `qa/dining-study-before.glb` and its modules in `qa/dining-study-before/modules`.
+
+```sh
+blender -b --python scripts/blender-dining-study.py -- qa/dining-study-before.glb source/home-deco-dining-study-v3.blend qa/dining-study-edit-v3.glb review/dining-study/blender-v3.json
+node scripts/import-blender-details.mjs qa/dining-study-before/modules public/assets/modules qa/dining-study-edit-v3.glb review/dining-study/blender-v3.json review/dining-study/integration-v3.json
+node scripts/assemble-modules.mjs public/assets/modules qa/dining-study-source-v3.glb
+node scripts/check-dining-study.mjs
+node scripts/verify-modules.mjs qa/dining-study-source-v3.glb
+```
+
+The spec transfers corrected wood textures on UV0, explicitly retires 88 old flat chair-trim nodes, and removes the outdated seat AO. New chair backs are interlaced open ribbons with bent timber rims, end posts and structural supports. Furniture dimensions, transforms and interaction metadata remain unchanged. Do not replay authoring against its own output.
+
+Rebuild fallback contacts, irradiance and reflection captures from the assembled output. The final bake directories use `dining-study-v3-*-approved`; encode irradiance with optional colour-retention argument `.65` (the default remains `.12` for older workflows). Never reuse another version's raw atlas. The renderer exposure is 1.15, checked in the kitchen, living room, bedroom and secondary bathroom. Development-only `?study=dining` exposes identical camera poses and a six-second motion sample; it is removed by the production build. User reference photographs remain in ignored `reference/装修材料` and must not enter public assets.
+
+
+## Built-in refrigerator · local 2026-09-22
+
+Final source `home-deco-fridge-wide.blend` uses the completed dining study as immutable input (`qa/fridge-before.glb`, `qa/fridge-before/modules`). The initial stacked-door treatment was rejected by the user; do not restore it. The current refrigerator has two full-height side-by-side silver-metal doors and paired vertical handles. The cabinet bay is 900 mm wide, adjacent storage is 450 mm wide, and the outside footprint of the complete run is retained. The appliance body is 840 mm wide inside that bay; these are provisional model dimensions, not an appliance manufacturer's installation specification.
+
+```sh
+blender -b --python scripts/blender-fridge.py -- qa/fridge-before.glb source/home-deco-fridge-wide.blend qa/fridge-wide-edit.glb review/fridge/blender-wide.json .9
+node scripts/import-blender-details.mjs qa/fridge-before/modules public/assets/modules qa/fridge-wide-edit.glb review/fridge/blender-wide.json review/fridge/integration-wide.json
+node scripts/assemble-modules.mjs public/assets/modules qa/fridge-wide-source.glb
+node scripts/check-fridge.mjs
+node scripts/verify-modules.mjs qa/fridge-wide-source.glb
+```
+
+Materials 360–363 are pearl-silver door metal, aluminium handles, rubber seal and housing. Original generic knob/backing are retired. The width parameter resizes the existing fridge casing and the adjoining storage together without changing node transforms or moving the outer run boundary. All unrelated furniture remains untouched.
+
+The combined refrigerator contains surfaces at the same projected coordinates; `prepare-cycles-bake.mjs` excludes it from the six-face receiver atlas while retaining it as a light blocker. Appliance surfaces use continuous PBR and vertex contact. Rebuild all light assets from `qa/fridge-wide-source.glb` in fresh `qa/fridge-wide-*-approved` folders. Do not reuse dining or stacked-fridge raw atlases. Private reference PDFs/images stay ignored.

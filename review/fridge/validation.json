@@ -1,0 +1,25 @@
+{
+  "triangles": 613658,
+  "unrelatedMeshBoundsPreserved": 1412,
+  "transformsAndInteractionMetadataPreserved": true,
+  "retiredKnobAndBacking": true,
+  "fridgeBounds": {
+    "min": [
+      3.534999907016754,
+      0.03200016438460396,
+      2.6497961976944406
+    ],
+    "max": [
+      4.110004298388958,
+      1.7669999002682193,
+      3.3097833648869024
+    ]
+  },
+  "materials": [
+    363,
+    362,
+    360,
+    361
+  ],
+  "applianceFitsExistingNiche": true
+}

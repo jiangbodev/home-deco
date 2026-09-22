@@ -1,0 +1,27 @@
+{
+  "triangles": 613658,
+  "unrelatedMeshBoundsPreserved": 1399,
+  "transformsAndInteractionMetadataPreserved": true,
+  "retiredKnobAndBacking": true,
+  "fridgeBounds": {
+    "min": [
+      3.534999907016754,
+      0.03200004517495003,
+      2.469796285566586
+    ],
+    "max": [
+      4.149496026337147,
+      1.7669999245199772,
+      3.3097943917476753
+    ]
+  },
+  "materials": [
+    363,
+    362,
+    360,
+    361
+  ],
+  "applianceFitsResizedNiche": true,
+  "nominalNicheWidth": 0.9,
+  "adjacentStorageWidth": 0.45
+}

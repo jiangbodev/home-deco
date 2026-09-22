@@ -1,0 +1,14 @@
+[
+  "modules/base-1415e792fd90.glb",
+  "modules/room-8-172eec0c4fba.glb",
+  "lighting/floor-contact-9b13a2215816.png",
+  "lighting/floor-light-cfcc7e4cc2d3.png",
+  "lighting/irradiance-floor-3a1f5d5cead1.png",
+  "lighting/irradiance-wall-4a824304f3be.png",
+  "lighting/object-contact-8c96eabea177.bin.gz",
+  "lighting/reflection-bedroom-592f4e52ca8a.hdr",
+  "lighting/reflection-guest-bath-943b1b2dfcc8.hdr",
+  "lighting/reflection-kitchen-1b2cf733e838.hdr",
+  "lighting/reflection-living-7a623b4f70d3.hdr",
+  "lighting/wall-contact-388a03c1ee80.png"
+]

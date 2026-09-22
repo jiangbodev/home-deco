@@ -3,14 +3,24 @@ import{NodeIO,PropertyType}from'@gltf-transform/core';import{ALL_EXTENSIONS}from
 const[input,output,source,specFile='review/detail-blender.json',reportFile='review/detail-integration.json']=process.argv.slice(2);assert(input&&output&&source&&input!==output);const io=new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'draco3d.decoder':await D.createDecoderModule(),'draco3d.encoder':await D.createEncoderModule()});const edited=await io.read(source),authored=new Map(edited.getRoot().listNodes().map(n=>[n.getName(),n])),spec=JSON.parse(await fs.readFile(specFile)),changed=new Set(spec.changed),manifest=JSON.parse(await fs.readFile(input+'/manifest.json')),report=[],fresh=new Map();const base=await io.read(input+'/'+manifest.modules.base.file),parents=new Map(base.getRoot().listNodes().map(n=>[n.getExtras().moduleNode,n]));let nextId=Math.max(...[...parents.keys()].filter(Number.isInteger))+1;
 for(const a of spec.added){const template=[...parents.values()].find(n=>n.getName()===a.template);assert(template);const n=base.createNode(a.name).setMatrix(template.getMatrix()).setMesh(template.getMesh()).setExtras({moduleNode:nextId++,source_visible:template.getExtras().source_visible!==false,source_name:a.name,...Object.fromEntries(Object.entries(template.getExtras()).filter(([key])=>key.startsWith('interaction_')))});template.getParentNode().addChild(n);a.id=n.getExtras().moduleNode;parents.set(a.id,n);changed.add(a.name)}
 const authoredMaterials=new Map(edited.getRoot().listMaterials().map(m=>[m.getExtras().source_material_id,m]));
+// Explicitly retire replaced visible trim; keep node identities and interaction data.
+const retired=new Set(spec.hidden??[]);
+for(const name of retired){const n=base.getRoot().listNodes().find(n=>n.getName()===name);assert(n,'Missing retired node '+name);n.setExtras({...n.getExtras(),source_visible:false})}
 const fallbackMaterials=new Map();for(const entry of Object.values(manifest.modules)){const sourceDoc=await io.read(input+'/'+entry.file);for(const mat of sourceDoc.getRoot().listMaterials())if(!fallbackMaterials.has(mat.getExtras().source_material_id))fallbackMaterials.set(mat.getExtras().source_material_id,{doc:sourceDoc,mat})}
 for(const id of spec.materialImages){const m=authoredMaterials.get(id);assert(m?.getBaseColorTexture());const data=await sharp(m.getBaseColorTexture().getImage()).webp({quality:94,effort:6}).toBuffer(),file='cabinet-oak-'+crypto.createHash('sha256').update(data).digest('hex').slice(0,12)+'.webp';fresh.set(id,{file,data});await fs.writeFile(output+'/'+file,data);manifest.textures[file]=data.length}
 for(const[key,entry]of Object.entries(manifest.modules)){
  const doc=key==='base'?base:await io.read(input+'/'+entry.file);
  if(key!=='base')for(const a of spec.added){const template=doc.getRoot().listNodes().find(n=>n.getName()===a.template&&n.getMesh());if(!template)continue;const n=doc.createNode(a.name).setMatrix(template.getMatrix()).setMesh(template.getMesh()).setExtras({attachTo:a.id,source_visible:true,source_name:a.name});doc.getRoot().listScenes()[0].addChild(n)}
- if(!doc.getRoot().listNodes().some(n=>n.getMesh()&&changed.has(n.getName())))continue;
+ if(!(key==='base'&&retired.size)&&!doc.getRoot().listNodes().some(n=>n.getMesh()&&changed.has(n.getName())))continue;
  doc.getRoot().listExtensionsUsed().find(e=>e.extensionName==='KHR_draco_mesh_compression')?.dispose();
  const materialMap=new Map(doc.getRoot().listMaterials().map(m=>[m.getExtras().source_material_id,m]));
+ for(const id of spec.clearOcclusionMaterials??[])materialMap.get(id)?.setOcclusionTexture(null);
+ for(const[id,channel]of Object.entries(spec.materialTexcoords??{})){
+  const m=materialMap.get(Number(id));if(!m)continue;
+  for(const slot of ['BaseColor','Normal','MetallicRoughness'])m['get'+slot+'TextureInfo']()?.setTexCoord(channel);
+  // Old baked AO belongs to the replaced mesh layout, not its newly authored UVs.
+  m.setOcclusionTexture(null);
+ }
  for(const[id,{file,data}]of fresh){const m=materialMap.get(id);if(!m)continue;const texture=m.getBaseColorTexture().clone().setImage(data).setMimeType('image/webp').setURI(file);m.setBaseColorTexture(texture).setOcclusionStrength(.35).setRoughnessFactor(.55)}
  function material(m){const id=m.getExtras().source_material_id;if(materialMap.has(id))return materialMap.get(id);let out;
   if(m.getExtras().detail_base_material!==undefined){const baseId=m.getExtras().detail_base_material;let original=materialMap.get(baseId);if(!original){const source=fallbackMaterials.get(baseId);assert(source,'Missing reference material '+baseId);original=copyToDocument(doc,source.doc,[source.mat]).get(source.mat);materialMap.set(baseId,original)}out=original.clone().setName(m.getName()).setExtras(m.getExtras()).setRoughnessFactor(m.getRoughnessFactor()).setOcclusionTexture(null)}else out=copyToDocument(doc,edited,[m]).get(m);

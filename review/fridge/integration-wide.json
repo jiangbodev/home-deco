@@ -1,0 +1,86 @@
+[
+  {
+    "module": "room-5",
+    "name": "冰箱外包实体侧板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-5",
+    "name": "冰箱外包实体背板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱外包实体侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱外包实体底板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱外包门板1",
+    "before": 268,
+    "after": 3008
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱外包顶封板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱旁高柜实体侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱旁高柜实体侧板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱旁高柜实体底板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱旁高柜实体背板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱旁高柜拉手",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱旁高柜门后暗缝底",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱旁高柜门板1",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-8",
+    "name": "冰箱旁高柜顶封板",
+    "before": 12,
+    "after": 12
+  }
+]

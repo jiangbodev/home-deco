@@ -1,0 +1,14 @@
+import {NodeIO} from '@gltf-transform/core';import {ALL_EXTENSIONS} from '@gltf-transform/extensions';import {getBounds} from '@gltf-transform/functions';import assert from 'node:assert/strict';import fs from 'node:fs/promises';
+const io=new NodeIO().registerExtensions(ALL_EXTENSIONS),before=await io.read('qa/dining-study-before.glb'),after=await io.read('qa/dining-study-source-v3.glb'),spec=JSON.parse(await fs.readFile('review/dining-study/blender-v3.json'));
+const originals=new Map(before.getRoot().listNodes().map(n=>[n.getName(),n])),changed=new Set(spec.changed),hidden=new Set(spec.hidden);let preserved=0,triangles=0,visibleTriangles=0;
+for(const n of after.getRoot().listNodes()){
+ const o=originals.get(n.getName());assert(o,'Unrequested node '+n.getName());assert.deepEqual(n.getMatrix(),o.getMatrix());assert.deepEqual(n.getExtras(),hidden.has(n.getName())?{...o.getExtras(),source_visible:false}:o.getExtras());
+ if(!n.getMesh())continue;let visible=true;for(let p=n;p;p=p.getParentNode())if(p.getExtras().source_visible===false)visible=false;
+ const tri=n.getMesh().listPrimitives().reduce((s,p)=>s+p.getIndices().getCount()/3,0);triangles+=tri;if(visible)visibleTriangles+=tri;
+ if(changed.has(n.getName())){assert(visible,'Edited hidden model '+n.getName());for(const p of n.getMesh().listPrimitives()){const m=p.getMaterial();for(const slot of ['BaseColor','Normal','MetallicRoughness'])if(m['get'+slot+'Texture']()){const channel=m['get'+slot+'TextureInfo']().getTexCoord();assert(p.getAttribute('TEXCOORD_'+channel),'Missing texture UV '+n.getName());}}}
+ else{const a=getBounds(n),b=getBounds(o);assert(a.min.every((v,i)=>Math.abs(v-b.min[i])<.0002)&&a.max.every((v,i)=>Math.abs(v-b.max[i])<.0002));preserved++;}
+}
+const nodes=new Map(after.getRoot().listNodes().map(n=>[n.getName(),n]));const table=getBounds(nodes.get('Warm walnut - real oak scan tinted'));assert(Math.abs(table.max[1]-.75)<.001&&Math.abs(table.min[1])<.001);assert(Math.abs(table.max[0]-table.min[0]-1.77)<.002);
+for(const name of ['Natural woven cane','Natural woven cane.001']){const n=nodes.get(name),b=getBounds(n);assert(b.max[2]-b.min[2]>.25,'Cane shell still flat');assert(b.min[1]>.50&&b.max[1]<.82);assert(n.getMesh().listPrimitives().every(p=>p.getMaterial().getDoubleSided()),'Open weave needs two-sided thin strips');}
+for(const m of after.getRoot().listMaterials())if(m.getExtras().source_material_id===33)assert(!m.getOcclusionTexture(),'Stale seat AO');
+const report={triangles,visibleTriangles,preservedUnrelatedBounds:preserved,editedVisibleNodes:[...changed],retiredLegacyNodes:hidden.size,transformsPreserved:true,unrelatedVisibilityPreserved:true,textureCoordinatesValid:true,tableHeight:.75,tableWidth:1.77};await fs.writeFile('review/dining-study/validation-v3.json',JSON.stringify(report,null,2));console.log(report);

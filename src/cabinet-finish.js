@@ -10,6 +10,7 @@ export function prepareCabinetFinish(group){group.traverse(o=>{
  const multi=Array.isArray(o.material);const materials=(multi?o.material:[o.material]).map(original=>{
   if(!printedArt&&!recessBacking&&original.userData.source_material_id!==38)return original;
   const m=original.clone(),previous=original.onBeforeCompile,key=original.customProgramCacheKey();
+  const diningFlat=/^(南侧书架|南侧通高柜2035门板|南侧整柜书架齐平收口)/.test(name);
   m.userData.continuousCabinet=true;
   m.onBeforeCompile=(shader,...args)=>{
    previous.call(m,shader,...args);
@@ -18,8 +19,8 @@ export function prepareCabinetFinish(group){group.traverse(o=>{
     shader.fragmentShader='varying float cabinetBackingHeight;\n'+shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\nfloat cabinetBackingMask=1.0-step(0.08,cabinetBackingHeight);diffuseColor.rgb=mix(diffuseColor.rgb,vec3(0.8713671,0.8631572,0.8307699),cabinetBackingMask);');
    }
    shader.fragmentShader=shader.fragmentShader.replace('#include <aomap_fragment>',`vec3 cabinetContinuousDiffuse=reflectedLight.directDiffuse+reflectedLight.indirectDiffuse;\n#include <aomap_fragment>`)
-    .replace('vec3 totalSpecular =',`totalDiffuse=mix(totalDiffuse,mix(cabinetContinuousDiffuse,totalDiffuse,${printedArt?'0.0':'0.16'}),${recessBacking?'cabinetBackingMask':'1.0'});\nvec3 totalSpecular =`);
+    .replace('vec3 totalSpecular =',`totalDiffuse=mix(totalDiffuse,mix(cabinetContinuousDiffuse,totalDiffuse,${printedArt?'0.0':diningFlat?'0.55':'0.16'}),${recessBacking?'cabinetBackingMask':'1.0'});\nvec3 totalSpecular =`);
   };
-  m.customProgramCacheKey=()=>key+'|continuous-cabinet-lacquer-v1'+(printedArt?'|printed-paper':recessBacking?'|ivory-lower-backing':'');return m;
+  m.customProgramCacheKey=()=>key+'|continuous-cabinet-lacquer-v2'+(diningFlat?'|dining-flat':'')+(printedArt?'|printed-paper':recessBacking?'|ivory-lower-backing':'');return m;
  });o.material=multi?materials:materials[0];
 })}

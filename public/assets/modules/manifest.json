@@ -1,8 +1,8 @@
 {
   "modules": {
     "base": {
-      "file": "base-c6a423bd6dc5.glb",
-      "bytes": 850200,
+      "file": "base-c13cbdf7cace.glb",
+      "bytes": 851128,
       "textures": [
         "texture-0a16784d5ba755a6.webp",
         "texture-857a62d61d26606e.webp",
@@ -59,11 +59,10 @@
       "nodes": 12
     },
     "room-0": {
-      "file": "room-0-83afc350bde1.glb",
-      "bytes": 347008,
+      "file": "room-0-a63cfb1ebd5a.glb",
+      "bytes": 384808,
       "textures": [
         "texture-0dc1d5251e1837a6.webp",
-        "texture-bda86bf196bdcff6.webp",
         "texture-a09cbd936134a18c.webp",
         "texture-5110e340709d06e4.webp",
         "oak-medium-d93de4158f29.webp",
@@ -71,11 +70,10 @@
         "texture-96221146bf46becb.webp",
         "texture-62e9e71135a05014.webp",
         "texture-84438768e3ce5e2b.webp",
-        "texture-788462f488fcc53d.webp",
         "texture-0696d484fc0a42c3.webp",
-        "texture-5bbd7e9bc949233c.webp",
-        "texture-7b321e83037fe325.webp",
-        "texture-595c0f6d94784485.webp"
+        "texture-595c0f6d94784485.webp",
+        "cabinet-oak-77d5c11e378c.webp",
+        "cabinet-oak-403a90fd1bad.webp"
       ],
       "nodes": 309
     },
@@ -134,8 +132,8 @@
       "nodes": 233
     },
     "room-5": {
-      "file": "room-5-b9f7285d01bf.glb",
-      "bytes": 41608,
+      "file": "room-5-6149b1057156.glb",
+      "bytes": 40208,
       "textures": [
         "oak-medium-d93de4158f29.webp",
         "texture-40184ff5212414a6.webp",
@@ -158,8 +156,8 @@
       "nodes": 71
     },
     "room-8": {
-      "file": "room-8-172eec0c4fba.glb",
-      "bytes": 90900,
+      "file": "room-8-a622f1800f90.glb",
+      "bytes": 108568,
       "textures": [
         "texture-62e9e71135a05014.webp",
         "oak-medium-d93de4158f29.webp",
@@ -178,7 +176,6 @@
     "texture-0dc1d5251e1837a6.webp": 2206,
     "texture-5110e340709d06e4.webp": 122228,
     "texture-a09cbd936134a18c.webp": 72108,
-    "texture-bda86bf196bdcff6.webp": 29962,
     "texture-40184ff5212414a6.webp": 70536,
     "texture-b37b36d02a5dea1b.webp": 842,
     "texture-ef88bcd16023c4b9.webp": 100800,
@@ -208,11 +205,8 @@
     "texture-3aa32bcb6535be61.webp": 5268,
     "texture-aad330c8c4835403.webp": 17362,
     "texture-84438768e3ce5e2b.webp": 4868,
-    "texture-788462f488fcc53d.webp": 22994,
     "texture-0696d484fc0a42c3.webp": 73980,
-    "texture-5bbd7e9bc949233c.webp": 89880,
     "texture-595c0f6d94784485.webp": 88402,
-    "texture-7b321e83037fe325.webp": 13222,
     "texture-e0a4693a47d8a77b.webp": 225436,
     "texture-ba7bff5b4955384e.webp": 95454,
     "texture-7ec6dd746fb882de.webp": 14884,
@@ -224,6 +218,8 @@
     "texture-3a0a361b0a8eebb2.webp": 22292,
     "sofa-ivory-a8123360f305.webp": 85022,
     "oak-medium-d93de4158f29.webp": 24714,
-    "cabinet-oak-bb999825da6d.webp": 41180
+    "cabinet-oak-bb999825da6d.webp": 41180,
+    "cabinet-oak-77d5c11e378c.webp": 75934,
+    "cabinet-oak-403a90fd1bad.webp": 25070
   }
 }

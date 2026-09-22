@@ -100,7 +100,7 @@ for(const event of ['pointerup','pointercancel','lostpointercapture'])stick.addE
 
 async function start(){
  try{
-   renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:coarse?'default':'high-performance'});renderer.transmissionResolutionScale=.35;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
+   renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:coarse?'default':'high-performance'});renderer.transmissionResolutionScale=.35;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
    resize();const pmrem=new THREE.PMREMGenerator(renderer), env=new RoomEnvironment();scene.environment=pmrem.fromScene(env,.04).texture;env.dispose();pmrem.dispose();scene.environmentIntensity=.45;
    scene.add(new THREE.HemisphereLight(0xf3f6ff,0xb0a394,.6));const sun=new THREE.DirectionalLight(0xfff6ea,.7);sun.position.set(12,8,6);scene.add(sun);
    appearance=createAppearance(renderer);const appearanceReady=appearance.init();
@@ -147,6 +147,8 @@ async function start(){
    let last=performance.now(),count=0;
    frameLoop=now=>{if(contextLost||document.hidden){last=now;return}const ms=now-last;last=now;const dt=Math.min(ms/1000,.05);appearance.tick(dt);if(!document.querySelector('dialog[open]'))move(dt);frameAverage=.94*frameAverage+.06*Math.min(ms,80);count++;if(quality==='auto'&&count%60===0&&frameAverage>20&&adaptiveScale>.7){adaptiveScale=Math.max(.7,adaptiveScale-.1);resize(false)}else if(quality==='auto'&&count%240===0&&frameAverage<16.9&&adaptiveScale<1.35){adaptiveScale=Math.min(1.35,adaptiveScale+.05);resize(false)}mirrors?.update(quality);renderer.render(scene,camera)};
    renderer.setAnimationLoop(frameLoop);
+   if(import.meta.env.DEV) import('./dining-review.js').then(({installDiningReview})=>installDiningReview({camera,renderer,setAngles:(y,p)=>{yaw=y;pitch=p;camera.rotation.set(pitch,yaw,0,'YXZ')}}));
+   if(import.meta.env.DEV) import('./fridge-review.js').then(({installFridgeReview})=>installFridgeReview({camera,renderer,setAngles:(y,p)=>{yaw=y;pitch=p;camera.rotation.set(pitch,yaw,0,'YXZ')}}));
    canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();contextLost=true;endInput();renderer.setAnimationLoop(null);$('#loading').hidden=false;$('#load-label').textContent='正在恢复三维画面…';progress.hidden=false;progress.removeAttribute('value');$('#retry').hidden=false});
    canvas.addEventListener('webglcontextrestored',async()=>{try{contextLost=false;resize(false);await renderer.compileAsync(scene,camera);renderer.render(scene,camera);last=performance.now();renderer.setAnimationLoop(frameLoop);$('#loading').hidden=true;$('#retry').hidden=true;modules.background()}catch(error){console.error(error);$('#load-label').textContent='画面恢复失败，请重新加载';$('#retry').hidden=false}});
 
