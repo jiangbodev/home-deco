@@ -1,0 +1,5 @@
+63 model resources: 7086287 bytes / 20000000
+Including baked contact lighting: 8104152 bytes / 20000000
+Including surface finishes: 8282541 bytes / 20000000
+Including fixture manifest: 8288694 bytes / 20000000
+Including Cycles daylight and local reflections: 12925782 bytes / 20000000

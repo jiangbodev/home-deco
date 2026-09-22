@@ -1,0 +1,562 @@
+{
+  "changed": [
+    "Warm walnut - real oak scan tinted.004",
+    "Warm walnut - real oak scan tinted.005",
+    "Warm walnut - real oak scan tinted.007",
+    "主卧书桌_600x1750台面",
+    "主卧书桌T脚",
+    "主卧书桌T脚.001",
+    "主卧书桌支架",
+    "主卧书桌支架.001",
+    "主卧内侧桌细支腿",
+    "主卧内侧桌细支腿.001",
+    "主卧内侧桌细支腿.002",
+    "主卧内侧桌细支腿.003",
+    "主卧内侧桌靠墙承托",
+    "主卧北窗转角地柜",
+    "主卧床侧窄斗柜实体侧板",
+    "主卧床侧窄斗柜实体侧板.001",
+    "主卧床侧窄斗柜实体底板",
+    "主卧床侧窄斗柜实体背板",
+    "主卧床侧窄斗柜门板1",
+    "主卧床侧窄斗柜顶封板",
+    "主卧床床架",
+    "主卧转角开放层板_1200",
+    "主卧转角开放层板_1540",
+    "主卧转角开放层板_1920",
+    "主卧转角连续台面",
+    "主卫台盆柜实体侧板",
+    "主卫台盆柜实体侧板.001",
+    "主卫台盆柜实体底板",
+    "主卫台盆柜实体背板",
+    "主卫台盆柜门板1",
+    "主卫台盆柜门板2",
+    "主卫台盆柜门板3",
+    "主卫客厅窗木窗台",
+    "主卫镜柜",
+    "主卫镜柜内部层板",
+    "主卫镜柜内部层板.001",
+    "主卫镜柜木框侧边",
+    "主卫镜柜木框侧边.001",
+    "主卫镜柜木框横边",
+    "主卫镜柜木框横边.001",
+    "厨房主卫内窗连续木窗台连接段",
+    "厨房北操作台_深570实体侧板",
+    "厨房北操作台_深570实体侧板.001",
+    "厨房北操作台_深570实体底板",
+    "厨房北操作台_深570实体背板",
+    "厨房北操作台_深570门板1",
+    "厨房北操作台_深570门板2",
+    "厨房北操作台_深570顶封板",
+    "厨房南水槽台_1240x600实体侧板",
+    "厨房南水槽台_1240x600实体侧板.001",
+    "厨房南水槽台_1240x600实体底板",
+    "厨房南水槽台_1240x600实体背板",
+    "厨房南水槽台_1240x600门板1",
+    "厨房南水槽台_1240x600门板2",
+    "厨房右柜_深600实体侧板",
+    "厨房右柜_深600实体侧板.001",
+    "厨房右柜_深600实体底板",
+    "厨房右柜_深600实体背板",
+    "厨房右柜_深600门板1",
+    "厨房右柜_深600门板2",
+    "厨房右柜_深600门板3",
+    "厨房右柜_深600门板4",
+    "厨房右柜_深600门板5",
+    "厨房右柜_深600顶封板",
+    "厨房备餐砧板",
+    "厨房左窄柜_深326实体侧板",
+    "厨房左窄柜_深326实体侧板.001",
+    "厨房左窄柜_深326实体底板",
+    "厨房左窄柜_深326实体背板",
+    "厨房左窄柜_深326门板1",
+    "厨房左窄柜_深326门板2",
+    "厨房左窄柜_深326门板3",
+    "厨房左窄柜_深326顶封板",
+    "厨房开放层板",
+    "厨房开放层板.001",
+    "厨房转角固定玻璃木窗台",
+    "厨房餐厅内窗木窗台",
+    "外置台盆下柜实体侧板",
+    "外置台盆下柜实体侧板.001",
+    "外置台盆下柜实体底板",
+    "外置台盆下柜实体背板",
+    "外置台盆下柜门板1",
+    "外置台盆下柜门板2",
+    "外置台盆拱镜",
+    "床侧书柜侧板",
+    "床侧书柜侧板.001",
+    "床侧书柜层板",
+    "床侧书柜层板.001",
+    "床侧书柜层板.002",
+    "次卧右衣柜1500实体侧板",
+    "次卧右衣柜1500实体侧板.001",
+    "次卧右衣柜1500实体底板",
+    "次卧右衣柜1500实体背板",
+    "次卧右衣柜1500门板1",
+    "次卧右衣柜1500门板2",
+    "次卧右衣柜1500门板3",
+    "次卧右衣柜1500顶封板",
+    "次卧床床架",
+    "洗衣区台面",
+    "玄关下柜实体侧板",
+    "玄关下柜实体侧板.001",
+    "玄关下柜实体底板",
+    "玄关下柜实体背板",
+    "玄关下柜门板1",
+    "玄关下柜门板2",
+    "玄关下柜顶封板",
+    "玄关层板_1070",
+    "玄关层板_1430",
+    "玄关层板_1790"
+  ],
+  "added": [
+    {
+      "name": "次卫外窗百叶帘",
+      "template": "次卫北窗下砖"
+    }
+  ],
+  "materialImages": [],
+  "hidden": [],
+  "materialTexcoords": {
+    "370": 0
+  },
+  "grain": [
+    {
+      "name": "Warm walnut - real oak scan tinted.004",
+      "grain": "vertical"
+    },
+    {
+      "name": "Warm walnut - real oak scan tinted.005",
+      "grain": "vertical"
+    },
+    {
+      "name": "Warm walnut - real oak scan tinted.007",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧书桌_600x1750台面",
+      "grain": "horizontal"
+    },
+    {
+      "name": "主卧书桌T脚",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧书桌T脚.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧书桌支架",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧书桌支架.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧内侧桌细支腿",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧内侧桌细支腿.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧内侧桌细支腿.002",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧内侧桌细支腿.003",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧内侧桌靠墙承托",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧北窗转角地柜",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧床侧窄斗柜实体侧板",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧床侧窄斗柜实体侧板.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧床侧窄斗柜实体底板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "主卧床侧窄斗柜实体背板",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧床侧窄斗柜门板1",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卧床侧窄斗柜顶封板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "主卧床床架",
+      "grain": "horizontal"
+    },
+    {
+      "name": "主卧转角开放层板_1200",
+      "grain": "horizontal"
+    },
+    {
+      "name": "主卧转角开放层板_1540",
+      "grain": "horizontal"
+    },
+    {
+      "name": "主卧转角开放层板_1920",
+      "grain": "horizontal"
+    },
+    {
+      "name": "主卧转角连续台面",
+      "grain": "horizontal"
+    },
+    {
+      "name": "主卫台盆柜实体侧板",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卫台盆柜实体侧板.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卫台盆柜实体底板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "主卫台盆柜实体背板",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卫台盆柜门板1",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卫台盆柜门板2",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卫台盆柜门板3",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卫客厅窗木窗台",
+      "grain": "horizontal"
+    },
+    {
+      "name": "主卫镜柜",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卫镜柜内部层板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "主卫镜柜内部层板.001",
+      "grain": "horizontal"
+    },
+    {
+      "name": "主卫镜柜木框侧边",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卫镜柜木框侧边.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卫镜柜木框横边",
+      "grain": "vertical"
+    },
+    {
+      "name": "主卫镜柜木框横边.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房主卫内窗连续木窗台连接段",
+      "grain": "horizontal"
+    },
+    {
+      "name": "厨房北操作台_深570实体侧板",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房北操作台_深570实体侧板.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房北操作台_深570实体底板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "厨房北操作台_深570实体背板",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房北操作台_深570门板1",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房北操作台_深570门板2",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房北操作台_深570顶封板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "厨房南水槽台_1240x600实体侧板",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房南水槽台_1240x600实体侧板.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房南水槽台_1240x600实体底板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "厨房南水槽台_1240x600实体背板",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房南水槽台_1240x600门板1",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房南水槽台_1240x600门板2",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房右柜_深600实体侧板",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房右柜_深600实体侧板.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房右柜_深600实体底板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "厨房右柜_深600实体背板",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房右柜_深600门板1",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房右柜_深600门板2",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房右柜_深600门板3",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房右柜_深600门板4",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房右柜_深600门板5",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房右柜_深600顶封板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "厨房备餐砧板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "厨房左窄柜_深326实体侧板",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房左窄柜_深326实体侧板.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房左窄柜_深326实体底板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "厨房左窄柜_深326实体背板",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房左窄柜_深326门板1",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房左窄柜_深326门板2",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房左窄柜_深326门板3",
+      "grain": "vertical"
+    },
+    {
+      "name": "厨房左窄柜_深326顶封板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "厨房开放层板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "厨房开放层板.001",
+      "grain": "horizontal"
+    },
+    {
+      "name": "厨房转角固定玻璃木窗台",
+      "grain": "horizontal"
+    },
+    {
+      "name": "厨房餐厅内窗木窗台",
+      "grain": "horizontal"
+    },
+    {
+      "name": "外置台盆下柜实体侧板",
+      "grain": "vertical"
+    },
+    {
+      "name": "外置台盆下柜实体侧板.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "外置台盆下柜实体底板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "外置台盆下柜实体背板",
+      "grain": "vertical"
+    },
+    {
+      "name": "外置台盆下柜门板1",
+      "grain": "vertical"
+    },
+    {
+      "name": "外置台盆下柜门板2",
+      "grain": "vertical"
+    },
+    {
+      "name": "外置台盆拱镜",
+      "grain": "vertical"
+    },
+    {
+      "name": "床侧书柜侧板",
+      "grain": "vertical"
+    },
+    {
+      "name": "床侧书柜侧板.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "床侧书柜层板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "床侧书柜层板.001",
+      "grain": "horizontal"
+    },
+    {
+      "name": "床侧书柜层板.002",
+      "grain": "horizontal"
+    },
+    {
+      "name": "次卧右衣柜1500实体侧板",
+      "grain": "vertical"
+    },
+    {
+      "name": "次卧右衣柜1500实体侧板.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "次卧右衣柜1500实体底板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "次卧右衣柜1500实体背板",
+      "grain": "vertical"
+    },
+    {
+      "name": "次卧右衣柜1500门板1",
+      "grain": "vertical"
+    },
+    {
+      "name": "次卧右衣柜1500门板2",
+      "grain": "vertical"
+    },
+    {
+      "name": "次卧右衣柜1500门板3",
+      "grain": "vertical"
+    },
+    {
+      "name": "次卧右衣柜1500顶封板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "次卧床床架",
+      "grain": "horizontal"
+    },
+    {
+      "name": "洗衣区台面",
+      "grain": "horizontal"
+    },
+    {
+      "name": "玄关下柜实体侧板",
+      "grain": "vertical"
+    },
+    {
+      "name": "玄关下柜实体侧板.001",
+      "grain": "vertical"
+    },
+    {
+      "name": "玄关下柜实体底板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "玄关下柜实体背板",
+      "grain": "vertical"
+    },
+    {
+      "name": "玄关下柜门板1",
+      "grain": "vertical"
+    },
+    {
+      "name": "玄关下柜门板2",
+      "grain": "vertical"
+    },
+    {
+      "name": "玄关下柜顶封板",
+      "grain": "horizontal"
+    },
+    {
+      "name": "玄关层板_1070",
+      "grain": "horizontal"
+    },
+    {
+      "name": "玄关层板_1430",
+      "grain": "horizontal"
+    },
+    {
+      "name": "玄关层板_1790",
+      "grain": "horizontal"
+    }
+  ]
+}

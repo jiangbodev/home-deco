@@ -1,0 +1,26 @@
+{
+  "changedJoinery": 109,
+  "added": [
+    {
+      "name": "次卫外窗百叶帘",
+      "template": "次卫北窗下砖"
+    }
+  ],
+  "preservedMeshBounds": 1304,
+  "existingTransformsAndMetadata": "identical",
+  "triangles": 614698,
+  "oldTriangles": 613658,
+  "triangleIncrease": 1040,
+  "blindBounds": {
+    "min": [
+      4.256000190973282,
+      0.7090000014780843,
+      0.11999999970848761
+    ],
+    "max": [
+      5.192997008562088,
+      2.3525001987104113,
+      0.19250087819563366
+    ]
+  }
+}

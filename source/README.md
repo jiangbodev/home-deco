@@ -161,3 +161,21 @@ node scripts/verify-modules.mjs qa/fridge-wide-source.glb
 Materials 360–363 are pearl-silver door metal, aluminium handles, rubber seal and housing. Original generic knob/backing are retired. The width parameter resizes the existing fridge casing and the adjoining storage together without changing node transforms or moving the outer run boundary. All unrelated furniture remains untouched.
 
 The combined refrigerator contains surfaces at the same projected coordinates; `prepare-cycles-bake.mjs` excludes it from the six-face receiver atlas while retaining it as a light blocker. Appliance surfaces use continuous PBR and vertex contact. Rebuild all light assets from `qa/fridge-wide-source.glb` in fresh `qa/fridge-wide-*-approved` folders. Do not reuse dining or stacked-fridge raw atlases. Private reference PDFs/images stay ignored.
+
+## Whole-house joinery and guest-bath window study
+
+Published baseline: `b034d8b`. Local editable source: `source/home-deco-whole-house-wood.blend`.
+
+`blender-whole-house-wood.py` starts from immutable `qa/whole-house-upgrade/before.glb` and changes 109 named, visible joinery meshes. New oak material 370 reuses material 25's approved scan through `detail_base_material`, with real metre-scaled UVs. Vertical door panels run vertically; shelves/tabletops follow the dominant horizontal axis. Ivory paint, door backings, cane, upholstery and hardware are not recolored. The explicit imported TV-cabinet/side-cabinet/chair wood nodes are included; their hidden legacy objects are not mistaken for the visible result.
+
+One fixed guest-bath blind (materials 371/372) is authored inside the exterior opening with headrail, 49 angled slats, ladder tapes, bottom rail and mounting brackets. The existing fixed north sill is the module template; it must not inherit the shower-door animation.
+
+```sh
+/Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/blender-whole-house-wood.py -- qa/whole-house-upgrade/before.glb source/home-deco-whole-house-wood.blend qa/whole-house-upgrade/edit.glb review/whole-house-upgrade/blender.json
+node scripts/import-blender-details.mjs qa/whole-house-upgrade/original/modules public/assets/modules qa/whole-house-upgrade/edit.glb review/whole-house-upgrade/blender.json review/whole-house-upgrade/integration.json
+node scripts/assemble-modules.mjs public/assets/modules qa/whole-house-upgrade/source.glb
+node scripts/check-whole-house-wood.mjs
+node scripts/verify-modules.mjs qa/whole-house-upgrade/source.glb
+```
+
+Regenerate contact, fallback daylight, object AO, Cycles irradiance and four reflection probes from the assembled source before judging appearance. Final bake directories: `qa/whole-house-upgrade/daylight-v2`, `baked-v2`, `probes-v2`. `?study=whole-house` provides development-only repeatable cameras and movement samples; it is stripped from production. See `review/whole-house-upgrade/` for validation and before/after evidence. The user has approved publication of this reviewed follow-up.

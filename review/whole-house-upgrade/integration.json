@@ -1,0 +1,662 @@
+[
+  {
+    "module": "base",
+    "name": "厨房主卫内窗连续木窗台连接段",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "base",
+    "name": "主卧转角开放层板_1200",
+    "before": 284,
+    "after": 284
+  },
+  {
+    "module": "base",
+    "name": "主卧转角开放层板_1540",
+    "before": 284,
+    "after": 284
+  },
+  {
+    "module": "base",
+    "name": "主卧转角开放层板_1920",
+    "before": 284,
+    "after": 284
+  },
+  {
+    "module": "base",
+    "name": "次卫外窗百叶帘",
+    "before": 12,
+    "after": 1068
+  },
+  {
+    "module": "room-0",
+    "name": "厨房转角固定玻璃木窗台",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "厨房餐厅内窗木窗台",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "外置台盆下柜实体侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "外置台盆下柜实体侧板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "外置台盆下柜实体底板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "外置台盆下柜实体背板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "外置台盆下柜门板1",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-0",
+    "name": "外置台盆下柜门板2",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-0",
+    "name": "外置台盆拱镜",
+    "before": 182,
+    "after": 182
+  },
+  {
+    "module": "room-0",
+    "name": "玄关下柜实体侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "玄关下柜实体侧板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "玄关下柜实体底板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "玄关下柜实体背板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "玄关下柜门板1",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-0",
+    "name": "玄关下柜门板2",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-0",
+    "name": "玄关下柜顶封板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "玄关层板_1070",
+    "before": 188,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "玄关层板_1430",
+    "before": 188,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "玄关层板_1790",
+    "before": 188,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "厨房南水槽台_1240x600实体侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "厨房南水槽台_1240x600实体侧板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "厨房南水槽台_1240x600实体底板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "厨房南水槽台_1240x600实体背板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "厨房南水槽台_1240x600门板1",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-0",
+    "name": "厨房南水槽台_1240x600门板2",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-0",
+    "name": "厨房右柜_深600实体侧板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-0",
+    "name": "厨房右柜_深600门板5",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-1",
+    "name": "主卫客厅窗木窗台",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-1",
+    "name": "主卫台盆柜实体侧板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-1",
+    "name": "主卫台盆柜门板3",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-1",
+    "name": "主卫镜柜木框侧边.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-1",
+    "name": "Warm walnut - real oak scan tinted.004",
+    "before": 986,
+    "after": 986
+  },
+  {
+    "module": "room-3",
+    "name": "厨房北操作台_深570实体侧板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-3",
+    "name": "厨房北操作台_深570实体底板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-3",
+    "name": "厨房北操作台_深570实体背板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-3",
+    "name": "厨房北操作台_深570门板2",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-3",
+    "name": "厨房北操作台_深570顶封板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-3",
+    "name": "厨房右柜_深600实体侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-3",
+    "name": "厨房右柜_深600实体底板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-3",
+    "name": "厨房右柜_深600门板1",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-3",
+    "name": "厨房右柜_深600门板2",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-3",
+    "name": "厨房右柜_深600门板3",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-3",
+    "name": "厨房右柜_深600门板4",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-3",
+    "name": "厨房右柜_深600顶封板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-3",
+    "name": "厨房左窄柜_深326门板1",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-3",
+    "name": "厨房左窄柜_深326门板2",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-3",
+    "name": "厨房左窄柜_深326门板3",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-3",
+    "name": "厨房备餐砧板",
+    "before": 184,
+    "after": 184
+  },
+  {
+    "module": "room-4",
+    "name": "主卧书桌_600x1750台面",
+    "before": 188,
+    "after": 188
+  },
+  {
+    "module": "room-4",
+    "name": "主卧书桌T脚",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-4",
+    "name": "主卧书桌T脚.001",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-4",
+    "name": "主卧书桌支架",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-4",
+    "name": "主卧书桌支架.001",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-4",
+    "name": "Warm walnut - real oak scan tinted.007",
+    "before": 252,
+    "after": 252
+  },
+  {
+    "module": "room-4",
+    "name": "主卧内侧桌细支腿",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-4",
+    "name": "主卧内侧桌细支腿.001",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-4",
+    "name": "主卧内侧桌细支腿.002",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-4",
+    "name": "主卧内侧桌细支腿.003",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-4",
+    "name": "主卧内侧桌靠墙承托",
+    "before": 768,
+    "after": 768
+  },
+  {
+    "module": "room-4",
+    "name": "主卧床侧窄斗柜实体侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-4",
+    "name": "主卧床侧窄斗柜实体侧板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-4",
+    "name": "主卧床侧窄斗柜实体底板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-4",
+    "name": "主卧床侧窄斗柜实体背板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-4",
+    "name": "主卧床侧窄斗柜门板1",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-4",
+    "name": "主卧床侧窄斗柜顶封板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-4",
+    "name": "主卧床床架",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-4",
+    "name": "主卧转角连续台面",
+    "before": 188,
+    "after": 188
+  },
+  {
+    "module": "room-4",
+    "name": "床侧书柜侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-4",
+    "name": "床侧书柜侧板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-4",
+    "name": "床侧书柜层板",
+    "before": 188,
+    "after": 188
+  },
+  {
+    "module": "room-4",
+    "name": "床侧书柜层板.001",
+    "before": 188,
+    "after": 188
+  },
+  {
+    "module": "room-4",
+    "name": "床侧书柜层板.002",
+    "before": 188,
+    "after": 188
+  },
+  {
+    "module": "room-4",
+    "name": "Warm walnut - real oak scan tinted.005",
+    "before": 1068,
+    "after": 1068
+  },
+  {
+    "module": "room-4",
+    "name": "洗衣区台面",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-4",
+    "name": "主卧北窗转角地柜",
+    "before": 864,
+    "after": 864
+  },
+  {
+    "module": "room-5",
+    "name": "次卧右衣柜1500实体侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-5",
+    "name": "次卧右衣柜1500实体底板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-5",
+    "name": "次卧右衣柜1500实体背板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-5",
+    "name": "次卧右衣柜1500门板1",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-5",
+    "name": "次卧右衣柜1500门板2",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-5",
+    "name": "次卧右衣柜1500门板3",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-5",
+    "name": "次卧右衣柜1500顶封板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-5",
+    "name": "次卧床床架",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-7",
+    "name": "主卫台盆柜实体侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫台盆柜实体底板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫台盆柜实体背板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫台盆柜门板1",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-7",
+    "name": "主卫台盆柜门板2",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-7",
+    "name": "主卫镜柜",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫镜柜内部层板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫镜柜内部层板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫镜柜木框侧边",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫镜柜木框横边",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "主卫镜柜木框横边.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-7",
+    "name": "厨房右柜_深600实体背板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "厨房北操作台_深570实体侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "厨房北操作台_深570门板1",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-8",
+    "name": "厨房左窄柜_深326实体侧板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "厨房左窄柜_深326实体侧板.001",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "厨房左窄柜_深326实体底板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "厨房左窄柜_深326实体背板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "厨房左窄柜_深326顶封板",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-8",
+    "name": "厨房开放层板",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-8",
+    "name": "厨房开放层板.001",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-8",
+    "name": "次卧右衣柜1500实体侧板.001",
+    "before": 12,
+    "after": 12
+  }
+]

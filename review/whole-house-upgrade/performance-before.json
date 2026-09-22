@@ -1,0 +1,32 @@
+[
+  {
+    "name": "客厅全景",
+    "frames": 330,
+    "medianMs": 16.700000000000728,
+    "p95Ms": 17.100000000002183,
+    "drawCalls": 521,
+    "triangles": 578004,
+    "width": 1675,
+    "height": 1432
+  },
+  {
+    "name": "厨房",
+    "frames": 330,
+    "medianMs": 16.69999999999709,
+    "p95Ms": 17.60000000000582,
+    "drawCalls": 460,
+    "triangles": 146438,
+    "width": 1675,
+    "height": 1432
+  },
+  {
+    "name": "主卧木作",
+    "frames": 330,
+    "medianMs": 16.69999999999709,
+    "p95Ms": 16.80000000000291,
+    "drawCalls": 328,
+    "triangles": 162712,
+    "width": 1675,
+    "height": 1432
+  }
+]
