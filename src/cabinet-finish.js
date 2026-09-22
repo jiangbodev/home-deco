@@ -2,10 +2,11 @@
 // Projected bake charts do not follow those curves continuously; retain a small
 // amount of baked contact shade, while the shared PBR lighting defines the finish.
 const names=/^(圆弧包覆实体层|壁龛背部|壁龛靠沙发端|洗衣隐藏门板|南侧书架|南侧整柜书架齐平收口|南侧通高柜2035(?!门后)|通高柜内退踢脚|玄关左侧圆弧包覆|玄关前拱框|玄关层板_700)/;
+const entryJoinery=new Set(['玄关餐桌连接侧体','玄关后方结构柱','玄关共用背墙']);
 const seen=new WeakSet();
 export function prepareCabinetFinish(group){group.traverse(o=>{
  const name=o.userData.source_name||o.name,printedArt=/^(展示画框画芯|画芯线条示意)/.test(name),recessBacking=name==='南侧通高柜2035门后暗缝底';
- if(!o.isMesh||seen.has(o)||(!names.test(name)&&!printedArt&&!recessBacking))return;seen.add(o);
+ if(!o.isMesh||seen.has(o)||(!names.test(name)&&!entryJoinery.has(name)&&!printedArt&&!recessBacking))return;seen.add(o);
  const multi=Array.isArray(o.material);const materials=(multi?o.material:[o.material]).map(original=>{
   if(!printedArt&&!recessBacking&&original.userData.source_material_id!==38)return original;
   const m=original.clone(),previous=original.onBeforeCompile,key=original.customProgramCacheKey();

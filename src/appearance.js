@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {prepareLeafFinish} from './leaf-finish.js';
 import {prepareCabinetFinish} from './cabinet-finish.js';
 import {prepareTVWall} from './tv-wall-finish.js';
 import {RectAreaLightUniformsLib} from 'three/addons/lights/RectAreaLightUniformsLib.js';
@@ -113,7 +114,7 @@ vec3 an=abs(wn),wp=clamp((contactPosition-wallMin)/wallSize,0.0,1.0);
     m.customProgramCacheKey=()=> 'floor-light-v2';return m;
    });if(!multiple)o.material=o.material[0];
   });
-  finishes.prepare(group);objectContact.prepare(group);irradiance.prepare(group);prepareTVWall(group);prepareCabinetFinish(group);reflections.prepare(group);
+  finishes.prepare(group);objectContact.prepare(group);irradiance.prepare(group);prepareTVWall(group);prepareCabinetFinish(group);prepareLeafFinish(group);reflections.prepare(group);
  }
  function update(model,initialTransforms,loaded,assetFiles){
   irradiance.update(model,initialTransforms,loaded,assetFiles);reflections.update(model,initialTransforms,loaded,assetFiles);

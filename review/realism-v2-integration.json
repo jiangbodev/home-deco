@@ -1,0 +1,152 @@
+[
+  {
+    "module": "base",
+    "name": "主卧转角开放层板_1200",
+    "before": 20,
+    "after": 284
+  },
+  {
+    "module": "base",
+    "name": "主卧转角开放层板_1540",
+    "before": 20,
+    "after": 284
+  },
+  {
+    "module": "base",
+    "name": "主卧转角开放层板_1920",
+    "before": 20,
+    "after": 284
+  },
+  {
+    "module": "room-0",
+    "name": "玄关书籍_陈设示意",
+    "before": 12,
+    "after": 456
+  },
+  {
+    "module": "room-0",
+    "name": "玄关书籍_陈设示意.001",
+    "before": 12,
+    "after": 456
+  },
+  {
+    "module": "room-0",
+    "name": "玄关书籍_陈设示意.002",
+    "before": 12,
+    "after": 456
+  },
+  {
+    "module": "room-0",
+    "name": "玄关书籍_陈设示意.003",
+    "before": 12,
+    "after": 456
+  },
+  {
+    "module": "room-0",
+    "name": "玄关书籍_陈设示意.004",
+    "before": 12,
+    "after": 456
+  },
+  {
+    "module": "room-0",
+    "name": "玄关层板_1070",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "玄关层板_1430",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "玄关层板_1790",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-0",
+    "name": "玄关陶器_陈设示意",
+    "before": 192,
+    "after": 2816
+  },
+  {
+    "module": "room-0",
+    "name": "玄关陶器_陈设示意.001",
+    "before": 192,
+    "after": 2816
+  },
+  {
+    "module": "room-1",
+    "name": "Curved broad leaf",
+    "before": 742,
+    "after": 742
+  },
+  {
+    "module": "room-1",
+    "name": "Curved broad leaf.001",
+    "before": 744,
+    "after": 744
+  },
+  {
+    "module": "room-1",
+    "name": "Curved broad leaf.002",
+    "before": 744,
+    "after": 744
+  },
+  {
+    "module": "room-1",
+    "name": "Curved broad leaf.003",
+    "before": 744,
+    "after": 744
+  },
+  {
+    "module": "room-1",
+    "name": "Curved broad leaf.004",
+    "before": 744,
+    "after": 744
+  },
+  {
+    "module": "room-1",
+    "name": "Curved broad leaf.005",
+    "before": 744,
+    "after": 744
+  },
+  {
+    "module": "room-1",
+    "name": "Curved broad leaf.006",
+    "before": 744,
+    "after": 744
+  },
+  {
+    "module": "room-4",
+    "name": "床侧书柜层板",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-4",
+    "name": "床侧书柜层板.001",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-4",
+    "name": "床侧书柜层板.002",
+    "before": 12,
+    "after": 188
+  },
+  {
+    "module": "room-8",
+    "name": "厨房开放层板",
+    "before": 268,
+    "after": 268
+  },
+  {
+    "module": "room-8",
+    "name": "厨房开放层板.001",
+    "before": 268,
+    "after": 268
+  }
+]

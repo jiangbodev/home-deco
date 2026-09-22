@@ -1,0 +1,25 @@
+{
+  "modelBytes": 7161086,
+  "appearanceBytes": 13000023,
+  "sourceSha256": "102cadcbf0dea08b66aa8cca9892d6ad0b63c0be2196ef8c8cfbc7d28f651d76",
+  "triangles": 613469,
+  "archivedUnused": [
+    "public/assets/modules/room-0-3397c62dc97a.glb",
+    "public/assets/modules/room-4-127ec86a2ce9.glb",
+    "public/assets/modules/room-0-67ae7fa39ca1.glb",
+    "public/assets/modules/room-1-89c634ca4d01.glb",
+    "public/assets/modules/base-69750fcb59ce.glb",
+    "public/assets/modules/room-8-1bc3c87b8d03.glb",
+    "public/assets/lighting/reflection-living-08d737a316e5.hdr",
+    "public/assets/lighting/wall-contact-ff598f177716.png",
+    "public/assets/lighting/object-contact-12b9a8b49cf6.bin.gz",
+    "public/assets/lighting/reflection-bedroom-0dc134489d5e.hdr",
+    "public/assets/lighting/wall-light-07401e583fbe.png",
+    "public/assets/lighting/reflection-guest-bath-0180715f048a.hdr",
+    "public/assets/lighting/object-contact-2bd3ee306139.bin.gz",
+    "public/assets/lighting/reflection-kitchen-85c6c8a70608.hdr",
+    "public/assets/lighting/irradiance-floor-e5d3aa611748.png",
+    "public/assets/lighting/irradiance-wall-0fca544f1224.png",
+    "public/assets/lighting/floor-contact-e5857d41dea7.png"
+  ]
+}

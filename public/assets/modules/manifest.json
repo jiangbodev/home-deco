@@ -1,8 +1,8 @@
 {
   "modules": {
     "base": {
-      "file": "base-69750fcb59ce.glb",
-      "bytes": 846008,
+      "file": "base-c6a423bd6dc5.glb",
+      "bytes": 850200,
       "textures": [
         "texture-0a16784d5ba755a6.webp",
         "texture-857a62d61d26606e.webp",
@@ -11,7 +11,10 @@
         "texture-cdda9bdcfa40a7fc.webp",
         "texture-9e267bc34400e83d.webp",
         "texture-ef88bcd16023c4b9.webp",
-        "texture-96221146bf46becb.webp"
+        "texture-96221146bf46becb.webp",
+        "texture-40184ff5212414a6.webp",
+        "texture-5110e340709d06e4.webp",
+        "oak-medium-d93de4158f29.webp"
       ],
       "nodes": 247
     },
@@ -56,8 +59,8 @@
       "nodes": 12
     },
     "room-0": {
-      "file": "room-0-67ae7fa39ca1.glb",
-      "bytes": 313480,
+      "file": "room-0-83afc350bde1.glb",
+      "bytes": 347008,
       "textures": [
         "texture-0dc1d5251e1837a6.webp",
         "texture-bda86bf196bdcff6.webp",
@@ -77,8 +80,8 @@
       "nodes": 309
     },
     "room-1": {
-      "file": "room-1-89c634ca4d01.glb",
-      "bytes": 611632,
+      "file": "room-1-179773a5d284.glb",
+      "bytes": 605696,
       "textures": [
         "oak-medium-d93de4158f29.webp",
         "texture-40184ff5212414a6.webp",
@@ -112,8 +115,8 @@
       "nodes": 103
     },
     "room-4": {
-      "file": "room-4-127ec86a2ce9.glb",
-      "bytes": 337388,
+      "file": "room-4-09cd0b604e02.glb",
+      "bytes": 345528,
       "textures": [
         "texture-f5e2254d8f33d291.webp",
         "texture-fc04b6aa6707a522.webp",
@@ -155,8 +158,8 @@
       "nodes": 71
     },
     "room-8": {
-      "file": "room-8-1bc3c87b8d03.glb",
-      "bytes": 89680,
+      "file": "room-8-172eec0c4fba.glb",
+      "bytes": 90900,
       "textures": [
         "texture-62e9e71135a05014.webp",
         "oak-medium-d93de4158f29.webp",

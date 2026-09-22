@@ -9,3 +9,6 @@ qa/
 
 __pycache__/
 *.pyc
+
+# Original user design documents are local development references.
+reference/

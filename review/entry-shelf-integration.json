@@ -1,0 +1,68 @@
+[
+  {
+    "module": "base",
+    "name": "玄关共用背墙",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "base",
+    "name": "玄关餐桌连接侧体",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "base",
+    "name": "玄关后方结构柱",
+    "before": 12,
+    "after": 12
+  },
+  {
+    "module": "room-1",
+    "name": "搁板薄书示意0",
+    "before": 800,
+    "after": 1034
+  },
+  {
+    "module": "room-1",
+    "name": "搁板薄书示意1",
+    "before": 800,
+    "after": 1029
+  },
+  {
+    "module": "room-1",
+    "name": "搁板薄书示意2",
+    "before": 800,
+    "after": 956
+  },
+  {
+    "module": "room-1",
+    "name": "画芯线条示意",
+    "before": 188,
+    "after": 92
+  },
+  {
+    "module": "room-1",
+    "name": "画芯线条示意.001",
+    "before": 188,
+    "after": 92
+  },
+  {
+    "module": "room-1",
+    "name": "画芯线条示意.002",
+    "before": 188,
+    "after": 92
+  },
+  {
+    "module": "room-4",
+    "name": "超短焦投影机_产品外形示意",
+    "before": 3508,
+    "after": 4816
+  },
+  {
+    "module": "room-4",
+    "name": "主卧北窗转角地柜",
+    "before": 188,
+    "after": 864
+  }
+]

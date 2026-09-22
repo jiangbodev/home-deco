@@ -1,0 +1,72 @@
+{
+  "date": "2026-09-22",
+  "device": "Apple M4, macOS, Codex in-app browser",
+  "viewportApprox": [
+    1274,
+    1089
+  ],
+  "devicePixelRatio": 2.4,
+  "quality": "auto",
+  "method": "300 requestAnimationFrame intervals per room, 20 brief W taps and 125px yaw each way; not continuous long-duration walking or a mobile benchmark",
+  "accepted": [
+    {
+      "room": "客厅",
+      "frames": 300,
+      "medianMs": 16.7,
+      "p95Ms": 18.0,
+      "maxMs": 18.7,
+      "over25ms": 0
+    },
+    {
+      "room": "主卧",
+      "frames": 300,
+      "medianMs": 16.7,
+      "p95Ms": 18.2,
+      "maxMs": 18.7,
+      "over25ms": 0
+    },
+    {
+      "room": "厨房",
+      "frames": 300,
+      "medianMs": 16.7,
+      "p95Ms": 18.0,
+      "maxMs": 18.6,
+      "over25ms": 0
+    },
+    {
+      "room": "主卫",
+      "frames": 300,
+      "medianMs": 16.7,
+      "p95Ms": 16.9,
+      "maxMs": 18.6,
+      "over25ms": 0
+    }
+  ],
+  "rejectedDefaultMirrorTrials": [
+    {
+      "configuration": "768px, full capture",
+      "medianMs": 31.5,
+      "p95Ms": 34.9,
+      "over25ms": 155
+    },
+    {
+      "configuration": "exclude transmissive glass",
+      "medianMs": 16.7,
+      "p95Ms": 33.4,
+      "over25ms": 90
+    },
+    {
+      "configuration": "also skip auxiliary camera/target capture",
+      "medianMs": 16.7,
+      "p95Ms": 33.3,
+      "over25ms": 42
+    },
+    {
+      "configuration": "384px, no MSAA",
+      "medianMs": 16.7,
+      "p95Ms": 33.3,
+      "over25ms": 28
+    }
+  ],
+  "decision": "Default auto remains static reflection; desktop high uses 768px/2 samples realtime mirror. No 60 FPS claim for high quality."
+}
