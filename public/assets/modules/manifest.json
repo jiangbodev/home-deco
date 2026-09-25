@@ -1,8 +1,8 @@
 {
   "modules": {
     "base": {
-      "file": "base-bbb026d8d970.glb",
-      "bytes": 956284,
+      "file": "base-fad6d6ea8d30.glb",
+      "bytes": 956556,
       "textures": [
         "texture-0a16784d5ba755a6.webp",
         "texture-857a62d61d26606e.webp",
@@ -103,8 +103,8 @@
       "nodes": 307
     },
     "room-3": {
-      "file": "room-3-cc2101ccc4ab.glb",
-      "bytes": 133288,
+      "file": "room-3-0ca6d9686f40.glb",
+      "bytes": 156600,
       "textures": [
         "texture-62e9e71135a05014.webp",
         "texture-a09cbd936134a18c.webp",

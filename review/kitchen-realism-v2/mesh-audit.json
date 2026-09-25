@@ -1,0 +1,30 @@
+{
+  "厨房烟机进风滤网与灯": {
+    "faces": 216,
+    "nonmanifold": 0,
+    "degenerate": 0
+  },
+  "烟机黑玻璃斜面": {
+    "faces": 24,
+    "nonmanifold": 0,
+    "degenerate": 0
+  },
+  "灶具控制旋钮": {
+    "faces": 632,
+    "nonmanifold": 0,
+    "degenerate": 0
+  },
+  "燃气炉头底座": {
+    "faces": 450,
+    "nonmanifold": 0,
+    "degenerate": 0
+  },
+  "slot": {
+    "hit": true,
+    "material": "Kitchen cast iron enamel"
+  },
+  "sheet": {
+    "hit": true,
+    "material": "Kitchen satin nickel"
+  }
+}

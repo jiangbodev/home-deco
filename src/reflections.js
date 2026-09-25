@@ -11,13 +11,13 @@ export function createReflections(renderer){
   available=true;
  }catch(e){console.warn('Optional local reflections unavailable',e)}finally{pmrem.dispose()}}
  function prepare(group){group.traverse(o=>{if(!o.isMesh)return;const probe=manifest?.receivers[o.userData.attachTo??o.userData.moduleNode];if(!probe)return;
-  for(const m of Array.isArray(o.material)?o.material:[o.material])if(!m.userData.continuousCabinet&&(['lacquer','timber','counter','steel'].includes(m.userData.surfaceFinish)||[20,300,301,302,303,304,308,309,310,311].includes(m.userData.source_material_id)))materials.set(m,{probe:[360,361].includes(m.userData.source_material_id)?'kitchen':probe,original:m.envMap,intensity:m.envMapIntensity});
+  for(const m of Array.isArray(o.material)?o.material:[o.material])if(!m.userData.continuousCabinet&&(['lacquer','timber','counter','steel'].includes(m.userData.surfaceFinish)||[20,300,301,302,303,304,308,309,310,311,430,431,432].includes(m.userData.source_material_id)))materials.set(m,{probe:[360,361].includes(m.userData.source_material_id)?'kitchen':probe,original:m.envMap,intensity:m.envMapIntensity});
  })}
  // Room probes are an intentionally static environment approximation. Door
  // toggles must not remove their reflection from mirrors and polished fittings.
  function update(model,initialTransforms,loaded,files){
  const next=available&&loaded?.length===files?.length&&JSON.stringify(manifest?.sourceModules)===JSON.stringify(files);if(next===active)return;active=next;
- for(const[m,r]of materials){m.envMap=active?maps.get(r.probe):r.original;m.envMapIntensity=active ? ((m.userData.source_material_id===20||r.probe==='kitchen')?1.0:.65) : r.intensity;m.needsUpdate=true}
+ for(const[m,r]of materials){m.envMap=active?maps.get(r.probe):r.original;m.envMapIntensity=active ? ([430,431,432].includes(m.userData.source_material_id)?.65:(m.userData.source_material_id===20||r.probe==='kitchen')?1.0:.65) : r.intensity;m.needsUpdate=true}
  }
  return{init,load,prepare,update};
 }
